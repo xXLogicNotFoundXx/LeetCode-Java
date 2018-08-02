@@ -1,2 +1,0 @@
-# javaprep
-java coding practice 
