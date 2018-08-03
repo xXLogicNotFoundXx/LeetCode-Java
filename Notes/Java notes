@@ -1,0 +1,8 @@
+int[] original = nums.clone(); // nums is int[] it gice the copy 
+nums.length // gives array length 
+
+String a = new String("");
+a.length()
+
+List<Integer> a = new ArrayList();
+a.add(),a.remove(index); a.size();
