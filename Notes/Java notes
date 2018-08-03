@@ -1,6 +1,9 @@
 int[] original = nums.clone(); // nums is int[] it gice the copy 
 nums.length // gives array length 
 
+Random rand = new Random();
+rand.nextInt(aux.size());
+
 String a = new String("");
 a.length()
 
