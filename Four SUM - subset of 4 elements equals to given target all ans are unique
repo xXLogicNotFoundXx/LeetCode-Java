@@ -1,4 +1,38 @@
 class Solution {
+    public List<List<Integer>> fourSum(int[] numbers, int target) {
+        List<List<Integer>> result = new ArrayList<List<Integer>>();
+        Arrays.sort(numbers);
+        for (int i = 0; i < numbers.length - 3; i++) {
+            for (int j = i + 1; j < numbers.length - 2; j++) {
+                int left = j + 1;
+                int right = numbers.length - 1;
+
+                while (left < right) {
+                    int sum = numbers[i] + numbers[j] + numbers[left] + numbers[right];
+                    if (sum == target) {
+                        List<Integer> tuple = new ArrayList<Integer>();
+                        tuple.add(numbers[i]);
+                        tuple.add(numbers[j]);
+                        tuple.add(numbers[left]);
+                        tuple.add(numbers[right]);
+                        if (!result.contains(tuple)) 
+                            result.add(tuple);
+                        
+                        left++;
+                        right--;
+                    } else if (sum < target) {
+                        left++;
+                    } else {
+                        right--;
+                    }
+                }
+            }
+        }
+        return result;
+    }
+}
+
+class Solution2MySolution {
     public List<List<Integer>> fourSum(int[] nums, int target) {
         Set<List<Integer>>  ans = new HashSet<List<Integer>>(); // set is initialized by HashSet
         if(nums.length == 0)
