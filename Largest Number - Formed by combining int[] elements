@@ -29,6 +29,9 @@ public class Solution {
 		        String s1 = str1 + str2;
 			String s2 = str2 + str1;
 			return s2.compareTo(s1); // reverse order here, so we can do append() later
+			/* String s1 = "986", s2 = "985";
+			s1.compareTo(s2)) = 1
+			s2.compareTo(s1)); = -1  // we want greater string to return -1 */
 		    }
 	  	};
 		
