@@ -33,9 +33,36 @@ class Solution {
             }
         }
         //if min is MAX_VAL dont change it. Just result it as is. Otherwise add 1 to it.
-        min =  (min == Integer.MAX_VALUE ? Integer.MAX_VALUE : min+1 );
+        min =  (min == Integer.MAX_VALUE ? min : min+1 );
         //memoize the minimum for current total.
         map.put(total, min);
         return min;
     }
 }
+
+class Solution {
+    public int coinChange(int[] coins, int amount) {
+        return minItemsToSum(coins, amount);
+    }
+    
+     /** #####################################################################################################
+     Find minimum count of numbers from given array required to sum to 'sum'. One number can be picked up
+     any number of times.
+     This same method can be used for coin change problem as well.
+     ##################################################################################################### **/
+    public static int minItemsToSum(int[] numbers, int sum){
+        int[] sumCount = new int[sum+1];
+        for(int itr=1; itr<=sum; itr++){
+            int min = -1;
+            for(int number: numbers){
+                if((itr >= number) && (sumCount[itr-number] != -1)){
+                    int temp = sumCount[itr-number] + 1;
+                    min = (min <= 0) ? temp : ((temp < min) ? temp : min);
+                }
+            }
+            sumCount[itr] = min;
+        }
+        return sumCount[sum];
+    }
+}
+
