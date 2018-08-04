@@ -1,3 +1,70 @@
+class Solution { // [2,4,5] 12
+    public int coinChange(int[] coins, int amount) {
+        int[] sol = new int[amount+1];
+        sol[0] = 0;
+        for(int target=1;target<= amount; target++){
+            int min = -1;
+            for(int coin : coins){
+                if(coin <= target && sol[target-coin]!=-1){
+                    int temp = sol[target-coin] + 1;
+                    if(min == -1)
+                        min = temp;
+                    else
+                        min = min<temp? min : temp;
+                }
+            }
+            sol[target] = min; 
+        }
+        return sol[amount];
+    }
+}
+ /*       1st iteration  target = 1  i/p = [2,4,5] 12
+            sol[] = 0,-1
+          target 2 = for coin=2  (2-2=0th ) sol[2] is 0+1(+1 bcz we considerd coin 2) 
+                     we end up writting sol[2]=1... rest coins are bigger 
+            sol[] = 0,-1,1,
+          target 3
+            sol[] = for coin=2   (3-2 = 1th ) sol[1] is -1.. we dont do anything and 
+                    we end up writting sol[3]=-1..... rest coins are bigger 
+                  = 0,-1,1,-1
+          target 4
+            sol[] = for coin 2 . (4-2 = 2nd) sol[2] is 1 so 1+1 =2 we end up writtin sol[4]=2
+                    0,-1,1,-1,2
+            sol[] = for coin 4 . (4-4 = 0th) sol[0] is 0 + 1=1 we end up writtin sol[4]=1
+                    0,-1,1,-1,1
+                    rest coins are bigger 
+          target 5 = 0,-1,1,-1,1,1
+          target 6 = 0,-1,1,-1,1,1,2 (coin 2, bcz 6-2 sol[4th] + 1)
+                   = 0,-1,1,-1,1,1,2 (coin 4, bcz 6-4 sol[2] + 1)  
+                   = for coin 5  sol[6-5] is -1 so we skip 
+        */
+class Solution { // goof solution
+    public int coinChange(int[] coins, int amount) {
+        return minItemsToSum(coins, amount);
+    }
+    
+     /** #####################################################################################################
+     Find minimum count of numbers from given array required to sum to 'sum'. One number can be picked up
+     any number of times.
+     This same method can be used for coin change problem as well.
+     ##################################################################################################### **/
+    public static int minItemsToSum(int[] numbers, int sum){
+        int[] sumCount = new int[sum+1];
+        for(int itr=1; itr<=sum; itr++){
+            int min = -1;
+            for(int number: numbers){
+                if((itr >= number) && (sumCount[itr-number] != -1)){
+                    int temp = sumCount[itr-number] + 1;
+                    min = (min <= 0) ? temp : ((temp < min) ? temp : min);
+                }
+            }
+            sumCount[itr] = min;
+        }
+        return sumCount[sum];
+    }
+}
+
+
 class Solution {
     // https://www.youtube.com/watch?v=Kf_M7RdHr1M&feature=youtu.be
     public int coinChange(int[] coins, int amount) {
@@ -40,29 +107,5 @@ class Solution {
     }
 }
 
-class Solution {
-    public int coinChange(int[] coins, int amount) {
-        return minItemsToSum(coins, amount);
-    }
-    
-     /** #####################################################################################################
-     Find minimum count of numbers from given array required to sum to 'sum'. One number can be picked up
-     any number of times.
-     This same method can be used for coin change problem as well.
-     ##################################################################################################### **/
-    public static int minItemsToSum(int[] numbers, int sum){
-        int[] sumCount = new int[sum+1];
-        for(int itr=1; itr<=sum; itr++){
-            int min = -1;
-            for(int number: numbers){
-                if((itr >= number) && (sumCount[itr-number] != -1)){
-                    int temp = sumCount[itr-number] + 1;
-                    min = (min <= 0) ? temp : ((temp < min) ? temp : min);
-                }
-            }
-            sumCount[itr] = min;
-        }
-        return sumCount[sum];
-    }
-}
+
 
