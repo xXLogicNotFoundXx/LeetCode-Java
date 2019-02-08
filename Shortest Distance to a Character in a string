@@ -1,0 +1,59 @@
+class Solution {
+    public int[] shortestToChar(String S, char C) {
+        int[] res = new int[S.length()];
+        Arrays.fill(res, S.length());
+        int count = -1;
+        for(int i=0; i < S.length(); i++){
+            if(S.charAt(i) == C) {
+                count = 0;
+            }
+            else if(count == -1) continue;
+            else count++;
+            res[i] = count;
+        }
+        count = -1;
+        for(int i=S.length()-1; i>=0; i--){
+            if(S.charAt(i) == C) count = 0;
+            else if(count == -1) continue;
+            else count = Math.min(res[i], count+1);
+            res[i] = count;
+        }
+        return res;
+    }
+    
+    /* This one works but very complicated 
+    public int[] shortestToChar(String S, char C) {
+        if(S == null || S.isEmpty())
+            return new int[0];
+        
+        int []a = new int[S.length()];
+        char []chars = S.toCharArray();
+        boolean found=false;
+        int count = -1;
+        for(int i=0;i<chars.length;i++){
+            if(chars[i]==C){
+                count=0;
+                found=true;
+            }
+            else if(found)
+                count++;
+            a[i] = count;    
+        }
+        count=-1;
+        found=false;
+        for(int i=chars.length-1;i>=0;i--){
+            if(chars[i]==C){
+               count=0; 
+               found=true;
+            } else if(found)
+                count++;
+            if(count==-1)
+                continue;
+            if(a[i]==-1)
+                a[i]=count;
+            if(count<a[i])
+                    a[i] = count;
+        }
+        return a;
+    }*/
+}
