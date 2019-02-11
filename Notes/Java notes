@@ -9,3 +9,11 @@ a.length()
 
 List<Integer> a = new ArrayList();
 a.add(),a.remove(index); a.size();
+
+// Map iterator
+Iterator<Map.Entry<Integer, Integer>> entries = map.entrySet().iterator();
+while (entries.hasNext()) {
+    Map.Entry<Integer, Integer> entry = entries.next();
+.....
+}
+
