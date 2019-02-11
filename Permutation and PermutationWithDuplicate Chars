@@ -1,4 +1,4 @@
-/* package whatever; // don't place package name! */
+
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
@@ -94,11 +94,3 @@ public List<List<Integer>> permute(int[] nums) {
             }
         }
     }
-Close
-Sphere Research Labs. Ideone is powered by Sphere Engine™
-home api widget faq credits desktop mobile 
-terms of service privacy policy gdpr info
-
-Feedback & Bugs
- Not using Hotjar yet?
-Select an element on the page.
