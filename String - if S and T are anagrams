@@ -1,0 +1,36 @@
+class Solution {
+    // java char is two bytes so it contains unicodes
+    public boolean isAnagram(String s, String t) {
+        if(s== null || t == null)
+            return false;
+        if(s.length()==t.length()){
+            HashMap<Character,Integer> hashTable = new HashMap<Character,Integer>(); // dont user char and boolean 
+            for(int i=0;i<s.length();i++){
+                hashTable.put(s.charAt(i), (hashTable.get(s.charAt(i)) == null ? 1 : hashTable.get(s.charAt(i)).intValue() +1) );
+            }
+            for(int i=0;i<t.length();i++){
+                if(hashTable.containsKey(t.charAt(i))){
+                    if(hashTable.get(t.charAt(i)).equals(0))
+                        return false;
+                    hashTable.put(t.charAt(i),hashTable.get(t.charAt(i)).intValue() -1);
+                }
+                else 
+                    return false;
+            }
+            return true;
+        }
+        return false;
+    }
+    
+    
+     public boolean isAnagram(String s, String t) {
+        if (s.length() != t.length()) {
+          return false;
+        }
+        char[] str1 = s.toCharArray();
+        char[] str2 = t.toCharArray();
+        Arrays.sort(str1);
+        Arrays.sort(str2);
+        return Arrays.equals(str1, str2);
+    }
+}
