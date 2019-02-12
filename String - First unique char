@@ -1,0 +1,30 @@
+Note: You may assume the string contain only lowercase letters.
+class Solution {
+    public int firstUniqChar(String s) {
+        char[] sa = s.toCharArray();
+        int[] info = new int[26];
+        for(char a:sa){
+            int idx = a-'a';
+            info[idx]++;
+        }
+        for(int i=0; i<sa.length; i++){
+            int idx = sa[i]-'a';
+            if(info[idx]==1){
+                return i;
+            }
+        }
+        return -1;
+    }
+    
+    public int firstUniqChar(String s) {
+        HashMap<Character,Integer> hashTable = new HashMap<Character,Integer>(); // dont user char and boolean 
+        for(int i=0;i<s.length();i++){
+            hashTable.put(s.charAt(i), (hashTable.get(s.charAt(i)) == null ? 1 : hashTable.get(s.charAt(i)).intValue() +1) );
+        }
+        for(int i=0;i<s.length();i++){
+            if(hashTable.get(s.charAt(i)).equals(1))
+                return i;
+        }
+        return -1;
+    }
+}
