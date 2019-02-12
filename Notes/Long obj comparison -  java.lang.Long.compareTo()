@@ -1,0 +1,35 @@
+ java.lang.Long.compareTo()
+public int compareTo(Long anotherLong)
+
+Return Value
+This method returns the value 0 if this Long is equal to the argument Long, value less than 0 if this Long is numerically less than the argument Long and a value greater than 0 if this Long is numerically greater than the argument Long (signed comparison).
+
+Exception
+NA
+
+Example
+The following example shows the usage of java.lang.Long.compareTo() method.
+
+ Live Demo
+package com.tutorialspoint;
+
+import java.lang.*;
+
+public class LongDemo {
+
+   public static void main(String[] args) {
+
+      // compares two Long objects numerically
+      Long obj1 = new Long(63255);
+      Long obj2 = new Long(71678);
+      int retval =  obj1.compareTo(obj2);
+    
+      if(retval > 0) {
+         System.out.println("obj1 is greater than obj2");
+      } else if(retval < 0) {
+         System.out.println("obj1 is less than obj2");
+      } else {
+         System.out.println("obj1 is equal to obj2");
+      }
+   }
+}
