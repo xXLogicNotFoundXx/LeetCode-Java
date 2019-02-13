@@ -6,3 +6,18 @@ class Solution {
         return 1+ Math.max(maxDepth(root.left),maxDepth(root.right));
     }
 }
+
+// MAX depth of n-ary tree 
+class Solution {
+    public int maxDepth(Node root) {
+        if(root==null)
+            return 0;
+        int maxSoFar = 0;
+        for(Node n: root.children){
+            int depth = maxDepth(n);
+            if(maxSoFar<depth)
+                maxSoFar = depth; 
+        }
+        return maxSoFar+1;     // forgot to add 1 here 
+    }
+}
