@@ -17,6 +17,10 @@ while (entries.hasNext()) {
 .....
 }
 
+// getOrDefault()
+This method return already existing value or returns the default value which is 2nd argument of the method 
+Map locations = new HashMap<String, ArrayList<Integer>>();
+arrayList = locations.get("TEMP",new ArrayList<Integer>()); // sample call 
 
 The Integer, String, Float, Double, Byte, Long, Short, Boolean, and Character classes are all examples of an immutable class.
 By definition, you may not alter the value of an immutable object after its construction.
