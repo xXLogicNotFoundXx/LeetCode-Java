@@ -17,3 +17,7 @@ while (entries.hasNext()) {
 .....
 }
 
+
+The Integer, String, Float, Double, Byte, Long, Short, Boolean, and Character classes are all examples of an immutable class.
+By definition, you may not alter the value of an immutable object after its construction.
+Of course, if you need to alter your Integer, String... instances you are out of luck. 
