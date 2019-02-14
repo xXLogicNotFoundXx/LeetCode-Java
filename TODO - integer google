@@ -1,0 +1,108 @@
+https://leetcode.com/discuss/interview-question/232999/Google-Phone-Screen
+
+Q.1: Consider any integer ending in 0 to be “magic”.  Write a function which accepts an integer, sums the squares of the digits of the integer, 
+and determines if the sum ends in zero. If it ends in zero print “Magic”. Otherwise, try again with the sum.
+
+# Asked multiple follow-up questions and pushed to get better time and space complexity. Also made sure code is ready to compile and with no errors.
+# Towards the end he gave me 5 mins for questions but ended up talking for over 10 mins and bonded over the culture at google and how they get projects.
+
+class IsMagic {
+
+	public static void findIfMagic(int num) {
+		Set<Integer> set = new HashSet<>();
+		findIfnumIsMagicHelper(num, set);
+	}
+
+	public static void findIfnumIsMagicHelper(int num, Set<Integer> set) {
+		// convert num to +ve
+		num = Math.abs(num);
+
+		// terminating case
+		if(!set.add(num))
+			return;
+
+		if(num % 10 == 0) {
+			System.out.println(“Magic”);
+			return;
+		}
+
+		// generate new num
+		int newNum = 0;
+
+		while(num > 0) {
+			int rem = num % 10;
+			newNum += rem * rem;
+			num = num / 10;
+		}
+
+		// recursively call on new sum
+		findIfnumIsMagicHelper(newNum, set);
+	}
+
+	public static void main(String[] agrs) {
+		findIfMagic(10);
+	}
+}
+
+Mistakes I made- the terminating condition didn't hit me right away so he gave me that hint. Then he pushed me to better use the interfaces (set, initialization and all).
+Q.2: Write a function that accepts two integers and stores them as a range. 
+Write another function that accepts one integer, and determines if the integer is contained within a stored range.
+
+Algo-1:  TC-> O(N), SC->O(N)
+class Ranges {
+	private Map<Integer, Integer> map = new HashMap<>();
+
+	public boolean setRange(int start, int end) {
+		if(end < start)
+			return false;
+			
+		if(map.containsKey(start)) {
+			int oldEnd = map.get(start);
+			if(oldEnd < end) {
+				map.put(start, end);
+			}
+		} else {
+			map.put(start, end);
+		}
+		return true;
+	}
+
+	public boolean findIfInRange(int num) {
+		for(int start : map.keySet()) {
+			if(num >= key) {
+				if(num <= map.get(key)) {
+					return true;
+				}
+			}
+		}
+		return false;	
+	}
+
+	public static void main(String[] args) {}
+}
+
+Algo-2: TC->O(1), SC->O(N), Heavy when writting but light when retrieving
+
+class Ranges {
+	private Set<Integer> set = new hashSet<>();
+
+	public void setRange(int start, int end) {
+		for(int i = start; i <= end; i++) {
+			set.add(i);
+		}
+	}
+
+	public boolean findIfInRange(int num) {
+		return set.contains(num);
+	}
+
+	public static void main(String[] args) {}
+}
+
+Algo-3:
+Asked me to implement it using a BST but didn't had enough time so explained it.
+TC->O(lgN), SC->O(N)
+Asked when and how would I rebalance the tree (on duplicate or overlapping ranges)
+
+
+Mistakes I made- I came up with the map solution pretty quickly and he let me implement it but later asked me if I can improve the time complexity. Then I implemented the set solution, again pushed me to better use the interfaces.
