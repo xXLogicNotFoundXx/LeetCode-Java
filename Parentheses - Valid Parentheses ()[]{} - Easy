@@ -1,5 +1,5 @@
 Input: "([)]"
-Output: false
+Output: false 
 Input: "()[]{}"
 Output: true
 Input: "{[]}"
