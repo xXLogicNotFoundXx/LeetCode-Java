@@ -2,8 +2,8 @@
 // Sol - https://leetcode.com/problems/remove-invalid-parentheses/discuss/75034/Easiest-9ms-Java-Solution
 
 // for First pass count which ones ( , ) to remove and how many 
-// then we do dfs with use it or dont use it. In the end we add result to set to avoid duplicate. 
-class Solution {
+// then we do dfs with use it or dont use it. In the end we add result to set to avoid duplicate.  
+class Solution { 
     public List<String> removeInvalidParentheses(String s) {
         int rmL = 0, rmR = 0;
         //First pass count which ones ( , ) to remove and how many 
