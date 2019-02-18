@@ -1,7 +1,9 @@
 https://leetcode.com/problems/longest-valid-parentheses/
 
-Solution 1: 
+Input : )()())
+output: 4
 
+Solution 1: 
 /*
 The workflow of the solution is as below.
 
