@@ -1,0 +1,32 @@
+Given a string, find the longest substring that contains only two unique characters.
+Given "abcadcacacaca" and 3, it returns "cadcacacaca".
+
+public class LongestSubstringAtMostKDistinct {
+    public static int LongestSubstringAtMostKDistinctElement(String s, int K){
+        Map<Character,Integer> map = new HashMap<Character, Integer>();
+        int maxLen = 0;
+        int start =0;
+        for(int i=0;i<s.length();i++){
+            int count = map.getOrDefault(s.charAt(i),0);
+            map.put(s.charAt(i),count+1);
+            if(map.size()==K)
+                maxLen = Math.max(maxLen,i-start+1); // +1 bcz we are including the current index too
+            if(map.size()>K){
+                maxLen = Math.max(maxLen,i-start);  // no +1 because we are not the current index bcz it is extra char
+                while(map.size()>K) {
+                    int existingCharCount = map.get(s.charAt(start)) -1;
+                    if (existingCharCount == 0) {
+                        map.remove(s.charAt(start));
+                    } else {
+                        map.put(s.charAt(start), existingCharCount );
+                    }
+                    start++;
+                }
+            }
+        }
+       return maxLen;
+    }
+    public static void main(String[] args) {
+        System.out.println(LongestSubstringAtMostKDistinct("abcccadcacacaca",1));
+    }
+}
