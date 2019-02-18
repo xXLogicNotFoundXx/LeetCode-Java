@@ -1,0 +1,38 @@
+https://leetcode.com/problems/longest-valid-parentheses/
+Sol : https://leetcode.com/problems/longest-valid-parentheses/solution/ 
+      Approach 3 using stack - good video 
+      
+Input : )()())
+output: 4
+
+we start by pushing -1 onto the stack.
+For every \text{‘(’}‘(’ encountered, we push its index onto the stack.
+For every \text{‘)’}‘)’ encountered, we pop the topmost element and subtract the current element's index from the top element of the stack, 
+which gives the length of the currently encountered valid string of parentheses. 
+If while popping the element, the stack becomes empty, we push the current element's index onto the stack. 
+In this way, we keep on calculating the lengths of the valid substrings, and return the length of the longest 
+valid string at the end.
+
+class Solution {
+    public int longestValidParentheses(String s) {
+        int maxans = 0;
+        Stack<Integer> stack = new Stack<>();
+        stack.push(-1);
+        for (int i = 0; i < s.length(); i++) {
+            if(s.charAt(i) == '('){
+                stack.push(i);
+            } else {
+                stack.pop();    
+                if(stack.isEmpty()){ 
+                    // if input )... so we popped -1  
+                    // also for input - ))()()()  we should be calculating 6  because we keep concatinatin valid ones
+                    // so we need to push index of unmatched )
+                    stack.push(i);
+                } else{
+                    maxans = Math.max(maxans,i-stack.peek());
+                }
+            }
+        }
+        return maxans;
+    }
+}
