@@ -1,10 +1,14 @@
+// cinema is anagram of iceman
+
 class Solution {
+
+// Solution 1 
     // java char is two bytes so it contains unicodes
     public boolean isAnagram(String s, String t) {
         if(s== null || t == null)
             return false;
         if(s.length()==t.length()){
-            HashMap<Character,Integer> hashTable = new HashMap<Character,Integer>(); // dont user char and boolean 
+            HashMap<Character,Integer> hashTable = new HashMap<Character,Integer>(); 
             for(int i=0;i<s.length();i++){
                 hashTable.put(s.charAt(i), (hashTable.get(s.charAt(i)) == null ? 1 : hashTable.get(s.charAt(i)).intValue() +1) );
             }
@@ -22,7 +26,7 @@ class Solution {
         return false;
     }
     
-    
+// Solution 2
      public boolean isAnagram(String s, String t) {
         if (s.length() != t.length()) {
           return false;
