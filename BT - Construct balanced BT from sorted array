@@ -8,7 +8,7 @@ class Solution {
     
     TreeNode createBalancedBinary(int[] nums,int i,int j){
         if(i >= j) return null;
-        int middle = (i+j)/2; // i+j could be > Integer.MAX_VALUE so better do i+(j-i)/2;
+        int middle =  i+(j-i)/2; // i+j could be > Integer.MAX_VALUE so better do i+(j-i)/2;
         TreeNode head = new TreeNode(nums[middle]);
         head.left  = createBalancedBinary(nums,i,middle);
         head.right = createBalancedBinary(nums,middle+1,j);
