@@ -1,21 +1,24 @@
-class Solution2SUM {
+
+https://leetcode.com/problems/two-sum/
+Given an array of integers, return indices of the two numbers such that they add up to a specific target.
+Given nums = [2, 7, 11, 15], target = 9,
+return [0, 1]
+// We do target-nums[i] and put that in the map with index 
+// if we find that number going through loop we found the two indices  
+
+class Solution {
     public int[] twoSum(int[] nums, int target) {
-        if (nums == null || nums.length == 0)
-            return null;
-        int[] res = new int[2];
-        Map<Integer,Integer> map = new HashMap<>(nums.length);
-        for (int i = 0; i<nums.length; ++i){
-            int ele = nums[i];
-            if (map.containsKey(ele)){
-                res[0] = map.get(ele);
-                res[1] = i;
-                return res;
-            }
-            map.put(target-ele, i);
+        if(nums==null) return null;
+        Map<Integer,Integer> sumMap = new HashMap<Integer,Integer>(); 
+        for(int i=0;i<nums.length;i++){
+            if(sumMap.containsKey(nums[i]))
+                return new int[]{sumMap.get(nums[i]),i};
+            sumMap.put(target-nums[i],i);
         }
-        return res;
+        return null;
     }
 }
+
 //The key idea is the same as the TwoSum problem. 
 //When we fix the 1st number, the 2nd and 3rd number can be found following the same reasoning as TwoSum.
 class Solution3SumTo0 {
