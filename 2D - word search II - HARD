@@ -1,5 +1,5 @@
 https://leetcode.com/problems/word-search-ii/ 
-Input: 
+Input:  
 words = ["oath","pea","eat","rain"] and board =
 [
   ['o','a','a','n'],
