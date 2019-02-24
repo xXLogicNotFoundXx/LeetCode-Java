@@ -1,3 +1,14 @@
+https://leetcode.com/problems/word-search/ 
+board =
+[
+  ['A','B','C','E'],
+  ['S','F','C','S'],
+  ['A','D','E','E']
+]
+Given word = "ABCCED", return true.
+Given word = "SEE", return true.
+Given word = "ABCB", return false.
+
 class Solution {
 /// run time is 4^n where n is the length of the word .
     public boolean exist(char[][] board, String word) {
