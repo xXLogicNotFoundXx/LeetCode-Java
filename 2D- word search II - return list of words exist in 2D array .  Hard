@@ -1,3 +1,14 @@
+https://leetcode.com/problems/word-search-ii/
+Input: 
+words = ["oath","pea","eat","rain"] and board =
+[
+  ['o','a','a','n'],
+  ['e','t','a','e'],
+  ['i','h','k','r'],
+  ['i','f','l','v']
+]
+Output: ["eat","oath"]
+
 class Solution {
     // run time  N*4^maxWordLength
     // beacse we creare 4 branches each step and depth is wordLength * N words 
