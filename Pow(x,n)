@@ -1,0 +1,33 @@
+https://leetcode.com/problems/powx-n/
+class Solution {
+    public double myPow1(double x, int n) {
+        if(n==0) return 1; 
+        // any number to the zero power is one is because any number to the zero power 
+        // is just the product of no numbers at all, which is the multiplicative identity, 1
+        if(n<0){
+            x=1/x;
+            n=-n; // integer overflow if the value is Integer.MIN_VALUE; or we dont even want to do plus 
+        }
+        if(n%2 == 1) 
+            return myPow(x*x, n/2)*x;
+        else
+            return myPow(x*x, n/2);
+    }
+    
+    
+    public double myPow(double x, int n) {
+        if(n < 0){
+            x = 1/x;
+        }
+        return myPow2(x,n);
+    }
+    
+    double myPow2(double x, int n) {
+        if(n == 0)  return 1;
+        if(n%2 == 1 || n%2 == -1)  // -1%2 is -1 not 1 
+            return myPow2(x*x, n/2)*x;
+        else
+            return myPow2(x*x, n/2);
+    }
+
+}
