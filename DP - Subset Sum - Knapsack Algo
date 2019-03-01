@@ -70,5 +70,8 @@ class Solution {
         return dp[sumToFind];
     }
     
+    // Will this work for -ve numbers?
+    // [5,-2,-5,7,-5,3,3] total is 6 so sum is 3 ...
+    // so the number can get out of bound for -5 .. i=3  i-(-5)
     
 }
