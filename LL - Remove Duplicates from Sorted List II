@@ -1,0 +1,28 @@
+https://leetcode.com/problems/remove-duplicates-from-sorted-list-ii/
+Input: 1->2->3->3->4->4->5
+Output: 1->2->5
+class Solution {
+    public ListNode deleteDuplicates(ListNode head) {
+        if(head==null || head.next ==null) return head;
+        ListNode start = new ListNode(0);
+        ListNode dummy = start; 
+        while(head!=null){
+           if(isDuplicate(head.next,head.val)){
+               int val = head.val;
+               while(head!=null && head.val == val)
+                   head=head.next;
+           } else {
+               dummy.next = head;
+               head = head.next;
+               dummy = dummy.next;
+           }
+        }
+        dummy.next = null; // This is important for the [1,2,2] we have to end out new list 
+        return start.next;
+    }
+    boolean isDuplicate(ListNode head, int val){
+        if(head==null) return false; 
+        if(head.val==val) return true;
+        return false;
+    }
+}
