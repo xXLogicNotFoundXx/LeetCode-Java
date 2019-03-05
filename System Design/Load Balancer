@@ -1,10 +1,10 @@
-LOAD BLANCERs can be user on applications server, Db servers, caching.
+LOAD BLANCERs can be user on applications server, Db servers, caching (Memcach severs).
 
 https://aws.amazon.com/blogs/aws/new-elastic-load-balancing-feature-sticky-sessions/
 
 https://www.youtube.com/watch?v=K0Ta65OqQkY
 
-While doing load balancing the user going to same servers is important otherise then we have to store session in DB where all servers can access the session.
+In application server cluster while doing load balancing the user going to same servers is important otherise then we have to store session in DB where all servers can access the session.
 This would be heavy operation we dont want to maintain millions of sessions in DB. Without session persistence, the web application would have to maintain this information across multiple servers,
 which can prove inefficient—especially for large networks.
 So, we have to balance the load so that HTTP session doesn't get lost across application instances.
