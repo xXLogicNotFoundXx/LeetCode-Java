@@ -1,3 +1,32 @@
+LOAD BLANCERs can be user on applications server, Db servers, caching.
 
-https://stackoverflow.com/questions/10494431/sticky-and-non-sticky-sessions
 https://aws.amazon.com/blogs/aws/new-elastic-load-balancing-feature-sticky-sessions/
+
+https://www.youtube.com/watch?v=K0Ta65OqQkY
+
+While doing load balancing the user going to same servers is important otherise then we have to store session in DB where all servers can access the session.
+This would be heavy operation we dont want to maintain millions of sessions in DB. Without session persistence, the web application would have to maintain this information across multiple servers,
+which can prove inefficient—especially for large networks.
+So, we have to balance the load so that HTTP session doesn't get lost across application instances.
+
+STICKY SESSION : 
+Using sticky sessions can help improve user experience and optimize network resource usage. 
+With sticky session its all on one server so user you dont have to log into another server 
+Also if you are shoppung one one server maintains your cart and it is persistent.
+https://stackoverflow.com/questions/10494431/sticky-and-non-sticky-sessions
+
+
+One way the loadbalancing works is that in HTTP response server sends cookie like server name and then 
+that user's following requests are sent to same server. 
+
+
+Another way is DNS load balancing .. depending on IP address you can route the traffic and users can end up a=on same servers. 
+
+
+LOAD BLANCER for DATBASE : 
+https://www.youtube.com/watch?v=zaRkONvyGr8
+
+Then load balancer should redirect that user to same server. 
+We can use modulus on userID and send it to the server but with modulos operation if server is 
+added and removed hash function hcanges and users end up on different servers. 
+Uses consistent hashing so that adding and removing server does not cause lot of chage.
