@@ -1,0 +1,27 @@
+
+
+In computer science, consistent hashing is a special kind of hashing such that when a hash table is resized,
+only K/n keys need to be remapped on average, where K is the number of keys, and n is the number of slots. 
+
+In contrast, in most traditional hash tables, a change in the number of array slots causes nearly all keys to be remapped 
+because the mapping between the keys and the slots is defined by a modular operation.
+
+The term "consistent hashing" was introduced by Karger et al. at MIT for use in distributed caching. 
+The "consistent hashing" as a way of distributing requests among a changing population of Web servers. 
+Each slot is then represented by a node in a distributed system. 
+The addition (joins) and removal (leaves/failures) of nodes only requires K/n items to be re-shuffled when
+the number of slots/nodes change.
+
+https://www.youtube.com/watch?v=zaRkONvyGr8
+http://michaelnielsen.org/blog/consistent-hashing/
+http://s3.amazonaws.com/AllThingsDistributed/sosp/amazon-dynamo-sosp2007.pdf
+Amazon DynamoDB is a key-value and document database that delivers single-digit millisecond performance at any scale. 
+This uses consisten hashing.
+once a node fails in a ring what do we do? Ofcourse we can replicate the data on other servers.
+We can have replication in next two available nodes. So B data is availabe in C and D.
+range (A,B). range (B,C) range (C,D) range (D,E) 
+Server:  B          C         D         E
+Nodes B, C and D store keys in
+
+Cassandra also used it. 
+https://blog.imaginea.com/consistent-hashing-in-cassandra/
