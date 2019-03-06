@@ -25,3 +25,13 @@ arrayList = locations.get("TEMP",new ArrayList<Integer>()); // sample call
 The Integer, String, Float, Double, Byte, Long, Short, Boolean, and Character classes are all examples of an immutable class.
 By definition, you may not alter the value of an immutable object after its construction.
 Of course, if you need to alter your Integer, String... instances you are out of luck. 
+
+
+We use PriorityQueue class to implement Heaps in Java. By default Min Heap is implemented by this class. 
+To implement Max Heap, we use Collections.reverseOrder()
+ 
+ MAX HEAP 
+ PriorityQueue<Integer> pQueue = new PriorityQueue<Integer>(Collections.reverseOrder()); 
+ pQueue.add()
+ pQueue.poll() // same as queue operation
+ pQueue.peek()
