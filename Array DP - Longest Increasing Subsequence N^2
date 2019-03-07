@@ -1,6 +1,7 @@
 https://leetcode.com/problems/longest-increasing-subsequence/
 Input: [10,9,2,5,3,7,101,18]
 Output: 4 
+The longest increasing subsequence is [2,3,7,101], OR [2,5,7,101] therefore the length is 4. 
 // O(N^2)
 // loops start from the back and record the biggest chain possible for i
 // j=i+1 if num[j]>num[i] then is this is gonna be biggest chain 
