@@ -1,0 +1,44 @@
+/*
+https://leetcode.com/problems/find-the-duplicate-number/
+Input: [1,3,4,2,2]
+Output: 2
+Input: [3,1,3,4,2]
+Output: 3
+You must not modify the array (assume the array is read only).
+You must use only constant, O(1) extra space.
+*/
+class Solution {
+    // if you could modify an array nlogn through sorting 
+    // or 
+    // you put number in their respective places  just like you rotate an array 2nd solution: https://leetcode.com/problems/rotate-array/
+    // and then the array will be sorted and then you can find the number O(N)
+    
+    /* 
+    count the number of values lesser than the mid (1+n-1/2)
+    If the if the count is lesser than mid, we assume the duplicate number should be on the higher side of the number scale.
+    so we make low = mid + 1
+    else we assume the duplicate number should be on the lower end of the number scale.
+    so we make high = mid - 1
+    n*log(n)
+    */
+    public int findDuplicate(int[] nums) {
+        int low=1, high=nums.length-1;
+        while(low<high){            
+            int mid=(low+high)/2;
+            int count=0;
+            for(int i=0; i<nums.length; i++){
+                if(nums[i]<=mid){
+                    count++;
+                }                                
+            }
+            
+            if(count<=mid){
+                low = mid+1;
+            } else {
+                high = mid;
+            }                                    
+        }
+        
+        return high;
+    }
+}
