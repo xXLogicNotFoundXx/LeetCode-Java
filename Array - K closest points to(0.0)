@@ -1,0 +1,27 @@
+// https://leetcode.com/problems/k-closest-points-to-origin/
+we find the K-th distance by creating an array of distances and then sorting them. 
+After, we select all the points with distance less than or equal to this K-th distance.
+
+class Solution {
+    public int[][] kClosest(int[][] points, int K) {
+        if(K>points.length) return new int[0][];
+        
+        int []distance = new int[points.length];
+        int [][] ans = new int[K][2];
+        for(int i=0;i<points.length;i++){
+            distance[i] = calDistance(points[i]);
+        }
+        Arrays.sort(distance);
+        int j=0;
+        for(int i=0;i<points.length;i++){
+            if(calDistance(points[i]) <= distance[K-1])
+                ans[j++]= points[i];
+        }
+        return ans;
+    }
+    
+    int calDistance(int[] point){
+        return point[0]*point[0] + point[1]*point[1] ; 
+    }
+    
+}
