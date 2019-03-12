@@ -35,7 +35,9 @@ class Solution {
 Problem 2 : With duplicates in an array 
 /*
 https://leetcode.com/problems/search-in-rotated-sorted-array-ii/
+
 With duplicates in the an input array it will be slightly different 
+But that slight variation can put this algo to O(n).
 
 I tried following same as Rotated array logic without duplication but it fails for condtiong where i can not decide which partition to go 
 if element at low , mid and high are same where do you go? so we need extra condition for that 
