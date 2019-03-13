@@ -25,6 +25,6 @@ class Solution {
                 right = mid;
         }
 
-        return nums[left];
-    }
+        return nums[left];  // for i/p [1] 
+    } 
 }
