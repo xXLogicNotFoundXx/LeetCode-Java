@@ -16,6 +16,12 @@ https://leetcode.com/problems/target-sum/
 
 
 // Below is the recursive with memoization 
+Using memoization improves the time complexity actually, think it like this:
+Without memoization, the time complexity is actually O(2^n), where n is the length of the array,
+since we are trying all the possible combinations.
+By using memoization, we calculate every sum at each index at most once,
+that makes the time complexity O(n*sum), which is the same as those DP solutions
+
     public int findTargetSumWays2(int[] nums, int S) {
         if (nums == null || nums.length == 0){
             return 0;
