@@ -1,4 +1,6 @@
 // https://leetcode.com/problems/remove-invalid-parentheses/ 
+Input: "()())()"
+Output: ["()()()", "(())()"]
 // Sol - https://leetcode.com/problems/remove-invalid-parentheses/discuss/75034/Easiest-9ms-Java-Solution
 
 // for First pass count which ones ( , ) to remove and how many 
@@ -27,7 +29,8 @@ class Solution {
             return;
         }
         if (i == s.length()) {
-            if (rmL == 0 && rmR == 0 && open == 0) 
+            // open is very important  for example for ip )() we dont want )( as the ans open=1 will avoid that.
+            if (rmL == 0 && rmR == 0 && open == 0)  
                 res.add(sb.toString());      
             return;
         }
