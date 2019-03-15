@@ -1,0 +1,10 @@
+String[] aString = str.split("");
+for(String st : aString){
+     System.out.print("a="+st);
+}
+"  4 33"
+a= a= a=4 a= a=3 a=3
+
+
+to split for with . in a string you have to put "[.]"
+because . is special character that matches everything 
