@@ -1,0 +1,29 @@
+
+****     Queue      ****
+Queue is abstaract you can Inititate with LinkedList or ArrayList
+Queue<String> queue = new LinkedList<>();
+
+***   PriorityQueue   ****
+We use PriorityQueue class to implement Heaps in Java. By default Min Heap is implemented by this class. 
+To implement Max Heap, we use Collections.reverseOrder()
+ MAX HEAP 
+ PriorityQueue<Integer> pQueue = new PriorityQueue<Integer>(Collections.reverseOrder()); 
+ // same as queue operation
+ pQueue.add(m)   // log n
+ pQueue.poll()  // log n 
+ pQueue.peek()
+ pQueue.remove(m);  // Removing Java using remove() 
+ A Max Heap is a Complete Binary Tree. A Max heap is typically represented as an array. The root element will be at Arr[0]. 
+ Below table shows indexes of other nodes for the ith node, i.e., Arr[i]:
+ Arr[(i-1)/2] Returns the parent node.
+ Arr[(2*i)+1] Returns the left child node.
+ Arr[(2*i)+2] Returns the right child node.
+
+
+// MIN HEAP -  with values in an object
+
+    public int compare(ListNode a,ListNode b){
+               return a.val - b.val;
+        }
+    }
+     PriorityQueue<ListNode> queue= new PriorityQueue<ListNode>(lists.length,new sortByValye());
