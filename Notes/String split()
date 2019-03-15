@@ -5,6 +5,7 @@ for(String st : aString){
 "  4 33"
 a=a=a=4a=33
 
-
+str.split(" +"); will match one or more space 
+a=a=4a=33
 to split for with . in a string you have to put "[.]"
 because . is special character that matches everything 
