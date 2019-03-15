@@ -33,8 +33,11 @@ class RandomizedSet {
         if(map.containsKey(val)){
             int index = map.get(val);
             
-            list.set(index, list.get(list.size()-1));
-            map.put(list.get(index),index);
+            if(index<list.size()-1){
+                int lastElement = list.get(list.size()-1);
+                list.set(index, lastElement);
+                map.put(lastElement,index);
+            }
             
             map.remove(val);
             list.remove(list.size()-1);
