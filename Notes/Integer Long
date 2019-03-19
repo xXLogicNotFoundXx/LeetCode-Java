@@ -12,3 +12,10 @@ someFunction(){
 someFunction2(Integer i){
   i= 5;
 }
+
+
+
+
+whenever you are multiplying or negating or adding numbers think if its gonna be overflow? 
+remeber INT_MIN = -INT_MIN 
+also % operator retians the -ve sign of first number -1%2 = 1 but 1%-2 = 0
