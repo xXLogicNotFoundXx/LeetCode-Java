@@ -27,3 +27,22 @@ To implement Max Heap, we use Collections.reverseOrder()
         }
     }
      PriorityQueue<ListNode> queue= new PriorityQueue<ListNode>(lists.length,new sortByValye());
+
+More Example of it : 
+
+// sort by height[a,b] if height is same then return biggest index 
+PriorityQueue<Integer>  leftPQ  = new  PriorityQueue<Integer>(new Comparator<Integer>(){    // new Comparator<T>(){ public int compare(T,T){} }
+    public int compare(Integer a,Integer b){
+        if(heights[a] == heights[b])
+            return b-a;
+        return heights[a] - heights[b];
+    }
+});
+// sort by height[a,b] if height is same then return smallest index 
+PriorityQueue<Integer>  rightPQ = new  PriorityQueue<Integer>(new Comparator<Integer>(){   // // new Comparator<T>(){ public int compare(T,T){} }
+    public int compare(Integer a,Integer b){
+        if(heights[a] == heights[b])
+            return a-b;
+        return heights[a] - heights[b];
+    }
+});
