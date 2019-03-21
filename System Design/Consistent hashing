@@ -28,3 +28,9 @@ Server:  B          C         D         E
 
 Cassandra also used it. 
 https://blog.imaginea.com/consistent-hashing-in-cassandra/
+
+
+You have a cluster of databases and you need to elastically scale them up or down based on traffic load. 
+For example, add more servers during Christmas to handle the the extra traffic.
+
+In load balancer, we can use client IP address to generate a Key and using hash ring we can assign it to Server which will serve that request.
