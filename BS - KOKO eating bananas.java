@@ -36,7 +36,9 @@ class Solution {
     int countHours(int[] piles, int limit){
         int hrs =0;
         for(int i=0;i<piles.length;i++){
-            hrs += Math.ceil((double)piles[i]/limit); 
+            hrs += piles[i]/limit;
+            if(piles[i]%limit!=0)    // this is faster than Math.ceil((double)piles[i]/limit); 11 ms vs 35 ms!
+                hrs++;
         }
         return hrs;
     }
