@@ -15,8 +15,8 @@ A ship capacity of 15 is the minimum to ship all the packages in 5 days like thi
     if avg weight is greater thant maxWeight we have to start with avgWeight 
     Start filling the items if all items are filled in D date we have answer 
     else increment weight by 1 (or better by next item thats gonna go in day 1)
-*/
-// O (totalWeight*D*N)
+
+// O (x*N)   where x is the total weights there is No D because we traverse  index = 0-N
 class Solution {
     public int shipWithinDays(int[] weights, int D) {
         int maxWeight =0;
@@ -44,33 +44,43 @@ class Solution {
     }
 }
 
-/*
-// Better solution is with binary search O(log(totalWeight) * D * N)
+*/
+// Better solution is with binary s
 class Solution {
+    // BinarySearch: Time - O(nlogx), where x is the total weights, n is weights.length
     public int shipWithinDays(int[] weights, int D) {
-        int left = 0, right = 0;
+        if (weights == null || weights.length == 0) {
+            return 0;
+        }
         
+        int start = 0, end = 0;
         for (int w: weights) {
-            left = Math.max(left, w);
-            right += w;
+            end += w;
+            start = Math.max(w, start);
         }
-        
-        while (left < right) {
-            int mid = (left + right) / 2;
-            int dNeeded = 1, cur = 0;
-            for (int w: weights) {
-                if (cur + w > mid) {
-                    dNeeded += 1;
-                    cur = 0;
-                }
-                cur += w;
+        while (start < end) {
+            int mid = (start + end) / 2;
+            int days = countDays(weights, mid);
+            if (days > D) {
+                start = mid + 1;
+            } else {
+                end = mid;
             }
-            if (dNeeded > D) 
-                left = mid + 1; 
-            else 
-                right = mid;
         }
-        return left;
+        return start;
+    }
+    
+    private int countDays(int[] weights, int capacity) {
+        int count = 1, curWeight = 0;
+        for (int w: weights) {
+            curWeight += w;
+            if (curWeight > capacity) {
+                count++;
+                curWeight = w;
+            }
+        }
+        return count;
     }
 }
-*/
+
+
