@@ -4,6 +4,9 @@ https://www.educative.io/edpresso/what-is-database-sharding
 Database sharding is the process of making partitions of data in a database or search engine, 
 such that the data is divided into various smaller distinct chunks, or shards.
 Each shard could be a table, a Postgres schema, or a different physical database held on a separate database server instance.
-Some data within the database remains present in all shards (vertical sharding), 
+Some data within the database remains present in all shards (vertical sharding), different columns in differen databses combined with primary key.
 but some appear only in single shards (horizontal sharding). 
-The following figure illustrates vertical sharding and horizontal sharding.
+
+you can shard date on users location .. 
+for twitter you can shard data with timestamp
+
