@@ -53,3 +53,42 @@ class Solution {
         sumNumbersHelper(root.right, leafSum*10);
     }
 }
+
+/**
+https://leetcode.com/problems/subtree-of-another-tree/
+Given two non-empty binary trees s and t, check whether tree t has exactly the same structure and node values with a subtree of s. 
+A subtree of s is a tree consists of a node in s and all of this node's descendants. 
+The tree s could also be considered as a subtree of itself.
+ */
+class Solution {
+    public boolean isSubtree(TreeNode s, TreeNode t) {
+        List<TreeNode> sub = new ArrayList();
+        findNode(s,t,sub);
+        for(TreeNode root : sub){
+            if(isSame(root,t))
+                return true;
+        }
+        return false;
+    }
+    
+    boolean isSame(TreeNode s, TreeNode t){
+        if(s==null && t==null)
+            return true;
+        if(s==null || t == null)
+            return false;
+        if(s.val==t.val){
+            return isSame(s.left,t.left) && isSame(s.right,t.right) ;
+        }
+        return false;
+    }
+    
+    void findNode(TreeNode s, TreeNode t, List<TreeNode> sub ) {
+        if(s==null)
+            return;
+        if(s.val == t.val)
+            sub.add(s);
+        
+        findNode(s.left,t,sub);
+        findNode(s.right,t,sub);
+    }
+}
