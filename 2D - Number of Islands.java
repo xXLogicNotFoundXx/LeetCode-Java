@@ -24,11 +24,10 @@ class Solution {
         int m = grid.length;
         int n = grid[0].length;
         int count=0;
-        int [][] dir = {{0,1},{0,-1},{1,0},{-1,0}};
         for(int i=0;i<m;i++){
             for(int j=0;j<n;j++){
                 if(grid[i][j] == '1' ){
-                    traverse(grid,dir,i,j);
+                    traverse(grid,i,j);
                     count++; 
                 }
             }
@@ -36,12 +35,14 @@ class Solution {
         return count;
     }
     
-    void traverse(char[][] grid,int[][] dir,int m,int n){
+    void traverse(char[][] grid, int m,int n){
+        int [][] dir = {{0,1},{0,-1},{1,0},{-1,0}};
+        
         if(m<0 || n <0 || m>=grid.length || n >=grid[0].length || grid[m][n] == '0')
             return;
         grid[m][n]='0';
         for(int[] dir1 : dir){
-            traverse(grid,dir,m+dir1[0],n+dir1[1]);
+            traverse(grid,m+dir1[0],n+dir1[1]);
         }
     }
 }
