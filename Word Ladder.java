@@ -1,11 +1,10 @@
 /*
+https://leetcode.com/problems/word-ladder/
 beginWord = "hit",
 endWord = "cog",
 wordList = ["hot","dot","dog","lot","log","cog"]
-Output: 5
-Explanation: As one shortest transformation is "hit" -> "hot" -> "dot" -> "dog" -> "cog",
-return its length 5.
-Example 2:
+Output: 5 .   Explanation: As one shortest transformation is "hit" -> "hot" -> "dot" -> "dog" -> "cog",
+
 beginWord = "hit"
 endWord = "cog"
 wordList = ["hot","dot","dog","lot","log"]
