@@ -1,6 +1,8 @@
-The >>> operator is the unsigned right bit-shift operator in Java. It effectively divides the operand by  2 to the power of the right operand, or just 2 here.
+The >>> operator is the unsigned right bit-shift operator in Java.
+It effectively divides the operand by  2 to the power of the right operand, or just 2 here.
 
-The difference between >> and >>> would only show up when shifting negative numbers. The >> operator shifts a 1 bit into the most significant bit if it was a 1, and the >>> shifts in a 0 regardless.
+The difference between >> and >>> would only show up when shifting negative numbers. 
+The >> operator shifts a 1 bit into the most significant bit if it was a 1, and the >>> shifts in a 0 regardless.
 
 UPDATE:
 
