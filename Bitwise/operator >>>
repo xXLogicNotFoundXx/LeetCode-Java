@@ -1,0 +1,27 @@
+The >>> operator is the unsigned right bit-shift operator in Java. It effectively divides the operand by  2 to the power of the right operand, or just 2 here.
+
+The difference between >> and >>> would only show up when shifting negative numbers. The >> operator shifts a 1 bit into the most significant bit if it was a 1, and the >>> shifts in a 0 regardless.
+
+UPDATE:
+
+Let's average 1 and 2147483647 (Integer.MAX_VALUE). We can do the math easily:
+
+(1 + 2147483647) / 2 = 2147483648 / 2 = 1073741824
+Now, with the code (low + high) / 2, these are the bits involved:
+
+          1: 00000000 00000000 00000000 00000001
++2147483647: 01111111 11111111 11111111 11111111
+================================================
+-2147483648: 10000000 00000000 00000000 00000000  // Overflow
+/2
+================================================
+-1073741824: 11000000 00000000 00000000 00000000  // Signed divide, same as >> 1.
+Let's make the "shift" to >>>:
+
+          1: 00000000 00000000 00000000 00000001
++2147483647: 01111111 11111111 11111111 11111111
+================================================
+-2147483648: 10000000 00000000 00000000 00000000  // Overflow
+>>> 1
+================================================
++1073741824: 01000000 00000000 00000000 00000000  // Unsigned shift right.
