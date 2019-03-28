@@ -16,3 +16,10 @@ class Main {
 Output:
 Base Constructor Called
 Derived Constructor Called
+
+A concrete example of an abstract class would be a class called Animal. 
+The Animal is the abstract class and Duck/Pig/Cat are all classes that derive from that base class.
+Animals might provide a function called "Age" that adds 1 year of life to the animals.
+    
+    
+Where as Interface is a contract with a class.
