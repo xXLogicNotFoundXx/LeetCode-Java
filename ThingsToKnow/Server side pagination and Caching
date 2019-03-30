@@ -25,8 +25,6 @@ required to get just the relevant records. These are sent to the client, along w
 
 
 
-
-
 https://coderwall.com/p/lkcaag/pagination-you-re-probably-doing-it-wrong
 
 Pagination? No problem! SELECT ... LIMIT X, Y Right?
@@ -40,8 +38,11 @@ client-appy, infinite-scrolly world.
 •	Never trust your server to know exactly what the user is looking at.
 
 What are you going on about?
-It's probably best to give an example. Let's say you're adding comments to a page, and you want the most recent comments to show up first. The naive approach is to construct a query similar to:
+It's probably best to give an example. Let's say you're adding comments to a page, 
+and you want the most recent comments to show up first. The naive approach is to construct a query similar to:
+
 SELECT * FROM comments ORDER BY date DESC LIMIT 0, 10
+
 Easy. That gives you the first 10 most recent comments. Nothing wrong here. Now, the user pages down and you perform the same query, except for LIMIT 10,10 - and you return the next 10 comments...
 ...sometimes.
 Consider this:
@@ -49,13 +50,23 @@ Consider this:
 •	User B creates a comment.
 •	User A loads the next page of comments.
 Well, crap. Now User A sees a duplicate comment!
-The last comment on their first page got pushed down by the new comment, and it became the 11th comment in the list. Now your page just looks sloppy ☹
+The last comment on their first page got pushed down by the new comment, and it became the 11th comment in the list. 
+Now your page just looks sloppy ☹
+
 A similar situation occurs if you allow for removal of items from a list, but with even more disastrous results.
-Instead of the comments being pushed down, they get pulled up. The item that would have previously been first on the next page is shifted up; and User A would completely skip over it! That really sucks ☹ ☹
-Instead of paginating on a volatile offset (the row number), find a value that is stable across time. In the comments example, that is the date of the comments themselves.
-Take the example above: Your first query is the same. However, for the next page, instead of passing the row offset you pass the date of the last comment in the list:
+Instead of the comments being pushed down, they get pulled up. 
+The item that would have previously been first on the next page is shifted up; 
+and User A would completely skip over it! That really sucks ☹ ☹
+
+Instead of paginating on a volatile offset (the row number), find a value that is stable across time. 
+In the comments example, that is the date of the comments themselves.
+Take the example above: Your first query is the same. 
+However, for the next page, instead of passing the row offset you pass the date of the last comment in the list:
+
 SELECT * FROM comments WHERE date < prevous_date LIMIT 10
-Perfect! Now you can be sure that the user will always see the very next set of commits that occurred after the one they are looking at.
+
+Perfect! Now you can be sure that the user will always see the very next set of commits that 
+occurred after the one they are looking at.
 
 What if you have two comments with the same date? Ack! Pagination is hard.
 You've got a few options:
@@ -71,7 +82,39 @@ You can't rely on servers on what user sees. Javascript on client side you can f
 
 
 
+Caching and Pagination: 
+
+how do you cache paginated content : 
+https://medium.freecodecamp.org/how-to-implement-cacheable-pagination-of-frequently-changing-content-c8ddc8269e81
+
+web applications heavily rely on the HTTP cache. Sometimes this kind of caching does not work well for paginated content.
+If the collection is changed frequently and the content needs to be up-to-date, then it simply doesn’t make sense to 
+cache the response of the page as the page content changes.
+
+if we can fetch separately the order of the item IDs and the item details, then the second call can potentially be cached.
+one call to fetch the ordering which will give only itemID. 
+Second call goes to the cache to get the details of every item. - Caching item details results in reduced usage of bandwidth.
+If item does not exist in cache we retieve the detail of the item. 
+
+Unfortunately, such a split will multiply the amount of network calls by an order of magnitude.
+A similar pair of calls will happen for each consecutive page. 
+The main idea is that we can retrieve most item details from the cache. 
+But unfortunately we have to request the order of item IDs for every page.
+
+Instead of requesting 20–40 item IDs we can request 100-200. 
+Later, the UI layer can moderate the number of item details that need to be displayed and request them accordingly.
+Now adding a new item to the top still results in two requests (one for IDs and the other one for details of this new item).
+But we won’t have to request the next page for a while, because the pages are bigger. 
+We also won’t need to request item details because they are cached!
 
 
+
+Twitter Uses cursors to pagination : 
+https://developer.twitter.com/en/docs/basics/cursoring.html
+where they have next and prev cusor points.
+
+
+For the new entries we can have something that will trigger "new Content" on app like quora. 
+then user clicks and we fetch the new content. 
 
 
