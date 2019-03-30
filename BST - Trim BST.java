@@ -57,3 +57,43 @@ class Solution {
         return root;
     }
 }
+
+// My submission 
+class Solution {
+    public TreeNode trimBST(TreeNode root, int L, int R) {
+    
+        while( root!=null && root.val < L || root.val >R){
+            while(root!=null && root.val <L)
+                root = root.right;
+            while(root!=null && root.val>R)
+                root = root.left;
+        }
+        
+        if(root==null) return null;
+        
+        trimLeftBST(root,L);
+        trimRightBST(root,R);
+        return root;
+    }
+    
+    public TreeNode trimLeftBST(TreeNode root, int L) {
+        if(root==null) return null;
+      
+        if(root.val<L)
+            return trimLeftBST(root.right,L);
+        else
+            root.left = trimLeftBST(root.left,L);
+        
+        return root;
+    }
+    public TreeNode trimRightBST(TreeNode root, int R) {
+        if(root==null) return null;
+        
+        if(root.val>R)
+            return trimRightBST(root.left,R);
+        else
+            root.right = trimRightBST(root.right,R);
+        
+        return root;
+    }
+}
