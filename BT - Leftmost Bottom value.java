@@ -14,3 +14,21 @@ class Solution {
         return root.val;
     }
 }
+
+class Solution {
+    int val = -1;
+    int level = 0;
+    public int findBottomLeftValue(TreeNode root) {
+        findBottomLeftValueHelper(root,0);
+        return val;
+    }
+    public void findBottomLeftValueHelper(TreeNode root, int l){
+        if(root==null) return;
+        if(l>=level){
+            level = l;
+            val = root.val;
+        }
+        findBottomLeftValueHelper(root.right,l+1);
+        findBottomLeftValueHelper(root.left,l+1);
+    }
+}
