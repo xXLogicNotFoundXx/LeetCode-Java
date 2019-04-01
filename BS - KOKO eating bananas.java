@@ -20,6 +20,9 @@ class Solution {
             maxPile = Math.max(maxPile,pile);
         }
         
+        if(H<=piles.length) // she could eat max is the maxPile
+            return maxPile;
+        
         int start = 1, end = maxPile;        
         while(start<end){
             int mid = start+(end-start)/2;
