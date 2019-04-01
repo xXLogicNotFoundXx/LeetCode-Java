@@ -6,7 +6,7 @@ class Solution {
         while(left<right){
             int mid = (left + right)/2;
             
-            if(nums[left] == nums[mid] && nums[mid] == nums[right]){
+            if(nums[left] == nums[mid] && nums[mid] == nums[right]){ // i/p =[ 1,1,1,1,1,1,1,1,0,1,1]
                 left++; right--;
                 continue;                       // important i always miss that man 
             }
