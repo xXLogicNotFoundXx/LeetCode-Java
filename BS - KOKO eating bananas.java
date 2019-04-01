@@ -16,12 +16,14 @@ class Solution {
             return 0;
         
         int maxPile=0;
+        long total = 0; //long 
         for(int pile : piles){
+            total += pile;
             maxPile = Math.max(maxPile,pile);
         }
         
-        if(H<=piles.length) // she could eat max is the maxPile
-            return maxPile;
+        if(H<piles.length)  return maxPile;
+        if(H>=total)  return 1;
         
         int start = 1, end = maxPile;        
         while(start<end){
