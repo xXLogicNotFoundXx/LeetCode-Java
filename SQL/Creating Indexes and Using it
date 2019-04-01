@@ -10,3 +10,8 @@ A SQL statement can be executed in many different ways, such as full table scans
 The query optimizer determines the most efficient way to execute a SQL statement after considering many factors related 
 to the objects referenced and the conditions specified in the query. 
 This determination is an important step in the processing of any SQL statement and can greatly affect execution time.
+
+
+for implicitly using indexes : 
+SELECT *
+FROM Table WITH(INDEX(Index_Name))
