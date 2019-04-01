@@ -1,0 +1,12 @@
+create index <index_name> on <table_name> ( <column1>, <column2>, … );
+
+primary indexes are created with primary key and only that column.
+Oracle creates indexes on primary key by default.
+
+Composite indexes are cretaed with more than one column.
+
+Query optimizer decides if it can user the indexes : 
+A SQL statement can be executed in many different ways, such as full table scans, index scans, nested loops, and hash joins. 
+The query optimizer determines the most efficient way to execute a SQL statement after considering many factors related 
+to the objects referenced and the conditions specified in the query. 
+This determination is an important step in the processing of any SQL statement and can greatly affect execution time.
