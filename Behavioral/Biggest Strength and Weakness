@@ -12,7 +12,8 @@
     We feel lot confident responding to accessibility bug and now all my teammates have all reliabled information/documentations 
     if they have to solve those bugs/
 
-2 I alwasy think if there is better way to do it from customer point of view: 
+2 betterment of customer: 
+Notification with multiple languages
    Situation: 
       I have handled the Notification with multiple languages. One of the things I did not like that customer has to change the session language to 
       change the template body of a given language. 
@@ -25,8 +26,9 @@
    Result : 
       When it was around 9 customers it started to get on priority list. But by that time i had initial API working so making that to a feature didnt take that long.
       
+List of Users asssigned to given list of roles
       S: 
-        Role and Usr management you can see user in a role and on user you can see what roles are assigned. 
+        Role and User management you can see user in a role and on user you can see what roles are assigned. 
         There was no way to see the list of User asssigned to given list of roles/privileges/resources. 
       T: I checked how is this possible and is it feasible or would take too long ... well it was base idea but given long list of users and roles perfromace issues were clearly visible
       A: Suggested that this will be nice thing to have. 
