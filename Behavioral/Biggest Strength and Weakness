@@ -13,17 +13,24 @@
     if they have to solve those bugs/
 
 2 I alwasy think if there is better way to do it from customer point of view: 
- Situation: 
-    I have handled the Notification with multiple languages. One of the things I did not like that customer has to change the session language to 
-    change the template body of a given language. 
- Task : 
-    I brough up this fact to my director and PM how it is very cumborsome and possibly erritating for customers. All language datas was 
-    always handled by session language and thats how frameword worked.
- Action : 
-    After much of other dealines and work this got pushed out almost 5-6 months. I brought that back up with PM and PM confirmed that he has received compainls from customer about this. 
-    Still this wasnt on the priority list as it was more. I started creating APIs that sould handle different languages of save and edit. 
- Result : 
-    When it was around 9 customers it started to get on priority list. But by that time i had initial API working so making that to a feature didnt take that long.
+   Situation: 
+      I have handled the Notification with multiple languages. One of the things I did not like that customer has to change the session language to 
+      change the template body of a given language. 
+   Task : 
+      I brough up this fact to my director and PM how it is very cumborsome and possibly erritating for customers. All language datas was 
+      always handled by session language and thats how frameword worked.
+   Action : 
+      After much of other dealines and work this got pushed out almost 5-6 months. I brought that back up with PM and PM confirmed that he has received compainls from customer about this. 
+      Still this wasnt on the priority list as it was more. I started creating APIs that sould handle different languages of save and edit. 
+   Result : 
+      When it was around 9 customers it started to get on priority list. But by that time i had initial API working so making that to a feature didnt take that long.
+      
+      S: 
+        Role and Usr management you can see user in a role and on user you can see what roles are assigned. 
+        There was no way to see the list of User asssigned to given list of roles/privileges/resources. 
+      T: I checked how is this possible and is it feasible or would take too long ... well it was base idea but given long list of users and roles perfromace issues were clearly visible
+      A: Suggested that this will be nice thing to have. 
+      R: Month ago GRC is not doing that idea and i am their backend support from ASE. 
      
 3 I am very social person so make a point to talk to all my team members and other teams too:
   I have coulple people from irvine office from Irvine office wish i was there and they sometimes misktakes other indian person with me. 
