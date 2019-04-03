@@ -3,3 +3,4 @@ searching through log files all the way to SOA server and great deals of log.
 So I suggested an idea of having audit records with everynotifications which we send have all the information wwe need to solve whys.
 We had to create ESS job to purge the records time and that worked wonderfuly.
 
+Moving notification and password management to categories. 
