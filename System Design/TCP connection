@@ -1,0 +1,7 @@
+The TCP connection cannot stay open with a changing IP, because a connection is defined by 
+source IP+Port and destination IP+Port.
+If one of these changes, then you don't have the same connection anymore.
+
+If you need to maintain a connection when the IP to your ISP changes, then you should not use this IP as outgoing, 
+but instead built a tunnel to some VPN server outside. 
+The VPN will give you a constant IP, even if the IP you got from the ISP changes. 
