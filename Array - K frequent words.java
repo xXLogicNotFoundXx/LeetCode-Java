@@ -12,12 +12,7 @@ class Solution {
         for(String str : words)
             map.put(str,map.getOrDefault(str,0)+1);
         
-        // very important how we wrote priority queue
-        PriorityQueue<Map.Entry<String, Integer>> pq = new PriorityQueue<>(
-                 (a,b) -> a.getValue()==b.getValue() ? b.getKey().compareTo(a.getKey()) : a.getValue()-b.getValue()
-        );
-        
-        /*
+        // very important how we wrote priority queue        
         PriorityQueue<Map.Entry<String,Integer>> pq = new PriorityQueue<>(new Comparator<Map.Entry<String, Integer>>(){
             @Override
             public int compare(Map.Entry<String, Integer> e1, Map.Entry<String, Integer> e2) {
@@ -27,7 +22,11 @@ class Solution {
                 return e1.getValue().compareTo(e2.getValue());
             }
         });
-        */
+        /* Another way to do it 
+        PriorityQueue<Map.Entry<String, Integer>> pq = new PriorityQueue<>(
+                 (a,b) -> a.getValue()==b.getValue() ? b.getKey().compareTo(a.getKey()) : a.getValue()-b.getValue()
+        );*/
+        
         for(Map.Entry<String,Integer> e : map.entrySet()){
             pq.add(e);
             if(pq.size()>k)
