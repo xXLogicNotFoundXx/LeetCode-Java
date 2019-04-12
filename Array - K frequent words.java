@@ -12,11 +12,12 @@ class Solution {
         for(String str : words)
             map.put(str,map.getOrDefault(str,0)+1);
         
+        // very important how we wrote priority queue
         PriorityQueue<Map.Entry<String,Integer>> pq = new PriorityQueue<>(new Comparator<Map.Entry<String, Integer>>(){
             @Override
             public int compare(Map.Entry<String, Integer> e1, Map.Entry<String, Integer> e2) {
                 if(e1.getValue().equals(e2.getValue())){ // as it is an Integer object 
-                    return e2.getKey().compareTo(e1.getKey());
+                    return e2.getKey().compareTo(e1.getKey()); // smaller character at last bcz we adding in front in the end
                 }
                 return e1.getValue().compareTo(e2.getValue());
             }
