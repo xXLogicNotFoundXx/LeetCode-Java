@@ -27,6 +27,8 @@ class Solution {
         
         if(target > 0){
             for(int i=start;i<candidates.length;i++){
+                if(target - candidates[i] < 0) // this is good because we dont want to process all the array for no reason
+                    break;
                 subAns.add(candidates[i]);
                 combinationSumHelper(candidates,target - candidates[i],Ans,subAns,i);
                 subAns.remove(subAns.size()-1);
