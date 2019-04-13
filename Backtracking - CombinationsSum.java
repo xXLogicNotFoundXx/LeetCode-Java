@@ -30,7 +30,7 @@ class Solution {
                 if(target - candidates[i] < 0) // this is good because we dont want to process all the array for no reason
                     break;
                 subAns.add(candidates[i]);
-                combinationSumHelper(candidates,target - candidates[i],Ans,subAns,i);
+                combinationSumHelper(candidates,target - candidates[i],Ans,subAns,i); // not i + 1 because we can reuse same elements
                 subAns.remove(subAns.size()-1);
             }
         }
