@@ -15,37 +15,7 @@ A ship capacity of 15 is the minimum to ship all the packages in 5 days like thi
     if avg weight is greater thant maxWeight we have to start with avgWeight 
     Start filling the items if all items are filled in D date we have answer 
     else increment weight by 1 (or better by next item thats gonna go in day 1)
-
-// O (x*N)   where x is the total weights there is No D because we traverse  index = 0-N
-class Solution {
-    public int shipWithinDays(int[] weights, int D) {
-        int maxWeight =0;
-        int avgWeight =0;
-        for(int w : weights){
-            maxWeight = Math.max(w,maxWeight);
-            avgWeight += w;
-        }
-        avgWeight = avgWeight/D;
-        maxWeight = Math.max(avgWeight,maxWeight);
-        for(int min=maxWeight; min<avgWeight*D+1; min++){
-            int index=0;
-            for(int j=0;j<D;j++){
-                for(int sum=0;index<weights.length;index++){
-                    if(sum + weights[index] <= min)
-                        sum += weights[index];
-                    else
-                        break;
-                }
-                if(index==weights.length)
-                    return min;
-            }
-        }
-        return 0;
-    }
-}
-
 */
-// Better solution is with binary s
 class Solution {
     // BinarySearch: Time - O(nlogx), where x is the total weights, n is weights.length
     public int shipWithinDays(int[] weights, int D) {
