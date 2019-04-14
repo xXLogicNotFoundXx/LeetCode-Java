@@ -31,8 +31,7 @@ class Solution {
         if(root==null) return;
         subAns.add(root.val);
         if((root.left==null && root.right==null) && 0==sum-root.val ){
-            List<Integer> subAns1 = new ArrayList<Integer>(subAns);
-            ans.add(subAns1);
+            ans.add(new ArrayList<Integer>(subAns));
         } else{
             pathSum(root.left,sum-root.val,ans,subAns);
             pathSum(root.right,sum-root.val,ans,subAns);
