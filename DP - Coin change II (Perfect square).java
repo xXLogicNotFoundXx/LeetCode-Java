@@ -1,18 +1,15 @@
 Given a positive integer n, find the least number of perfect square numbers (for example, 1, 4, 9, 16, ...) which sum to n.
-
 Example 1:
 Input: n = 12
 Output: 3 
 Explanation: 12 = 4 + 4 + 4.
-
 Example 2:
 Input: n = 13
 Output: 2
 Explanation: 13 = 4 + 9.
 
 class Solution {
-    // This is exactly same as coin change problem. 
-    // n*s where s is numbers of perfect squares we gonna consider as coins 
+    // This is exactly same as coin change problem. (We have to build data set (which will be treated as coins)
     public int numSquares(int SUM) {
         if(SUM<=0) return 0;
         
@@ -28,9 +25,6 @@ class Solution {
         solDP[0] = 0;
         for(int target=1;target<=SUM;target++){  
             int min = Integer.MAX_VALUE; 
-            // here we can do MAX_VALUE bcz there is 1 in dataset so will always have solution for each solution
-            // if we dont have the sultion for some target M then writing Integer.MAX_VALUE would messup solDP[target-num]+1 and will overflow
-            // let that sink in these coments .. see coin change problem 
             for(int num : nums){
                 if(target < num)
                     break; // no need process larger numbers 
