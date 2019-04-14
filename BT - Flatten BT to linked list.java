@@ -3,16 +3,10 @@
     1
    / \
   2   5
-   \   
-    4   
+ / \   \
+3   4   6
 The flattened tree should look like:
-1
- \
-  2
-   \
-    4
-     \
-      5
+1-2-3-4-5-6 (right pointers)
  */
 class Solution {
     public void flatten(TreeNode root) {
