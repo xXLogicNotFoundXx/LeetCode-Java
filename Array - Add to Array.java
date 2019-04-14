@@ -1,3 +1,4 @@
+https://leetcode.com/problems/add-to-array-form-of-integer/submissions/
 [1,2,0,0] + 34 => [1,2,3,4]
 [1,1,1] + 9 => [1,0,0,0]
 
@@ -9,15 +10,14 @@ class Solution {
             K = temp / 10;
         }
         List<Integer> B = new ArrayList<Integer>();
-        for(int i : A)
-            B.add(i);
-        
-        //  case like [0] + 1000
         while(K!=0){
             B.add(0,K%10);
             K = K/10;
         }
-            
+       
+        for(int i : A)
+            B.add(i);
+        
         return B;
     }
 }
