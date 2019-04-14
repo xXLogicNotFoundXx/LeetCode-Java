@@ -12,11 +12,12 @@
 class Solution {
     public int findMin(int[] nums) {
         int left = 0,  right = nums.length - 1;
+        // if array is not rotated at all 
+        if(nums[left] < nums[right]) 
+            return nums[left];
+        
         while(left < right) {
-            //Case 1. The leftmost value is less than the rightmost value in the list: This means that the list is not rotated.
-            if(nums[left] < nums[right]) 
-                return nums[left];
-            
+                
             int mid = (left + right)/2;
             
             if(nums[mid] > nums[right])
@@ -25,6 +26,6 @@ class Solution {
                 right = mid;
         }
 
-        return nums[left];  // for i/p [1] 
-    } 
+        return nums[left]; // for i/p [1] 
+    }
 }
