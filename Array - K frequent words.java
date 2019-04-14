@@ -16,7 +16,7 @@ class Solution {
         PriorityQueue<Map.Entry<String,Integer>> pq = new PriorityQueue<>(new Comparator<Map.Entry<String, Integer>>(){
             @Override
             public int compare(Map.Entry<String, Integer> e1, Map.Entry<String, Integer> e2) {
-                if(e1.equals(e2)){ // as it is an Integer object 
+                if(e1.getValue().equals(e2.getValue())){ // as it is an Integer object 
                     return e2.getKey().compareTo(e1.getKey()); // smaller character at last bcz we adding in front in the end
                 }
                 return e1.getValue().compareTo(e2.getValue());
