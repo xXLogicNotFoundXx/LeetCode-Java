@@ -10,13 +10,12 @@ Example 1:
 Input: [1,2,3,1]
 Output: 4
 
-// strat from last and build max path.. I can take ith and  ith+2 or can skip ith and take i+1
-//  you take current positon and + 2  or you take +1 position 
-// from last you build max of you take from that node
+// start from last and build max path at 0th position and return oth result 
+// kind of like climbing stairs ... key point is you can take ith and ith+2 OR skip ith and take i+1
 class Solution {
     public int rob(int[] nums) {
         int n = nums.length;
-        int []buildMax = new int[n+3];
+        int []buildMax = new int[n+3];  // +3 is very important to understand here 
         Arrays.fill(buildMax,0);
         for(int i=n-1;i>=0;i--){
             buildMax[i] = Math.max(nums[i]+buildMax[i+2],buildMax[i+1]);
