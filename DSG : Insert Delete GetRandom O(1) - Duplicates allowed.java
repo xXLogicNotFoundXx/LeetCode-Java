@@ -10,13 +10,14 @@
         The probability of each element being returned is linearly related to the number of same value the collection contains.
 */
 class RandomizedCollection {
-    Map<Integer,Set<Integer>> map = new HashMap();
-    ArrayList<Integer> list = new ArrayList();
-    Random rand = new Random();
+    Map<Integer,Set<Integer>> map;
+    ArrayList<Integer> list;
+    Random rand;
     /** Initialize your data structure here. */
     public RandomizedCollection() {
-        map.clear();
-        list.clear();
+        map  = new HashMap();
+        list = new ArrayList();
+        rand = new Random();
     }
     
     /** Inserts a value to the collection. Returns true if the collection did not already contain the specified element. */
