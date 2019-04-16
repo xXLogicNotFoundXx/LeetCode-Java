@@ -1,3 +1,13 @@
+https://leetcode.com/problems/generate-parentheses/
+For example, given n = 3, a solution set is:
+[
+  "((()))",
+  "(()())",
+  "(())()",
+  "()(())",
+  "()()()"
+]
+
 class Solution {
   public List<String> generateParenthesis(int n) {
         List<String> list = new ArrayList<String>();
