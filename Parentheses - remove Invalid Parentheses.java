@@ -19,7 +19,7 @@ class Solution {
                     rmR++;
             }
         }
-        Set<String> res = new HashSet<>();
+        Set<String> res = new HashSet<>();                  // Set is very Important bcz we gonna get duplicates in the ans.
         dfs(s, 0, res, new StringBuilder(), rmL, rmR, 0);
         return new ArrayList<String>(res);   // set to arrayList 
     }
@@ -53,3 +53,4 @@ class Solution {
         sb.setLength(len);        
     }
 }
+
