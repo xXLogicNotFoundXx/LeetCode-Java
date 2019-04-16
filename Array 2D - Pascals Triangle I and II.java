@@ -25,18 +25,12 @@ class Solution {
         }
         return ans;
     }
- 
+
+// https://leetcode.com/problems/pascals-triangle-ii/
+// Input: 3
+// Output: [1,3,3,1]  index start at 0  and only constant K space 
+
     public List<Integer> getRow(int rowIndex) {
-        // https://leetcode.com/problems/pascals-triangle-ii/
-        // 
-        // 1
-        // 1 1
-        // 1 2 1
-        // 1 3 3 1
-        // 1 4 6 4 1
-        // Input: 3
-        // Output: [1,3,3,1]  index start at 0  and only constant K space 
-    
         List<Integer> oneRow = new ArrayList<Integer>();
         if(rowIndex<0)
             return oneRow;
