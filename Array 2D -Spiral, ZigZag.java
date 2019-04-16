@@ -1,29 +1,7 @@
-/* package whatever; // don't place package name! */
- 
-import java.util.*;
-import java.lang.*; 
-import java.io.*;
+
  
 /* Name of the class has to be "Main" only if the class is public. */
-class Ideone
-{
-	public static void main(String[] args)
-  {
-   	   	int[][] a = new int[5][];
-		a[0] = new int[]{11,12,13,14,15};
-        a[1] = new int[]{16,17,18,19,20};
-        a[2] = new int[]{21,22,23,24,25};
-        a[3] = new int[]{31,32,33,34,35};
-        a[4] = new int[]{26,27,28,29,30};
-        printArray(a);
-        System.out.println();
-        spiralTraversal(a);
-        System.out.println();
- 		System.out.println();
-        ZigZagDiagonalTraversal(a);
- 
-    }
- 
+
     private static void ZigZagDiagonalTraversal(int[][] a){
         if(a.length == 0) return;
  
@@ -87,23 +65,3 @@ class Ideone
         }
     }
  
- 	private static void printArray(int[][] a) {
-        for (int i = 0; i < a.length; ++i) {
-            System.out.println(a[i]);
-        }
-        for (int i = 0; i < a.length; ++i) {
-            for (int j = 0; a[i] != null && j < a[i].length; ++j) {
-                System.out.print(a[i][j] + " ");
-            }
-            System.out.println();
-        }
-    }
-}
-Close
-Sphere Research Labs. Ideone is powered by Sphere Engine™
-home api widget faq credits desktop mobile 
-terms of service privacy policy gdpr info
-
-Feedback & Bugs
- Not using Hotjar yet?
-Select an element on the page.
