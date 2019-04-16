@@ -2,9 +2,11 @@ To understand more of what is asked ..
 Try some dummy inputs and see if you are answering those questions right ..... 
 Ask more questions for invalid inputs .. or say you are assuming valid input for simplicity ...
 
-if array alsways consider duplicates or ask if there are duplicates/.
-come up with working solution as fast you can and write the code ..
+if an array 
+  1 always ask if there are duplicates or ask if there are duplicates.
+  2 always ask if there are negative number 
+  3. alsways consider 0 as input (usually 0 is an edge case)
 
 Think if you can do 2+ passes on data set and figure out if you can solve?
 
-alwasy think is stack or Que helps before you go to more complex DS.
+alwasy think is stack or Queue before you go to more complex DS.
