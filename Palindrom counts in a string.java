@@ -8,14 +8,6 @@ Input: "aaa"
 Output: 6
 Explanation: Six palindromic strings: "a", "a", "a", "aa", "aa", "aaa".
 
-without hashmap its 132 ms ( N^3) generating every substring O(N^2) and the checking if it is palindrom O(N). 
-for(int i=0;i<str.length();i++)
-    for(int j=i+1;j<=str.length();j++)
-            String preSubStr = str.substring(i,j);
-            //check if palindrom
-with hashmap memory limit exceeds bcz it required N^2 space 
-but still with that much space runtime wil be roughly O(N^3) bcz N^2 are the number of substring generated if all are unique then no use of hashmap
-    unless input is like aaaaaaaaaaaaa 
     
 Man with N^2 you can just take every index and expand towards both side (considering even and odd palindrom)
 this is same algorithm we use to find Largest palindrom substring in a given string.
