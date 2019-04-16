@@ -1,7 +1,8 @@
 /*
 https://leetcode.com/problems/minimum-window-substring/
-Input: S = "ADOBECODEBANC", T = "ABC"
-Output: "BANC"
+Given a string S and a string T, find the minimum window in S which will contain all the characters in T in complexity O(n).
+Input: S = "AADOBECODEBANAC", T = "ABAC"
+Output: "BANAC"
 */
 // Good question would be: Are there duplicate characters in T => the ans is yes T can have duplicate chars
 // so we need the count of each char, Set is not sufficient so will use hashmap
