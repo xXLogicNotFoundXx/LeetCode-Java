@@ -1,4 +1,5 @@
 /*
+https://leetcode.com/problems/palindromic-substrings/
 Given a string, your task is to count how many palindromic substrings in this string.
 Input: "abc"
 Output: 3
@@ -14,27 +15,22 @@ this is same algorithm we use to find Largest palindrom substring in a given str
  4ms
 */
 class Solution {
-    
-    public int countSubstrings(String str) {
-        if(str==null || str.isEmpty()) return 0;
-        
-        int count =0;
-        for(int i=0;i<str.length();i++){
-           count +=  calculatePalindromes(str,i,i);
-           count +=  calculatePalindromes(str,i,i+1);
+    public int countSubstrings(String s) {
+        int result = 0;
+        for(int i=0;i<s.length();i++){
+            result += expand(s, i, i) + expand(s, i, i+1);
         }
-        return count;
+        return result;
     }
     
-    int calculatePalindromes(String str, int i,int j){
-        int count =0;
-        while(i>=0 && j<str.length()){
-            if(str.charAt(i)==str.charAt(j))
+    private int expand(String s, int i, int j){
+        if(i<0 || j<0 || i>=s.length() || j>=s.length()) return 0;
+        int count = 0;
+        while(i>=0 && j<=s.length()-1){
+            if(s.charAt(i--)==s.charAt(j++))
                 count++;
             else
                 break;
-            
-            i--;j++;
         }
         return count;
     }
