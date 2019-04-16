@@ -1,5 +1,5 @@
 https://leetcode.com/problems/largest-number/
-
+Given a list of non negative integers, arrange them such that they form the largest number.
 For example:
 [9,32]				[32,3,31]		[0,0,0]
 return "931"			return "33231"		return "0"
