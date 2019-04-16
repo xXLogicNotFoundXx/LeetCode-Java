@@ -7,9 +7,11 @@
       ["nat","tan"],
       ["bat"]
     ]
- if we want to avoid duplicates we can use set in the map.  
- we are storing the strings in this .. but some people have created prime number array [2,3,5,...] so a=2,c=5
- you multiply these numbers and you get unique number for each anagrams 
+    
+ use Map<Sorted_String,Set<String>> to avoid duplicates we can use set in the map.  
+ we are storing the strings in this .. but some people have created prime number array 
+ int[] prime = {2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97, 101, 103}; 
+ so a=2,c=5 ans so on  you multiply these numbers and you get unique number for each anagram and then you save it in map. 
 */
 
 class Solution {
@@ -20,7 +22,7 @@ class Solution {
             char []sortedChar = str.toCharArray();
             Arrays.sort(sortedChar);
             // Important if you put char[] as key in the map it wont work 
-            // A HashMap compares keys using equals() and two arrays in Java are equal only if they are the same object. 
+            // A HashMap compares keys using equals() and two arrays in Java are equal only if they are the same object/ref. 
             // If you want value equality, then write your own container class that wraps an array[] and provides the appropriate semantics for equals() and hashCode()
             List<String> list = map.getOrDefault(String.valueOf(sortedChar),new ArrayList());
             list.add(str);
