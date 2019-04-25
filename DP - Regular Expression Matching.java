@@ -42,3 +42,55 @@ class Solution {
         }
     }
 }
+
+// using memoization 
+//Time  - O(S*P)   - 2 ms
+//Space - O(S*P)
+class Solution {
+    
+    enum Result{TRUE,FALSE}
+    
+    public boolean isMatch(String s, String p) {
+        // p starting with * or containing ** is not correct pattern so false 
+        if(p!=null && !p.isEmpty() && (p.charAt(0)=='*' || p.contains("**")))
+            return false; 
+        Result[][] dp = new Result[s.length()+1][p.length()+1];
+        
+        return isMatchHelper(s,p,dp,0,0) == Result.TRUE ? true : false;
+    }
+    
+    public Result isMatchHelper(String s, String p, Result[][] dp, int i,int j){
+        
+        if(j==p.length()){
+            return i==s.length() ? Result.TRUE : Result.FALSE;
+        }
+        
+        if(dp[i][j]!=null){
+            return dp[i][j];
+        }
+        
+        Result ans;
+        if(j+1 < p.length() && p.charAt(j+1)=='*'){
+            // zero match 
+            ans = isMatchHelper(s,p,dp,i,j+2);
+            if(ans==Result.FALSE){
+                // one match
+                if(i < s.length() && (s.charAt(i)==p.charAt(j) || p.charAt(j)=='.')){
+                    ans = isMatchHelper(s,p,dp,i+1,j);
+                } else {
+                    ans = Result.FALSE;  
+                }
+            }
+            
+        } else {
+            if(i < s.length() && (s.charAt(i)==p.charAt(j) || p.charAt(j)=='.')){
+               ans = isMatchHelper(s,p,dp,i+1,j+1); 
+            } else {
+               ans = Result.FALSE;
+            }
+        }
+        
+        dp[i][j] =  ans;
+        return dp[i][j];
+    }
+}
