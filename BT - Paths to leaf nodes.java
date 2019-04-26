@@ -1,14 +1,11 @@
 https://leetcode.com/problems/binary-tree-paths/
 Given a binary tree, return all root-to-leaf paths
-Input:
-
    1
  /   \
-2     3
+2     3        Output: ["1->2->5", "1->3"]
  \
   5
 
-Output: ["1->2->5", "1->3"]
 class Solution {
     public List<String> binaryTreePaths(TreeNode root) {
         List<String> res = new ArrayList<>();
@@ -28,6 +25,6 @@ class Solution {
             helper(res, root.left, sb);
             helper(res, root.right, sb);
         }
-        sb.setLength(len); // you cant use deleteCharAt ot delete (index1,index2) we dont know what is the number in val
+        sb.setLength(len); // you cant use deleteCharAt or delete (index1,index2) we dont know what is the number in val
     }
 }
