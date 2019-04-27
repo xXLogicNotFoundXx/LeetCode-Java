@@ -1,6 +1,6 @@
 /*
 https://leetcode.com/problems/course-schedule/
-it is essentially building a graph and checking if there is a cycle 
+it is essentially building a unidirectional graph and checking if there is a cycle 
 */
 class Solution {
     public boolean canFinish(int numCourses, int[][] pre) {
