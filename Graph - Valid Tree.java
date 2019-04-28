@@ -1,11 +1,15 @@
 /*
-Graph Valid Tree
+Graph Valid Tree (bi-directional):
+valid tree is where you visit all nodes in the graph starting from any node and there is no cycle. 
+ valid       invalid 
+   1             1
+  /  \          / \
+ 2    3        2   3
+ |\   |         \ /
+ 4 5  6          4
 https://leetcode.com/problems/graph-valid-tree/
 Input: n = 5, and edges = [[0,1], [0,2], [0,3], [1,4]]
 Output: true
-
-1. Make sure everything is connected   [0,1] [2,3] is not a valid tree 
-2. Make sure No cycle
 */
 class Solution {
     // assert all num appear in the edges 0 ~ n - 1
