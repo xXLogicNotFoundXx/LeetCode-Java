@@ -25,8 +25,8 @@ class Solution {
                 continue;               // Important
             }
             
-            if(nums[low]<=nums[mid]){
-                if( nums[low]<=target && target < nums[mid])   // <= is important 
+            if(nums[low]<=nums[mid]){ // low and mid could be the same but not high i/p [3,1] targer 1 
+                if( target < nums[mid] && nums[low]<=target)   // <= is important 
                     high=mid-1;
                 else
                     low=mid+1;
