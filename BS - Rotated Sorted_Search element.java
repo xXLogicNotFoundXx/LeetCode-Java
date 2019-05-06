@@ -15,8 +15,8 @@ class Solution {
             if(nums[mid]==target)
                 return mid;
             
-            if(nums[low] <= nums[mid]){ // first half is sorted
-                if(nums[low] <= target && target<nums[mid]) // if its in beetween them 
+            if(nums[low] <= nums[mid]){ // first half is sorted  low and mid could be the same ..i/p[3,1] target 1 
+                if(target<nums[mid] && nums[low] <= target && ) // if its in beetween them 
                     high = mid-1;
                 else
                     low = mid+1;
