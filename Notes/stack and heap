@@ -1,0 +1,30 @@
+STACK:
+Stack Memory in Java is used for static memory allocation and the execution of a thread. 
+It contains primitive values that are specific to a method and references to objects that are in a heap, 
+referred from the method.
+Access to this memory is in Last-In-First-Out (LIFO) order. Whenever a new method is called, 
+a new block on top of the stack is created which contains values specific to that method,
+like primitive variables and references to objects.
+When the method finishes execution, it’s corresponding stack frame is flushed,
+the flow goes back to the calling method and space becomes available for the next method.
+Every thread in JVM has its own stack space. 
+
+Does Java create a stack for each thread when it is created?
+  Yes.
+If so, where exactly the stack is on the memory?
+  In the JVM allocated memory, but not on the heap.
+If so, how does JVM knows how may threads will be created?
+  It doesn't.
+  You can create as many as you'd like until you've maxed out your JVM memory and get
+  Exception in thread "main" java.lang.OutOfMemoryError: unable to create new native thread
+  
+  
+  HEAP :
+Heap space in Java is used for dynamic memory allocation for Java objects and JRE classes at the runtime.
+New objects are always created in heap space and the references to this objects are stored in stack memory.
+If heap space is full, Java throws java.lang.OutOfMemoryError
+Access to this memory is relatively slower than stack memory
+This memory, in contrast to stack, isn’t automatically deallocated. It needs Garbage Collector to free up unused objects so as to keep the efficiency of the memory usage
+Unlike stack, a heap isn’t threadsafe and needs to be guarded by properly synchronizing the code
+
+
