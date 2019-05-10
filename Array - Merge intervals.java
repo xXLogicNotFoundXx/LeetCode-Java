@@ -19,30 +19,33 @@ intevals are not sorted.
  * }
  */
 class Solution {
-    class sortByStart implements Comparator<Interval>{
-        public int compare(Interval a, Interval b){
-            return a.start - b.start;
-        }
-    }
     
     public List<Interval> merge(List<Interval> intervals) {
-        if(intervals ==null || intervals.size()==0)
-            return intervals;
+        if(intervals==null) return new ArrayList<Interval>();
+        if(intervals.size()==1) return intervals;
         
-        Collections.sort(intervals, new sortByStart());
-        List<Interval> ans = new ArrayList();
-        Interval temp = new Interval(intervals.get(0).start,intervals.get(0).end);
-        for(int i=1;i<intervals.size();i++){
-            Interval intv = intervals.get(i);
-            if(temp.end >= intv.start){
-                temp.end = Math.max(temp.end,intv.end);
-            } else {
-                ans.add(temp);
-                temp = intv;
+        List<Interval> ans = new ArrayList<Interval>();
+        int n = intervals.size();
+        
+        Collections.sort(intervals, new Comparator<Interval>(){
+            public int compare(Interval a, Interval b) { 
+                return a.start - b.start; 
+            } 
+        }); 
+        for(int i=0;i<n;i++){
+            Interval oneInterval = new Interval(intervals.get(i).start,0);
+            int end = intervals.get(i).end;
+            for(int j=i+1;j<n;j++){
+                if(intervals.get(j).start <= end){
+                    end= Math.max(end,intervals.get(j).end);
+                } else{
+                    break;
+                }
+                i=j;
             }
+            oneInterval.end = end;
+            ans.add(oneInterval);
         }
-        
-        ans.add(temp);
         return ans;
     }
 }
