@@ -22,6 +22,30 @@ class Solution {
     }
 }
 
+// level order 
+class Solution {
+    public List<List<Integer>> levelOrder(TreeNode root) {
+        List<List<Integer>> ans = new ArrayList<List<Integer>>();
+        Map<Integer,List<Integer>> map = new HashMap<Integer,List<Integer>>();
+        
+        traverse(root,0,map);
+        for(int i=0;map.containsKey(i);i++)
+            ans.add(map.get(i));
+            
+        return ans;
+    }
+    // creates a map of <level, nodes>
+    public void traverse(TreeNode root, int level, Map<Integer,List<Integer>> map){
+        if(root==null) return;
+        
+        List<Integer> subAns = map.getOrDefault(level,new ArrayList<Integer>());
+        subAns.add(root.val);
+        map.put(level,subAns);
+        traverse(root.left,level+1,map);
+        traverse(root.right,level+1,map);
+    }
+}
+
 https://leetcode.com/problems/find-bottom-left-tree-value/
 class Solution {
     public int findBottomLeftValue(TreeNode root) {
@@ -37,7 +61,7 @@ class Solution {
         return root.val;
     }
 }
-class Solution {
+class SolutionIterative {
     int val = -1;
     int level = 0;
     public int findBottomLeftValue(TreeNode root) {
