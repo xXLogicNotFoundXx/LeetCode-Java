@@ -11,22 +11,22 @@ For this problem, a path is defined as any sequence of nodes from some starting 
 Output: 42 (15-20-7)
  */
 class Solution {
+    int max=Integer.MIN_VALUE;
     public int maxPathSum(TreeNode root) {
         if(root==null) return 0;
-        int []max = new int[1];
-        max[0] = root.val;
-        int maxLeftRight = maxPathSum(root,max);
-        return Math.max(max[0],maxLeftRight); // though math.max() is not needed just return max[0]
+        
+        int maxLeftRight = findMaxSum(root);
+        return max; 
     }
     
-    private int maxPathSum(TreeNode root, int[]max){
+    private int findMaxSum(TreeNode root){
         if(root==null)
             return 0;
         
-        int leftGain  = Math.max(maxPathSum(root.left,max),0); // Very Important 
-        int rightGain = Math.max(maxPathSum(root.right,max),0);// Math.max( ,0) return could be -ve values 
+        int leftGain  = Math.max(findMaxSum(root.left),0); // having Math.max( ,0) Very Important  
+        int rightGain = Math.max(findMaxSum(root.right),0);//  return could be -ve values and we dont want to consider -ve value going up
         
-        max[0] = Math.max(max[0],root.val+leftGain+rightGain);
+        max = Math.max(max,root.val+leftGain+rightGain);
         return root.val + Math.max(leftGain,rightGain);
     }
 }
