@@ -26,7 +26,7 @@ class Solution {
             // If you want value equality, then write your own container class that wraps an array[] and provides the appropriate semantics for equals() and hashCode()
             List<String> list = map.getOrDefault(String.valueOf(sortedChar),new ArrayList());
             list.add(str);
-            map.put(String.valueOf(sortedChar),list);
+            map.put(new String(sortedChar),list);
         }
         
         List<List<String>> ans = new ArrayList();
