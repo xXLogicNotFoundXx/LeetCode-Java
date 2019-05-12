@@ -14,6 +14,12 @@ Input: [["JFK","SFO"],["JFK","ATL"],["SFO","ATL"],["ATL","JFK"],["ATL","SFO"]]
 Output: ["JFK","ATL","JFK","SFO","ATL","SFO"]
 Explanation: Another possible reconstruction is ["JFK","SFO","ATL","JFK","ATL","SFO"].
              But it is larger in lexical order.
+             
+here we learn how to remove the node from the list and add into the same list while traversing the list.
+The good thing in the list we can remove the node at ith and add the node at ith postion before loop ends so list remain intact 
+during traversal. 
+
+Also, map.map.putIfAbsent() is good to know method. 
 */
 class Solution {
     public List<String> findItinerary(List<List<String>> tickets) {
