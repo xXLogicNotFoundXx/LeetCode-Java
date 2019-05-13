@@ -6,10 +6,7 @@ https://leetcode.com/problems/target-sum/
     }
     int findTargetSumWays(int[] nums, int i,int target, int S){
         if(i==nums.length){
-            if(S==target)
-                return 1;
-            else
-                return 0;
+            retrun S==target ? 1 : 0;
         }
         return findTargetSumWays(nums,i+1,target-nums[i],S) + findTargetSumWays(nums,i+1,target+nums[i],S);
     }
@@ -22,29 +19,25 @@ since we are trying all the possible combinations.
 By using memoization, we calculate every sum at each index at most once,
 that makes the time complexity O(n*sum), which is the same as those DP solutions
 
-    public int findTargetSumWays2(int[] nums, int S) {
-        if (nums == null || nums.length == 0){
-            return 0;
-        }
-        return helper(nums, 0, 0, S, new HashMap<>());
+class Solution {
+    public int findTargetSumWays(int[] nums, int S) {
+        if(nums==null) return 0;
+        HashMap<String,Integer> map = new HashMap<>();
+        return findTargetSumWays(nums, S, map, 0);
     }
-    private int helper(int[] nums, int index, int sum, int S, Map<String, Integer> map){
-        String encodeString = index + "->" + sum;
-        if (map.containsKey(encodeString)){
-            return map.get(encodeString);
+    int findTargetSumWays(int []nums, int sum, HashMap<String,Integer> map , int i){
+        if(i==nums.length){
+            return sum==0 ?  1 : 0;
         }
-        if (index == nums.length){
-            if (sum == S){
-                return 1;
-            }else {
-                return 0;
-            }
-        }
-        int curNum = nums[index];
-        int add = helper(nums, index + 1, sum - curNum, S, map);
-        int minus = helper(nums, index + 1, sum + curNum, S, map);
-        map.put(encodeString, add + minus);
-        return add + minus;
+        
+        if(map.containsKey(i+"->"+sum))
+            return map.get(i+"->"+sum);
+        
+        int positive = findTargetSumWays(nums,sum-nums[i], map, i+1);
+        int negative = findTargetSumWays(nums,sum+nums[i], map, i+1);
+        
+        map.put(i+"->"+sum,positive+negative);
+        return positive+negative;
     }
 }
 
