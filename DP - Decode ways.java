@@ -13,7 +13,7 @@ class Solution {
             if(ch == '0'){
                 dp[i] = 0;
             } else {
-                int j = Integer.valueOf(ch); // assuming it will always be 1-9 
+                int j = Integer.valueOf(ch); //it will always be 1-9 
                 dp[i] = dp[i+1];
                 int k = Integer.valueOf(str.substring(i, i + 2));
                 if (k >= 10 && k <= 26) {
