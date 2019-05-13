@@ -14,7 +14,7 @@ class Solution {
         int n =nums.length;
         int []memo = new int[n];
         int max=0;
-        Arrays.fill(memo, 1); 
+        Arrays.fill(memo, 1); // IMPORTANT : only doing memo[n-1]=1 wont work let that sink in. 
         for(int i=n-1;i>=0;i--){
             for(int j=i+1;j<n;j++){
                 if(nums[i]<nums[j])
