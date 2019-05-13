@@ -15,37 +15,31 @@ else
 
 */
 class Solution { 
-    enum Result{TRUE,FALSE}
-    
     public boolean isMatch(String s, String p) {
-        Result[][] dp = new Result[s.length()+1][p.length()+1];
-        return isMatchHelper(s,p,dp,0,0) == Result.TRUE ? true : false;
+        Boolean[][] dp = new Boolean[s.length()+1][p.length()+1];
+        return isMatchHelper(s,p,dp,0,0).booleanValue();
     }
     
-    Result isMatchHelper(String s, String p,Result[][] dp,int i,int j){
+    Boolean isMatchHelper(String s, String p,Boolean[][] dp,int i,int j){
         
         if(j==p.length())
-            return i==s.length() ? Result.TRUE : Result.FALSE;
+            return i==s.length() ? new Boolean("true") : new Boolean("false");
         
         if(dp[i][j]!=null)
             return  dp[i][j];
         
-        Result ans; 
+        Boolean ans = new Boolean("false"); 
         if(p.charAt(j)=='*'){
             ans = isMatchHelper(s,p,dp,i,j+1); // consider zero match   
-            if(ans == Result.FALSE){ 
-                // consider one match
+            if(ans == false){ 
+                // consider one match 
                 if(i < s.length())
-                    ans = isMatchHelper(s,p,dp,i+1,j); // one match
-                else 
-                    ans = Result.FALSE;
+                    ans = isMatchHelper(s,p,dp,i+1,j); 
             }
         }else{
-            // one match else it is false
+            // one match else it is false anyway
             if(i < s.length() && (s.charAt(i)==p.charAt(j) || p.charAt(j)=='?'))  
                 ans = isMatchHelper(s,p,dp,i+1,j+1);
-            else
-                ans = Result.FALSE;
         }
         
         dp[i][j] = ans;
