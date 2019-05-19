@@ -5,7 +5,9 @@ Note: The solution set must not contain duplicate subsets.
 Example:
 Input: nums = [1,2,3]
 Output:
-[ [], [1], [1,2], [1,2,3], [2], [2,3], [3] ]
+[ [], [1], [1,2], [1,2,3], [1,3], [2], [2,3], [3] ]
+Runtime : O(n*2^n) . A set with n elements has 2^n subsets and max elements in a subset is n.
+Space : It is also O(n*2^n). we store all the subsets.
 */
 class Solution {
     public List<List<Integer>> subsets(int[] nums) {
