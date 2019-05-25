@@ -10,3 +10,10 @@ if an array
 Think if you can do 2+ passes on data set and figure out if you can solve?
 
 alwasy think is stack or Queue before you go to more complex DS.
+
+there are problems sometimes there are special cases where you dont want to run it when i=0 or 
+when you want when i==n. Remeber you can just ass that condition  with existing condtion 
+if(i!=0 && someCondition){  // 3SUM problem 
+}
+OR
+if(i==n || somecondition) // basic calculator 
