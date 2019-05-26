@@ -26,7 +26,7 @@ class Solution {
             }
             
             if(!map.containsKey(total))
-                map.put(total,i);
+                map.put(total,i); // prevent override we want the left most item to form a max size
         }
         return max; 
     }
