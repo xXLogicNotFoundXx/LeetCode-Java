@@ -3,7 +3,7 @@
 https://leetcode.com/problems/spiral-matrix-ii/
 Given a positive integer n, generate a square matrix filled with elements 
 from 1 to n^2 in spiral order.
-following algo would work for m*n too 
+following algo wont work for m*n 
 */
 class Solution {
     public int[][] generateMatrix(int n) {
