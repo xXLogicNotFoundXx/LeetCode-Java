@@ -21,3 +21,21 @@ class Solution {
         return true;
     }
 }
+
+/*
+https://leetcode.com/problems/transpose-matrix/
+867. Transpose Matrix
+[1,2,3]         [1,4,7]
+[4,5,6]    =>   [2,5,8]
+[7,8,9]         [3,6,9]
+*/       
+class Solution {
+    public int[][] transpose(int[][] A) {
+        int M = A.length, N = A[0].length;
+        int[][] B = new int[N][M];
+        for (int j = 0; j < N; j++)
+            for (int i = 0; i < M; i++)
+                B[j][i] = A[i][j];
+        return B;
+    }
+}
