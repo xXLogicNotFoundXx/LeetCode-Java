@@ -31,37 +31,4 @@
         }
     }
  
-    private static void spiralTraversal(int[][] a) {
-        if( a.length == 0 ) return;
- 
-        int dir = 0;
-        int L = 0; int T =0;
-        int R= a[0].length-1; int B = a.length-1;
-        System.out.print("Spiral = ");
- 
-        while(T<=B && L<=R){
- 
-            if(dir == 0){
-                for(int k=L;k<=R;k++)
-                    System.out.print(a[T][k]+" ");
-                T++;
-            }
-            else if(dir == 1){
-                for(int k=T;k<=B;k++)
-                    System.out.print(a[k][R]+" ");
-                R--;
-            }
-            else if(dir == 2){
-                for(int k=R;k>=L;k--)
-                    System.out.print(a[B][k]+" ");
-                B--;
-            }
-            else if(dir == 3){
-                for(int k=B;k>=T;k--)
-                    System.out.print(a[k][L]+" ");
-                L++;
-            }
-            dir = (dir+1)%4;
-        }
-    }
  
