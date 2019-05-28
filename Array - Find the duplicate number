@@ -14,11 +14,8 @@ class Solution {
     // and then the array will be sorted and then you can find the number O(N)
     
     /* 
-    count the number of values lesser than the mid (1+n-1/2)
-    If the if the count is lesser than mid, we assume the duplicate number should be on the higher side of the number scale.
-    so we make low = mid + 1
-    else we assume the duplicate number should be on the lower end of the number scale.
-    so we make high = mid - 1
+    Let's say n=10 and I select mid=5. Then I count all the numbers in the array which are less than equal mid. 
+    If the there are more than 5 numbers that are less than 5, one of them has occurred more than once.
     n*log(n)
     */
     public int findDuplicate(int[] nums) {
