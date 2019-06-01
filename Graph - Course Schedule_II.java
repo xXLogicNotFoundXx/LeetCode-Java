@@ -20,47 +20,48 @@ We start with courses which do not have any prereq
 */
 
 class Solution {
+    // what if there are no prereqs or circles in preReqs 
     public int[] findOrder(int numCourses, int[][] prerequisites) {
-        if(numCourses<=0 || prerequisites==null )
+        if(numCourses<=0)
             return new int[0];
-        Map<Integer,Set<Integer>> graph = new HashMap<>(); // list of courses this course is a prereq
-        Map<Integer,Integer> preReqs = new HashMap<>(); // this one says how many course need this course as prereq 
+        int []ans = new int[numCourses];
+        Map<Integer,Set<Integer>> map = new HashMap<>(); // root , child Courses
+        Map<Integer,Integer> deg = new HashMap<>(); // course , numbers of parents
         
-        // all courses have no prereq yet
-        for(int i=0;i<numCourses;i++)
-            preReqs.put(i,0);
+        // this is necessary bcz if we dont have any prerequisites 
+        // it should be in the ans 
+        for(int i=0;i<numCourses;i++) 
+            deg.put(i,0);
         
-        for( int []p : prerequisites){
-            // remember getOrDefault(key,defaultValue) there is no get(key) call inside getOrDefault urrgg
-            Set<Integer> set = graph.getOrDefault(p[1], new HashSet<Integer>()); 
-            set.add(p[0]);                         // Very important to build graph correctly 
-            graph.put(p[1],set);
-            preReqs.put(p[0],preReqs.get(p[0])+1); // Very important to build preReq degrees correctly 
-            
-        }
-        
-        Queue<Integer> q = new LinkedList<>();
-        for(Map.Entry<Integer,Integer> e : preReqs.entrySet()){
-            if(e.getValue().equals(0)){ // courses that dont have prereq  
-                q.add(e.getKey());
+        if(prerequisites!=null){
+            for(int []pair : prerequisites){
+                map.putIfAbsent(pair[1], new HashSet<Integer>());
+                map.get(pair[1]).add(pair[0]); // root course -> child course 
+                deg.put(pair[0],deg.get(pair[0])+1); // child parents
             }
         }
         
-        int []ans = new int[numCourses];
+        Queue<Integer> q = new LinkedList<>();
+        for(Map.Entry<Integer,Integer> e : deg.entrySet()){
+            if(e.getValue()==0)
+                q.add(e.getKey());
+        }
         int i=0;
         while(!q.isEmpty()){
             int c = q.poll();
             ans[i++] = c;
-            if(graph.containsKey(c)){
-                for(int nc : graph.get(c)){
-                   int d = preReqs.get(nc)-1;
-                   preReqs.put(nc,d);
-                   if(d==0){
-                       q.add(nc);
-                   }
+            if(map.containsKey(c)){ // child leaf courses may not be in the map 
+                for(int next : map.get(c)){
+                    int d = deg.get(next)-1;
+                    if(d==0){ // we can take this course 
+                        q.add(next);
+                    }
+                    deg.put(next,d);
                 }
             }
         }
-        return i==numCourses ? ans : new int[0];
+        // this bcz there could be cirles in preReqs and we dont 
+        // want to return half result 
+        return i<numCourses ? new int[0] : ans; 
     }
 }
