@@ -34,4 +34,4 @@ class Solution {
         second.next = first;
         dummy.next = second;
     }
-}
+} 
