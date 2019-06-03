@@ -1,10 +1,5 @@
 Working on categories : how the notifications password settings needed to transfer. 
-
-The toughest was to get the find why notifications are not working. 
-searching through log files all the way to SOA server and great deals of log.
-So I suggested an idea of having audit records with everynotifications which we send have all the information wwe need to solve whys.
-We had to create ESS job to purge the records time and that worked wonderfuly.
-
+How the password setting were changed from flat applying to all fusion users to be associated with category. 
 Moving notification and password management to categories. 
 
 
