@@ -29,7 +29,7 @@ Notification with multiple languages
 List of Users asssigned to given list of roles
       S: 
         Role and User management you can see user in a role and on user you can see what roles are assigned. 
-        There was no way to see the list of User asssigned to given list of roles/privileges/resources. 
+        There was no way to see the list of User asssigned to given combinations of roles/privileges/resources. 
       T: I checked how is this possible and is it feasible or would take too long ... well it was base idea but given long list of users and roles perfromace issues were clearly visible
       A: Suggested that this will be nice thing to have. 
       R: Month ago GRC is not doing that idea and i am their backend support from ASE. 
