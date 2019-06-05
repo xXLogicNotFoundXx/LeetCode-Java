@@ -10,7 +10,6 @@ Explanation: there are four ways to make up the amount:
 5=1+1+1+1+1
 */
 class Solution {
-    int ways=0;
     public int change(int amount, int[] coins) {
         if(coins == null || amount<0)
             return 0;
