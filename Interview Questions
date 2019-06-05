@@ -1,0 +1,13 @@
+Karat For Josh Roblox : 
+  1 Give the N list of [parent,child] (this forms a graph).... return root nodes. 
+  2 With that same list now given 2 nodes as input check if they have common ancestor. return true/false 
+  
+Amazon Neeraj Elastic Search : 
+  15 min talk about my background. 
+  Then givent Dictionary ["time","some","thing","something", "goodtime", "good", "luck"]
+  and a string "goodtimeluckgoodsomething", return the list of split strings with minimum number of splits 
+  if you can't split it return empty list.
+  Ans : ["goodtime","luck","good","something"] 
+  Wrong Ans : ["good","time","luck","good","some","thing"]
+  
+  
