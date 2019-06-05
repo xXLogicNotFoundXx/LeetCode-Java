@@ -8,6 +8,28 @@ Given a 2D binary matrix filled with 0's and 1's, find the largest SQUARE contai
 Output: 4
 */
 class Solution {
+    
+     // DP APPROACH 
+    // it same as edit distance problem.
+    // dp[i][j] = Math.min(Math.min([i-1][j],[i][j-1]), [i-1][j-1]) 
+    // think about this and let that sink in.
+    public int maximalSquare(char[][] matrix) {
+        if(matrix==null || matrix.length ==0 || matrix[0].length ==0 )
+            return 0;
+        int [][]dp = new int[matrix.length+1][matrix[0].length+1];
+        int maxLength = 0;
+        for(int i=1;i<dp.length;i++){
+            for(int j=1;j<dp[0].length;j++){
+                if(matrix[i-1][j-1]=='1'){
+                    dp[i][j] = Math.min(Math.min(dp[i-1][j],dp[i][j-1]), dp[i-1][j-1])+1;
+                    maxLength = Math.max(maxLength, dp[i][j]);
+                }
+            }
+        }
+        return maxLength*maxLength; 
+    }
+    
+    
     // very simeple everytime you find 1 expand and note down the max ... messed up lot of indexes 
     // though looks simple but be careful about manipulating indexes 
     // (mn)^2 
@@ -50,23 +72,5 @@ class Solution {
     
     
     
-    // DP APPROACH 
-    // it same as edit distance problem.
-    // dp[i][j] = Math.min(Math.min([i-1][j],[i][j-1]), [i-1][j-1]) 
-    // think about this and let that sink in.
-    public int maximalSquare(char[][] matrix) {
-        if(matrix==null || matrix.length ==0 || matrix[0].length ==0 )
-            return 0;
-        int [][]dp = new int[matrix.length+1][matrix[0].length+1];
-        int maxLength = 0;
-        for(int i=1;i<dp.length;i++){
-            for(int j=1;j<dp[0].length;j++){
-                if(matrix[i-1][j-1]=='1'){
-                    dp[i][j] = Math.min(Math.min(dp[i-1][j],dp[i][j-1]), dp[i-1][j-1])+1;
-                    maxLength = Math.max(maxLength, dp[i][j]);
-                }
-            }
-        }
-        return maxLength*maxLength; 
-    }
+   
 }
