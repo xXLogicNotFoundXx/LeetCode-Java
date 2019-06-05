@@ -29,5 +29,6 @@ class Solution {
             array[i++][1] = oneAns[1]; 
         }
         return array;
+        // return ans.toArray(new int[ans.size()][]);   => Smart way to do it
     }
 }
