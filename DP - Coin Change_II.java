@@ -1,6 +1,8 @@
 /*
 https://leetcode.com/problems/coin-change-2/
-You are given coins of different denominations and a total amount of money. Write a function to compute the number of combinations that make up that amount. You may assume that you have infinite number of each kind of coin.
+You are given coins of different denominations and a total amount of money.
+Write a function to compute the number of combinations that make up that amount. 
+You may assume that you have infinite number of each kind of coin.
 Input: amount = 5, coins = [1, 2, 5]
 Output: 4
 Explanation: there are four ways to make up the amount:
