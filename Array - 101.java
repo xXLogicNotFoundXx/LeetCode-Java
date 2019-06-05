@@ -1,4 +1,30 @@
 /*
+https://leetcode.com/problems/squares-of-a-sorted-array/
+977. Squares of a Sorted Array
+Given an array of integers A sorted in non-decreasing order, return an array of the squares of each number, also in sorted non-decreasing order.
+Input: [-4,-1,0,3,10]
+Output: [0,1,9,16,100]
+Input: [-7,-3,2,3,11]
+Output: [4,9,9,49,121]
+*/
+class Solution {
+    public int[] sortedSquares(int[] A) {
+        if(A==null || A.length ==0)
+            return A;
+        
+        int[] result = new int[A.length];
+        int i = 0, j = A.length - 1;
+        for (int p = j; p >= 0; p--) {
+            if (A[i]*A[i] > A[j]*A[j]) 
+                result[p] = A[i] * A[i++];
+            else 
+                result[p] = A[j] * A[j--];
+        }
+        return result;
+    }
+}
+
+/*
 https://leetcode.com/problems/sort-colors/
 Sort an array in 1 pass with values 0,1,2 only 
 Input: [2,0,2,1,1,0]
