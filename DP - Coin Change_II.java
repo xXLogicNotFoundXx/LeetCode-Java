@@ -14,7 +14,6 @@ class Solution {
     public int change(int amount, int[] coins) {
         if(coins == null || amount<0)
             return 0;
-        Arrays.sort(coins);
         int []dp = new int[amount+1];
         dp[0] = 1;
         for(int coin : coins){
