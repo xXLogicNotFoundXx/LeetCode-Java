@@ -20,9 +20,8 @@ class Solution {
                 String fileName = path_files[i].substring(0,open);
                 String content = path_files[i].substring(open+1,end);
                 
-                List<String> list = map.getOrDefault(content,new ArrayList<String>());
-                list.add(path_files[0]+"/"+fileName);
-                map.put(content,list);
+                map.putIfAbsent(content, new ArrayList<String>());
+                map.get(content).add(path_files[0]+"/"+fileName);;
             }
         }
         List<List<String>> ans = new ArrayList<List<String>>();
