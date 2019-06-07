@@ -13,27 +13,30 @@
     if they have to solve those bugs/
 
 2 betterment of customer: 
-Notification with multiple languages
-   Situation: 
-      I have handled the Notification with multiple languages. One of the things I did not like that customer has to change the session language to 
-      change the template body of a given language. 
-   Task : 
-      I brough up this fact to my director and PM how it is very cumborsome and possibly irritating for customers. All language datas was 
-      always handled by session language and thats how frameword worked.
-   Action : 
-      After much of other dealines and work this got pushed out almost 5-6 months. I brought that back up with PM and PM confirmed that he has received compainls from customer about this. 
-      Still this wasnt on the priority list as it was more. I started creating APIs that sould handle different languages of save and edit. 
-   Result : 
-      When it was around 9 customers it started to get on priority list. But by that time i had initial API working so making that to a feature didnt take that long.
-      
-List of Users asssigned to given list of roles
-      S: 
-        Role and User management you can see user in a role and on user you can see what roles are assigned. 
-        There was no way to see the list of User asssigned to given combinations of roles/privileges/resources. 
-      T: I checked how is this possible and is it feasible or would take too long ... well it was base idea but given long list of users and roles perfromace issues were clearly visible
-      A: Suggested that this will be nice thing to have. 
-      R: Month ago GRC is not doing that idea and i am their backend support from ASE. 
-     
+  Notification with multiple languages
+     Situation: 
+        I have handled the Notification with multiple languages. One of the things I did not like that customer has to change the session language to 
+        change the template body of a given language. 
+     Task : 
+        I brough up this fact to my director and PM how it is very cumborsome and possibly irritating for customers. All language datas was 
+        always handled by session language and thats how frameword worked.
+     Action : 
+        After much of other dealines and work this got pushed out almost 5-6 months. I brought that back up with PM and PM confirmed that he has received compainls from customer about this. 
+        Still this wasnt on the priority list as it was more. I started creating APIs that sould handle different languages of save and edit. 
+     Result : 
+        When it was around 9 customers it started to get on priority list. But by that time i had initial API working so making that to a feature didnt take that long.
+
+  List of Users asssigned to given list of roles
+        S: 
+          Role and User management you can see user in a role and on user you can see what roles are assigned. 
+          There was no way to see the list of User asssigned to given combinations of roles/privileges/resources. 
+        T: I checked how is this possible and is it feasible or would take too long ... 
+            well it was base idea but given long list of users and roles perfromace issues were clearly visible
+        A: Suggested that this will be nice thing to have. 
+        R: Month ago GRC is not doing that idea and i am their backend support from ASE. 
+        
+  I have done 2.am meetings with customers just to solve those bugs so that customer is not
+  
 3 I am very social person so make a point to talk to all my team members and other teams too:
   Other teammates know me as compare to the people who have been there 7=10 year in irvine office. 
   I quickly learn who know what and interesting problems they solve. 
@@ -41,11 +44,11 @@ List of Users asssigned to given list of roles
   
 4 I like mentoring/helping people at myst last job I have helped/metored 2 people about understanding ADF framefork and deployments issues. 
   I put a lot of efforts to understand tiny details before i have session with them. 
-  There are two motivational factors i consider first i dont want to come up ass not knowing thing and still mentoring/helping. 
-  I like building connection and helping someone I feel so good about it. 
+  There are two motivational factors i consider first i dont want to come up as not knowing thing and still mentoring/helping. 
+  I like building connection and helping someone and I feel so good about it. 
 
-5. good at documentation really lame to say that but i think having written docs helps a lot of people. This is again some sort of helping people 
-  so it motivates me to do it. 
+5. good at documentation really lame to say that but i think having written docs helps a lot of people. 
+   This is again some sort of helping people so it motivates me to do it. 
   
 Weakness : 
 pick something skill-based, not personality-based. 
