@@ -1,0 +1,52 @@
+int[] duplicate = nums.clone(); // nums is int[] it generates deep copy 
+
+Random rand = new Random();
+rand.nextInt(aux.size());
+
+// Map iterator
+Iterator<Map.Entry<Integer, Integer>> entries = map.entrySet().iterator();
+while (entries.hasNext()) {
+    Map.Entry<Integer, Integer> entry = entries.next();
+.....
+}
+
+
+The Integer, String, Float, Double, Byte, Long, Short, Boolean, and Character classes are all examples of an immutable class.
+By definition, you may not alter the value of an immutable object after its construction.
+
+
+Difference between 'public class' and 'class'?
+The first one makes it public, that is, visible to any other class. String, HashMap etc are all public classes. 
+The second one will result in your class being assigned the default visibility, 
+that is package-private (ie: accessible within the same package).
+
+Controlling Access to Members of a Class : 
+    What is the difference between 'public, protected, package-private and private' class MEMBERS in Java?
+    
+            │ Class │ Package │ Subclass │ Subclass │ World
+            │       │         │(same pkg)│(diff pkg)│ 
+────────────┼───────┼─────────┼──────────┼──────────┼────────
+public      │   +   │    +    │    +     │     +    │   +     
+────────────┼───────┼─────────┼──────────┼──────────┼────────
+protected   │   +   │    +    │    +     │     +    │         
+────────────┼───────┼─────────┼──────────┼──────────┼────────
+no modifier │   +   │    +    │    +     │          │    
+────────────┼───────┼─────────┼──────────┼──────────┼────────
+private     │   +   │         │          │          │    
+
+
+
+final - 
+    1 final class can't be inherited, 
+    2 final method can't be overridden in any of the inheriting classes. 
+        Methods are made final due to design reasons. 
+        Since private methods are inaccessible, they are implicitly final in Java. 
+        So adding final specifier to a private method doesn’t add any value.
+    3 final variable value can't be changed.
+
+static class - 
+You cannot use the static keyword with a class unless it is an inner class.
+A static inner class is a nested class which is a static member of the outer class.
+
+private class - 
+You cannot use the private keyword with a class unless it is an inner class.
