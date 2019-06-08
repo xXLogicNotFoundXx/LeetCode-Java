@@ -1,7 +1,7 @@
 STACK:
 Stack Memory in Java is used for static memory allocation and the execution of a thread. 
 It contains primitive values that are specific to a method and references to objects that are in a heap, 
-referred from the method.
+referred from the method. 
 Access to this memory is in Last-In-First-Out (LIFO) order. Whenever a new method is called, 
 a new block on top of the stack is created which contains values specific to that method,
 like primitive variables and references to objects.
@@ -24,7 +24,8 @@ Heap space in Java is used for dynamic memory allocation for Java objects and JR
 New objects are always created in heap space and the references to this objects are stored in stack memory.
 If heap space is full, Java throws java.lang.OutOfMemoryError
 Access to this memory is relatively slower than stack memory
-This memory, in contrast to stack, isn’t automatically deallocated. It needs Garbage Collector to free up unused objects so as to keep the efficiency of the memory usage
+This memory, in contrast to stack, isn’t automatically deallocated. It needs Garbage Collector to free up unused objects 
+so as to keep the efficiency of the memory usage
 Unlike stack, a heap isn’t threadsafe and needs to be guarded by properly synchronizing the code
 
 
