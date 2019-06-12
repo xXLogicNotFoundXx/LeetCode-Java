@@ -16,7 +16,7 @@ class Solution {
             K = K/10;
         }
        
-        // remeber our reslut is still in A we have to add that in a list 
+        // reslut is still in A we have to add that in a list 
         for(int i : A) 
             B.add(i);
         
