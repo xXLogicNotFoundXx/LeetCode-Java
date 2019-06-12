@@ -27,10 +27,13 @@ class Solution {
          
         if(map.containsKey(i)){ 
             for(int p : map.get(i)){  
+                
                 if(cycle[p] == true )   // Important 
                     return true; 
-                if(!visited.contains(p) && isCycle(p,map,visited,cycle))  // Important 
-                    return true; 
+                if(visited.contains(p)) // Important 
+                    continue;
+                if(isCycle(p,map,visited,cycle))
+                    return true;  
             }
         }
          
