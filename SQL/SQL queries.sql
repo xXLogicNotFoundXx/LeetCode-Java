@@ -32,7 +32,7 @@
   select class 
   from courses
   group by class
-  having count(distinct student)>=5;
+  having count(distinct student)>=5;  -- OR  count(class)>=5 if the students are distinct already
   
 -- 178. Rank Scores  : https://leetcode.com/problems/rank-scores/
   SELECT Score, (SELECT count(distinct Score) FROM Scores WHERE Score >= s.Score) Rank
