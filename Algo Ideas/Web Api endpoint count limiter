@@ -1,4 +1,7 @@
 https://leetcode.com/discuss/interview-question/124558/Uber-interview-question-Rate-Limiter
+
+https://www.educative.io/collection/page/5668639101419520/5649050225344512/5707274949492736
+
 Whenever you expose a web service / api endpoint, 
 you need to implement a rate limiter to prevent abuse of the service (DOS attacks).
 Implement a RateLimiter Class with an isAllow method. 
@@ -21,4 +24,7 @@ For thread safety you can use ConcurrentLinkedDeque.
 
 
 If you use hasmap for timestamp/1000 => sec then we dont get accurate result 
-for example for 1.8 sec to 2.8 sec 
+for example for 1.5 sec to 2.5 sec 
+
+
+
