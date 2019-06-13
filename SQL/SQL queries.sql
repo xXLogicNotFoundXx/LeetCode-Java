@@ -27,12 +27,19 @@
   left Join Orders O
   On C.Id = O.CustomerId
   Where O.CustomerId is null;
+  
 
 --  Classes More Than 5 Students : https://leetcode.com/problems/classes-more-than-5-students/
   select class 
   from courses
   group by class
   having count(distinct student)>=5;  -- OR  count(class)>=5 if the students are distinct already
+  
+  -- Duplicate emails 
+  Select Email From Person
+  Group by Email
+  Having count(Email) > 1;
+  
   
 -- 178. Rank Scores  : https://leetcode.com/problems/rank-scores/
   SELECT Score, (SELECT count(distinct Score) FROM Scores WHERE Score >= s.Score) Rank
