@@ -7,6 +7,9 @@ where u is the source node, v is the target node, and w is the time it takes for
 Now, we send a signal from a certain node K. How long will it take for all nodes to receive the signal? If it is impossible, return -1.
 Input: times = [[2,1,1],[2,3,1],[3,4,1]], N = 4, K = 2
 Output: 2
+
+Time Complexity: O(E log E) E is number of edges (times.length).  as potentially every edge gets added to the heap.
+Space Complexity: O(N+E)  the size of the graph (O(E)), plus the size of the other objects used (O(N)).
 */
 class Solution {
     class NextNode{
