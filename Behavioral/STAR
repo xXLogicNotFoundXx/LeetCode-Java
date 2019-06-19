@@ -11,7 +11,12 @@ I have friends working for amazon more than 3 years and have great things to say
 This company is full of challenges.. and if you like taking them its a fun place to be. Work pressure is subjective. 
 The only thing I can say is that there is enough work to do. If you can do it smartly there is no work pressure.
 
-Taking initiative or failed : 
+
+***** Accessibility TRAINING *****
+Where you failed /
+Helped the team /
+Taking initiative /
+
   Situation : 
     There were Accesibility bugs coming up on our product. They were assigned to all teammates and everyone was strugguling with those 
     inclusing me. 
@@ -24,32 +29,155 @@ Taking initiative or failed :
     We feel lot confident responding to accessibility bug and now all my teammates have all reliabled information/documentations 
     if they have to solve those bugs/
 
-Betterment of customer / diagree with manager 
+***************** Notification Audits *****************
+Customer Obsession / 
+Innovative /
+
+  S:
+  A lot of bug were coming saying why this notification was not deleivered and why is this delivered but not this. 
+  Why specific user is not getting emails. There were so many hrs we used to spend with support and customer OWC to figure out why.
+  Bu turning on fine logs .. going through the logs and coming with the reasons. 
+  Setting could be turned on off. 
+  T:
+    I was thinking what we can we do this to reduce this timing.
+    So I suggested an idea of having audit logs and having ESS scheduled job tu purge the requests old request. 
+  A:
+    So introduce a simple one table and took a snapshot of all the settings and user's information before passing down the call to another team. 
+    Wrote confluence page how to figure out the issues for specific users with sample sqls.
+    Wrote ESS job to purge old entries. 
+  R:
+    I was able to resolve almost all issues in matters of couple hrs.
+  
+***************** Notification with multiple languages UI PART *****************
+Betterment of customer  /
+Disagree with manager  /
+
   Notification with multiple languages
      Situation: 
-        I have handled the Notification with multiple languages. One of the things I did not like that customer has to change the session language to 
+        I have handled the Notification with multiple languages. 
+        One of the things I did not like that customer has to change the session language to 
         change the template body of a given language. 
      Task : 
-        I brough up this fact to my director and PM how it is very cumborsome and possibly irritating for customers. All language datas was 
+        I brough up this fact to my director and PM how it is very cumborsome and possibly irritating for customers. 
+        All language datas was 
         always handled by session language and thats how frameword worked.
      Action : 
-        After much of other dealines and work this got pushed out almost 5-6 months. I brought that back up with PM and PM confirmed that he has received compainls from customer about this. 
-        Still this wasnt on the priority list as it was more. I started creating APIs that sould handle different languages of save and edit. 
+        After much of other dealines and work this got pushed out almost 5-6 months. 
+        I brought that back up with PM and PM confirmed that he has received compainls from customer about this. 
+        Still this wasnt on the priority list as it was more. 
+        I started creating APIs that sould handle different languages of save and edit. 
      Result : 
-        When it was around 9 customers it started to get on priority list. But by that time i had initial API working so making that to a feature didnt take that long.
+        When it was around 9 customers it started to get on priority list. 
+        But by that time i had initial API working so making that to a feature didnt take that long.
+        
 
-Betterment of customer
+***************** Having meetings at night for customers otherside of the world *****************
+        Customer was in Kuwait and Support was from india  timing was not working out. 
+        Had a meeting at 2AM usa/Kuwait9am and resolved the issue. Customer was very happy that from developemnt team 
+        was so conirn about the customer satisfaction too.
+
+
+*****************  Users asssigned to given list of roles *****************
+Betterment of customer /
+Innovative /
+
   List of Users asssigned to given list of roles
         S: 
           Role and User management you can see user in a role and on user you can see what roles are assigned. 
           There was no way to see the list of User asssigned to given combinations of roles/privileges/resources. 
-        T: I checked how is this possible and is it feasible or would take too long ... 
-            well it was base idea but given long list of users and roles perfromace issues were clearly visible
-        A: Suggested that this will be nice thing to have. 
-        R: Month ago GRC is not doing that idea and i am their backend support from ASE. 
+        T:
+          I checked how is this possible and is it feasible or would take too long ... 
+          well it was base idea but given long list of users and roles perfromace issues were clearly visible.
+        A:
+          Suggested that this will be nice thing to have. 
+        R:
+          Month ago GRC is doing that idea and i am their backend support from ASE. 
         
-  I have done 2.am meetings with customers just to solve those bugs so that customer is not
-  
+***************** Notification Hidden copy ***************** 
+Disagreement  /
+innovative  /
+  S & T:
+    The default user category was provided outside of the box and had seed data init. 
+    default will get newly added seed data  but what about manually created category how would they get additional events and templates?
+    So the plan was to create sql script and keep adding missing event and notifications to the user created categories.
+  A : 
+    It was frowned upon to write sql scripts and upgrading a POD was taking a lot of time because of so many scripts. 
+    Knowing that management decided to have sql scripts and get exception on it. It talked about how this script will run every time and we have make returnable script and 
+    Maintaining it would be challaging and after few days of though process came up with the solution.
+    create two seeded copies and one would be hidden and one would be for default and there won’t be any operations on hidden copy.
+  R :
+    Manager loved this solution and and this approach to solve.  
+
+
+
+***************** Import/export user categories and notifications *****************
+
+
+
+***************** User Categories Notification backend and front end - Earn trust/ helping ***************** 
+Helped a teammate - earn trust /
+Dealt with poor performer /
+  S & T:
+    We had a enhancement request in a way that we can create User groups and that group would have its own password settings 
+    notification settings and own email templates. I was assigned the task for restructure of the tables and backend APIs. 
+    A junior engineer was assigned a task for developing UI. The speed at we both worked was very different. 
+    The dealine was tight for this one and i could see at the speed we goinf we wont be able to finish the project. 
+  A:
+    I asked if he need help and I can start implementing a Application module which sits on top of the backend APIs. 
+    He was reluctant at first but I offered a starbusck coffee it is easy to talk over the coffee than at a desk. 
+    So we had coffee and found out he was going through difficult time and I insisted that I would do the application module
+    and he doesnt have to worry about it. 
+ R:
+    We are very good friends now and more than just professional relations. 
+
+
+***************** DB design going from one language at time to multiple languages + user categories *****************
+difficult problems worked on / 
+Stressful situation / 
+unclear requirements / 
+
+  S & T: 
+    We were supporting a notification email one language at time you can create a template.
+    in the language you want and can enable that template. Mission was to support all installed languages in the system 
+    so that users would get an email notifications in their preferred language. 
+    So every tempalte would have all installed languages.
+    Moreover, we had user categories that would have their separate notifications. 
+    So instead of flat notifications settings and tempalte it became 1 level dependant on user category.
+    And customers can create as many groups they want. 
+    The default user category was provided outside of the box and had seed data init. 
+    default will get newly added seed data  but what about manually created category how would they get additional events and templates?
+    So the plan was to create sql script and keep adding missing event and notifications to the user created categories.
+  A:
+    1 by 1 started work through requirements and design. 
+    Very tight deadlines. 
+  R: 
+    Delivered with bang 
+
+
+***************** JWT project dues in 3 weeks *****************
+Stressful situation \ 
+unclear requirements \
+disagreements \ 
+
+  S & T :
+    I was assigned the project bcz of unplanned absence of our teammate and I was asked to take over the project.
+    Prior to this they had 1 month of of meeting and and intenal designs and roadmap which was still unclear when i started working 
+    on this project. I was handed out workin progress git commit and I no idea what is happening. The dealighnes were so tight. 
+    I had the disagreement about the tables names and some of the constraints and one missing column.
+    Which I showed that to my manager why and hows it is wrong. I knew that means the WIP commit was of no use to me anymore. 
+    So dealign became almsot just 2 week with me working on this almost by scratch. Though WIP gave me some star wont deny that.
+  A : 
+    Went through meeting notes, had to reques access to couple pages to my PM. 
+    Couple meeting with my boss to clarify doubt.
+    I communicated the changes and we all agreed on the change I will be making 
+    there were two types of unknown in this project creating tables and and 
+    creating entity object and VO objects with translations in it. 
+    I asked a help from one of my friends that worked on EO and VO had a meeting with him like an hrs. 
+  R: 
+    I was able to deliver the project on time. 
+    
+
+
 3 I am very social person so make a point to talk to all my team members and other teams too:
   Other teammates know me as compare to the people who have been there 7=10 year in irvine office. 
   I quickly learn who know what and interesting problems they solve. 
@@ -63,3 +191,12 @@ Betterment of customer
 5. good at documentation really lame to say that but i think having written docs helps a lot of people. 
    This is again some sort of helping people so it motivates me to do it. 
   
+
+What is your dream job?
+Where i can build cool things and genuine connections with people. 
+Wher i can call my team as my friends too and work towards common goal.
+Mentoring and coaching others that motivates me a lot ....
+
+What keeps you going?
+Helping people .. same story as Accesibility traning. 
+I go above and beyond if pople are relying on me. 
