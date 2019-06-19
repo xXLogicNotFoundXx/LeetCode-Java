@@ -1,3 +1,4 @@
+
 What about this team is interesting?
 This is new team so there are gonna be tons of problem to solve and it is gonna be fast paced.
 All the cloud technologies involved in elastic search It would be great to have hands on expirence on 
@@ -13,13 +14,14 @@ The only thing I can say is that there is enough work to do. If you can do it sm
 
 
 ***** Accessibility TRAINING *****
-Where you failed /
+Where you failed apologiese /
 Helped the team /
 Taking initiative /
 
   Situation : 
-    There were Accesibility bugs coming up on our product. They were assigned to all teammates and everyone was strugguling with those 
-    inclusing me. 
+    There were Accesibility bugs coming up on our product. 
+    They were assigned to all teammates and everyone was strugguling with those 
+    including me. 
   Task : 
     To solve these bugs. 
   Action : 
@@ -31,7 +33,7 @@ Taking initiative /
 
 ***************** Notification Audits *****************
 Customer Obsession / 
-Innovative /
+Invent and Simplify /
 
   S:
   A lot of bug were coming saying why this notification was not deleivered and why is this delivered but not this. 
@@ -49,6 +51,7 @@ Innovative /
     I was able to resolve almost all issues in matters of couple hrs.
   
 ***************** Notification with multiple languages UI PART *****************
+Invent and Simplify /
 Betterment of customer  /
 Disagree with manager  /
 
@@ -78,6 +81,7 @@ Disagree with manager  /
 
 
 *****************  Users asssigned to given list of roles *****************
+Invent and Simplify / 
 Betterment of customer /
 Innovative /
 
@@ -93,7 +97,8 @@ Innovative /
         R:
           Month ago GRC is doing that idea and i am their backend support from ASE. 
         
-***************** Notification Hidden copy ***************** 
+***************** Notification Hidden copy *****************  - Invent and Simplify
+Tell me about a time when you gave a simple solution to a complex problem.
 Disagreement  /
 innovative  /
   S & T:
@@ -131,7 +136,18 @@ Dealt with poor performer /
     We are very good friends now and more than just professional relations. 
 
 
-***************** DB design going from one language at time to multiple languages + user categories *****************
+***************** Difficult bug solved ***************** 
+Erratic behavior reset password page 
+System was behaving very erratic I sometimes would take a minute or sometimes a take 10 second to load the page.
+I had all the OWC with customer couple times but it worked good at scheduled time. 
+I asked their IT manager to give a user some privileges so they can create FINEST log session and do the steps. 
+I got Java mission control file I learned the tool how to use that 
+and found out that Oracle access manager was the one taking avg responding time significantly high. 
+Ended up talking to teams to figure out who manages this particular part turned out the OAM was running low and then 
+I had to contact cloud ops team to resolve this issue. 
+
+***************** Difficult project - DB design going from one language at time to multiple languages 
+                  + user categories *****************
 difficult problems worked on / 
 Stressful situation / 
 unclear requirements / 
@@ -200,3 +216,59 @@ Mentoring and coaching others that motivates me a lot ....
 What keeps you going?
 Helping people .. same story as Accesibility traning. 
 I go above and beyond if pople are relying on me. 
+
+
+*****************
+Tell me a time when you had to deal with a tight deadline and couldn't deliver in time? 
+  Talk about JWT project and how you pulled out from the current project which was IMPOrt export, 
+  other project I was working took a almost a week more bcz of JWT project unclear reqirements and and all that. 
+  I did apologies for that but they knew it was unavoidable. 
+  It was just unfortunate situation where there was no buffer for before deadlines. 
+  did silver transaction and talked to QA team and made sure they test both broze and silver. 
+
+*****************
+Tell me a time when you disagreed with your manager
+JWT, nitifaction multilanguage and Seeddata of notifications hidden copy 
+
+Tell me a time when you did something innovative
+Notification Audits, Combination of roles => to roles, 
+Mutilangage UI. 
+
+Tell me a time when you helped a peer
+Notification back end 
+
+
+*****************
+Tell the story of the last time you had to apologise to someone.
+        Why this gets asked: 
+          This question exposes two abilities: your willingness to admit to mistakes (no-one is perfect) 
+          and your ability to manage a team.
+
+        What you should say: 
+          Don't say you've never had to do it. That makes you look arrogant. 
+          Admit to a mistake, but place the emphasis on how you apologised and — 
+          even more importantly — what you did afterwards 
+          to fix the underlying issue.
+    
+    I missed a meeting at the office I was getting a coffee and wanted to take a walk. 
+    I was so focused on one customer bug and after solving i needed a break. 
+    By the time i returned meeting was over and i relized that seeing my emails 
+    Tt was genuinely unintentional and I was embarrassed, I immediately apologized and tried to clear the air with my boss.
+    I added the oracle calander on my personal phone and also had text services on and never missed a meeting after that. 
+    
+    JWT project pulled from current project which was IMPOrt export,
+    and couldnt deliver the second project on dealine. 
+    Apologies when i reply to message little late :/
+    
+    
+  
+*****************
+What would you do if you found out that your closest friend at work was stealing?
+  Why this gets asked: 
+    This measures your loyalty to the company versus your loyalty to an employee.
+    Both matter, but the second tends to matter more.
+  What you should say: 
+    Emphasise that you'd want to be clear about the nature of the offence before deciding on a response.
+
+
+
