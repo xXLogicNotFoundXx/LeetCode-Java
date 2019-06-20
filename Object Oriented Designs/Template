@@ -2,3 +2,8 @@ talking to inteviewer will give a lot of idea how you will build this up.
 get the requirements that gives the functions and variables needed in the class.   
 get the user and use cases this helps to understand system better. 
 draw raw classes before you start writting code.  
+
+identify system mein kaun kaun players hain, 
+woh saare tere objects honge so jo bhi objects hain unki classes
+aur second step kya hai ki unki interaction kya hai aapas mein
+uske baad mein interfaces dikha, abstract classes, etc
