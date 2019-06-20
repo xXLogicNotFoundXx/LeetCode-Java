@@ -1,3 +1,6 @@
+Be natural, perfect answers can often come off as disingenuous. So dont try get to perfect answer. 
+For behavioral and product questions, don't overspeak. Candidates who drone on are less interesting and don't appear confident. 
+This is a huge candidate killer. You have to appear confident in your answers. 
 
 What about this team is interesting?
 This is new team so there are gonna be tons of problem to solve and it is gonna be fast paced.
@@ -116,6 +119,10 @@ innovative  /
 
 
 ***************** Import/export user categories and notifications *****************
+FSM related. lot of reading about their architecture and documatition was old. 
+The reply from team wasnt that helpful at all. 
+Code base found out the recent project looked at the code. 
+and made sence out of it ... reverse engineering. 
 
 
 
@@ -230,12 +237,14 @@ Tell me a time when you had to deal with a tight deadline and couldn't deliver i
 Tell me a time when you disagreed with your manager
 JWT, nitifaction multilanguage and Seeddata of notifications hidden copy 
 
+*****************
 Tell me a time when you did something innovative
 Notification Audits, Combination of roles => to roles, 
 Mutilangage UI. 
 
+*****************
 Tell me a time when you helped a peer
-Notification back end 
+Notification back end and front end.
 
 
 *****************
@@ -256,12 +265,24 @@ Tell the story of the last time you had to apologise to someone.
     Tt was genuinely unintentional and I was embarrassed, I immediately apologized and tried to clear the air with my boss.
     I added the oracle calander on my personal phone and also had text services on and never missed a meeting after that. 
     
-    JWT project pulled from current project which was IMPOrt export,
+    JWT project pulled from current project which was import export,
     and couldnt deliver the second project on dealine. 
     Apologies when i reply to message little late :/
     
-    
+*****************
+Talk about a time you were criticized and how you handled it?
+S : 
+  Most of the times it happens in demos. 
+  I get diapproval of time it is taking to run and if we can make changes 
+  to and and question how you are doing this and why are you doing this. 
+T : 
+  I take down notes and see if I could do better. But as iHave grown i have become more selft critical. 
+  That I dont get much of disapprovals. 
   
+S:
+  
+
+
 *****************
 What would you do if you found out that your closest friend at work was stealing?
   Why this gets asked: 
@@ -270,5 +291,24 @@ What would you do if you found out that your closest friend at work was stealing
   What you should say: 
     Emphasise that you'd want to be clear about the nature of the offence before deciding on a response.
 
+*****************
+Talk about a time you went above-and-beyond a problem spec?
+Notification Mutilanguage UI, Roles -> user mapping, Accessibility training. 
+
+*****************
+Talk about how you've mentored.
+Writting a lot of confluence pages. 
+Share screenshots. 
+and one-on-one meetings. 
+
+****************
+Talk about a time you had to go down several layers/apis to solve a technical problem?
+notification are not sent bcz of some settings are that not part of ASE. 
+
+For notifications we were getting information in two trips.  
+Notification getAlert API was returning null for and the copy alert API was not coping the 
 
 
+**************
+Tell me how that project you were leading failed.
+Notification only one language at a time. 
