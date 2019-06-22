@@ -14,7 +14,8 @@ Inteview 1 :
       Time frame what you did?
       What did you sacrifice to deliver it?
   5 Coding : 
-    For given Matrix(+ve,-ve,duplicates) give me the all list of numbers that are sum to zero? 
+    For given Matrix(+ve,-ve,duplicates) give me the all lists of numbers that are sum to zero? 
+      I think it was combination sum II - https://leetcode.com/problems/combination-sum-ii/ but in matrix form. 
 
 Inteview 2 : 
   1 Tell me about the time where you didnt consult your manager and made the decision? 
@@ -46,10 +47,14 @@ Inteview 3 :
   
   3 Coding :
     On a matrix there are some friends (you are supposed to decide how you gonna mark that in a matrix) e.g. 1 
-    On a matrix there are blocked places ( you decide what you gonna mark )  eg. -1
-    On a matrix there are places that are open plots () eg. 0
+    On a matrix there are blocked places these places you cant buy or traverse through 
+        (you have to decide what you gonna mark) eg. -1 ()
+    On a matrix there are places that are open plots through this you can walk and buy that plot.
     The goal is to find the available place on a matrix that they can buy 
-    and is it the minimum total distance for all friends.
+      and it is the minimum TOTAL distance from that plot for all friends.
+    (So in theory, for each available plot you have to calculate distance to all friends and sum that all distances) 
+    If becauase of blocked plots, you cant reach all friends then you should return -1. 
+    
      
 Inteview 4 :    
   1 Tell me where there was a tight deadline and how you delivered it. (Repeat question) 
@@ -58,6 +63,7 @@ Inteview 4 :
   2 Tell me about the time - dont rember this one either but on similar lines. 
   3 Coding: 
       Given a string like "dir1/n/tsubdir1/n/tsubdir2/n/t/t/tfile.ext/ndir22/tsubdir1/n/tsubdir2/n/t/t/tfile.ext"
+      (file extension could be anything)
       return integer which is maximum length of a absolute path to a file.
       This string looked like : 
         dir1
@@ -68,9 +74,11 @@ Inteview 4 :
           subdir1
           subdir2
             file.ext
+        
        So, two files paths are : 
          1 dir1/subdir2/file.ext - length is 21 ( including /) 
-         2 dir11/subdir2/file.ext - length is 22 ( including /) 
+         2 dir11/subdir2/file.ext - length is 22 ( including /)
+         
        You are supposed to return 22.
        
       
