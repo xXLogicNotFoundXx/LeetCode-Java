@@ -1,0 +1,80 @@
+LP question 
+Inteview 1 : 
+  1 Tell me about yourself?
+  2 Why Amazon?
+  3 Tell me where you proposed an Idea and manager did not aprrove of it. 
+    Followup :
+      Why manager did not like it?
+      Why could have done better to convince him?
+      What did you do after he said no/didnt approve it? 
+  4 Tell me where there was a tight deadline and how you delivered it. 
+    Followup :   
+      He wanted to know why there was tight deadline?
+      What made this deadline very tight?
+      Time frame what you did?
+      What did you sacrifice to deliver it?
+  5 Coding : 
+    For given Matrix(+ve,-ve,duplicates) give me the all list of numbers that are sum to zero? 
+
+Inteview 2 : 
+  1 Tell me about the time where you didnt consult your manager and made the decision? 
+    Followup : (project realated decisions - like decising technology) 
+      Why manager wasn't involved?
+      Why did you make that decision? 
+      Why did you think that decistion was right?
+  2 Tell me about the time your manager wans't involved and you solved the problem.
+    Followup : (fixing bug related decision) 
+      Almost like similar but more like bug fix. 
+  4 Tell me about the time you exceeded the expectation? 
+     Followup : 
+        Why do you think that was exceeding the expectation? 
+        What could have you done better? 
+  5 System design :
+    Design a system that checks the health of 10,000 nodes. 
+    Each of 10,000 modes have an API exposed you have to call those apis for each node 
+    This API takes 1-5 seconds to respond and tell if it is alive and well. 
+
+Inteview 3 : 
+  1 Tell me about the time you went several level deep in API's and fixed the problem. 
+    Follow up : 
+      how did you track down the problem?
+      What API's did you go down?
+      How did you find the problem?
+      What did you do to fix the problem?
+  2 Tell me about the time - dont rember this one but on similar lines. 
+  
+  
+  3 Coding :
+    On a matrix there are some friends (you are supposed to decide how you gonna mark that in a matrix) e.g. 1 
+    On a matrix there are blocked places ( you decide what you gonna mark )  eg. -1
+    On a matrix there are places that are open plots () eg. 0
+    The goal is to find the available place on a matrix that they can buy 
+    and is it the minimum total distance for all friends.
+     
+Inteview 4 :    
+  1 Tell me where there was a tight deadline and how you delivered it. (Repeat question) 
+    I told him this is repeated question but he still wanted to ans me. 
+    He was cool to repeat the answer as well. 
+  2 Tell me about the time - dont rember this one either but on similar lines. 
+  3 Coding: 
+      Given a string like "dir1/n/tsubdir1/n/tsubdir2/n/t/t/tfile.ext/ndir22/tsubdir1/n/tsubdir2/n/t/t/tfile.ext"
+      return integer which is maximum length of a absolute path to a file.
+      This string looked like : 
+        dir1
+          subdir1
+          subdir2
+            file.ext
+        dir11
+          subdir1
+          subdir2
+            file.ext
+       So, two files paths are : 
+         1 dir1/subdir2/file.ext - length is 21 ( including /) 
+         2 dir11/subdir2/file.ext - length is 22 ( including /) 
+       You are supposed to return 22.
+       
+      
+          
+      
+
+  
