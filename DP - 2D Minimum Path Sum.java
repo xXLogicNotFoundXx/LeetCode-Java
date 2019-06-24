@@ -16,7 +16,17 @@ Input:
 
 Output: 7
 Explanation: Because the path 1→3→1→1→1 minimizes the sum.
+
+
+Approach 1: Brute Force
+The Brute Force approach involves recursion. For each element, we consider two paths, rightwards and downwards
+and find the minimum sum out of those two. It specifies whether we need to take a right step or downward 
+step to minimize the sum.
+
+Time complexity : O(2^m+n) For every move, we have atmost 2 options.
+Space complexity : O(m+n). Recursion of depth m+n. 
 */
+
 class Solution {
     
     public int minPathSum(int[][] grid) {
