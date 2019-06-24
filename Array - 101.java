@@ -1,3 +1,16 @@
+// Return true if and only if the given array ascending or descending
+class Solution {
+    public boolean isMonotonic(int[] A) {
+        boolean ascending = true;
+        boolean descending = true;
+        for(int j=1;j<A.length;j++){
+            ascending = ascending && (A[j-1]<=A[j]);
+            descending = descending && (A[j-1]>=A[j]);
+        }
+        return ascending || descending;
+    }
+}
+
 /*
 https://leetcode.com/problems/squares-of-a-sorted-array/
 977. Squares of a Sorted Array
