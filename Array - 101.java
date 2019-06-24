@@ -54,27 +54,22 @@ Input:  [0,2,3,4,6,8,9]
 Output: ["0","2->4","6","8->9"]
 Explanation: 2,3,4 form a continuous range; 8,9 form a continuous range.
     
-class Solution {
+public class Solution {
     public List<String> summaryRanges(int[] nums) {
-        List<String> ans = new ArrayList<>();
-        if(nums==null || nums.length==0)
-            return ans;
-        
-        for(int i=0;i<nums.length;){ // IMP no i++
-            String str = new String() + nums[i];
-            int j=i+1;
-            for(;j<nums.length;j++){
-                if(nums[j]-1!=nums[j-1])
-                    break;
-            }
-            if(nums[j-1] == nums[i]){
-                ans.add(str);
-            } else {
-                str = str+"->"+nums[j-1];
-                ans.add(str);
-            }
-            i=j;            
+        List<String> summary = new ArrayList<>();
+        for (int i, j = 0; j < nums.length; ++j){
+            i = j;
+            
+            // try to extend the range [nums[i], nums[j]]
+            while (j + 1 < nums.length && nums[j + 1] == nums[j] + 1)
+                ++j;
+            
+            // put the range into the list
+            if (i == j)
+                summary.add(nums[i] + "");
+            else
+                summary.add(nums[i] + "->" + nums[j]);
         }
-        return ans;
+        return summary;
     }
 }
