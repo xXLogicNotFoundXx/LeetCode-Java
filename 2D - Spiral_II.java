@@ -20,11 +20,13 @@ class Solution {
             right--;
             
             if(top<=bottom){    // IMP 
-                for(int i=right;i>=left;i--) list.add(a[bottom][i]);
+                for(int i=right;i>=left;i--) 
+                    list.add(a[bottom][i]);
                 bottom--;
             }
             if(left<=bottom){   // IMP 
-                for(int i=bottom;i>=top;i--) list.add(a[i][left]);
+                for(int i=bottom;i>=top;i--) 
+                    list.add(a[i][left]);
                 left++;
             }
         }
