@@ -1,10 +1,18 @@
-// https://leetcode.com/problems/remove-invalid-parentheses/ 
+/*
+https://leetcode.com/problems/remove-invalid-parentheses/ 
 Input: "()())()"
 Output: ["()()()", "(())()"]
-// Sol - https://leetcode.com/problems/remove-invalid-parentheses/discuss/75034/Easiest-9ms-Java-Solution
 
-// for First pass count which ones ( , ) to remove and how many 
-// then we do dfs with use it or dont use it. In the end we add result to set to avoid duplicate.  
+for First pass count which ones ( , ) to remove and how many 
+then we do dfs with use it or dont use it. In the end we add result to set to avoid duplicate.  
+
+Time Complexity : O(2^N)
+ since in the worst case we will have only left parentheses in the expression and for every bracket
+ we will have two options i.e. whether to remove it or consider it. 
+ Considering that the expression has N parentheses, the time complexity will be O(2^N).
+Space Complexity : O(N)
+ depth of the tree is gonna be N.
+*/
 class Solution { 
     public List<String> removeInvalidParentheses(String s) {
         int rmL = 0, rmR = 0;
