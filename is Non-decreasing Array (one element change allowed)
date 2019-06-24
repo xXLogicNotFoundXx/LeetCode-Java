@@ -5,7 +5,7 @@ We define an array is non-decreasing if array[i] <= array[i + 1] holds for every
 Example 1:
 Input: [4,2,3]
 Output: True
-Explanation: You could modify the first 4 to 1 to get a non-decreasing array.
+Explanation: You could modify the first 4 to 1  OR 4 to 2 to get a non-decreasing array.
 Example 2:
 Input: [4,2,1]
 Output: False
