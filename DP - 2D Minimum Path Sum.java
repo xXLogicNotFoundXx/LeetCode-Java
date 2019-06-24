@@ -25,6 +25,10 @@ step to minimize the sum.
 
 Time complexity : O(2^m+n) For every move, we have atmost 2 options.
 Space complexity : O(m+n). Recursion of depth m+n. 
+
+Approach 2: DP/ Memoizaton 
+Time complexity : O(m+n)
+Space complexity : O(m+n)
 */
 
 class Solution {
