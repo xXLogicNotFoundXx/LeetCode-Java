@@ -12,9 +12,11 @@ class Solution {
         int top=0,  bottom=a.length-1;
         
         while(left<=right && top<=bottom){
-            for(int i=left;i<=right;i++) list.add(a[top][i]); 
+            for(int i=left;i<=right;i++) 
+                list.add(a[top][i]); 
             top++;
-            for(int i=top;i<=bottom;i++) list.add(a[i][right]);
+            for(int i=top;i<=bottom;i++) 
+                list.add(a[i][right]);
             right--;
             
             if(top<=bottom){    // IMP 
