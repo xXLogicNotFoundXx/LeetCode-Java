@@ -46,7 +46,15 @@ final -
 
 static class - 
 You cannot use the static keyword with a class unless it is an inner class.
-A static inner class is a nested class which is a static member of the outer class.
-
+Static methods can not be overridden: 
+    When you defines a static method with same signature as a static method in base class, 
+    it is known as method hiding.
+        Parent obj1 = new Child(); 
+        // As per overriding rules this should call to class Child's staticMethod()  
+        // overridden method. Since static method can not be overridden, it  
+        // calls Parent's staticMethod()  
+        obj1.staticMethod();  
+        child's staticMethod() is hidden. 
+        
 private class - 
 You cannot use the private keyword with a class unless it is an inner class.
