@@ -28,6 +28,15 @@ from Weather t1
 join Weather t2 on (t1.RecordDate +1)=(t2.RecordDate )
 where t1.Temperature < t2.Temperature
 
+-- Write a SQL query to find all numbers that appear at least three times consecutively.
+-- https://leetcode.com/problems/consecutive-numbers/
+select distinct l1.num
+from Logs l1 
+    join Logs l2 on l1.id=l2.id-1 
+    join Logs l3 on l1.id=l3.id-2
+where l1.num=l2.num and l2.num=l3.num
+
+
 -- Customers Who Never Ordered : https://leetcode.com/problems/customers-who-never-order/
   Select C.Name As Customers
   From Customers C 
@@ -35,7 +44,6 @@ where t1.Temperature < t2.Temperature
   On C.Id = O.CustomerId
   Where O.CustomerId is null;  -- IMP "is null"
   
-
 --  Classes More Than 5 Students : https://leetcode.com/problems/classes-more-than-5-students/
   select class 
   from courses
@@ -71,6 +79,29 @@ select actor_id, director_id
 from actordirector
 group by actor_id, director_id
 having count(director_id) >=3
+
+-- Write an SQL query that reports the first login date for each player.
+-- https://leetcode.com/problems/game-play-analysis-i/
+select player_id, min(event_date)
+from Activity
+group by player_id
+
+-- Write a SQL query that reports the device that is first logged in for each player.
+-- https://leetcode.com/problems/game-play-analysis-ii/
+select player_id, device_id       
+from Activity a1
+where event_date=
+(select min(event_date) from Activity a2 where a1.player_id = a2.player_id group by player_id);
+
+-- Write an SQL query that reports for each player and date, how many games played so far by the player
+-- https://leetcode.com/problems/game-play-analysis-iii/
+SELECT player_id, event_date, (
+    SELECT SUM(games_played)    
+    FROM Activity a2
+    WHERE a1.player_id = a2.player_id AND a1.event_date >= a2.event_date
+    ) AS games_played_so_far
+FROM Activity a1
+
 
 -- 178. Rank Scores  : https://leetcode.com/problems/rank-scores/
   SELECT Score, (SELECT count(distinct Score) FROM Scores WHERE Score >= s.Score) Rank
