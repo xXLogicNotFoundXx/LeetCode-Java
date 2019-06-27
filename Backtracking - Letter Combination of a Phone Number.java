@@ -7,6 +7,7 @@ Input: "23"
 Output: ["ad", "ae", "af", "bd", "be", "bf", "cd", "ce", "cf"].
 */
 class Solution {
+    //  Time and space complexity = O(3^N * 4^M)
     public List<String> letterCombinations(String digits) {
         String[] mapping = new String[] {" ", "*", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz"}; 
         // LeetCode needed mapping 0->" " and 1->"*" you can ask whats the mapping they want
