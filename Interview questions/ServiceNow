@@ -7,16 +7,17 @@ Interview 2:
   What are you confirtable with sql,java, frameworks etc. 
 Interview 3:
   given string "+++--" give me total distance trversed. 
-  "+" is 1
-  "++" is 1+2=3 
-  "+++" is 1+2+3=6
-  "+++-" here minus is like you stoped and reversed direction so 1+2+3+0=6
+  "+" is you moved forward one step 1
+  "++" is you moved forward one step and then 2 steps so 1+2=3 
+  "+++" is you moved forward one step ,2 steps and 3 steps so 1+2+3=6
+  "+++-" here minus is like you stopped and reversed direction so 1+2+3+0=6
   "+++--" here last minus you moved backwords one step so 1+2+3+0-1=5
   "+++---" here last minus you moved backwords two steps so 1+2+3+0-1-2=3
-Inteview 4: (Cross buisness unit - video call , this one is very important bcz this interviewer has veto power)
+Inteview 4: (Cross BU(buisness unit) - video call , very important bcz this interviewer has veto power)
   Tell me about your self. 
   Tell me toughest problem you solved.
   What design patterns have you used talk about them.
-  On a Website UI perspective How do you increase the performance.
-  On a Website UI browser it is like single threaded program what technique it used to increase the performance. 
+  On a Website, UI perspective How do you increase the performance from client side persepctive.
+  On a Website UI browser it is like single threaded program what technique is used to increase the performance. 
+    (callback functions - aks promise) 
   
