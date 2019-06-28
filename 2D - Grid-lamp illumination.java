@@ -40,7 +40,7 @@ class Solution {
                       m3.getOrDefault(x-y, 0) > 0 || 
                       m4.getOrDefault(x+y, 0) > 0) ? 1 : 0;            
             
-            // switch off the lamps in 8 directions and th 
+            // switch off the lamps in 9 blocks if any 
             for(int d=0; d<dirs.length; d++){
                 int x1 = x + dirs[d][0];
                 int y1 = y + dirs[d][1];
