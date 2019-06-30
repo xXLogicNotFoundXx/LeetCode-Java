@@ -1,0 +1,101 @@
+Inteview 1: 1hr
+  System Design : Logging system where all dropbox teams would call this api and log the event/something. 
+  The log will be list of key value pairs from differnet teams.
+  Later on all these teams can query on logs saying give all the entries where key=value
+  Eavry log can have different keys and values.
+  For eg: 
+  team1 entry 1 :   { id : "user1", key1 : 123, key2:12.67 }
+  team2 entry 1 :   { userguid : "HAK8916", key22 : 123.34}
+  
+Inteview 2: 1hr
+  You have tocken bucket initialized with TokenBucket(int tokens, int refreshrate, int capaciy);
+  You have initial tokens then for every second refreshrate tokens are added and the capacity is max token a bucket can have. 
+  Write a "void get(int amount)" multithreaded function for TokenBucket class. 
+  We cant have system thread to fill up bucket as it is expensive have system thread.
+  So the thread which calls get() to get tokens also suppose to fill tokens in the bucket.
+  Another way to look at it : The problem is of producer and consumer 
+                              but same thread consumes and produces via one get() method.
+  Following is sample code that sort of does it but it can definitely be improved. 
+  Class TokenBucket{
+    float tokens;
+    float capacity;
+    float refreshrate;
+    int timestamp;
+    Object o = new new Object():
+    TokenBucket(int tokens, int refreshrate, int capaciy){
+      this.tokens = tokens;
+      this.refreshrate = refreshrate/1000; (convert refresh rate from sec to miliseconds)
+      this.capaciy = capaciy;
+      timestamp = System.getCurrentMilisec();
+    }
+    void get(int amount){
+      synchronize(o){
+        while(tokens<amount){
+          int diff = amount - tokens;
+          // calculate how long it should wait in miliseconds to get additional diff tokens 
+          // OR calculate tokens to be refrehed here and then wait 
+          o.wait(milisec);
+          // when thread wakes up fill up the tokens 
+          int curTime =  System.getCureentMilisec();
+          int timePassed = curTime-timestamp;
+          float addTokens = timepassed*refreshrate;
+          tokens = tokens+addTokens > capaciy ? capacity : tokens+addTokens ;
+          timestamp = curTime;
+        }
+        token=token-amount;
+      }
+    }
+  }
+  
+Interview 3 : 1hr
+  It was an hr lunch with one of the members. No technical question but background work.
+
+Inteview 4 : 1hr
+  Id allocator. Capacity 0-N. 
+  int Allocate() :  returns avilable ID within 0-N range.
+  int Release(int ID) : releases given ID and that ID becomes available for allocation. 
+  
+  How would you do it in O(1). After doing that the result was space (N). Actuall number of bites was 
+  Total bytes = N * 4(int ID) + overhead of set + overhead of queue.
+  Now interviewer asked that :
+  We want to save space we dont care about timecomplexisty how would you save space. 
+    Here I allocated N bits in byte array and every bit represents the ID from 0-N. 
+    bit value 0 represents avilable and 1 represent taken. The index/place of the bit in byte array represents int ID. 
+    The time complexity became O(N) because we have to traverse all byte array bit by bit 
+    and figure out which bit is availale and return the index/place of that bit in byte array. 
+  Now interviewer asked that :
+    Can we add some more space and improve rumtime instead of O(n); 
+    It was some trade of that i came up with eventually 
+    I came up with complete binary tree. 
+    node will represnet the range of bits .
+      ROOT node     (int val,  range 0-N)
+       - ROOT.left  (int val,  range 0 - mid) 
+       - ROOT.right (int val,  range mid+1 - N)
+     If the value of the node is 1 then that whole range is taken (IDs are allocated)
+     If the value of the node is 0 then there is a zero in the Node's range.
+      and then you do recursive traversal to left/right to find zero bit. 
+      
+     The time complexity becomes O(logN)
+     Space - the height is logN of the tree so : 
+             Node memory : logN * ( 4 (bytes left pointer) + 4 (bytes right) + 
+                                    4 (bytes val) + 8 ( bytes for range) )
+                                    
+     leter I realised that node could represent one BYTE instead of every bit.
+     so byte array can be presented in complete binary tree form.  
+     It was already 1 hr so we didnt discuss this approach further. 
+    
+Inteview 5 : 1hr 
+  Deep dive into the projects that I did. 
+  BTW, You have to give paragraph to recruiter before onsite about what project you gonna talk about in deep dive interview. 
+  We talked about why the project needed then DB design then UI & backend. 
+  Timeline of the projects. 
+  
+Interview 6 : 1 hr
+  It was behavioural question for an hr. 
+  
+Inteview 7 : 30 min 
+  Question and Answer with manager. 
+  This is not considered as an interview as such.
+  General disccusion about the projects manager is handling. 
+
+
