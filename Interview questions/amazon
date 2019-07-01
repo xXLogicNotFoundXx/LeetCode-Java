@@ -9,10 +9,10 @@ Inteview 1 :
       What did you do after he said no/didnt approve it? 
   4 Tell me where there was a tight deadline and how you delivered it. 
     Followup :   
-      He wanted to know why there was tight deadline?
       What made this deadline very tight?
-      Time frame what you did?
+      Time frame what you did week by week?
       What did you sacrifice to deliver it?
+        I said personal life by working long hrs but he wanted to know anything else besides that..
   5 Coding : 
     For given Matrix(+ve,-ve,duplicates) give me lists of numbers that are sum to zero? 
       https://leetcode.com/problems/combination-sum-ii/ but in matrix form. 
@@ -43,16 +43,19 @@ Inteview 3 :
       What API's did you go down?
       How did you find the problem?
       What did you do to fix the problem?
-  2 Tell me about the time - dont rember this one but on similar. 
+  2 Tell me about the time - dont rember this one but on similar lines. 
   
   
   3 Coding :
-    On a matrix there are some friends house(you are supposed to decide how you gonna mark that in a matrix) e.g. 1 
-    On a matrix there are blocked places these places you cant buy or traverse through (you have to decide what you gonna mark that in a matrix) eg. -1 ()
-    On a matrix there are places that are open plots through this you can walk and buy that plot.
-    The goal is to find the available place/block on a matrix that they can buy such that 
-      it is the minimum TOTAL distance from that plot for all friends.
-    If becauase of blocked plots, if you cant reach all friends from any of the plot in matrix then you should return -1. 
+    On a matrix : 
+      1 There are some friends are living and those are their houses.
+          (you are supposed to decide how you gonna mark that in a matrix) 
+      2 There are blocked places these places you can not buy or traverse through 
+        (you have to decide what you gonna mark that in a matrix)
+      3 There are places that are open plots through this you can walk and buy that plot.
+        (you have to decide what you gonna mark that in a matrix)
+    The goal is to find an empty place which reaches all friends which is shortest distance.
+    If you cant reach all friends from any of the plot in the matrix then you should return -1. 
     https://leetcode.com/problems/shortest-distance-from-all-buildings/
     
      
