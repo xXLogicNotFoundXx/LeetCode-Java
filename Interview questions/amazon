@@ -53,6 +53,7 @@ Inteview 3 :
     The goal is to find the available place/block on a matrix that they can buy such that 
       it is the minimum TOTAL distance from that plot for all friends.
     If becauase of blocked plots, if you cant reach all friends from any of the plot in matrix then you should return -1. 
+    https://leetcode.com/problems/shortest-distance-from-all-buildings/
     
      
 Inteview 4 :    
