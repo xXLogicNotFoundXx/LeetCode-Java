@@ -17,6 +17,14 @@ Output: false
 Input: ["c==c","b==d","x!=z"]
 Output: true
 
+https://en.wikipedia.org/wiki/Disjoint-set_data_structure
+A disjoint-set forest consists of a number of elements each of which stores an id, a parent pointer, 
+Find(x) follows the chain of parent pointers from x up the tree until it reaches a root element, whose parent is itself. 
+Path compression flattens the structure of the tree by making every node point to the root whenever Find is used on it. 
+This is valid, since each element visited on the way to a root is part of the same set. The resulting flatter tree speeds up 
+future operations not only on these elements, but also on those referencing them.
+// there is Union by ranking and size too but we havent used either of that here. 
+
 Time Complexity:
     Union Find Operation, amortized O(1)  bcz of path compression 
     First pass all equations, O(N)
