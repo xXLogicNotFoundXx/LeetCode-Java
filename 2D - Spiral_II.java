@@ -24,7 +24,7 @@ class Solution {
                     list.add(a[bottom][i]);
                 bottom--;
             }
-            if(left<=bottom){   // IMP 
+            if(left<=right){   // IMP 
                 for(int i=bottom;i>=top;i--) 
                     list.add(a[i][left]);
                 left++;
