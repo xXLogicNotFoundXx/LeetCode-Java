@@ -23,3 +23,11 @@ also , think trying to process from left and proceffing from right.
 Sometimes cominging two would give you a result or some time you hve to take better result from two of those approach. 
 e.g 2 pass - product except self 
 e.g candy crush
+
+
+
+go through corner test cases.
+
+Later you can talk about overflows of values. 
+
+Later you can talk about large set of numbers where it cant fit into the memory.
