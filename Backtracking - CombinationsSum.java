@@ -8,9 +8,9 @@ A solution set is:
 ]
 All numbers (including target) will be positive integers.
 The solution set must not contain duplicate combinations.
-This algorithm has time complexity O((n+k)!) where n is the size of candidates, 
-and k is the max repeated times for each candidates
-Space complexity O(m) where m is the size of array for the solution.
+all elements in the candidate array are distinct and the array size is n 
+C(n,1) + C(n,2) + ... + C(n,n) = 2^n - C(n,0) = O(2^n)
+
 */
 class Solution {
     public List<List<Integer>> combinationSum(int[] candidates, int target) {
