@@ -1,0 +1,18 @@
+Given 2x4 matrix contains numbers 1-8.
+For eg : 
+[4,2,6,5
+ 1,8,7,3]
+You have 3 operations:
+  1. Rotate : Middle 4 numbers rotate once in clockwise manner 
+      [4,2,6,5              [4,8,2,5
+       1,8,7,3] becomes =>   1,7,6,3]
+  2. Swap : swaps the two arrays
+      [4,2,6,5              [1,8,7,3
+       1,8,7,3] becomes =>   4,2,6,5]
+  3. Right Shift : 
+      [4,2,6,5              [5,4,2,6,
+       1,8,7,3] becomes =>   3,1,8,7]
+
+Your goal is to reach:
+[1,2,3,4
+ 5,6,7,8]
