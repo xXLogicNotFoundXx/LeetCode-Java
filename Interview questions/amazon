@@ -14,7 +14,7 @@ Inteview 1 :
       What did you sacrifice to deliver it?
         I said personal life by working long hrs but he wanted to know anything else besides that..
   5 Coding : 
-    For given Matrix(+ve,-ve,duplicates) give me lists of numbers that are sum to zero? 
+    For given Matrix(+ve,-ve,duplicates) give me lists of numbers that sums to zero? 
       https://leetcode.com/problems/combination-sum-ii/ but in matrix form. 
 
 Inteview 2 : 
@@ -35,6 +35,8 @@ Inteview 2 :
     Design a system that checks the health of 10,000 nodes. 
     Each of 10,000 modes have an API exposed that you have to call and check the health. 
     This API takes 1-5 seconds to respond. 
+    There is UI which tells which nodes are healthy OR not healthy. 
+    Your system should provide API for this UI.
 
 Inteview 3 : 
   1 Tell me about the time you went several level deep in API's and fixed the problem. 
@@ -49,13 +51,13 @@ Inteview 3 :
   3 Coding :
     On a matrix : 
       1 There are some friends are living and those are their houses.
-          (you are supposed to decide how you gonna mark that in a matrix) 
+        (you are supposed to decide how you gonna mark that in a matrix) 
       2 There are blocked places these places you can not buy or traverse through 
         (you have to decide what you gonna mark that in a matrix)
       3 There are places that are open plots through this you can walk and buy that plot.
         (you have to decide what you gonna mark that in a matrix)
-    The goal is to find an empty place which reaches all friends which is shortest distance.
-    If you cant reach all friends from any of the plot in the matrix then you should return -1. 
+    The goal is to find an empty place which reaches all friends in collectively shortest distance.
+    If you can't reach all friends from any of the plot in the matrix then you should return -1. 
     https://leetcode.com/problems/shortest-distance-from-all-buildings/
     
      
@@ -86,8 +88,7 @@ Inteview 4 :
          
        You are supposed to return 22.
        
-      
-          
+Result: Reject    
       
 
   
