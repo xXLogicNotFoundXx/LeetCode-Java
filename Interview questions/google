@@ -16,3 +16,7 @@ You have 3 operations:
 Your goal is to reach following state and tell how many operations would it take to reach that state.
 [1,2,3,4
  5,6,7,8]
+ 
+ Similar to : 
+ https://leetcode.com/problems/sliding-puzzle/
+ https://leetcode.com/problems/open-the-lock/
