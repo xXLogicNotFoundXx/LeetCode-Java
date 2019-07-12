@@ -17,6 +17,13 @@ snake.move("D"); -> Returns 0
 snake.move("R"); -> Returns 1 (Snake eats the first food and right after that, the second food appears at (0,1) )
 | |F| |
 | |S|S|
+snake.move("U"); -> Returns 1
+| |F|S|
+| | |S|
+snake.move("L"); -> Returns 2 (Snake eats the second food)
+| |S|S|
+| | |S|
+snake.move("U"); -> Returns -1 (Game over because snake collides with border)
 */
 class SnakeGame {
 
