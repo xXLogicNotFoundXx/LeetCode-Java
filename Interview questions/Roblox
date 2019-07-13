@@ -1,13 +1,13 @@
 Interview 1: 
   Pattern and String matching 
-  pattern a? -> means you can match 0-K occurances of a char 
+  pattern a? -> means you can match 0-K occurances of char 'a'. 
   pattern "a?b" String "b" is true  
   
 Inteview 2: 
   System design : design a system for product review.
     1. UI has product details page it has 
         a. thumps up, thumps down button so that user can rate the product.
-        b. thete is a scale ---- which shows the likeness of the product.
+        b. there is a scale like 5 bars ... which shows the likeness of the product.
     2. There is another UI which gives all the users in sorted order by number of reviews they gave so far. 
     
     Design database table and API and system for this. 
@@ -35,6 +35,7 @@ Inteverview 4 :
     
 Inteview 5:
     Talking about roblox and the team. 
+    They are truing to build analytics for suggesting games to user. So how would I do that?
     What they are trying to do and how I would go about it. 
     
     
