@@ -49,7 +49,7 @@ Round 2 (45 min):
   Give me the path and number of maximum gold collected.
   Path could end anywhere not necessariliy (n-1,n-1).
  
-  Similar to this : 
+  Similar to this (but maxpath which could end anywhere with 0s that you cant visit) : 
   https://leetcode.com/problems/minimum-path-sum/
  
 Round 3 (45 min):
@@ -73,7 +73,7 @@ Round 4 (45 min):
  This opened whole lot of can of worms. 
  Cache invalidation is a nightmare in a distrubuted cache. (try to avoid as much as you can and try to use local cache.) 
 
- Useful links : 
+ Useful links for System Design: 
  https://www.educative.io/collection/page/5668639101419520/5649050225344512/5651874166341632
  Personally I think you need way more depth than whats is in that educative link.
  This is useful too https://www.youtube.com/watch?v=lBAwJgoO3Ek
