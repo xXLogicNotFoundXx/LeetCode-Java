@@ -1,3 +1,20 @@
+Phone : 
+  https://leetcode.com/problems/find-duplicate-file-in-system/
+    Code was not supposed to run/compile but it was writting whole code and making sure that it would run. 
+    I had to ask for different api like listFiles(), openFile(), isDirectory(), SHA256(file), 
+    
+    Followup 1:
+    Calculating SHA256(file) is gonna take a lot of time, how will you modify your solution? 
+    You can build a map on size of the files Map<Integer, Set<String>>  those are candidates that could be the same.
+    The size has only one files can be removed without calculating SHA256() of the file. 
+    If there are more than 2 files, compute SHA256() of every file.
+    I had to write this code too. I just modified the solution i gave before follow up.
+    
+    Followup 2: if any files with the same size have the same hash, how do you make sure those are duplicates?
+    There is no way you have to compare those files byte by byte. 
+    
+  
+ONSITE : 
 Inteview 1: 1hr
   System Design : Logging system where all dropbox teams would call this api and log the event/something. 
   The log will be list of key value pairs from differnet teams.
@@ -56,7 +73,8 @@ Inteview 4 : 1hr
   int Allocate() :  returns avilable ID within 0-N range.
   int Release(int ID) : releases given ID and that ID becomes available for allocation. 
   
-  How would you do it in O(1). After doing that the result was space (N). Actuall number of bites was 
+  Write O(1) solution. After doing that the result was space (N). 
+  I had solved this one so gave the solution : 
   Total bytes = N * 4(int ID) + overhead of set + overhead of queue.
   Now interviewer asked that :
   We want to save space we dont care about timecomplexisty how would you save space. 
