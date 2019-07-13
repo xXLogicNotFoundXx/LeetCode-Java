@@ -2,13 +2,13 @@ Inteview 1: 1hr
   System Design : Logging system where all dropbox teams would call this api and log the event/something. 
   The log will be list of key value pairs from differnet teams.
   Later on all these teams can query on logs saying give all the entries where key=value
-  Eavry log can have different keys and values.
+  Every log can have different keys and values.
   For eg: 
   team1 entry 1 :   { id : "user1", key1 : 123, key2:12.67 }
   team2 entry 1 :   { userguid : "HAK8916", key22 : 123.34}
   
 Inteview 2: 1hr
-  You have tocken bucket initialized with TokenBucket(int tokens, int refreshrate, int capaciy);
+  You have token bucket initialized with TokenBucket(int tokens, int refreshrate, int capaciy);
   You have initial tokens then for every second refreshrate tokens are added and the capacity is max token a bucket can have. 
   Write a "void get(int amount)" multithreaded function for TokenBucket class. 
   We cant have system thread to fill up bucket as it is expensive have system thread.
@@ -48,7 +48,7 @@ Inteview 2: 1hr
   }
   
 Interview 3 : 1hr
-  It was an hr lunch with one of the members. No technical question but background work.
+  It was an hr lunch with one of the members. No technical question but work related talk.
 
 Inteview 4 : 1hr
   Id allocator. Capacity 0-N. 
@@ -96,6 +96,6 @@ Interview 6 : 1 hr
 Inteview 7 : 30 min 
   Question and Answer with manager. 
   This is not considered as an interview as such.
-  General disccusion about the projects manager is handling. 
+  General disccusion about the projects tht manager is handling. 
 
 
