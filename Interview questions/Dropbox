@@ -1,16 +1,20 @@
 Phone : 
   https://leetcode.com/problems/find-duplicate-file-in-system/
     Code was not supposed to run/compile but it was writting whole code and making sure that it would run. 
-    I had to ask for different api like listFiles(), openFile(), isDirectory(), SHA256(file), 
+    I had to ask for different api like listFiles(), openFile(), isDirectory(), SHA256(file).
+    I wrote the solution where you dont store the content of the file in hash map you store hashCode[SHA256] of the file. 
     
     Followup 1:
-    Calculating SHA256(file) is gonna take a lot of time, how will you modify your solution? 
+    What is would take more time in this algorith? 
+    Reading the whole file and calcluating hash of that file. 
+    How will you modify your solution to improve this? 
     You can build a map on size of the files Map<Integer, Set<String>>  those are candidates that could be the same.
     The size has only one files can be removed without calculating SHA256() of the file. 
     If there are more than 2 files, compute SHA256() of every file.
-    I had to write this code too. I just modified the solution i gave before follow up.
+    I had to write this code too. I just modified the solution I gave before.
     
-    Followup 2: if any files with the same size have the same hash, how do you make sure those are duplicates?
+    Followup 2: 
+    If any files with the same size have the same hash, how do you make sure those are duplicates?
     There is no way you have to compare those files byte by byte. 
     
   
