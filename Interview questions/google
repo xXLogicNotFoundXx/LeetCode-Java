@@ -64,7 +64,8 @@ Round 3 (45 min):
   
 Round 4 (45 min):
  System Design - ticketmaster like fandango but for concert tickets.  
- System shows 10 avialable tickets to the user for 2 mins. Those are available to another user after 2 mins. 
+ System shows 10 avialable tickets to the user1 for 2 mins. 
+ Those 10 tickets are not available to other users for those 2 mins. after 2 mins those 10 tickets becomes available to show.  
  He was very intereseted in how I design the tables and API. 
  The problem he was interseted in to solve was:
   how do you track what available seats you are showing to different users and once the timer is expired how you make those avialable.
