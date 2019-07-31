@@ -4,9 +4,9 @@ get the user and use cases this helps to understand system better.
 draw raw classes before you start writting code.  
 
 identify system mein kaun kaun players hain, 
-woh saare tere objects honge so jo bhi objects hain unki classes
+woh saare  objects honge so jo bhi objects hain unki classes
 aur second step kya hai ki unki interaction kya hai aapas mein
-uske baad mein interfaces dikha, abstract classes, etc
+uske baad mein interfaces dikhana hain, abstract classes, etc
 
 Interviewers are looking for one main thing: finding the right balance between a solution that works immediately and is also adaptable to change in the future.
 
