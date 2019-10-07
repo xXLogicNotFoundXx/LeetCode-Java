@@ -1,5 +1,5 @@
     
-Karat For Josh Roblox : 
+Karat - Josh for Roblox : 
   1 Give the N list of [parent,child] (this forms a graph).... return root nodes. 
   2 With that same list now given 2 nodes as input check if they have common ancestor. return true/false 
   
@@ -36,7 +36,7 @@ Turo :
     Talk about what happend when you go to some site what happens. 
         https://www.youtube.com/watch?v=T4Df5_cojAs
         How the certificated are issues and all. 
-        Your browser or OS comes with preinstalled certificated. 
+        Your browser or OS comes with preinstalled certificates. 
         The first criteria is easy to check. Your browser has a pre-installed list of trusted SSL certificates from 
         Certificate Authorities (CAs) that you can view, add and remove from. These certificates are controlled by 
         a centralised group of (in theory, and generally in practice) extremely secure, 
