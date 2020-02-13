@@ -3,16 +3,16 @@ Try some dummy inputs and see if you are answering those questions right .....
 Ask more questions for invalid inputs .. or say you are assuming valid input for simplicity ...
 
 if an array 
-  1 always ask if there are duplicates or ask if there are duplicates.
+  1 always ask if there are duplicates 
   2 always ask if there are negative number 
-  3. alsways consider 0 as input (usually 0 is an edge case)
+  3 always consider 0 as input (usually 0 is an edge case)
 
 Think if you can do 2+ passes on data set and figure out if you can solve?
 
 alwasy think is stack or Queue before you go to more complex DS.
 
 there are problems sometimes there are special cases where you dont want to run it when i=0 or 
-when you want when i==n. Remeber you can just ass that condition  with existing condtion 
+when you want when i==n. Remeber you can just ask that condition  with existing condtion 
 if(i!=0 && someCondition){  // 3SUM problem 
 }
 OR
