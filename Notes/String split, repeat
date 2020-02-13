@@ -14,3 +14,7 @@ because . is special character that matches everything
  return only words : 
  String str = "id-INT, name-STRING,";
  [id, INT, name, STRING]
+
+
+StringBuilder str = new StringBuilder(new String(".").repeat(size));
+This is good to have when you need base case with 'n' repeat characters OR String.
