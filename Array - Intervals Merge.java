@@ -59,13 +59,7 @@ intevals are not sorted.
             merged.add(interval);
         }
         
-        int i=0;
-        int[][] ans = new int[merged.size()][2];
-        for(int[] intr : merged){
-            ans[i][0] = intr[0];
-            ans[i++][1] = intr[1];
-        }
-        return ans;
+        return merged.toArray(new int[merged.size()][]); // smart way to do it
     }
 }
 
