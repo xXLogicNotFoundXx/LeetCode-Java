@@ -11,13 +11,13 @@ class Solution {
         int[] toAdd = newInterval;
         
         for (int i = 0; i < intervals.length; i ++) {
-			/*1. No overlap and toAdd appears before current interval, add toAdd to result.*/
+	    /*1. No overlap and toAdd appears before current interval, add toAdd to result.*/
             if (intervals[i][0] > toAdd[1]) {
                 ans.add(toAdd);
                 toAdd = intervals[i];
             }
             /*2. Has overlap, update the toAdd to the merged interval.*/
-			else if (intervals[i][1] >= toAdd[0]){  
+	    else if (intervals[i][1] >= toAdd[0]){  
                 toAdd = new int[] {Math.min(intervals[i][0], toAdd[0]),
                                    Math.max(intervals[i][1], toAdd[1]) };
             }
