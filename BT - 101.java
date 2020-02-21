@@ -1,5 +1,45 @@
+
+/*
+https://leetcode.com/problems/diameter-of-binary-tree/
+The diameter of a tree is the number of nodes on the longest path between two leaves in the tree.
+Diameter of Binary Tree
+          1
+         / \
+        2   3
+       / \     
+      4   5    
+Return 3, which is the length of the path [4,2,1,3] or [5,2,1,3].
+
+Note : Root element does not count
+Note : Diameter path may or may not pass through the root of the tree.
+
+*/
+class Solution {
+    int ans;
+    public int diameterOfBinaryTree(TreeNode root) {
+        if(root==null) return 0;
+        maxHeight(root);
+        return ans;
+    }
+    
+    int maxHeight(TreeNode root){
+        if(root==null) return 0;
+        
+        int left = maxHeight(root.left);
+        int right = maxHeight(root.right);
+        
+        ans = Math.max(ans,left+right); 
+        
+        return Math.max(left,right)+1;
+    }
+}
+/*
+Height VS Depth 
+https://stackoverflow.com/questions/2603692/what-is-the-difference-between-tree-depth-and-height
+
 https://leetcode.com/problems/maximum-depth-of-binary-tree/submissions/
-Retrun max depth of the BT 
+Retrun max depth of the BT OR Height of the BT
+*/
 class Solution {
     public int maxDepth(TreeNode root) {
         if(root==null) return 0;
@@ -46,7 +86,7 @@ class Solution {
     }
 }
 
-https://leetcode.com/problems/find-bottom-left-tree-value/
+//https://leetcode.com/problems/find-bottom-left-tree-value/
 class Solution {
     public int findBottomLeftValue(TreeNode root) {
         Queue<TreeNode> queue = new LinkedList<>();
@@ -150,7 +190,7 @@ class Solution {
     }
 }
 
-
+/*
 https://leetcode.com/problems/merge-two-binary-trees/
 Given two binary trees and imagine that when you put one of them to cover the other, some nodes of the two trees are overlapped
 while the others are not. You need to merge them into a new binary tree. 
@@ -173,7 +213,7 @@ Merged tree:
 	   4   5
 	  / \   \ 
 	 5   4   7
-   
+ */ 
 class Solution {
     public TreeNode mergeTrees(TreeNode t1, TreeNode t2) {
         if(t2==null)
@@ -187,8 +227,8 @@ class Solution {
     }
 }
 
-IsBinarySeacrhTree?
-https://leetcode.com/problems/validate-binary-search-tree/
+// IsBinarySeacrhTree?
+// https://leetcode.com/problems/validate-binary-search-tree/
 class Solution {
     public boolean isValidBST(TreeNode root) {
         return isValidBST(root,Long.MAX_VALUE,Long.MIN_VALUE);
