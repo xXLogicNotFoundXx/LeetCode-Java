@@ -1,4 +1,8 @@
 /*
+Median first we need to sort the list in ascending or descending order. 
+If the number of elements are even, then the median will the average of two numbers in the middle. 
+But the number is odd then the middle element of the array after sorting will be considered as the median.
+
 https://leetcode.com/problems/median-of-two-sorted-arrays/
 https://www.youtube.com/watch?v=LPFhl65R7ww
 X - x1, x2,| x3, x4, x5
