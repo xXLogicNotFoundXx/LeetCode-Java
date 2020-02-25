@@ -40,8 +40,6 @@ class Solution {
 /*
 https://leetcode.com/problems/rotate-array/
 
-
- -- reverse whole string revese 0-(K-1) then K-n
 class Solution {
     public void rotate(int[] nums, int k) {
         k %= nums.length;
