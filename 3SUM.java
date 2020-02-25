@@ -94,8 +94,10 @@ public int threeSumCombination(int[] A, int target) {
         int j = i + 1;
         int k = A.length - 1;
         while (j < k) {
-            if (A[j] + A[k] < target - A[i]) { ++j; }
-            else if (A[j] + A[k] > target - A[i]) { --k; }
+            if (A[j] + A[k] < target - A[i]) 
+                ++j; 
+            else if (A[j] + A[k] > target - A[i]) 
+                --k; 
             else {
                 if (A[j] == A[k]) {
                     // If A[j...k] are all equal, then there are combinations of C(k - j + 1, 2) 
