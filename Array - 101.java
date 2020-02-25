@@ -27,7 +27,7 @@ class Solution {
         
         int[] result = new int[A.length];
         int i = 0, j = A.length - 1;
-        for (int p = j; p >= 0; p--) {
+        for (int p = A.length - 1; p >= 0; p--) {
             if (A[i]*A[i] > A[j]*A[j]) 
                 result[p] = A[i] * A[i++];
             else 
