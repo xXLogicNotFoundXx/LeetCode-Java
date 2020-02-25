@@ -85,7 +85,7 @@ NOTE :
 To calculate combinations, we will use the formula C(n,r)   nCr = n! / (r! * (n - r)!), Also noted as C(n,r).
 where n represents the total number of items, and r represents the number of items being chosen at a time.
 */ 
-public int threeSumMulti(int[] A, int target) {
+public int threeSumCombination(int[] A, int target) {
     // This one is worst N^2  but takes  60ms 
     Arrays.sort(A);
     
