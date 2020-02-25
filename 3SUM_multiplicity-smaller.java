@@ -76,4 +76,32 @@ For example, a + b + c = T can be rewritten to a + c + b = T if index of b is gr
 https://leetcode.com/problems/3sum-smaller/
 Given an integer array A, and an integer target, return the number of tuples i, j, k  
 such that i < j < k and A[i] + A[j] + A[k] < target.
+Complexity analysis
+Time complexity : O(n2). 
+The twoSumSmaller function takes O(n) time because both left and right traverse at most n steps. 
+Therefore, the overall time complexity is O(n2).
+Space complexity : O(1).
 */
+
+    public int threeSumSmaller(int[] nums, int target) { Arrays.sort(nums);
+        int sum = 0;
+        for (int i = 0; i < nums.length - 2; i++) {
+            sum += twoSumSmaller(nums, i + 1, target - nums[i]); 
+        }
+        return sum; 
+    }
+
+    private int twoSumSmaller(int[] nums, int startIndex, int target) { 
+        int sum = 0;
+        int left = startIndex;
+        int right = nums.length - 1; 
+        while (left < right) {
+            if (nums[left] + nums[right] < target) { 
+                sum += right - left;
+                left++;
+            } else {
+                right--;
+            } 
+        }
+        return sum; 
+    }
