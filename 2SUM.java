@@ -21,8 +21,9 @@ class Solution {
     }
 }
 /*
+https://leetcode.com/problems/two-sum-less-than-k/
 Given an array of integers, how many pairs are there whose sum is less than K.
-n*Log(n)
+Time : n*Log(n)
 */
 int findSmallerPairs(int arr[], int K) { 
     Arrays.sort(arr);
