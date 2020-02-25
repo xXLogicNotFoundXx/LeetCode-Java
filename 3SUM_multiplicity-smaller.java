@@ -77,10 +77,17 @@ https://leetcode.com/problems/3sum-smaller/
 Given an integer array A, and an integer target, return the number of tuples i, j, k  
 such that i < j < k and A[i] + A[j] + A[k] < target.
 Complexity analysis
-Time complexity : O(n2). 
+Time complexity : O(n^2). 
 The twoSumSmaller function takes O(n) time because both left and right traverse at most n steps. 
-Therefore, the overall time complexity is O(n2).
+Therefore, the overall time complexity is O(n^2).
 Space complexity : O(1).
+
+nums = [1, 2, 3, 5, 8], and target = 7.
+
+[1,  2,   3, 5,  8]
+ i   left       right 
+ target= 7-a[i] = 6 
+
 */
 
     public int threeSumSmaller(int[] nums, int target) { 
