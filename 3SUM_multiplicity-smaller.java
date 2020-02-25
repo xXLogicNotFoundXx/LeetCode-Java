@@ -4,9 +4,7 @@ Given an integer array A, and an integer target, return the number of tuples i, 
 such that i < j < k and A[i] + A[j] + A[k] == target.
 As the answer can be very large, return it modulo 10^9 + 7.
 Time : O(n^2)
-Space : O(n^2)
-
-Random Note : To calculate combinations, we will use the formula C(n,r)   nCr = n!/(r!*(n-r)!), Also noted as C(n,r).        
+Space : O(n^2)    
 */
 
 class Solution {
