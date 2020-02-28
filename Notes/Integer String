@@ -1,0 +1,14 @@
+Integer String Long are immutable objects. 
+There's no such method like IntegerObj.set(i). 
+
+someFunction(){
+  Integer i = new Integer(0);
+  someFunction2(i);
+  // here i is still 0 
+}
+someFunction2(Integer i){
+  i= 5; // wont change the value of an i
+}
+
+Remeber INT_MIN = -INT_MIN 
+Also % operator retians the -ve sign of first number -1%2 = 1 but 1%-2 = 0
