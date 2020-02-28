@@ -1,4 +1,10 @@
-class Solution {
+/*
+https://leetcode.com/problems/4sum/
+
+Given an array nums of n integers and an integer target, are there elements a, b, c,and d 
+such that a + b + c + d = target? Find all unique quadruplets in the array which gives the sum of target.
+
+*/class Solution {
     public List<List<Integer>> fourSum(int[] numbers, int target) {
         List<List<Integer>> result = new ArrayList<List<Integer>>();
         Arrays.sort(numbers);
