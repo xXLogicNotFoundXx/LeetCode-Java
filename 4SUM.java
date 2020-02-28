@@ -21,8 +21,10 @@ class Solution {
                         tuple.add(numbers[right]);
                         result.add(tuple);
                         
-                        while(left<right && numbers[left]==numbers[left+1])left++; //skipping over duplicate on left right will move automatically 
-                        left++; // Very important or else goes in infinite loop 
+                        while(left<right && numbers[left]==numbers[left+1])
+                            left++; //skipping over duplicate on left right will move automatically 
+                        
+                        left++; 
                     } else if (sum < target) {
                         left++;
                     } else {
