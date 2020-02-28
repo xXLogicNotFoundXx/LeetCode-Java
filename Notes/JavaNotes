@@ -1,3 +1,10 @@
+Integer String Long are immutable objects. 
+There's no such method like IntegerObj.set(i). 
+
+https://www.geeksforgeeks.org/how-to-pass-integer-by-reference-in-java/
+
+Also % operator retians the -ve sign of first number -1%2 = 1 but 1%-2 = 0
+
 int[] duplicate = nums.clone(); // nums is int[] it generates deep copy 
 
 Random rand = new Random();
