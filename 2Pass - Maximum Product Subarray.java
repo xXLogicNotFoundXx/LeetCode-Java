@@ -18,7 +18,8 @@ class Solution {
                 prod = 1;
         }
         prod = 1;
-        for(int i = nums.length - 1; i >= 0; i--) {
+        // we need second pass from right to left for input like [3,-1,4]
+        for(int i = nums.length - 1; i >= 0; i--) { 
             prod = prod * nums[i];
             result = Math.max(prod, result);
             if(prod == 0) 
