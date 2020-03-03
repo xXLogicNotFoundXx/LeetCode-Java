@@ -6,8 +6,8 @@ you can split the array into m non-empty continuous subarrays.
 Write an algorithm to minimize the largest sum among these m subarrays.
 */
 // This is almost like the problem where we try to find number of days for shipping all packages 
-// l = max number of array; 
-// r = sum of array;
+// l = max number in an array;  (this is the minimum largest_sum you gonna get [m>=nums.length]) 
+// r = sum of all array numbers; ( this is the maximum largest_sum you gonna get [when m=1]) 
 // mid = (l + r) / 2; see if we can divide it into m subarrays 
 // if we can do  r = mid-1;    // we need to find minimum 
 // if not do     l = mid+1; 
