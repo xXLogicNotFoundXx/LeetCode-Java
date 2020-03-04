@@ -10,8 +10,8 @@ Diameter of Binary Tree
       4   5    
 Return 3, which is the length of the path [4,2,1,3] or [5,2,1,3].
 
-Note : Root element does not count
 Note : Diameter path may or may not pass through the root of the tree.
+Note : Root element (of left and right tree) does not count thats why it is 3.
 
 */
 class Solution {
@@ -33,8 +33,16 @@ class Solution {
         return Math.max(left,right)+1;
     }
 }
+
 /*
 Height VS Depth 
+
+The depth of a NODE is the number of edges from the node to the tree's root node.
+A root node will have a depth of 0.
+
+The height of a NODE is the number of edges on the longest path from the node to a leaf.
+A leaf node will have a height of 0.
+
 https://stackoverflow.com/questions/2603692/what-is-the-difference-between-tree-depth-and-height
 
 https://leetcode.com/problems/maximum-depth-of-binary-tree/submissions/
@@ -58,7 +66,7 @@ class Solution {
             if(maxSoFar<depth)
                 maxSoFar = depth; 
         }
-        return maxSoFar+1;     // forgot to add 1 here 
+        return maxSoFar+1;     
     }
 }
 
