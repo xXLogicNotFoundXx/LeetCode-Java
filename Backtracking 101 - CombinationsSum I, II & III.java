@@ -92,3 +92,56 @@ class Solution {
         }
     }
 }
+
+/*
+Find all possible combinations of k numbers that add up to a number n, given that only numbers from 1 to 9 can be used and each combination should be a unique set of numbers.
+
+Note:
+All numbers will be positive integers.
+The solution set must not contain duplicate combinations.
+Example 1:
+
+Input: k = 3, n = 7
+Output: [[1,2,4]]
+Example 2:
+
+Input: k = 3, n = 9
+Output: [[1,2,6], [1,3,5], [2,3,4]]
+
+
+The deepest level that the recursion can go is k.
+C(9,k) that is O(9 choose k)
+time complexity = O(9^k)
+
+*/
+
+class Solution {
+    public List<List<Integer>> combinationSum3(int k, int n) {
+        List<List<Integer>> ans = new ArrayList<List<Integer>>();
+        
+        if(k<0 || n<0)
+            return ans; 
+        
+        List<Integer> oneAns = new ArrayList<>();
+        combinationSum3Helper(ans,oneAns,1,k,n);
+        return ans;
+    }
+    
+    void combinationSum3Helper(List<List<Integer>> ans,List<Integer> oneAns, 
+                               int start, int k, int sum){
+        if(oneAns.size()==k && sum==0){
+            List<Integer> finalOneAns = new ArrayList<Integer>(oneAns);
+            ans.add(finalOneAns);
+            return;
+        }
+        
+        for(int i=start;i<=9;i++){
+            if(i>sum) // this is good because we dont want to process remaining numbers 
+                return; 
+            
+            oneAns.add(i);  
+            combinationSum3Helper(ans,oneAns,i+1, k, sum-i);  
+            oneAns.remove(oneAns.size()-1);  
+        }
+    }
+}
