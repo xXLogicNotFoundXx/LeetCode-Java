@@ -34,12 +34,12 @@ class Solution {
         
         // Doing index calculations here helps a lot 
         // I got so confused when I tried to do the calculation in the function call itself 
-        int rootInorderIndex=  map.get(preorder[preStart]);
-        int numsOnLeft = rootInorderIndex - inStart;
+        int rootInIdx=  map.get(preorder[preStart]);
+        int numsOnLeft = rootInIdx - inStart;
         
         TreeNode node = new TreeNode(preorder[preStart],null,null);
-        node.left  = build( preStart+1, preStart+numsOnLeft, preorder,  inStart, rootInorderIndex-1, inorder, map);
-        node.right = build( preStart+numsOnLeft+1, preEnd, preorder, rootInorderIndex+1, inEnd, inorder, map);
+        node.left  = build( preStart+1, preStart+numsOnLeft, preorder,  inStart,  rootInIdx-1, inorder, map);
+        node.right = build( preStart+numsOnLeft+1, preEnd,   preorder, rootInIdx+1, inEnd, inorder, map);
         return node;
     }
 }
