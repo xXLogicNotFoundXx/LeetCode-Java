@@ -8,6 +8,15 @@ inorder = [9,3,15,20,7]
   9  20
     /  \
    15   7
+   
+preorder = [3,20,15,7]
+inorder = [3,15,20,7]
+
+    3
+     \
+     20
+    /  \
+   15   7
 
  */
 class Solution {
