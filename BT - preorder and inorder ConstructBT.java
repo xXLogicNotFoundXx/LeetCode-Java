@@ -12,20 +12,23 @@ inorder = [9,3,15,20,7]
  */
 class Solution {
     public TreeNode buildTree(int[] preorder, int[] inorder) {
-        Map<Integer,Integer> map = new HashMap<>();
-        for(int i=0;i<inorder.length;i++)
+        HashMap<Integer,Integer> map = new HashMap<>();
+        for(int i=0;i<inorder.length;i++){
             map.put(inorder[i],i);
-        
-        return buildTree(preorder, inorder, 0, 0, inorder.length-1, map);
+        }
+        return build(0,preorder.length-1,preorder,0,inorder.length-1,inorder,map);
     }
-    TreeNode buildTree(int[] preorder, int[] inorder, int pInd , int inStart, int inEnd, Map<Integer,Integer> map){
-        if(inStart>inEnd)
+    
+    TreeNode build(int preStart, int preEnd, int[] preorder, int inStart, int inEnd, int[] inorder, HashMap<Integer,Integer> map){
+        if(preStart>preEnd || inStart>inEnd)
             return null;
-        TreeNode node = new TreeNode(preorder[pInd]);
-        int rootInd =map.get(preorder[pInd]);
-        node.left  = buildTree(preorder,inorder, pInd+1, inStart, rootInd-1,map);
-        node.right = buildTree(preorder,inorder, pInd+(rootInd-inStart)+1, rootInd+1, inEnd, map);
-                                               /* ^ this is IMP have sample trees helps*/
+        
+        int rootInorderIndex=  map.get(preorder[preStart]);
+        int numsOnLeft = rootInorderIndex - inStart;
+        
+        TreeNode node = new TreeNode(preorder[preStart],null,null);
+        node.left  = build( preStart+1, preStart+numsOnLeft, preorder,  inStart, rootInorderIndex-1, inorder, map);
+        node.right = build( preStart+numsOnLeft+1, preEnd, preorder, rootInorderIndex+1, inEnd, inorder, map);
         return node;
     }
 }
