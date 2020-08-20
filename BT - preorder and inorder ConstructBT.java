@@ -32,8 +32,8 @@ class Solution {
         if(preStart>preEnd || inStart>inEnd)
             return null;
         
-        // Doing calculation here before calling function helps a lot 
-        // I got so confused when I tried to do the calculation in function call itself 
+        // Doing index calculations here helps a lot 
+        // I got so confused when I tried to do the calculation in the function call itself 
         int rootInorderIndex=  map.get(preorder[preStart]);
         int numsOnLeft = rootInorderIndex - inStart;
         
