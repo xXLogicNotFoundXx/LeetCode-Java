@@ -43,3 +43,42 @@ class Solution {
         return node;
     }
 }
+
+
+/*
+https://leetcode.com/problems/construct-binary-tree-from-inorder-and-postorder-traversal/
+postorder = [9,15,7,20,3]
+inorder = [9,3,15,20,7]
+    3
+   / \
+  9  20
+    /  \
+   15   7
+   
+ In this case the postorder end index is a root. 
+ 
+*/
+class Solution {
+    HashMap<Integer,Integer> map = new HashMap<>();
+    public TreeNode buildTree(int[] inorder, int[] postorder) {
+        
+        for(int i=0;i<inorder.length;i++)
+            map.put(inorder[i],i);
+        
+        return build(0,postorder.length-1,postorder,0,inorder.length-1,inorder);
+    }
+    
+    TreeNode build(int posStart, int postEnd, int[] postorder, int inStart, int inEnd,int[] inorder){
+        if(posStart>postEnd || inStart>inEnd)
+            return null;
+        
+        int rootInIndex = map.get(postorder[postEnd]);
+        int numsOnRight = inEnd - rootInIndex;
+        
+        TreeNode node = new TreeNode(postorder[postEnd]);
+        node.right = build(postEnd-numsOnRight, postEnd-1, postorder , rootInIndex+1, inEnd, inorder);
+        node.left = build(posStart, postEnd-numsOnRight-1, postorder, inStart, rootInIndex-1, inorder);
+        
+        return node;
+    }
+}
