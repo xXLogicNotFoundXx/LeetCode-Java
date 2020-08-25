@@ -45,42 +45,4 @@ class Solution {
         }
         return output;
      }
- 
-     /*
-        So travering in one direction only i.e. do up only and then reverting result set whenver necessary.
-      */
-    public int[] findDiagonalOrder(int[][] matrix) {
-        if(matrix == null || matrix.length == 0)
-            return new int[0];
-        
-        int m = matrix.length;
-        int n = matrix[0].length;
-        int[] res = new int[m * n];
-        int count = 0;
-        
-        for(int i = 0; i < m + n - 1; i++) { // number of layers diagonaly traversed
-            int column = Integer.max(0, i - m + 1);
-            int row = Integer.min(i, m - 1);
-            int start = count;
-            while(row >= 0 && column < n) {
-                res[count ++] = matrix[row][column];
-                row--;
-                column++;
-            }
-            int end = count - 1;
-            if(i % 2 == 1)
-                reverse(res, start, end);
-        }
-        return res;
-    }
-    
-    public void reverse(int[] nums, int start, int end) {
-        while(start < end) {
-            int tmp = nums[start];
-            nums[start] = nums[end];
-            nums[end] = tmp;
-            start++;
-            end--;
-        }
-    }
 }
