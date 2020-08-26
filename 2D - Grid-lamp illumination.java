@@ -3,6 +3,7 @@ https://leetcode.com/problems/grid-illumination/
 lamps - each (x,y) lamp lights up every square on its x-axis, y-axis, and both diagonals (similar to a Queen in chess).
 queries - for each (x,y) ans is 0 if that square is not illuminated OR 1 if it is illuminated.
 After each query (x, y) [in the order given by queries], we turn off any lamps that are at cell query(x, y) or are adjacent 8-directionally .
+Return an array of integers ans where each value ans[i] should be equal to the answer of the ith query queries[i].
 */
 class Solution {
     
