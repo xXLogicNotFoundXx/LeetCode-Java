@@ -108,7 +108,7 @@ class Solution {
             for(int d=0; d<dirs.length; d++){
                 int x1 = x + dirs[d][0];
                 int y1 = y + dirs[d][1];
-				if(litLamps.contains(x1+"-"+y1)){
+		if(litLamps.contains(x1+"-"+y1)){
                     // the lamp is on, turn it off, so decrement the count of the lamps
                     row.put(x1, row.get(x1) - 1);
                     col.put(y1, col.get(y1) - 1);
