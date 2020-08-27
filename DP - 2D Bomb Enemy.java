@@ -15,18 +15,23 @@ Idea is to count how many Enemies we can kill for empty cells of the matrix and 
 
 So, we can traverse the matrix (top left to bottom right) 
 1. count the enmies killed on each sell by adding left-row count and top-column count.
-   From this you obviouly need two counts for each cell, rowKilled and columnKilled count
+   From this you obviouly need two counts for each cell(i,j), leftKilled and topKilled count
    So obviously this matrix is gonna have some object with two integers.
 2. But as you can imagine we dont have the bottom and right count on each cell yet ( as we traversing down)
 3. So, we have to traverse the matrix bottm up too and modify the count. 
 After those two traversals we can get max count from the cell where '0' in original matrix.
-
+              topkills
+                 | 
+leftkills ---> (i,j) <----- rightKills
+                 | 
+              bottomkills
+              
 Also, try to understand why we needed 4 integers in a class{int left,right,bottom,top;}
 If we have sigle int, it wont even work for top-down traversal, bcz top cell would have row+col kill.
-With two int rightRowKill & TopColKill would work for top-down traversal.
-But coming bottom-up traversal, 
-    if we add the count on rightRowKill in each cell it will mess up the calculations. 
-    that rightRowKill has already considered all left enemies.
+With two int leftKill & TopKill would work for top-down traversal.
+But coming bottomRight-topLeft traversal, 
+    if we add the count on right row cell it will mess up the calculations. 
+    bcz rightRowCell has already added all left enemies while traveling down.
 Hence we need class{int left,right,bottom,top;}
 
 */
