@@ -16,8 +16,16 @@ class Solution {
         int []col = new int[M[0].length];
         int []slash = new int[M.length + M[0].length]; // calculation of index will be i+j let that sink in 
         // i+j will be 0-M.length + M[0].length
-        int []backslash = new int[M.length + M[0].length]; // this one is tough j-i+M.length let that sink in  
-        // -i+M.length this will never cross 0-M.length and then j is alwasy plus so that adds up to M.length + M[0].length
+        
+        int []backslash = new int[M.length + M[0].length]; 
+        // This one is good one =  j-i+M.length to calculate +ve index for given antiDiagonal elements
+        // -i+M.length(#Rows) this will never cross (0-M.length) and then j is always +ve so that adds up to (M.length + M[0].length -1)
+        // The antidiagonal elements giving same +ve index can be caulcated as [i-j+M[0].length] (i.e. is #column)
+        // The concept -j or -i doesnt matter as long as you add the respective #Cols or #Rows to it. 
+        // The observation is [j-i+M.length] will result in index 0 to m+n-1 in a way 
+        // that at index 0 we will have the left bottom element and at last index (m+n-1) will have right top element
+        // you may need to preserve the order for some other problems.
+        
         int max=0;
         for(int i=0;i<M.length;i++){
             for(int j=0;j<M[0].length;j++){
@@ -29,7 +37,7 @@ class Solution {
                     max = Math.max(max,row[i]);
                     max = Math.max(max,col[j]);
                     max = Math.max(max,slash[i+j]);
-                    max = Math.max(max,backslash[j-i+M.length]); // -i+M.length will never be negative ( i can go to max M.length)
+                    max = Math.max(max,backslash[j-i+M.length]); // -i+M.length will never be negative ( it can go to max M.length)
                 }else{
                     row[i] = 0;
                     col[j] = 0;
@@ -44,7 +52,7 @@ class Solution {
 
 
 /*
-Similar problem where you have to calculate unique number for antiDiagonal
+Similar problem where you have to calculate unique numbers for antiDiagonal elements 
 1329. Sort the Matrix Diagonally
 https://leetcode.com/problems/sort-the-matrix-diagonally/
     [3,3,1,1]       [1,1,1,1]
@@ -74,7 +82,7 @@ class Solution {
     }
     
     // Solution 2 
-    // Here if we are not storing in an array we dont have to worry about negative index 
+    // Here if we are not storing in an array we dont have to worry about index being -ve 
     // so j-i+mat.length is not required 
     // i-j would give same number for given antidiagonal elements with index i,j
      public int[][] diagonalSort2(int[][] A) {
