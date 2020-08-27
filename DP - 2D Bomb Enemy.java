@@ -7,15 +7,25 @@ The bomb kills all the enemies in the same row and column
 from the planted point until it hits the wall since the wall is too strong to be destroyed.
 Note: You can only put the bomb at an empty cell
 
-The problem here is you can calculate column addition but 
-row addition becomes very tricky bcz the resulting matrix has already enemy count 
-even if you create a new matrix for row calculation .. there is gonna be averlap when you try to add 
-row and column addition ... 
-let this sink in 
-// bc testcase []  ["E"] 
-(top, bottom, left, right) be max enemy to kill at each direction if bomb at (i, j)
-Therefore we need to start build dp array from both top left and bottom right corner
-Once have we have # of enemy at 4 direction, we can find max # of enemy
+
+Idea is to count how many Enemies we can kill for empty cells of the matrix and return max. 
+1 We could not do it inplace bcz 
+    if we do column calucation then we wont have orginal values for row calulcations and vice versa. 
+2 So definitely we need another matrix. 
+
+So, we can traverse the matrix (top left to bottom right) 
+1. count the enmies killed on each sell by adding left-row count and top-column count.
+2. But as you can imagine we dont have the bottom and right count on each cell
+3. So, we have to traverse the matrix bottm up too and modify the count. 
+After those two traversals we can get max count from the cell where '0' in original matrix.
+
+Also, try to understand why int Matrix is not enough and why we needed a class{int left,right,bottom,top;}
+If we have sigle int, it will work from while traversing top to bottom. 
+But coming bottom up, 
+    we will add the count on right in each cell 
+    but that right has already considered all left enemies and that will mess up the caulcations 
+Hence we need class{int left,right,bottom,top;}
+
 */
 class Solution {
     class Count{
