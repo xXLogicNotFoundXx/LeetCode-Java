@@ -6,8 +6,11 @@ After each query (x, y) [in the order given by queries], we turn off any lamps t
 Return an array of integers ans where each value ans[i] should be equal to the answer of the ith query queries[i].
 */
 class Solution1 {
+     // MEMORY LIMIT EXCEEDS
     // Have an array of Row, Col, Diagonal and AntiDiagonal 
-    // Keep a count of lamps in each row[i] ,col[j] ,diag[i+j], antidiag[j-i+N] (remember this calculation to get same index for antiDiagonal elements)
+    // Keep a count of lamps in each row[i] ,col[j] ,diag[i+j] and antidiag[j-i+N] (remember this calculation to get same +ve index for antiDiagonal elements)	
+    // The antidiagonal elements giving same +ve index can be caulcated as [i-j+M] (M is #column)
+    // The concept -j or -i doesnt matter as long as you add the respective Max Col numbers or Row Numbers 
     // if any of these arrays count is more than 0 for given i,j then that cell is lit
     // then traverse the block and update the count of these arrays
     // memory limit exceed bcz we creat a grid of NxN where N=10000 and all these 4 arrays with N 
