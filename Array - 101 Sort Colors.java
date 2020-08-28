@@ -5,6 +5,7 @@ Sort an array in 1 pass with values 0,1,2 only
 Input: [2,0,2,1,1,0]
 Output: [0,0,1,1,2,2]
 */
+
 class Solution {
     // 2 pass 
     public void sortColors1(int[] nums) {
