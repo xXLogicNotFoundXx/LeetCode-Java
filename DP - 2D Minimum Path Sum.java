@@ -30,7 +30,41 @@ Approach 2: DP/ Memoizaton
 Time complexity : O(m+n)
 Space complexity : O(m+n)
 */
+// My solution - TOP-DOWN
+class Solution {
+    public int minPathSum(int[][] grid) {
+        if(grid==null || grid.length==0)
+            return 0;
+        
+        int m = grid.length;
+        int n = grid[0].length; 
+        int[][] dp = new int[m][n];
+        
+        for(int i=0;i<m;i++){
+            for(int j=0;j<n;j++){
+                
+                if(i==0 && j==0){ // special case 
+                    dp[i][j] = grid[i][j];
+                    continue;
+                }
+                
+                // all other cases 
+                int top  = Integer.MAX_VALUE;
+                int left = Integer.MAX_VALUE;
+                
+                if(i!=0)
+                    top = grid[i][j]+dp[i-1][j];
+                if(j!=0)
+                    left = grid[i][j]+dp[i][j-1];
+                
+                dp[i][j] = Math.min(top,left);
+            }
+        }
+        return dp[m-1][n-1];
+    }
+}
 
+// DOWN UP recursion
 class Solution {
     
     public int minPathSum(int[][] grid) {
