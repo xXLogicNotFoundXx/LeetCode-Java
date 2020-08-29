@@ -12,12 +12,12 @@ you can only use * operation
 
 class Solution {
     
-    // This is a great example of 2 pass algorithm..
-    // first pass make sure you get all 0 to i-1 multiplication at ans[i]
-    // second pass from back you make sure  i+1 to n multiplication at ans[i]
     public int[] productExceptSelf(int[] nums) {
-        if(nums==null | nums.length == 0) return new int[0];
+        if(nums==null | nums.length == 0) 
+            return new int[0];
+        
         int result[] = new int[nums.length];
+        
         int temp = 1;
         for(int i=0;i<nums.length;i++){
             result[i] = temp;
