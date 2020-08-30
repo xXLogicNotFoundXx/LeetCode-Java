@@ -1,4 +1,5 @@
 /*
+Premium:
 325. Maximum Size Subarray Sum Equals k
 https://leetcode.com/problems/maximum-size-subarray-sum-equals-k/
 Given an array nums and a target value k, find the maximum length of a subarray that sums to k. 
@@ -14,11 +15,11 @@ class Solution {
         
         Map<Integer,Integer> map = new HashMap();
         int total=0, max=0;
-        map.put(0,0);
+        map.put(0,0); // if the total becomes K then we should have map entry. 
         for(int i=0;i<nums.length;i++){
             total += nums[i];
             
-            if(total==k)
+            if(total==k) // this not needed as we did map.put(0,0). This another way to do it though.
                 max = Math.max(max,i+1);
             
             if(map.containsKey(total-k)){
