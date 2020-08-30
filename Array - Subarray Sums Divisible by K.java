@@ -38,20 +38,23 @@ class Solution {
     public int subarraysDivByK(int[] A, int K) {
         Map<Integer, Integer> map = new HashMap<>();
         map.put(0, 1); // IMP
-        int count = 0, sum = 0;
+        int count = 0, prefixSum = 0;
         for(int a : A) {
-            sum = (sum + a) % K;    
-            // you may think Math.abs(a) would work to avoid following if condition
+            prefixSum = prefixSum + a;
+            // you may think Math.abs(a) would work to get +ve mod
             // but here is the i/p = [1,-10,5]  K=9 and it doesnt work.
-            // Morever, the Math.abs(a) would give wrong sum and wrong mod. 
+            // Morever, the Math.abs(a) would give wrong prefixSum and wrong mod. 
             
-            if(sum < 0) {  // why?
-                sum += K;  // Because -1 % 5 = -1, but we need the positive mod 4
-                // thik [-1,5] sum is gonna be 4. So instead of saving -1 in the map we need to save 4. 
+            int mod = prefixSum % K;
+            if(mod < 0) {  // why?
+                mod += K;  // Because -1 % 5 = -1, but we need the positive mod 4
+                // thik [-1,5] prefixSum is gonna be 4. We should have 4 in the map when we process -1. 
             }
             
-            count += map.getOrDefault(sum, 0);
-            map.put(sum, map.getOrDefault(sum, 0) + 1);
+            if(map.containsKey(mod))
+                count += map.get(mod);
+            
+            map.put(mod, map.getOrDefault(mod, 0) + 1);
         }
         return count;
     }
