@@ -49,7 +49,9 @@ class Solution {
             if(mod < 0) {  // why?
                 mod += K;  // Because -1 % 5 = -1, but we need the positive mod 4
                 // thik [-1,5] prefixSum is gonna be 4. We should have 4 in the map when we process -1. 
-            }
+            } 
+            
+            prefixSum = mod; // To avoid overflow. (Well you can just have prefixSum and remove the mod variable.)
             
             if(map.containsKey(mod))
                 count += map.get(mod);
