@@ -8,16 +8,48 @@ Explanation: There are 7 subarrays with a sum divisible by K = 5:
 */
 
 class Solution {
+    // PREFIX SUM : Time limit exceeded. 
+    // O(N^2) O(1) calculate prefixSum for all indices  
+    // and check if any (sum[i]-sum[j])%K==0 .. j<i  
+    public int subarraysDivByK2(int[] A, int K) {
+        if(A==null || A.length==0)
+            return 0;
+        
+        int count = A[0]%K==0 ? 1 : 0;
+    
+        for(int i=1;i<A.length;i++){
+            A[i] = A[i-1] +  A[i];  
+            
+            if(A[i]%K==0)
+                count++;
+            
+            for(int j=0;j<i;j++){
+                if( (A[i]-A[j])%K == 0 )
+                  count++; 
+            }
+        }
+        return count;
+    }
+}
+
+class Solution {
     // Prefix Sum is one technique we need to solve this problem, but it's not enough. 
-    // we dont know the exact numbr we need to it becomes N^2TLE 
     // we need only mod remaining to convert that into O(n) problem. Note -4%5 = -4 
-    public int subarraysDivByK1(int[] A, int K) {
+    public int subarraysDivByK(int[] A, int K) {
         Map<Integer, Integer> map = new HashMap<>();
-        map.put(0, 1);
+        map.put(0, 1); // IMP
         int count = 0, sum = 0;
         for(int a : A) {
-            sum = (sum + a) % K;
-            if(sum < 0) sum += K;  // Because -1 % 5 = -1, but we need the positive mod 4
+            sum = (sum + a) % K;    
+            // you may think Math.abs(a) would work to avoid following if condition
+            // but here is the i/p = [1,-10,5]  K=9 and it doesnt work.
+            // Morever, the Math.abs(a) would give wrong sum and wrong mod. 
+            
+            if(sum < 0) {  // why?
+                sum += K;  // Because -1 % 5 = -1, but we need the positive mod 4
+                // thik [-1,5] sum is gonna be 4. So instead of saving -1 in the map we need to save 4. 
+            }
+            
             count += map.getOrDefault(sum, 0);
             map.put(sum, map.getOrDefault(sum, 0) + 1);
         }
@@ -33,7 +65,4 @@ class Solution {
     step 6 : {0:1,4:3,2:1}  a=-3   sum =4  mod=4  result = 3+3 =6
     step 7 : {0:1,4:4,2:1}  a=1    sum =5  mod=0  result = 6+1 =7
     */
-    
-    
-
 }
