@@ -12,10 +12,9 @@ class Solution {
         public int compare(Integer a, Integer b){
             String str1 = a.toString() + b.toString();
             String str2 = b.toString() + a.toString();
-            
-            // Like we do, a-b for ascending and b-a for descending 
-            // similarly we gonna compare str2 with str1 bcz we want descending 
-            return str2.compareTo(str1);
+
+            return str1.compareTo(str2); 
+            // On sort this comparitor will give us order in reverse order 
         }
     }
     
@@ -26,11 +25,10 @@ class Solution {
         for(int i=0;i<nums.length;i++)
             numsInt[i] = new Integer(nums[i]);
                 
-        Arrays.sort(numsInt,new SortByDigits());
-	// if numInt was List<Integer> you can use Collections.sort(numsInt,new SortByDigits());
-	
+        Arrays.sort(numsInt,new SortByDigits()); 
+        
         StringBuffer str = new StringBuffer();
-        for(int i=0;i<nums.length;i++)
+        for(int i=nums.length-1;i>=0;i--)
             str.append(numsInt[i]);
         
         // for ip = [0,0,0]
