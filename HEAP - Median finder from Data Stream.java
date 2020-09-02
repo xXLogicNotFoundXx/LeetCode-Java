@@ -5,9 +5,9 @@ If the size of the list is even, there is no middle value.
 So the median is the mean of the two middle value.
 
 For example,
-[1] =>  1
+[23] =>  23
 [2,3], the median is (2 + 3) / 2 = 2.5
-[2,3,4] => 3
+[2,8,10] => 8
 
 */
 
