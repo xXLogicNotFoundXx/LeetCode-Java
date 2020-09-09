@@ -2,12 +2,9 @@
  https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/
  Array has distinct Element
  the trick here is ... find the one which is not sorted half 
- so you compaire if x at  mid > right then weh go that half and we do left = mid + 1 as we know mid is already greater than right  
- and elest right = mid 
- where do you return ?
- 
- I made a mistake to try to find the element at mid which makes it very complicated to have all sort of conditions.
- cosider smaller inputs 5 1 2 or 2 1 for dry runs 
+ so you compaire if x at  mid > right then weh go that half and we do 
+ left = mid + 1 as we know mid is already greater than right  
+ and elest right = mid
 */
 class Solution {
     public int findMin(int[] nums) {
@@ -26,7 +23,7 @@ class Solution {
                 right = mid;
         }
 
-        return nums[left]; // for i/p [1] 
+        return nums[right]; // right or left both works [1], [3,1], [1,2]
     }
 }
 
@@ -40,7 +37,7 @@ class Solution {
             
             if(nums[left] == nums[mid] && nums[mid] == nums[right]){ // i/p =[ 1,1,1,1,1,1,1,1,0,1,1]
                 left++; right--;
-                continue;                       // important i always miss that man 
+                continue;
             }
                 
             if(nums[mid] > nums[right])
@@ -48,6 +45,6 @@ class Solution {
             else 
                 right = mid;
         }
-        return nums[left];   // even right is gonna be the same so nums[right works too]
+        return nums[left];   // even right index will work
     }
 }
