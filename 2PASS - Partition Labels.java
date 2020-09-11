@@ -9,7 +9,10 @@ Explanation:
 The partition is "ababcbaca", "defegde", "hijhklij".
 A partition like "ababcbacadefegde", "hijhklij" is incorrect, because it splits S into less parts.
 
-2 PASS
+2 PASS 
+1Pass - Note Down the last position of each char. 
+2Pass - Traverse and calculate Math.amx(pos, lastPosition[i])
+        When i meets the pos  (i==pos) thats one partition. 
 */
 class Solution {
     public List<Integer> partitionLabels(String S) {
