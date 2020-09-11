@@ -26,11 +26,11 @@ class Solution {
         if(matrix==null || matrix.length==0 || matrix[0].length==0) return false;
         int row = matrix.length;
         int col = matrix[0].length;
-        int left=0, right = row*col-1;
+        int left=0, right = row*col-1; // 0-15 for 4X4 matrix
         while(left<=right){
             int mid = (left + right )/2;
-            int rw = mid/col;   // let this sink in  let say in is 4X4 matrix and mid = 11   rw= 11/4 = 2 (3rd row)
-            int cl = mid%col;   // mid = 11 cl= 11%4 = 3 (last number in that row)
+            int rw = mid/col;   // let this sink in  let say in is 4X4 matrix and mid = 11   rw= 11/4 = 2nd index (i.e 3rd row)
+            int cl = mid%col;   // mid = 11 cl= 11%4 = 3rd index (i.e last number in that row)
             
             if(target==matrix[rw][cl])
                 return true;
@@ -68,12 +68,13 @@ class Solution {
         int row = 0;
         int col = matrix[0].length-1;
         while(row<matrix.length && col>=0){
-            if(target < matrix[row][col])
-                col--;
-            else if(target > matrix[row][col])
+            if(target == matrix[row][col])
+                return true;
+            
+            if(target > matrix[row][col])
                 row++;
             else 
-                return true;
+                col--;
         }
         return false;
     }
