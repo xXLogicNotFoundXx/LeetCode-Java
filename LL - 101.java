@@ -53,6 +53,38 @@ class Solution {
     }
 }
 
+//https://leetcode.com/problems/intersection-of-two-linked-lists/
+// using MAp will be easy to check. How to do without the map?
+public class Solution {
+    public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
+        if(headA==null || headB == null) return null;
+          
+        int countA = length(headA);
+        int countB = length(headB);
+        
+        while(countA>countB) { headA = headA.next; countA--;}
+        while(countB>countA) { headB = headB.next; countB--;}
+        
+        while(headA!=null){
+            if(headA==headB) 
+                return headA;
+            headA = headA.next;
+            headB = headB.next;
+        }
+        
+        return null; 
+    }
+    
+    int length(ListNode dummy){
+        int count=0;
+        while(dummy!=null) { 
+            dummy = dummy.next; 
+            count++; 
+        }
+        return count;
+    }
+}
+
 // https://leetcode.com/problems/delete-node-in-a-linked-list/
 // Delete node, direct access to delete the node. 
 // It wont be a last node.
