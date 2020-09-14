@@ -1,5 +1,45 @@
+// Reverse a Linked list 
+// https://leetcode.com/problems/reverse-linked-list/
+class Solution {
+    // iterative 
+    public ListNode reverseList1(ListNode head) {
+        ListNode dummy = null;
+        while(head!=null){
+            ListNode temp = head.next;
+            head.next = dummy;
+            dummy = head;
+            head = temp;
+        }
+        return dummy;
+    }
+    
+    // Recursive 
+    public ListNode reverseList(ListNode head) {
+        return reverseList12(head,null);
+    }
+    ListNode reverseList12(ListNode current,ListNode prev) {
+        if(current==null) return prev;
+        ListNode temp = current.next;
+        current.next = prev;
+        prev = current;
+        return reverseList12(temp,prev);
+    }
+}
+
+// https://leetcode.com/problems/delete-node-in-a-linked-list/
 // Delete node, direct access to delete the node 
 class Solution {
+    
+    public void deleteNode(ListNode node) {
+        ListNode  dummy = node; 
+        while(dummy.next!= null && dummy.next.next!=null){
+            dummy.val = dummy.next.val; 
+            dummy = dummy.next;
+        }
+        dummy.val = dummy.next.val;
+        dummy.next=null;
+    }
+    
     public void deleteNode(ListNode node) {
         ListNode dummy = node;
         node=node.next;
