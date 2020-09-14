@@ -1,3 +1,7 @@
+Note : 
+Alwasy use dummy node before the start it makes easy for corner cases.
+
+
 // Reverse a Linked list 
 // https://leetcode.com/problems/reverse-linked-list/
 class Solution {
@@ -26,13 +30,37 @@ class Solution {
     }
 }
 
+
+//Input: 1->2->4, 1->3->4
+//Output: 1->1->2->3->4->4
+// Trick here create a dummy START and return START.next 
+class Solution {
+    public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
+        ListNode START = new ListNode(0);
+        ListNode dummy = START;
+        while(l1!=null && l2!=null){
+            if(l1.val > l2.val){
+                dummy.next = l2;
+                l2 = l2.next;
+            } else {
+                dummy.next = l1;
+                l1 = l1.next;
+            }
+            dummy = dummy.next;
+        }
+        dummy.next = l1 == null ? l2 : l1;
+        return START.next;
+    }
+}
+
 // https://leetcode.com/problems/delete-node-in-a-linked-list/
-// Delete node, direct access to delete the node 
+// Delete node, direct access to delete the node. 
+// It wont be a last node.
 class Solution {
     
     public void deleteNode(ListNode node) {
         ListNode  dummy = node; 
-        while(dummy.next!= null && dummy.next.next!=null){
+        while(dummy.next.next!=null){
             dummy.val = dummy.next.val; 
             dummy = dummy.next;
         }
@@ -53,41 +81,6 @@ class Solution {
     }
 }
 
-/**
-https://leetcode.com/problems/rotate-list/submissions/
-
-Given a linked list, rotate the list to the right by k places, where k is non-negative.
-
-Input: 1->2->3->4->5->NULL, k = 2
-Output: 4->5->1->2->3->NULL
-
-Input: 0->1->2->NULL, k = 4
-Output: 2->0->1->NULL
-
-The basic idea is to link the tail of the list with the head, make it a cycle. Then count to the rotate point and cut it.
- */
-class Solution {
-    public ListNode rotateRight(ListNode head, int k) {
-        if(head == null || k == 0) 
-            return head;
-        
-        ListNode p = head;
-        int len = 1;
-        while(p.next != null) {
-            p = p.next;
-            len++;
-        }
-        
-        p.next = head;
-        k %= len;
-        for(int i = 0; i < len - k; i++) 
-            p = p.next;
-        
-        head = p.next;
-        p.next = null;
-        return head;
-    }
-}
 
 /*
 Swap Nodes in Pairs
