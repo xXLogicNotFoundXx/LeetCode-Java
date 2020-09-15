@@ -8,45 +8,53 @@ For k = 3, you should return: 3->2->1->4->5
  */
 class Solution {
     public ListNode reverseKGroup(ListNode head, int k) {
-        ListNode dummy = new ListNode(-11);
-        dummy.next = head;
-        ListNode start = dummy; 
         
-        if(k<=1) return head; 
-        if(head==null) return head;
+        if(head==null || k<=1) 
+            return head; 
+      
+        ListNode dummy = new ListNode(-11, head);
+        ListNode START = dummy; 
+        
         while(dummy!=null){
             dummy = reverseKGroupHelper(dummy,k);
         }
-        return start.next;
+        
+        return START.next;
     }
     
     ListNode reverseKGroupHelper(ListNode dummyHead, int k){
-        ListNode dummy = dummyHead;
-        ListNode head = dummyHead.next;
-        while(dummy.next!=null && k>0){
-            dummy =dummy.next;
+        ListNode runner = dummyHead;
+        ListNode head = dummyHead.next; // After reverse this will be end
+        
+        while(runner.next!=null && k>0){
+            runner =runner.next;
             k--;
         }
-        if(k>0) return null;
         
-        ListNode tail = dummy;
-        reverse(dummyHead,tail);
-        return head; // this will be new dummyHead for recursive operations
+        if(k>0) 
+            return null;
+        
+        ListNode tailNext = runner.next;
+        reverse(dummyHead,tailNext);
+        
+        return head; // this is our new tail (dummyHead)
     }
     
-    // used to reverse mid nodes of the LL 
-    void reverse(ListNode dummyHead, ListNode tail){
-        // tail will never be null 
-        ListNode dummy = null;  // this null will be detached in the end 
+    void reverse(ListNode dummyHead, ListNode tailNext){
+        ListNode prev = dummyHead;  
         ListNode head = dummyHead.next;
-        ListNode tailNext = tail.next;
-        while(dummy!=tail){
+    
+        while(head!=tailNext){
             ListNode temp = head.next;
-            head.next = dummy;
-            dummy = head;
-            head= temp;
+            head.next = prev;
+            prev = head;
+            head = temp;
         }
-        dummyHead.next.next = tailNext; // null is detached from prevhead and prevhead points to tailNext
-        dummyHead.next = tail; // ( head becomes tail)
+        
+        ListNode orignalFirst = dummyHead.next; 
+        ListNode orignalLast = prev;
+        
+        orignalFirst.next = tailNext;
+        dummyHead.next = orignalLast;
     }
 }
