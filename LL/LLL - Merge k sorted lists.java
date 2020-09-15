@@ -50,31 +50,4 @@ class Solution {
         }
         return Start.next;
     }
-    
-    /*
-    public ListNode mergeKLists(ListNode[] lists) {
-        if(lists == null || lists.length ==0) return null;
-        if(lists.length ==1) return lists[0];
-        
-        ListNode Start = new ListNode(1);
-        ListNode dummy = Start;
-        ListNode l1= lists[0];
-        for(int i=1;i<lists.length;i++){
-            ListNode l2 = lists[i];
-            while(l1!=null && l2!=null){
-                if(l1.val < l2.val){
-                    dummy.next = l1;
-                    l1 = l1.next;
-                } else {
-                    dummy.next = l2;
-                    l2 = l2.next;
-                }
-                dummy = dummy.next;
-            }
-            dummy.next = l1==null? l2 : l1;
-            l1 = Start.next;
-            dummy = Start;
-        }
-        return Start.next;
-    } */
 }
