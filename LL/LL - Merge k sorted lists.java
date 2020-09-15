@@ -8,16 +8,11 @@ Input:
   2->6
 ]
 Output: 1->1->2->3->4->4->5->6 
-Solution 1 : n^2 
-    merger 2 linked list and then take 3rd , 4th to merge 
-    it could be N^2  consider follwoing inlut list everytime we will be traversing those 100 nodes to add a node in a next list 
-     1->2->....1000
-     1001
-     1002
-Solution 2  N*Log(K)
+
+N*Log(K)
      1 we can add start nodes of all linked list into MIN_HEAP (PriorityQueue)
      2 take one out from priority queue 
-     3 we put then next node of the take node in step 2 
+     3 we put then next node of the taken node in step 2 
      4 repeat 2 and 3 untill minheap is null 
 */
 class Solution {
@@ -31,23 +26,24 @@ class Solution {
     public ListNode mergeKLists(ListNode[] lists) {
         if (lists==null || lists.length==0) return null;
         
-        PriorityQueue<ListNode> queue= new PriorityQueue<ListNode>(new sortByValye());
+        PriorityQueue<ListNode> minHeap= new PriorityQueue<ListNode>(new sortByValye());
         
         ListNode Start = new ListNode(0);
         ListNode dummy=Start;
         
         for (ListNode node:lists){
             if (node!=null)
-                queue.add(node);
+                minHeap.add(node);
         }
             
-        while (!queue.isEmpty()){
-            dummy.next=queue.poll();
+        while (!minHeap.isEmpty()){
+            dummy.next=minHeap.poll();
             dummy=dummy.next;
             
             if (dummy.next!=null)
-                queue.add(dummy.next);
+                minHeap.add(dummy.next);
         }
         return Start.next;
     }
+
 }
