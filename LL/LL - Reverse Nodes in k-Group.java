@@ -24,7 +24,7 @@ class Solution {
     
     ListNode reverseKGroupHelper(ListNode dummyHead, int k){
         ListNode runner = dummyHead;
-        ListNode head = dummyHead.next; // After reverse this will be end
+        ListNode head = dummyHead.next; // After reverse this will be new tail
         
         while(runner.next!=null && k>0){
             runner =runner.next;
