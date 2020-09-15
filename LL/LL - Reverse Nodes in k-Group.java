@@ -12,11 +12,11 @@ class Solution {
         if(head==null || k<=1) 
             return head; 
       
-        ListNode dummy = new ListNode(-11, head);
-        ListNode START = dummy; 
+        ListNode dummyHead = new ListNode(-99, head);
+        ListNode START = dummyHead; 
         
-        while(dummy!=null){
-            dummy = reverseKGroupHelper(dummy,k);
+        while(dummyHead!=null){
+            dummyHead = reverseKGroupHelper(dummyHead,k);
         }
         
         return START.next;
@@ -51,10 +51,11 @@ class Solution {
             head = temp;
         }
         
-        ListNode orignalFirst = dummyHead.next; 
-        ListNode orignalLast = prev;
+        ListNode initialFirst = dummyHead.next; 
+        ListNode initialLast = prev;
         
-        orignalFirst.next = tailNext;
-        dummyHead.next = orignalLast;
+        initialFirst.next = tailNext;
+        dummyHead.next = initialLast;
+
     }
 }
