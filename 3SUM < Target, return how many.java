@@ -15,27 +15,23 @@ nums = [1, 2, 3, 5, 8], and target = 7.
  target= 7-a[i] = 6 
 
 */
-
+class Solution{
     public int threeSumSmaller(int[] nums, int target) { 
         Arrays.sort(nums);
         int sum = 0;
         for (int i = 0; i < nums.length - 2; i++) {
-            sum += twoSumSmaller(nums, i + 1, target - nums[i]); 
-        }
-        return sum; 
-    }
+            
+            int left = i+1, right = nums.length - 1;  
+            while (left < right){ 
 
-    private int twoSumSmaller(int[] nums, int startIndex, int target) { 
-        int sum = 0;
-        int left = startIndex;
-        int right = nums.length - 1; 
-        while (left < right) {
-            if (nums[left] + nums[right] < target) { 
-                sum += right - left;
-                left++;
-            } else {
-                right--;
+                if (arr[i] + arr[left] + arr[right] < target){ 
+                    sum += (right - left); 
+                    left++; 
+                } else{
+                    right--; 
+                }
             } 
         }
         return sum; 
     }
+}
