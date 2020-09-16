@@ -5,12 +5,6 @@ such that i < j < k and A[i] + A[j] + A[k] == target.
 
 As the answer can be very large, return it modulo 10^9 + 7.
 
-NOTE: 
-You would think sorting will mess up the order of i,j,k indexes 
-This is USELESS detail bcz i,j,k can be reorder to any combination and it doesnt matter.
-A[i] + A[j] + A[k] can be A[k] + A[i] + A[j]
-Moreover they are not even asking to return tuples of i,j,k
-
 Time : O(n^2)
 Space : O(n^2)    
 */
@@ -36,3 +30,5 @@ class Solution {
         return (int) (result%(1000000000 + 7));
     }
 }
+
+
