@@ -34,7 +34,7 @@ public class NestedIterator implements Iterator<Integer> {
     }
 
     @Override
-    public boolean hasNext() {
+    public boolean hasNext1() {
         if(stack.isEmpty())
             return false; 
         
@@ -46,6 +46,21 @@ public class NestedIterator implements Iterator<Integer> {
 
             return hasNext(); // nice 
         }
+        
+        return true;
+    }
+    
+    @Override  // No Recursion 
+    public boolean hasNext() {
+        
+        while (!stack.isEmpty() && !stack.peek().isInteger()){
+            NestedInteger top = stack.pop();
+            for(int i= top.getList().size()-1;i>=0;i--)
+                stack.push(top.getList().get(i));  
+        }
+        
+        if(stack.isEmpty())
+            return false;
         
         return true;
     }
