@@ -20,10 +20,12 @@ https://leetcode.com/problems/flatten-nested-list-iterator/
 // list could be empty so we have to have Integer at the top so all the operations i did in next() has to be in hasNext()
 // OR you can just fallten all list at once in the ArrayList and just manipulate the index on next and hasNext();
 public class NestedIterator implements Iterator<Integer> {
-    Stack<NestedInteger> stack = new Stack();
+
+    Stack<NestedInteger> stack = new Stack<>();
+    
     public NestedIterator(List<NestedInteger> nestedList) {
         for(int i=nestedList.size()-1;i>=0;i--)
-            stack.push(nestedList.get(i)); 
+            stack.push(nestedList.get(i));
     }
 
     @Override
@@ -33,17 +35,18 @@ public class NestedIterator implements Iterator<Integer> {
 
     @Override
     public boolean hasNext() {
-        if(!stack.isEmpty()){
-            NestedInteger peek = stack.peek();
-            if(!peek.isInteger()){
-                NestedInteger top = stack.pop();
-                for(int i= top.getList().size()-1;i>=0;i--)
-                    stack.push(top.getList().get(i));
+        if(stack.isEmpty())
+            return false; 
+        
+        NestedInteger peek = stack.peek();
+        if(!peek.isInteger()){
+            NestedInteger top = stack.pop();
+            for(int i= top.getList().size()-1;i>=0;i--)
+                stack.push(top.getList().get(i));
 
-                return hasNext(); 
-            }
-            return true;
+            return hasNext(); // nice 
         }
-        return false;
+        
+        return true;
     }
 }
