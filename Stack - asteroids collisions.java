@@ -19,10 +19,14 @@ asteroids = [10, 2, -5]
 Output: [10]
 Explanation: The 2 and -5 collide resulting in -5.  The 10 and -5 collide resulting in 10.
 
+ Note : Negavtive doesnt matter if there is no positive infront of them.  
+Input :  [-5,-10,5] 
+Output : [-5,-10,5]
+
 */
 class Solution {
     public int[] asteroidCollision(int[] asteroids) {
-        Stack<Integer> st = new Stack<>();
+        Deque<Integer> st = new ArrayDeque<>();
         
         for(int i=0;i<asteroids.length;i++){
             if(asteroids[i]>0){
@@ -32,6 +36,7 @@ class Solution {
                 while(!st.isEmpty() && st.peek()>0 && st.peek()< asteroids[i]*-1){
                     st.pop();
                 }
+                
                 // if stack is empty or has -ve values just add this -ve too 
                 if(st.isEmpty() || st.peek()<0){
                     st.push(asteroids[i]);
