@@ -8,15 +8,19 @@ For example, given the list of temperatures
 T  =  [73, 74, 75, 71, 69, 72, 76, 73], your output should be 
 O/p = [1, 1, 4, 2, 1, 1, 0, 0].
 */
+// think [3,2,1,7]
 public int[] dailyTemperatures(int[] temperatures) {
-    Stack<Integer> stack = new Stack<>();
-    int[] ret = new int[temperatures.length];
-    for(int i = 0; i < temperatures.length; i++) {
-        while(!stack.isEmpty() && temperatures[i] > temperatures[stack.peek()]) {
-            int idx = stack.pop();
-            ret[idx] = i - idx;
+    public int[] dailyTemperatures(int[] T) {
+        Deque<Integer> stack = new ArrayDeque<>();
+        int[] ans = new int[T.length];
+        for(int i=0;i<T.length;i++){
+            int currentTemp = T[i];
+            while(!stack.isEmpty() && T[stack.peek()]<currentTemp){
+                ans[stack.peek()] = i-stack.peek();
+                stack.pop();
+            }
+            stack.push(i);
         }
-        stack.push(i);
+        return ans;
     }
-    return ret;
 }
