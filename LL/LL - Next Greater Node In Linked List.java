@@ -2,6 +2,8 @@
 https://leetcode.com/problems/next-greater-node-in-linked-list/
     (Similar to Daily Temperatures problem)
     https://leetcode.com/problems/daily-temperatures/
+    https://github.com/xXLogicNotFoundXx/LeetCode-Java/edit/master/Stack%20-%20Daily%20Temperatures%20find%20next%20warm.java
+    
 Input: 2->1->5
 Output: [5,5,0]
 
