@@ -27,6 +27,7 @@ class Solution {
             } 
             
             if(i==s.length()-1 || ch=='+'||ch=='-'||ch=='*'||ch=='/'){
+                // instead of i==s.length()-1 condition you can just append '+' to the original string
                 switch(prevSign){
                     case '+' :
                         st.push(num);
