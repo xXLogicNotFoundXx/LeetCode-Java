@@ -7,31 +7,33 @@ top() -- Get the top element.
 getMin() -- Retrieve the minimum element in the stack.
 */
 class MinStack {
+
+    /** initialize your data structure here. */
     int min = Integer.MAX_VALUE;
-    Stack<Integer> stack = new Stack<Integer>();
+    ArrayDeque<Integer> stack = new ArrayDeque<>();
+    public MinStack() {
+        
+    }
+    
     public void push(int x) {
-        // only push the old minimum value when the current 
-        // minimum value changes after pushing the new value x
-        if(x <= min){          
+        if(x<=min){  // '=' is required test case:  push -[0,1,0] pop, getMin()
             stack.push(min);
             min=x;
         }
         stack.push(x);
     }
-
+    
     public void pop() {
-        // if pop operation could result in the changing of the current minimum value, 
-        // pop twice and change the current minimum value to the last minimum value.
-        if(stack.empty()) 
-            return;
-        if(stack.pop() == min) 
-            min=stack.pop();
+        int x = stack.pop();
+        if(x==min){
+            min = stack.pop();
+        }
     }
-
+    
     public int top() {
         return stack.peek();
     }
-
+    
     public int getMin() {
         return min;
     }
