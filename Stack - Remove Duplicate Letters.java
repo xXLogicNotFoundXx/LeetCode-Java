@@ -38,7 +38,7 @@ class Solution {
         for(int i=0;i<s.length();i++){
             char ch = s.charAt(i);
             
-            // if this char is less than peek() remove that char iff top is repeated char 
+            // if this char is less than peek() then remove peek() iff peek() is repeated char lateron
             // keep doin it in while loop: example input dcbadcb
             while(!stack.isEmpty() && stack.peek()>ch && map.get(stack.peek()) > 1){
                 // Apparently we cant blindly remove the peek()
