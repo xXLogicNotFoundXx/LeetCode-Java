@@ -28,6 +28,40 @@ public class Solution extends VersionControl {
 }
 
 /*
+https://leetcode.com/problems/find-the-duplicate-number/
+Input: [1,3,4,2,2]
+Output: 2
+Input: [3,1,3,4,2]
+Output: 3
+You must not modify the array (assume the array is read only).
+You must use only constant, O(1) extra space.
+*/
+class Solution {
+    // N.Log(N)
+    public int findDuplicate(int[] nums) {
+        int low=1, high=nums.length;
+        while(low<high){    
+            
+            int mid=(low+high)/2;
+            
+            int count=0;
+            for(int i=0; i<nums.length; i++){
+                if(nums[i]<=mid){
+                    count++;
+                }                                
+            }
+            
+            if(count<=mid)
+                low = mid+1;
+            else 
+                high = mid;                                    
+        }
+        
+        return high;
+    }
+}
+
+/*
 35. Search Insert Position
 https://leetcode.com/problems/search-insert-position/
 Given a sorted array and a target value, return the index if the target is found. If not, return the index where it would be if it were inserted in order.
