@@ -1,14 +1,26 @@
 Integer String Long are immutable objects. 
-There's no such method like IntegerObj.set(i). 
+So they cant be passed as to track the value changed in funtion. 
+Int is premitive value so it is pass by value. 
 
-https://www.geeksforgeeks.org/how-to-pass-integer-by-reference-in-java/
+if you want to pass int and track its value in calling function. 
+You have to pass int as and array or wtite wrapper calss containing int and pass the object of that class. 
 
-Also % operator retians the -ve sign of first number -1%2 = 1 but 1%-2 = 0
+
+MODULO OPERATOR : 
+% operator retians the -ve sign of first number
+    123  % 10 = 3  
+    -123 % 10 = -3    
+    However, 2nd operator sigh doesnt matter so 
+    123 % 10  = 3 and 
+    123 % -10 = 3
+
 
 int[] duplicate = nums.clone(); // nums is int[] it generates deep copy 
 
+
 Random rand = new Random();
 rand.nextInt(aux.size());
+
 
 // Map iterator
 Iterator<Map.Entry<Integer, Integer>> entries = map.entrySet().iterator();
