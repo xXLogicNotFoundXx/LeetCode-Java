@@ -10,15 +10,20 @@ to hold the number of elements it's likely to hold at a time to avoid many resiz
 Deque's adding elemnts beahviour is different 
 
 Stack :
+
 push -> inserts at the front of the Deque
+
 pop -> removes from the front of the Deque
 
 Queue : 
+
 offer -> inserts at the end of the Deque
+
 poll -> remove from front of Deque
 
 
 So removeLast() function alwasy gives you the last element of the deque.
+
 So doesnt matter how you use the deque removeLast() always removes from end of Deque.
 
 
@@ -28,6 +33,7 @@ Notes on removeLast()
 
 
 // Deque using queue 
+
 void test(){
         // Creating an empty ArrayDeque 
         Deque<String> de_que = new ArrayDeque<String>(); 
@@ -50,10 +56,12 @@ void test(){
     } 
  
 Initial ArrayDeque: [1, 2, 3, 4, 5]
+
 ArrayDeque after removing elements: [1, 2]
 
 
 // Deque Using Stack : 
+
     void test2(){
         // Creating an empty ArrayDeque 
         Deque<String> de_que = new ArrayDeque<String>(); 
@@ -76,4 +84,5 @@ ArrayDeque after removing elements: [1, 2]
                            + "elements: " + de_que); 
     } 
 Initial ArrayDeque: [5, 4, 3, 2, 1]
+
 ArrayDeque after removing elements: [5, 4]
