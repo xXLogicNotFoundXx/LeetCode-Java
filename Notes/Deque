@@ -6,7 +6,7 @@ ArrayDeque Performs better than linked list bcz of overhead of creating memory f
 For best performance, you'll probably want to give it an initial capacity large enough 
 to hold the number of elements it's likely to hold at a time to avoid many resizes.
 
-Deque's adding/removing elemnts beahviour is different 
+Deque's adding elemnts beahviour is different 
 
 Stack :
 push -> inserts at the front of the Deque
