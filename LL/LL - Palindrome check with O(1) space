@@ -1,6 +1,8 @@
 https://leetcode.com/problems/palindrome-linked-list/
 
-// reverese the linked list and see if two linked lists are equal but that would be o(n) extra space 
+// add values in the ArrayList & check  if they are same starting from end of the array lisy 
+// or reverese the linked list and see if two linked lists are equal 
+// but that would be o(n) extra space 
 // fast pointer to send it and find mid point but then if even number then n/2 is the middle or n/2+1 is the middle to complicated 
 
 class Solution {
