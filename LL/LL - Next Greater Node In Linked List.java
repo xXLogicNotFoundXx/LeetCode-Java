@@ -36,6 +36,9 @@ class Solution {
             head = head.next;
             index++;
         }
+        // Stack remaining elemnts are zero but we dont have to mark bcz when array is created 
+        // it is already filled with zero.
+        
         return result;
     }
     
