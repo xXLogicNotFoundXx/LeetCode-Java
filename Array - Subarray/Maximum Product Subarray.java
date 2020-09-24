@@ -7,7 +7,7 @@ Input: [2,3,-2,4]
 Output: 6
 Explanation: [2,3] has the largest product 6.
 */
-// From this [3,3,-2,4,4] you can tell it needs 2 pass L->R & R->L
+// From this [3,3,-2,4,4] you can tell it needs 2 pass L->R & L<-R
 // corner case is if there is zero [3,3,0,4,4]
 // at that point you have to make product 1 to continue processing 
 class Solution {
