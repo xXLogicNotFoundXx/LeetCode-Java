@@ -32,7 +32,6 @@ class Solution {
         return max; 
     }
 }
-
 /*
 https://leetcode.com/problems/contiguous-array/
 525. Contiguous Array
@@ -89,6 +88,5 @@ class Solution {
         }
         
         return max;
-    }
-    
+    }  
 }
