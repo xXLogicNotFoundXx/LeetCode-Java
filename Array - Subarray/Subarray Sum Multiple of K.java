@@ -1,7 +1,7 @@
 /*        
 
 https://leetcode.com/problems/continuous-subarray-sum/
-Given a list of non-negative numbers and a target integer k, write a function to check
+Given a list of NON-NEGATIVE numbers and a target integer k, write a function to check
 if the array has a continuous subarray of size at least 2 that sums up to a multiple of k, 
 that is, sums up to n*k where n is also an integer.
 
@@ -45,11 +45,6 @@ class Solution {
         if (k == 0) 
             return false;
         
-        // [1,5], -6 -> true
-        // Let's make +ve k so the mod is not -ve 
-        if (k < 0) 
-            k = -k;
-        
         Map<Integer,Integer> map = new HashMap<>();
         map.put(0,-1); // -1 bcz to get [2,2], 4 -> true  
         
@@ -59,6 +54,9 @@ class Solution {
             prefixSum +=nums[i];
             int mod = prefixSum%k;
             
+            // all numbers in an array are NON-NEGATIVE 
+            // so we dont have to worry about mod being -ve
+            
             if(map.containsKey(mod)){
                 if(map.get(mod) < i-1) 
                     return true;
@@ -67,6 +65,5 @@ class Solution {
             }
         }
         return false;
-    }
-    
+    }  
 }
