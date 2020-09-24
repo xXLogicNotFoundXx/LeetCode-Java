@@ -44,9 +44,19 @@ class Solution {
         return maxLen;
     }
     
-    // DP
-    // The idea same as DP - Longest Common Substring - (See the details below) 
-    // Time & space O(M*N))  O(M*N)
+ /* DP
+ The idea same as DP - Longest Common Substring - (See the details below) 
+ Time & space O(M*N))  O(M*N)
+ 
+      Initial State                Final State
+  
+             a b c d f                  a b c d f  
+           0 0 0 0 0 0                0 0 0 0 0 0 
+         b 0                =>      b 0 0 1 0 0 0
+         c 0                        c 0 0 0 2 0 0
+         d 0                =>      d 0 0 0 0 3 0
+         a 0                        a 0 1 0 0 0 0 
+ */
     public int findLength(int[] A, int[] B) {
         
         if(A==null || B==null)
