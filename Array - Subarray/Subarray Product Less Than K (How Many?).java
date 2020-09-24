@@ -30,40 +30,4 @@ class Solution {
         }
         return ans;
     }
-    
-    // My Solution : Doesnt work  
-    /*
-    Input
-        [10,2,2,5,4,4,4,3,7,7]
-        289
-    Output 20
-    Expected 31
-    */
-    public int numSubarrayProductLessThanK1(int[] nums, int k) {
-        if(nums==null || nums.length==0)
-            return 0;
-        
-        int count=nums[0]<k?1:0;
-        int product=nums[0];
-        int left=0;
-        for(int i=1;i<nums.length;i++){
-            count   = nums[i]<k ? count+1 : count;
-            product = product*nums[i];
-            count   = product<k ? count+1 : count;
-            
-            while( left<i-1 && product>=k ) { // at least 2 element in subarray
-                product = product/nums[left];
-                left++;
-                count = product<k ? count+1 : count;
-            }
-        }
-        
-        while(left<nums.length-2){
-            product = product/nums[left];
-            left++;
-            count = product<k ? count+1 : count;
-        }
-        
-        return count;
-    }
 }
