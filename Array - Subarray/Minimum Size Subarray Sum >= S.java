@@ -24,7 +24,7 @@ class Solution {
         for(int i=0;i<nums.length;i++){
             total+=nums[i];
             while(total>=s){
-                minSubArray =  Math.min(minSubArray,i-left+1); // +1 bcz we added nums[i] already
+                minSubArray =  Math.min(minSubArray,i-left+1); 
                 total-=nums[left];
                 left++;
             }
