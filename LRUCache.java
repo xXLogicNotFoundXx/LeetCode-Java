@@ -1,3 +1,4 @@
+/*
 https://leetcode.com/problems/lru-cache/
 
 Design and implement a data structure for Least Recently Used (LRU) cache. It should support the following operations: get and put.
@@ -7,14 +8,21 @@ put(key, value) - Set or insert the value if the key is not already present. Whe
 Follow up:
 Could you do both operations in O(1) time complexity?
 
-// First circular array/queue sounds good but if the element is accessed then we have to move to the top and move other elemensts. so it is not O(1)
-// Linked list sounds good .. we can save refrences in hashtable and move that element to head of the linked list simlliarly add new element to the start and remove from end if we want to kick.
-// This is promising but we dont have previous pointer to move the element to the start 4->3->2->->1 now 2 is accessed we have direct pointer to 2 but now prev pointer so 
-// we can do doubly linked list that way it is easy to ditach the node once you have pointer stored in hashmap 
-// hash map stores key and DoublyLinkedList node reference...
-// ** Moreover if you cretae pseudo head and tail in DoublyLinkedList to mark the boundary, then we don't need to check the NULL nodes during operations
-// ** also there could be put(1,1) then put (1,4) in that case the value should be updated its value and move node to the start...key is same so we keep that in cash (Hash Table)..
-class LRUCache {
+ * First circular array/queue sounds good but if the element is accessed then we have to move to the top and move other elemensts. so it is not O(1)
+ 
+ * Linked list sounds good .. we can save refrences in hashtable and move that element to head of the linked list simlliarly 
+    add new element to the start and remove from end if we want to kick.
+    This is promising but we dont have previous pointer to move the element to the start 
+    We have direct access to pointer but no prev pointer. You may think in the hashmap you can also store prev pointer but 
+    that previous pointer can change as we add,remove, update the linked list.
+ 
+ * we can do doubly linked list that way it is easy to ditach the node once you have pointer stored in hashmap 
+    hash map stores key and DoublyLinkedList node. With prev and next pointer it will be easy to detach that node. 
+    
+ ** Moreover if you cretae pseudo head and tail in DoublyLinkedList to mark the boundary, then we don't need to check the NULL nodes during operations
+ ** also there could be put(1,1) then put (1,4) in that case the value should be updated its value and move node to the start...key is same so we keep that in cash (Hash Table)..
+*/
+ class LRUCache {
     int capacity = 0;
     
     class DLinkedNode {
