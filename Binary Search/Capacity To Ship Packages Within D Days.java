@@ -27,7 +27,7 @@ class Solution {
         int totalWeight =0;
         
         for(int i=0;i<weights.length;i++){
-            maxWeight = Math.min(maxWeight,weights[i]);
+            maxWeight = Math.max(maxWeight,weights[i]);
             totalWeight += weights[i]; // may be overflow 
         }
         
@@ -38,7 +38,6 @@ class Solution {
             int mid = (left+right)/2; 
            
             int days = daysToShip(weights,mid);
-            
             /*
                 DON'T Do this
             if(days==D)
@@ -48,7 +47,7 @@ class Solution {
             because there will be some x weight which will give the same days as D.
             However, this does not mean the x weigh is absolute minumum weight required to ship packages in D.
             so weep moving left=mid+1 keep the right=mid even if we find the weight for D days.
-            In the end and left and right will be equal.
+            In the end -  left and right will be equal.
             
             */
             
@@ -56,9 +55,10 @@ class Solution {
                 right=mid;
             else
                 left=mid+1;
+            
         }
         
-        return right; // right or left doet matter 
+        return right; // right or left doesn't matter 
     }
     
     int daysToShip(int[] weights, int cap){
