@@ -5,49 +5,65 @@ Given an array which consists of non-negative integers and an integer m,
 you can split the array into m non-empty continuous subarrays. 
 Write an algorithm to minimize the largest sum among these m subarrays.
 */
-// This is almost like the problem where we try to find number of days for shipping all packages 
-// l = max number in an array;  (this is the minimum largest_sum you gonna get [m>=nums.length]) 
-// r = sum of all array numbers; ( this is the maximum largest_sum you gonna get [when m=1]) 
-// mid = (l + r) / 2; see if we can divide it into m subarrays 
-// if we can do  r = mid-1;    // we need to find minimum 
-// if not do     l = mid+1; 
 // Time complexity : O(n∗log(sumofarray)).
+// This is almost like the problem where we try to find weight capacity to ship all packages in D days 
+// Instead of finding weight we gonna find mininum largets sum that can divide the array in m non-empty continuous parts. 
+// left = maximum number in an array; 
+// right = sum of all numbers in the array;
+
 class Solution {
     public int splitArray(int[] nums, int m) {
         
-        long l=0,r=0;
+        long left=0,right=0;
         for(int num : nums){
-            l = Math.max(l,num);
-            r +=num;
+            left  =  Math.max(left,num);
+            right += num;
         }
+        
+        if(m>=nums.length)
+            return (int) left;
         
         if(m==1)
-            return (int) r;
-        if(m>=nums.length)
-            return (int) l;
+            return (int) right;
         
-        while(l<=r){
-            long mid = l+ (r-l)/2;
+        while(left<right){
+            long mid = left + (right-left)/2; // to avoid overflow
             
-            if(valid(nums,mid,m))
-                r=mid-1; // target could be too big
+            int parts = countDivisions(nums,mid);
+            
+            /*
+                    DON'T Do this
+            if(parts==m)
+                return mid;
+            
+            This will give you wrong answer:
+            because there will be some x sum which will give the same partition as m.
+            However, this does not mean the x sum is absolute minumum sum required to partition array in m subarrays.
+            so weep moving left=mid+1 keep the right=mid even if we find the x sum to partition array in m subarrays.
+            In the end -  left and right will be equal.
+            */
+            if(parts<=m)
+                right=mid;
             else
-                l=mid+1;
+                left=mid+1;
               
         }
-        return (int) l;
+        
+        return (int) left;
     }
     
-    boolean valid(int []nums, long target, int m){
-        int sum=0,count=0;
+    int countDivisions(int []nums, long target){
+        long total=0;
+        int count=0;
+        
         for(int num : nums){
-            sum+=num;
-            if(sum > target){
-                sum=num;
+            total+=num;
+            if(total > target){
+                total=num;
                 count++;
             } 
         }
         count++;
-        return count<=m; // there could be less than m partition if target is too big 
+        return count;
     }
 }
