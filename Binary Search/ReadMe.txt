@@ -10,7 +10,8 @@ End Condition becomes : left > right
 Usually when we use : left < right
 End Condition: left == right
 
-  We use it when we want to come to one index and do post processing or return that index (Insert position, Cap to ship within D days, Split array)
+  We use it when we want to come to one index and do post processing or return that index 
+      (Insert position, Cap to ship within D days, Split array, Find minimum(or start index) in rorated sorted array)
   Initial Condition: left = 0, right = length
   Termination: left == right
   Searching Left: right = mid
