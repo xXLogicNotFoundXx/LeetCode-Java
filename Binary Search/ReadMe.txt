@@ -1,7 +1,7 @@
 Usually when we use : left <= right
 End Condition becomes : left > right
 
-  Thats when we get out of the loop and the we didnt find the answer. (Basic Binary Search like search an element)
+  Thats when we get out of the loop that means we didnt find the answer. (Basic Binary Search like search an element)
   Initial Condition: left = 0, right = length-1
   Termination: left > right
   Searching Left: right = mid-1
