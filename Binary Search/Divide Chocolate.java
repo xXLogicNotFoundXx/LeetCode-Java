@@ -12,6 +12,19 @@ Input: sweetness = [1,2,3,4,5,6,7,8,9], K = 5
 Output: 6
 Explanation: You can divide the chocolate to [1,2,3], [4,5], [6], [7], [8], [9]
 
+Well here, how do they know that we have to cut at 6 sweetness? 
+
+    1 May be I can try with minimum number in an array & try to make cuts with that sweetness. 
+    2 if that cuts more that K cuts then we can do the next min number... so on 
+        but what if array [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1] K = 4 
+    
+    what number do we consider next?    
+    
+    think what is the max number you can take ... 
+    that would be sum of all sweetness and that will make 1 cut ....
+    
+    eureka: left = min , right = sum of sweetness 
+    
 Similar to problem : 
     Koko eatin banana
     Capacity to ship packages in D day 
