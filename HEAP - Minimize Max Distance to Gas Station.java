@@ -29,6 +29,10 @@ class Solution {
             3. we keep adding K stations.
     
     Solution 3: is bonary search too diff so i am not doing this. 
+    
+    
+   Time :  O(N*Log(N)+ K*Log(N))
+   Space : O(n)
 */  
     public class Pair {
         public double distance;
