@@ -27,13 +27,15 @@ Searching Right: left = mid+1
   As a rule of thumb, use : 
   
   m = l + (r-l)/2 
-  with l = m + 1 
-  and r = m, 
+  with 
+  l = m + 1 
+  r = m 
   
   and use 
   
   m = r - (r-l)/2 
-  with l = m and 
+  with 
+  l = m  
   r = m - 1. 
   
   This can prevent m from getting stuck at r (or l) after the updating step.
