@@ -6,14 +6,20 @@ The solution set must not contain duplicate triplets.
 */
 class Solution {
     public List<List<Integer>> threeSum(int[] nums) {
+        
         List<List<Integer>> ans = new ArrayList<List<Integer>>();
-        if(nums==null) return ans;
+        
+        if(nums==null) 
+            return ans;
+        
         Arrays.sort(nums);
+        
         for(int i=0;i<nums.length-2;i++){
             while(i!=0 && i<nums.length-2 && nums[i] == nums[i-1])
                 i++;
             
-            int left=i+1,right=nums.length-1;
+            int left=i+1, right=nums.length-1;
+            
             while(left<right){
                 int sum = nums[i] + nums[left] + nums[right];
                 if(sum==0){
@@ -48,9 +54,12 @@ The sum that is closest to the target is 2.
 
 class Solution {
      public int threeSumClosest(int[] nums, int target) {
-        if(nums==null) return 0;
+        if(nums==null) 
+            return 0;
         Arrays.sort(nums);
+         
         int diff = Integer.MAX_VALUE;
+         
         int ansSum = 0;
         for(int i=0;i<nums.length-2;i++){
             while(i!=0 && i<nums.length-2 && nums[i] == nums[i-1])
