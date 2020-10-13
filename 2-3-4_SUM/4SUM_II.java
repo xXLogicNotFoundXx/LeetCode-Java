@@ -1,6 +1,9 @@
-/Given four lists A, B, C, D of integer values, compute how many tuples (i, j, k, l) 
-//there are such that A[i] + B[j] + C[k] + D[l] is zero.
-
+/* 
+https://leetcode.com/problems/4sum-ii/
+Given four lists A, B, C, D of integer values, compute how many tuples (i, j, k, l) 
+there are such that A[i] + B[j] + C[k] + D[l] is zero.
+O(N^2)
+*/
 class Solution {
     public int fourSumCount(int[] A, int[] B, int[] C, int[] D) {
         int count = 0;
