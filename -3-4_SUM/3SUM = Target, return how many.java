@@ -45,8 +45,11 @@ Moreover they are not even asking to return tuples of i,j,k
         int ans = 0;
         Arrays.sort(A);
         for(int i = 0; i < A.length-2; i++) {
+            
             long cnt = 0;
-            int l = i+1, r = A.length-1;
+            int l = i+1
+            int r = A.length-1;
+            
             while(l < r) {
                 
                 if(A[i] + A[l] + A[r] > target) 
@@ -67,14 +70,15 @@ Moreover they are not even asking to return tuples of i,j,k
                         r--;
                     } else {
                         long n = r-l+1;
-                        // If A[l...r] are all equal, then there are combinations of C(n, 2) combinations that meet the requirement.
+                        // If A[l...r] are all equal, then there are combinations of nCr combinations that meet the requirement.
+                        // nCr = n!/(r!*(n-r)!)  where n is total items and we choose r items. 
                         // let this sink in so we did n*n-1/2   ... n-2! is cancelled out look at the formula.
-                        // nCr = n!/(r!*(n-r)!) 
                         cnt += (n * (n-1) / 2) % mod;
-                        break;
+                        break; // there is nothing to calculate further 
                     }
                 }
             }
+            
             ans = (int) (ans + cnt) % mod;
         }   
         return ans;
