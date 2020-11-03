@@ -18,3 +18,7 @@ https://leetcode.com/problems/reverse-nodes-in-k-group/discuss/847426/non-recurs
 https://leetcode.com/problems/minimum-window-substring/discuss/254441/java-solution-using-hashmap-with-explanation-on
 
 https://leetcode.com/problems/wildcard-matching/discuss/281330/Java-14ms-with-memoization-readable-and-easy-to-understand
+
+https://leetcode.com/problems/sliding-window-maximum/discuss/864529/java-deque-visualization-with-code
+
+https://leetcode.com/problems/print-in-order/discuss/916217/java-with-lock-and-condition-variable
