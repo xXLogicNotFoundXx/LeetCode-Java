@@ -13,6 +13,17 @@ Returns a value such that set(key, value, timestamp_prev) was called previously,
 If there are multiple such values, it returns the one with the largest timestamp_prev.
 If there are no values, it returns the empty string ("").
 
+// Approach 1: HashMap + TreeMap
+TreeMap implements NavigableMap<K,V>, 
+    A Red-Black tree based NavigableMap implementation. 
+METHODS : get/put and all methods takes log(n) time 
+K	            ceilingKey(K key)
+Map.Entry<K,V>	ceilingEntry(K key)
+Map.Entry<K,V>	floorEntry(K key)
+K	            floorKey(K key)
+
+// Approach 2: HashMap + Binary Search - This is important look at the binary search
+
 */
 class TimeMap {
     
