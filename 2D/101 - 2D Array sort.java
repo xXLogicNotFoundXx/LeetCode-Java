@@ -9,7 +9,7 @@ public static void sortMatrix(final int[][] matrix) {
     List<Integer> list = new AbstractList<Integer>() {
         @Override
         public Integer set(int index, Integer element) {
-            return matrix[index/m][index%m] = element;
+            return matrix[index/m][index%m] = element;   // se we only used m here 
         }
 
         @Override
@@ -19,7 +19,7 @@ public static void sortMatrix(final int[][] matrix) {
 
         @Override
         public int size() {
-            return n*m;
+            return n*m;         // nice! 
         }
     };
     Collections.sort(list);
