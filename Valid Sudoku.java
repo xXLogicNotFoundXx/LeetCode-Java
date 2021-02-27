@@ -38,4 +38,35 @@ class Solution {
         }
         return true;
     }
+    
+    public boolean isValidSudoku(char[][] board) {
+        Map<String,Set<Character>> map = new HashMap<>();
+        
+        for (int i=0; i<9; ++i) {
+            for (int j=0; j<9; ++j) {
+                char number = board[i][j];
+                
+                if (number != '.'){
+                    
+                    
+                    String row =  "R" + i + number;
+                    String col =  "C" + j + number;
+                    String block =  "B" + i/3 + j/3 + number;
+                    
+                    map.putIfAbsent(row, new HashSet<Character>());
+                    map.putIfAbsent(col, new HashSet<Character>());
+                    map.putIfAbsent(block, new HashSet<Character>());
+                    
+                    if(map.get(row).contains(number) || map.get(col).contains(number) || map.get(block).contains(number))
+                        return false;
+                    
+                    map.get(row).add(number);
+                    map.get(col).add(number);
+                    map.get(block).add(number);
+                }
+            }
+        }
+        return true;
+    }
+    
 }
