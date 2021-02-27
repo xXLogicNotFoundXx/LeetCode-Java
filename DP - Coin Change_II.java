@@ -12,16 +12,55 @@ Explanation: there are four ways to make up the amount:
 5=1+1+1+1+1
 */
 class Solution {
+    /*  It is like Combination Sum problem 
+        but in combination sum problem you are asked to return all tuples forming target 
+        so we have to use backtracking https://leetcode.com/problems/combination-sum/
+        resulting into O(N^T/M)  The maximum depth of the tree could be T/M  ( T is total and M is minimum number)
+        Space is O(T/M) thats the height of the tree 
+    
     public int change(int amount, int[] coins) {
-        if(coins == null || amount<0)
+        // remember coint are not sorted 
+        Arrays.sort(coins);
+        return calculateSumNumber(coins, amount, 0);
+    }
+    
+    int calculateSumNumber(int[] coins, int amount, int start){ 
+        if(amount < 0) 
             return 0;
-        int []dp = new int[amount+1];
+        
+        if(amount == 0){
+            return 1;    
+        }
+        
+        int count = 0;
+        for(int i=start;i<coins.length;i++){
+            if(amount<coins[i])
+                break;
+            count +=  calculateSumNumber(coins, amount-coins[i], i);
+        }
+        
+        return count;
+    }
+    */
+    
+    /* 
+        Here we are asked how many combinations are there 
+        is there any DP method we could use? 
+        
+        This is a classic knapsack problem.
+        Time complexity:  O(N*amount) where N is a length of coins array.
+        Space complexity: O(amount) to keep dp array.
+    */
+    
+    public int change(int amount, int[] coins) {
+        int[] dp = new int[amount + 1];
         dp[0] = 1;
-        for(int coin : coins){
-            for(int i=coin; i<=amount; i++){
+        for (int coin : coins) {
+            for (int i = coin; i <= amount; i++) {
                 dp[i] = dp[i] + dp[i-coin];
-            }    
+            }
         }
         return dp[amount];
     }
+    
 }
