@@ -39,6 +39,10 @@ class Solution {
     }
 }
 
+// Amazon - How would you do combination of sum for 2D array?
+// sorting of 2D array - > https://github.com/xXLogicNotFoundXx/LeetCode-Java/blob/master/2D/101%20-%202D%20Array%20sort.java
+// then you can have 0 to m*n index 
+// for k index 2d[k/col][k%col] would be your item in 2D
 
 /*
 Combination Sum II with duplucates 
