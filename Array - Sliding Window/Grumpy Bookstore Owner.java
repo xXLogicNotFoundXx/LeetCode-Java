@@ -21,6 +21,8 @@ The maximum number of customers that can be satisfied = 1 + 1 + 1 + 1 + 7 + 5 = 
 class Solution {
     // time - 2 pass of N - O(N)  
     // space - O(X)  Queue 
+    // 2PAss - 1 to calulate total customers satisfied without trick 
+    //         2 to caluclate what is the max tricked user while maintaining window ... 
     public int maxSatisfied1(int[] customers, int[] grumpy, int X) {
         
         Deque<Integer> queue = new ArrayDeque<>();
@@ -51,6 +53,8 @@ class Solution {
     }
     
     // now looking back at it-  i dont think i need a queue 
+    // 2PAss - 1 to calulate total customers satisfied without trick 
+    //         2 to caluclate what is the max tricked user while maintaining window ... 
     // time - O(N) and space - O(1)
     public int maxSatisfied2(int[] customers, int[] grumpy, int X) {
         
@@ -61,7 +65,7 @@ class Solution {
                 totalWithoutTrick += customers[i];
         }
         
-        int trickused=0, maxUsers=0;
+        int trickused=0, maxTrcikedUsers=0;
         for(int i=0; i<customers.length; i++){
             
             if(grumpy[i]==1){
@@ -73,13 +77,14 @@ class Solution {
                     trickused -= customers[i-X];
             }
             
-            maxUsers = Math.max(maxUsers, totalWithoutTrick + trickused);
+            maxTrcikedUsers = Math.max(maxTrcikedUsers,  trickused);
         }
         
-        return maxUsers;
+        return totalWithoutTrick + maxTrcikedUsers;
     }
     
     // can you do it in one pass ? 
+    // Grredy Approach is 
     /*
     1 in one pass you can calculate total customer 
     2 in one pass you can total grumpy customers 
