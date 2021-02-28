@@ -12,28 +12,33 @@ I have used another grid to track visited which I dint need and I could just mod
 class Solution {
     public int numIslands(char[][] grid) {
         if(grid==null || grid.length ==0) return 0;
+        
         int m = grid.length;
         int n = grid[0].length;
         int count=0;
+        
         for(int i=0;i<m;i++){
             for(int j=0;j<n;j++){
-                if(traverse(grid,i,j))
+                
+                if(grid[i][j]=='1'){
+                    traverse(grid,i,j);
                     count++; 
+                }  
             }
         }
         return count;
     }
     
-    boolean traverse(char[][] grid, int m,int n){
+    void traverse(char[][] grid, int m, int n){
         if(m<0 || n <0 || m>=grid.length || n >=grid[0].length || grid[m][n] == '0')
-            return false;
+            return;
         
-        grid[m][n]='0'; // mark visited 
+        grid[m][n]='0';
         traverse(grid,m+1,n);
         traverse(grid,m-1,n);
         traverse(grid,m,n+1);
         traverse(grid,m,n-1);
-        return true;
+ 
     }
 }
 
