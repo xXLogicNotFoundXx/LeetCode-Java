@@ -72,7 +72,8 @@ class Solution {
 
 // level order 
 class Solution {
-    public List<List<Integer>> levelOrder(TreeNode root) {
+    // DFS HashMap of level->values 
+    public List<List<Integer>> levelOrder0(TreeNode root) {
         List<List<Integer>> ans = new ArrayList<List<Integer>>();
         Map<Integer,List<Integer>> map = new HashMap<Integer,List<Integer>>();
         
@@ -82,16 +83,47 @@ class Solution {
             
         return ans;
     }
+    
     // creates a map of <level, nodes>
     public void traverse(TreeNode root, int level, Map<Integer,List<Integer>> map){
         if(root==null) return;
-        
+
         List<Integer> subAns = map.getOrDefault(level,new ArrayList<Integer>());
         subAns.add(root.val);
         map.put(level,subAns);
+
         traverse(root.left,level+1,map);
         traverse(root.right,level+1,map);
     }
+    
+    
+    // BFS - This approach is good to practice BFS traversal. 
+    public List<List<Integer>> levelOrder(TreeNode root) {
+        List<List<Integer>> ans = new ArrayList<List<Integer>>();
+        
+        if(root==null) return ans;
+        
+        Queue<TreeNode> queue = new LinkedList<>();
+        queue.add(root);
+        
+        while(!queue.isEmpty()){
+            
+            int size = queue.size();
+            List<Integer> subAns = new ArrayList<>();
+            
+            for(int i=0;i<size;i++){
+                TreeNode node = queue.poll();
+                
+                subAns.add(node.val);
+                
+                if(node.left!=null) queue.add(node.left);
+                if(node.right!=null) queue.add(node.right);
+            }
+            ans.add(subAns);
+        }
+        
+        return ans;
+    }    
 }
 
 //https://leetcode.com/problems/find-bottom-left-tree-value/
