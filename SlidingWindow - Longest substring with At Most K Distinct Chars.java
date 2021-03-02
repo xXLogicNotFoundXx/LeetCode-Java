@@ -2,35 +2,41 @@ https://leetcode.com/problems/longest-substring-with-at-most-k-distinct-characte
 Given a string, find the longest substring that contains only two unique characters.
 Given "abcadcacacaca" and 3, it returns "cadcacacaca".
 
-public class Solution {
-    public int lengthOfLongestSubstringKDistinct(String s, int K){
-        if(K<=0) 
-            return 0;
+class Solution {
+    public int lengthOfLongestSubstringKDistinct(String s, int k) {
+        if(k<=0) return 0; 
         
-        Map<Character,Integer> map = new HashMap<Character, Integer>();
-        int maxLen = 0;
-        int start =0;
-        
+        Map<Character,Integer> map = new HashMap<>();
+        int left = 0;
+        int maxLength =0;
         for(int i=0;i<s.length();i++){
-            int count = map.getOrDefault(s.charAt(i),0);
-            map.put(s.charAt(i),count+1);
+            char ch = s.charAt(i);
             
-            if(map.size()==K) {    // remember size may stay K for next chars so you have to calcualte this again.
-                maxLen = Math.max(maxLen,i-start+1); // +1 bcz we are including the current index too
-            }
+            if(map.containsKey(ch) || map.size()<k){ 
+                map.put(ch, map.getOrDefault(ch,0)+1);
+                continue;
+            }  
             
-            if(map.size()>K){
-                while(map.size()>K) {
-                    int existingCharCount = map.get(s.charAt(start)) -1;
-                    if (existingCharCount == 0) {
-                        map.remove(s.charAt(start));
-                    } else {
-                        map.put(s.charAt(start), existingCharCount );
-                    }
-                    start++;
+            // at this point you have to take chars out from left
+            // note the length of this substring
+            maxLength = Math.max(maxLength,i-left);
+            
+            while(map.size()==k && left<i){
+                char leftCh = s.charAt(left);
+                
+                map.put(leftCh, map.get(leftCh) - 1 );
+                if( map.get(leftCh) == 0){
+                    map.remove(leftCh);
+                    left++;
+                    break;
                 }
+                left++;
             }
+            
+            map.put(ch, 1);
         }
-       return maxLen==0 ? s.length() : maxLen; // may be the whole string didnt hit the K distinct chars
+        // compare last remaining substring length 
+        maxLength = Math.max(maxLength, s.length()-left);
+        return maxLength;
     }
 }
