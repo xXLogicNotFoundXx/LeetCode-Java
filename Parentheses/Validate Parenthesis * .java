@@ -13,8 +13,8 @@ Left parenthesis '(' must go before the corresponding right parenthesis ')'.
 
 class Solution {
     
-    /* Backtracking too expensive ... 
-        it would be -> N*3^N
+    /*  NOT GOOD Time:O(N*3^N)
+        Backtracking too expensive ... 
     */
     public boolean checkValidString1(String s) {
         return validate(s, 0, 0);
@@ -49,11 +49,48 @@ class Solution {
         return openCount==0;
     }
     
+    // Space: O(N)  Time:O(N)
+    public boolean checkValidString(String s) {
+        
+        Stack<Integer> openStack = new Stack<>();
+        Stack<Integer> starStrack = new Stack<>();
+        for(int i=0; i<s.length();i++)
+        {
+            char ch = s.charAt(i);
+            if(ch=='(')
+                openStack.push(i);
+            else if(ch==')')
+            {
+                if(!openStack.isEmpty())
+                    openStack.pop();
+                else if(!starStrack.isEmpty())
+                    starStrack.pop();
+                else
+                    return false;
+            }
+             else 
+                starStrack.push(i);
+        }
+        
+        // For remaining open brackets ...
+        // we can consider all remaining stars as close brackets for 
+        // FOR remaining star stack we can just assume they are ignored 
+        
+        while( !openStack.isEmpty() && !starStrack.isEmpty()){
+            int openIndex = openStack.pop();
+            int startIndex = starStrack.pop();
+            if(openIndex > startIndex)
+                return false;
+        }
+        
+        return openStack.isEmpty();
+    }
+
     // keep the count of the stars. 
     // https://leetcode.com/problems/valid-parenthesis-string/discuss/598680/concise-java-algo-with-just-one-stack-one-pass-on-0ms/519337 
     // However in following ... we are only pusing ( on the stack.
     // We can only use count for that so stack is not required. 
-    public boolean checkValidString(String s) {
+    public boolean checkValidString3(String s) {
         Deque<Character> stk = new ArrayDeque<>();
         int scount = 0;
         for(char c : s.toCharArray()) {
