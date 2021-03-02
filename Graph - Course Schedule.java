@@ -46,7 +46,7 @@ class Solution {
                     return true; 
             }
         }
-        // we nned to remove bcz think of fiamond graph no cycle .. for second path we gonna visit same node 
+        // we nned to remove bcz think of Diamond Shaped graph and no cycle .. for second path we gonna visit same node 
         // here you should realize we should have saved the result of the last node in a diamond ...
         // we would end up processing same node twice. 
         visited.remove(i);
