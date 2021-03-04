@@ -22,79 +22,94 @@ Could you do both operations in O(1) time complexity?
  ** Moreover if you cretae pseudo head and tail in DoublyLinkedList to mark the boundary, then we don't need to check the NULL nodes during operations
  ** also there could be put(1,1) then put (1,4) in that case the value should be updated its value and move node to the start...key is same so we keep that in cash (Hash Table)..
 */
- class LRUCache {
-    int capacity = 0;
-    
-    class DLinkedNode {
-      int key; // we need to know the key when we remove last element from the list ... key to remove it from hashmap
-      int value;
-      DLinkedNode prev;
-      DLinkedNode next;
+class LRUCache {
+    class Node {
+        int key;
+        int value; 
+        Node next;
+        Node prev;
+        Node(int k, int v){
+            key=k;
+            value=v;
+        }
+        
+        Node(){
+         next=null;
+         prev=null;
+        }
     }
     
-    Map<Integer,DLinkedNode> map = new HashMap();  // key and node
-    DLinkedNode Start = new DLinkedNode();
-    DLinkedNode End = new DLinkedNode();
+    Node Head = new Node();
+    Node Tail = new Node();
+    
+    Map<Integer, Node> map; 
+    int size=0;
     
     public LRUCache(int capacity) {
-        this.capacity=capacity;
-        
-        Start.next = End;
-        Start.prev = null;
-        End.prev = Start;
-        End.next = null;
+        if(capacity<=0){
+            return; 
+        }
+        size=capacity;
+        Head.next = Tail;
+        Tail.prev = Head;
+        map = new HashMap<>(capacity);
     }
     
     public int get(int key) {
-        if(capacity<=0) return -1;
+        if(size==0)
+            return-1; 
         if(map.containsKey(key)){
-            update(map.get(key), map.get(key).value);
+            // update doubly link list
+            detachNode(map.get(key));
+            putNodeAtFirst(map.get(key));
             return map.get(key).value;
-        } 
+        }
         return -1;
     }
     
-    void update(DLinkedNode node, int val){
-        node.prev.next = node.next;
-        node.next.prev = node.prev;
-        insert(node);
-        node.value = val;
-    }
-    
-    void insert(DLinkedNode node){
-        node.prev = Start;
-        node.next = Start.next;
-        node.next.prev = node;
-        Start.next = node;
-    }
-    
-    void remove(){
-        End.prev.prev.next = End;
-        End.prev = End.prev.prev;
-    }
     
     public void put(int key, int value) {
-        if(capacity<=0) return;
-        
+        if(size==0)
+            return; 
         if(map.containsKey(key)){
-           update(map.get(key), value);
-           return;
+            map.get(key).value = value;
+            detachNode(map.get(key));
+            putNodeAtFirst(map.get(key));
+        } else {
+            if(size==map.size()){
+                map.remove(removeLastNode().key);
+            }
+            Node node = new Node(key,value);
+            
+            putNodeAtFirst(node);
+            map.put(key,node);
         }
+    }
+    
+    void detachNode(Node node){
+        Node prev = node.prev;
+        Node next = node.next;
+        prev.next = next;
+        next.prev = prev;   
+    }
+    
+    void putNodeAtFirst(Node node){
+        Node next = Head.next; 
+        node.prev = Head;
+        node.next = next;
+        next.prev = node;
+        Head.next = node;
+    }
+    
+    Node removeLastNode(){
+        Node lastNode = Tail.prev;
+        Node pre = lastNode.prev;
+        pre.next = Tail;
+        Tail.prev = pre;
         
-        if(capacity == map.size()){
-            map.remove(End.prev.key);
-            remove();
-        }
-        
-        DLinkedNode node = new DLinkedNode();
-        node.key = key;
-        node.value = value;
-        insert(node);
-        map.put(key,node);
-        
+        return lastNode;
     }
 }
-
 /**
  * Your LRUCache object will be instantiated and called as such:
  * LRUCache obj = new LRUCache(capacity);
