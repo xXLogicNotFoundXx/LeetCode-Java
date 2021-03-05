@@ -31,12 +31,55 @@ while(i<=str.length()-1 || j<=str2.length()-1);
   append(b);
   i++;j++;
 
+
 /*
 Given a string s, return the longest and lexicographically smallest palindromic string that can be formed from the characters.
 ex. "abbaa" -> "abba"
 ex. "adeadeadevue" -> "adeeaeeda"
 */
-https://leetcode.com/playground/mF43HniQ
+public class Main {
+    public static String lexLongestPalimdrome(String str){
+        if(str==null || str.isEmpty())
+            return "";
+        
+        int[] count = new int[26];
+        for(char ch : str.toCharArray())
+            count[ch-'a']++;
+        
+        StringBuilder sb = new StringBuilder();
+        for(int i=0;i<count.length;i++){
+            if(count[i]==0)
+                continue;
+            
+            int mid = sb.length()/2;
+            int c = count[i];
+            char ch = (char) ((int)'a'+i);
+            String s = Character.toString(ch);
+            if(c%2==0){
+                sb.insert(mid,s.repeat(c));
+            } else {
+                sb.insert(mid,s.repeat(c-1));
+            }
+        }
+        
+        for(int i=0;i<count.length;i++){
+            if(count[i]%2==1){
+                int mid = sb.length()/2; 
+                char ch = (char) ((int)'a'+i);
+                sb.insert(mid,ch);
+                break;
+            }
+        }
+            
+        return sb.toString();
+    }
+    public static void main(String[] args) {
+        System.out.println(lexLongestPalimdrome(""));
+        System.out.println(lexLongestPalimdrome("adeadeadevue"));
+        System.out.println(lexLongestPalimdrome("adskassda"));
+        System.out.println(lexLongestPalimdrome("aahslqjjd"));
+    }
+}
 
 /*
 Given a string S, Count number of ways of splitting S into 3 non-empty a,b,c such 
@@ -53,4 +96,29 @@ ex. xzxzx OP: 5
 https://leetcode.com/problems/number-of-ways-to-split-a-string/
 https://leetcode.com/problems/number-of-ways-to-split-a-string/discuss/830455/JavaPython-3-Multiplication-of-the-ways-of-1st-and-2nd-cuts-w-explanation-and-analysis./685436
 */
-https://leetcode.com/playground/2wuwP6ft
+// this is easy one if they are not similar like nasty problem one 
+public class Main {
+    public static int numberOfThreeWayCuts(String S){
+        if(S==null || S.length()<3)
+            return 0;
+        
+        int count=0;
+        for(int i = 1; i<S.length()-1;i++){
+            for(int j = i+1; j<S.length();j++){
+                String a = S.substring(0,i);
+                String b = S.substring(i,j);
+                String c = S.substring(j);
+                
+                System.out.println(a +" "+b+" "+c);
+                if(!((a+b).equals(b+c) || (b+c).equals(c+a) || (a+b).equals(c+a)))
+                count++;
+            }
+        }
+        return count;
+    }
+    
+    public static void main(String[] args) {
+        System.out.println(numberOfThreeWayCuts("xzxzx"));
+        System.out.println(numberOfThreeWayCuts("XXX"));
+    }
+}
