@@ -72,17 +72,17 @@ class Solution {
                 }
                 num=0;
                 prevSign = ch;
+                
+                if(ch==')'){
+                    // we made sure we calculate result before we should break and return. 
+                    break;
+                }
             }
             
             if(ch=='('){
                 // remember there is a sign before this 
                 // that means num is 0 here and sign is on prevSign
                 num = calculate(q);
-            }
-            
-            if(ch==')'){
-                // we made sure we calculate result before 
-                break;
             }
             
         }
