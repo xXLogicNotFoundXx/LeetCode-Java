@@ -11,7 +11,22 @@ Output: 3
 Example 3:
 Input: "(1+(4+5+2)-3)+(6+8)"
 Output: 23
+
+Think of this Input: "(1-(4+5+2)-3)+(6+8)"
+output=1
+
+From these inputs we cant really ignore the ( & ). 
+There is a sign before'(' & sign after ') 
+The idea is
+  * when you get '(' do the recursive call 
+  * on ')' return the Caculated ans . 
+  * Also, we are gonna put -ve number on the stack when we see the operation '-' .
+  * we can pass the index of the string but returning to the caller we can keep the track of index.
+     So index we can keep it as global variable or we can just pass the string in the queue form.
+
 */
+// Check the Basic Calculator II first it will be easy to understand why are we putting -ve number on stack. 
+// Check the second program that doesnt work in Basic Calculator II
 class Solution {
     public int calculate(String s) {
          if(s==null || s.isEmpty())
@@ -43,13 +58,16 @@ class Solution {
                 num = (num*10) + (ch-'0');
             } 
             
+            // If you dont add '+' in the queue .. then you can have index as a global variable and move that 
+            // and this condition would be 
+            // if(index+1 == s.length() || ch==')' || ch=='+'|| ch=='-') ...
             if(ch==')' || ch=='+'|| ch=='-'){ // very IMP that we have ) in this 
                 switch(prevSign){
                     case '+' :
                         st.push(num);
                         break;
                     case '-' :
-                        st.push(num*-1);
+                        st.push(-num);
                         break;
                 }
                 num=0;
