@@ -1,4 +1,5 @@
 https://leetcode.com/discuss/interview-question/331429/google-onsite-min-steps-to-reach-the-state
+
 https://leetcode.com/discuss/interview-experience/336891/Google-or-L4-or-Sunnyvale-Reject/307742
 
 https://leetcode.com/discuss/interview-experience/331360/amazon-sde2-3-palo-alto-reject
@@ -22,3 +23,5 @@ https://leetcode.com/problems/wildcard-matching/discuss/281330/Java-14ms-with-me
 https://leetcode.com/problems/sliding-window-maximum/discuss/864529/java-deque-visualization-with-code
 
 https://leetcode.com/problems/print-in-order/discuss/916217/java-with-lock-and-condition-variable
+
+https://leetcode.com/problems/best-position-for-a-service-centre/discuss/1100761/Java-Define-Search-Space-Rectangle-and-Start-with-mid-point-4-ms
