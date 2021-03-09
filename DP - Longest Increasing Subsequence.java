@@ -10,12 +10,15 @@ The longest increasing subsequence is [2,3,7,101], OR [2,5,7,101] therefore the 
 
 class Solution {
     public int lengthOfLIS(int[] nums) {
-        if(nums ==null || nums.length == 0) return 0;
+        if(nums ==null || nums.length == 0) 
+            return 0;
+        
         int n =nums.length;
         int []memo = new int[n];
         int max=0;
-        Arrays.fill(memo, 1); // IMPORTANT : only doing memo[n-1]=1 wont work let that sink in. 
+    
         for(int i=n-1;i>=0;i--){
+            memo[i] = 1;  // Initiate the longest subsequence.. it is 1, if you just include me
             for(int j=i+1;j<n;j++){
                 if(nums[i]<nums[j])
                     memo[i] = Math.max(memo[i],memo[j]+1);
@@ -25,7 +28,6 @@ class Solution {
         return max;
     }
 }
-
 /* nlogK  K is the ans.
 Solution 2 - Binary Search
 We can put the increasing sequence in a list.
