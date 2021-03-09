@@ -50,49 +50,66 @@ words = ["oath","pea","eat","rain"] and board =
   ['i','f','l','v']
 ]
 Output: ["eat","oath"]
-run time  N*4^maxWordLength
-beacse we creare 4 branches each step and depth is wordLength * N words 
+
+Time complexity: O( M*N + Max(Words*4^L, Words*M*N) )
+// M*N to build a map 
+// either we are gonna search whole matrix for a word 
+// OR we would make 4 calls for each letter in word for length L.
 */
 class Solution {
     public List<String> findWords(char[][] board, String[] words) {
-        int rows = board.length;
-        int cols = board[0].length;
-        List<String> ans = new ArrayList();
-        Set<String> set = new HashSet<String>();
-        for(String word : words){
-            if(set.contains(word)) // we dont want to process same words again and again 
-                continue;
-            for(int i=0;i<rows;i++){
-                for(int j=0;j<cols;j++){
-                    if(!set.contains(word) && find(board, word, 0, i, j)){ 
-                        // we dont want to process same words again and again  only once and be done with it 
-                        ans.add(word);
-                        set.add(word);
-                    }
-                }
+        
+        HashMap<Character,List<int[]>> map = new HashMap<>();
+        for (int i = 0 ; i < board.length; i++) {
+            for (int j = 0; j < board[0].length; j++) {
+                map.putIfAbsent(board[i][j], new ArrayList<int[]>());
+                List<int[]> list = map.get(board[i][j]);
+                list.add(new int[]{i,j});
             }
         }
+        
+        Set<String> set = new HashSet<>();  // set is used to avoid duplicate
+        for (String word: words){
+            if (!set.contains(word) && findWord(board, map, word)) {
+                set.add(word);
+            }
+        }
+        
+        List<String> ans = new ArrayList<String>();
+        ans.addAll(set);
+        
         return ans;
     }
     
-    boolean find(char[][] board, String word, int wi, int i,int j){
-        if(wi == word.length())
-            return true; 
-        if( i<0 || j<0 || i==board.length || j==board[0].length)
+    private boolean findWord(char[][] board, HashMap<Character,List<int[]>> map, String word) {
+        if(!map.containsKey(word.charAt(0)))
             return false;
+        List<int[]> positions = map.get(word.charAt(0));
         
-        if(board[i][j] == word.charAt(wi)){
-            int [][]dir = new int[][] {{0,1},{0,-1},{-1,0},{1,0}};
-            board[i][j] = '#';
-            for(int []p : dir){
-                if(find(board, word, wi+1, i+p[0], j+p[1]) ){
-                    board[i][j] = word.charAt(wi);
-                    return true;
-                }
-            }
-            board[i][j] = word.charAt(wi);
+        for(int[] pos : positions){
+            if(dfs(board, word, 0, pos[0], pos[1]))
+                return true;
         }
         
-        return false;
+        return false; 
+    }
+    
+    private boolean dfs(char[][] board, String word, int cur, int i, int j) {
+        if (cur == word.length()) 
+            return true;
+        
+        if (i < 0 ||  i == board.length ||  j < 0 ||  j == board[0].length) 
+            return false;
+        
+        if (word.charAt(cur) != board[i][j])
+            return false;
+        
+        board[i][j] = '#';
+        boolean res =   dfs(board, word, cur+1, i-1, j) ||
+                        dfs(board, word, cur+1, i+1, j) ||
+                        dfs(board, word, cur+1, i, j-1) || 
+                        dfs(board, word, cur+1, i, j+1);
+        board[i][j] = word.charAt(cur);
+        return res;
     }
 }
