@@ -23,7 +23,8 @@ class Solution {
             
             int currNum = curI<curJ ? curI : curJ;
             i=curI<curJ ? i+1 : i;
-            j=curI>=curJ ? j+1 : j;
+            j=curI>=curJ ? j+1 : j;   // see we have ">="
+            // if we find same number someone has to be incremented 
             
             if(indexes.contains(i + j -1)) {
                 sum += currNum;
