@@ -464,3 +464,29 @@ Since the array b contains only one element 10 and the array a does not contain 
 	   Sort the smaller array using the absolute value of the elements,
 	   then for each element in the unsorted array, binary search the interval on the sorted one
 https://stackoverflow.com/questions/64671811/bounded-square-sum-algorithm
+
+	   
+/*
+Given a positive integer n, starting from 0 to n, if the number contains 0, 2, 4, count once. 
+Implement a function that requires returning the count. Examples are:
+*/
+public int Count024UpToN(int N){
+    int count = 1;
+    for (int n = 1; n <= N; n++)
+    {
+	if (IsDigitPresent(n))
+	    count++;
+    }
+    return count;
+}
+
+private bool IsDigitPresent(int n){
+    while (n > 0)
+    {
+	int digit = n % 10;
+	if (digit == 0 || digit == 2 || digit == 4)
+	    return true;
+	n /= 10;
+    }
+    return false;
+}
