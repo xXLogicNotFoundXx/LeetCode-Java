@@ -252,3 +252,41 @@ int solve(String string) {
     }
     return ans;
 }
+/*
+ Prefix String - given two string arrays A & B, find if all strings in B are prefixes of a concatenation of strings in A. 
+ For example if A = {"one", "two", "three"} B = {"onetwo", "one"}, return True
+ 
+ .. this is a word break problem called m times. for B strings. 
+ 
+ https://leetcode.com/problems/word-break/solution/
+*/
+	   
+/*
+Roatet matrix K time but dont rotate diagonals 
+https://github.com/xXLogicNotFoundXx/LeetCode-Java/blob/master/2D/101.java
+*/
+	   def rotate(matrix):
+    """
+    :type matrix: List[List[int]]
+    :rtype: None Do not return anything, modify matrix in-place instead.
+    """
+    r=len(matrix)
+    c=len(matrix[0])
+
+    # transpose of a matrix
+    for i in range(r):
+        for j in range(i,c):
+            matrix[i][j],matrix[j][i]=matrix[j][i],matrix[i][j]
+
+    # reverse each row
+    for row in matrix:
+        row.reverse()
+
+    # traverse left-right diagonal and swap with right-left diagonal
+    for i in range(r):
+        matrix[i][i],matrix[i][r-1-i] = matrix[i][r-1-i],matrix[i][i]
+
+    # traverse the right-left diagonal and swap half of its values to get a reverse
+    for i in range(r/2):
+        matrix[i][r-1-i],matrix[r-1-i][i] = matrix[r-1-i][i],matrix[i][r-1-i]
+    return matrix
