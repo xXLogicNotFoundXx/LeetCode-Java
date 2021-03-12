@@ -1,4 +1,28 @@
-// https://leetcode.com/problems/find-the-distance-value-between-two-arrays/submissions/
+/*
+Given two integer arrays a and b, and an integer value d, your task is to find the comparator value between these arrays.
+
+The comparator value is defined as the number of elements x ∈ a such that there are no elements y ∈ b where |x - y| ≤ d.
+In other words, it's the number of elements in a that are more than d away from any element of b.
+
+*/
+https://leetcode.com/problems/find-the-distance-value-between-two-arrays/submissions/
+
+
+
+// Product - sum 
+public int subtractProductAndSum(int n) {
+	int product=1, sum=0;
+
+	while(n>0){
+	    int i = n%10;
+	    n = n/10;
+	    product *= i;
+	    sum += i;
+	}
+
+	return product-sum;
+}
+
 
 /*
 Easy:
@@ -48,7 +72,7 @@ public class Main {
         
         StringBuilder sb = new StringBuilder();
         for(int i=0;i<count.length;i++){
-            if(count[i]==0)
+            if(count[i]==0 || count[i]==1)
                 continue;
             
             int mid = sb.length()/2;
