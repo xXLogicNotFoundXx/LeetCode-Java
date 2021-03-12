@@ -293,3 +293,25 @@ public int[][] rotate_without_extra_space(int[][] matrix) {
 	}
 	return matrix;
 }
+
+	   
+/*
+Implement Increment function for all values in hashmap .. this one is easy 
+Implement Increment function for all keys in hashmap ... 
+1. extra o(n) space we can just craet another map 
+2. for no extra map we can sort keys in reverse order and start putting key,value pairs  
+*/
+1.
+HashMap<Integer,Integer> newMap = new HashMap<>();
+for(int key: map.keySet()){
+   newMap.put(key+1, map.get(key));
+}
+map = newMap;
+
+2.
+List list = new ArrayList(map.keySet());
+Collections.sort(list, Collections.reverseOrder);
+for(Integer i: list) {
+	map.put(i+1, map.get(i));
+	map.remove(i);
+}
