@@ -490,3 +490,34 @@ private bool IsDigitPresent(int n){
     }
     return false;
 }
+
+
+/*
+The 3rd question: Player 1 and Player 2 are playing a game:
+
+Given an array A, delete the adjacent pair of the same value from A at each step (A == A[i+1], remove the pair of ( i, i+1) from A).
+Game starts from Player 1, one step at a time. If there are no numbers to delete, the game is over. 
+The one who takes the last step wins. 
+The question asks to return who won.
+Solution of Q3. Observe that the number or rounds will be the same no matter of the players choice [it would be good to see a proof for this, math related stuff].
+If we accept this then the solution is trivial, runs in O(n) time using stack.
+*/
+string winner(vector<int> v){
+    
+    stack<int>S;
+    
+    for(int x:v){
+        if(!S.empty() && S.top()==x)  S.pop();
+        else S.push(x);
+    }
+    
+    return ((v.size()-S.size())/2)%2==1?"Player 1":"Player 2";
+}
+
+int main(void){
+    
+    cout<<winner({1,0,1,0,0,1,0})<<endl;
+    
+    return 0;
+}	   
+	   
