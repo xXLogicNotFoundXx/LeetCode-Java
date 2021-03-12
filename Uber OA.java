@@ -315,3 +315,40 @@ for(Integer i: list) {
 	map.put(i+1, map.get(i));
 	map.remove(i);
 }
+
+	   /*
+Group array by mean values 
+*/
+private static int[][] meanGroups(int[][] nums) {
+        
+        Map<Integer, List<Integer>> map = new HashMap<>();
+        
+        for(int i = 0; i < nums.length; i++) {
+            
+            int mean = getMean(nums[i]);
+            if(!map.containsKey(mean)) map.put(mean, new ArrayList<>());
+            map.get(mean).add(i);
+            
+        }
+        
+        int[][] ret = new int[map.size()][];
+        
+        int j = 0;
+        
+        for(int key: map.keySet()) 
+            ret[i++] = map.get(key).stream().mapToInt(j -> j).toArray();
+           
+        
+        Arrays.sort(ret, (a,b) -> a[0] - b[0]);
+        return ret;
+    }
+    
+    private static int getMean(int[] A) {
+        int sum = 0;
+        for(int a: A) {
+            sum += a;
+        }
+        
+        return sum/A.length;
+    }
+
