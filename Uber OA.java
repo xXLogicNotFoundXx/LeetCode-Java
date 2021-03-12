@@ -116,7 +116,8 @@ ex. xzxzx OP: 5
 	xz, xz, x
 	xzx, z, x
 
-// This is different NASTY problem 
+// This is different NASTY problem but here is the solution 
+this probem says there are only 2 characteres like above x and z and each substring must have specific number of x and z. 
 https://leetcode.com/problems/number-of-ways-to-split-a-string/
 https://leetcode.com/problems/number-of-ways-to-split-a-string/discuss/830455/JavaPython-3-Multiplication-of-the-ways-of-1st-and-2nd-cuts-w-explanation-and-analysis./685436
 */
@@ -145,4 +146,109 @@ public class Main {
         System.out.println(numberOfThreeWayCuts("xzxzx"));
         System.out.println(numberOfThreeWayCuts("XXX"));
     }
+}
+
+/*
+We define a subarray of size m in an n-element array to be the contiguous block of elements in the inclusive range from index i to index j, where j − i + 1 = m and 0 ≤ i ≤ j < n. For example, given array [8, 2, 4], the subarrays of size m = 2 would be [8, 2] and [2, 4] (but not [8, 4] since these elements aren't contiguous).
+
+Given an array of integers arr, and an integer m, your task is the following:
+
+Find the minimum value in each of the contiguous subarrays of size m;
+Return the maximum value among these minimums.
+
+This is like sliding window minimum problem ... and then finxidn max in it. 
+*/
+public int[] minSlidingWindow(int[] nums, int k) {
+        
+        if(nums==null||nums.length==0 ) 
+            return new int[0];
+        
+        Deque<Integer> queue = new ArrayDeque<>();
+    
+        int[] ans = new int[nums.length-k+1];
+        int ians=0;
+        
+        for(int i=0;i<nums.length;i++){
+            // 1. if first index in  Q(Deque) < i-k+1
+            if(!queue.isEmpty() && queue.peek() < i-k+1){
+                queue.poll();
+            }    
+            
+            // 2. loop: nums[i] < last element of the Q(Deque)?
+            while(!queue.isEmpty() && nums[i] < nums[queue.peekLast()]){
+                queue.pollLast();
+            }
+            
+            // 3. offer(i)
+            queue.offer(i);
+            
+            // 4. if window is complete then ouput nums[peek()]
+            if(i>= k-1){ // OR   i-k+1 >= 0
+                ans[ians++] = nums[queue.peek()];
+            }
+        }
+        
+        return ans;
+    }
+
+
+/*
+Spiral matrix  you should sort elements in border. 
+
+Traverse Spiral matrix and put it in HEAP ... make a list of heaps. 
+second pass add those numbers in spiral.
+*/
+public List<Integer> spiralOrder(int[][] a) {
+       
+        List<Integer> list = new ArrayList<Integer>();
+        if(a.length == 0) return list;
+
+        int left=0, right=a[0].length-1;
+        int top=0,  bottom=a.length-1;
+        
+        while(left<=right && top<=bottom){
+            for(int i=left;i<=right;i++) 
+                list.add(a[top][i]); 
+            top++;
+            for(int i=top;i<=bottom;i++) 
+                list.add(a[i][right]);
+            right--;
+            
+            if(top<=bottom){    // IMP 
+                for(int i=right;i>=left;i--) 
+                    list.add(a[bottom][i]);
+                bottom--;
+            }
+            if(left<=right){   // IMP 
+                for(int i=bottom;i>=top;i--) 
+                    list.add(a[i][left]);
+                left++;
+            }
+        }
+        return list;
+    }
+
+
+/*
+Q Given a string str and an integer k, your task is to split str into a minimal possible number of 
+substrings so that there are no more than k different symbols in each of them. Return the minimal possible number of such substrings.
+
+eg: s = "aabeefegeeccrr" k = 3 Output = 3
+*/
+int solve(String string) {
+    int ans = 1;
+    Set<Character> set = new HashSet<>();
+    for(int i = 0; i < string.length(); i++) {
+        
+	if(set.contains(string.charAt(i))
+	   continue; 
+	   
+        if(!set.contains(string.charAt(i)) && set.size() == K) {
+           set = new HashSet<>();
+           ans += 1;
+        }
+	   
+        set.add(string.charAt(i));
+    }
+    return ans;
 }
