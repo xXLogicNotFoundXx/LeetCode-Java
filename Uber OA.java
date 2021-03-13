@@ -5,11 +5,36 @@ The comparator value is defined as the number of elements x ∈ a such that ther
 In other words, it's the number of elements in a that are more than d away from any element of b.
 
 */
-https://leetcode.com/problems/find-the-distance-value-between-two-arrays/submissions/
+public int findTheDistanceValue(int[] arr1, int[] arr2, int d) {
+	TreeSet<Integer> treeSet = new TreeSet<>();
+	for(int b : arr2){
+	    treeSet.add(b);
+	}
+
+	int ans = 0;
+	for(int a: arr1){
+	    Integer floor = treeSet.floor(a);
+	    Integer ceiling = treeSet.ceiling(a);
+
+	    int diff1=Integer.MAX_VALUE;
+	    int diff2=Integer.MAX_VALUE;
+
+	    if(floor!= null)
+		diff1 = Math.abs(a-floor);
+
+	    if(ceiling!= null)
+		diff2 = Math.abs(a-ceiling);
+
+	    if(Math.min(diff1,diff2) > d)
+		ans++;
+	}
+
+	return ans;
+}
 
 
 
-// Product - sum 
+// Product of digits  - sum if digits 
 public int subtractProductAndSum(int n) {
 	int product=1, sum=0;
 
@@ -40,7 +65,8 @@ for(int i=0;i<A.length-2;i++){
 }
 
 /*
-Given two strings a and b, merge the strings so that the letters are added in alternating order starting with string a. If one string is longer than the other, then append the letters to the end of the merged string.
+Given two strings a and b, merge the strings so that the letters are added in alternating order starting with string a.
+If one string is longer than the other, then append the letters to the end of the merged string.
 ex. "abcd", "efghi" -> "aebfcgdhi"
 ex. "", "abcd" -> "abcd"
 ex. "abcdefg", "zxy" -> "azbxycdefg"
@@ -149,7 +175,9 @@ public class Main {
 }
 
 /*
-We define a subarray of size m in an n-element array to be the contiguous block of elements in the inclusive range from index i to index j, where j − i + 1 = m and 0 ≤ i ≤ j < n. For example, given array [8, 2, 4], the subarrays of size m = 2 would be [8, 2] and [2, 4] (but not [8, 4] since these elements aren't contiguous).
+We define a subarray of size m in an n-element array to be the contiguous block of elements in the inclusive range from index i to index j,
+where j − i + 1 = m and 0 ≤ i ≤ j < n. For example, given array [8, 2, 4], the subarrays of size m = 2 would be [8, 2] and [2, 4] 
+(but not [8, 4] since these elements aren't contiguous).
 
 Given an array of integers arr, and an integer m, your task is the following:
 
@@ -243,7 +271,7 @@ int solve(String string) {
 	if(set.contains(string.charAt(i))
 	   continue; 
 	   
-        if(!set.contains(string.charAt(i)) && set.size() == K) {
+        if(set.size() == K) {
            set = new HashSet<>();
            ans += 1;
         }
@@ -262,7 +290,7 @@ int solve(String string) {
 */
 	   
 /*
-Roatet matrix K time but dont rotate diagonals 
+Roatet matrix K time but dont rotate diagonals -> just do k = k%4;
 https://github.com/xXLogicNotFoundXx/LeetCode-Java/blob/master/2D/101.java
 */
 public int[][] rotate_without_extra_space(int[][] matrix) {
@@ -297,18 +325,23 @@ public int[][] rotate_without_extra_space(int[][] matrix) {
 	   
 /*
 Implement Increment function for all values in hashmap .. this one is easy 
+*/
+for(int key: map.keySet()){
+   map.put(key, map.get(key)+1);
+}
+/*
 Implement Increment function for all keys in hashmap ... 
 1. extra o(n) space we can just craet another map 
 2. for no extra map we can sort keys in reverse order and start putting key,value pairs  
 */
-1.
+1. O(N) extra space & Time O(N)
 HashMap<Integer,Integer> newMap = new HashMap<>();
 for(int key: map.keySet()){
    newMap.put(key+1, map.get(key));
 }
 map = newMap;
 
-2.
+2. O(1) space & Time O(NlogN)
 List list = new ArrayList(map.keySet());
 Collections.sort(list, Collections.reverseOrder);
 for(Integer i: list) {
@@ -446,8 +479,8 @@ https://www.geeksforgeeks.org/minimum-peak-elements-from-an-array-by-their-repea
         System.out.println(result);
     }
 
-	   /*
-	   You are given two arrays of integers a and b, and two integers lower and upper.
+/*
+You are given two arrays of integers a and b, and two integers lower and upper.
 Your task is to find the number of pairs (i, j) such that lower ≤ a[i] * a[i] + b[j] * b[j] ≤ upper.
 Example:
 For a = [3, -1, 9], b = [100, 5, -2], lower = 7, and upper = 99, the output should be boundedSquareSum(a, b, lower, upper) = 4.
@@ -459,10 +492,9 @@ If i = 2 and j = 2, then a[2] = 9, b[2] = -2, and 7 ≤ 9 * 9 + (-2) * (-2) = 81
 For a = [1, 2, 3, -1, -2, -3], b = [10], lower = 0, and upper = 100, the output should be boundedSquareSum(a, b, lower, upper) = 0.
 Since the array b contains only one element 10 and the array a does not contain 0, it is not possible to satisfy 0 ≤ a[i] * a[i] + 10 * 10 ≤ 100.
 
-	   */
-	   
-	   Sort the smaller array using the absolute value of the elements,
-	   then for each element in the unsorted array, binary search the interval on the sorted one
+*/
+Sort the smaller array using the absolute value of the elements,
+then for each element in the unsorted array, binary search the interval on the sorted one
 https://stackoverflow.com/questions/64671811/bounded-square-sum-algorithm
 
 	   
@@ -521,3 +553,112 @@ int main(void){
     return 0;
 }	   
 	   
+
+/*
+Let's define the beauty of a square matrix as the minimal positive integer which doesn't appear in this matrix. 
+For example, if the square matrix 2 x 2 contains the numbers 1, 2, 4, and 6, then the beauty of this matrix will be equal to 3.
+You are given a square matrix of positive integers called 'numbers', and an integer 'size' which evenly divides numbers.length.
+You task is to arrange the matrix elements in the following way:
+
+Split the matrix into non-overlapping 'size x size' submatrices;
+Arrange all the submatrices in ascending order of their beauty, then put them back into the matrix.
+*/
+// "static void main" must be defined in a public class.
+public class Main {
+   
+    public static void beautyOfMatrix(int[][] matrix, int k){
+        
+        // Build a map with Block code and insert values 
+        Map<String, List<Integer>> map = new HashMap<>();
+        for(int i=0;i<matrix.length;i++){
+            for(int j=0;j<matrix[0].length;j++){
+                String key = "Block"+i/k+":"+j/k;
+                map.putIfAbsent(key,new ArrayList<Integer>());
+                map.get(key).add(matrix[i][j]);
+            }
+        }
+        
+        // System.out.println(map);
+       
+        // get Sorted blocks by missing minimum value 
+        TreeMap<Integer, List<List<Integer>> > treeMap = getTreeMapByMinValueMissing(map);
+        
+        System.out.println(treeMap);
+        // get all sorted block in order 
+        List<List<Integer>> sortedBlocks = new ArrayList<List<Integer>>();
+        for(List<List<Integer>> blocks : treeMap.values()){
+            for(List<Integer> block : blocks){
+                sortedBlocks.add(block);
+            }
+        }
+        
+        int ind =0;
+        for(int i=0;i<k;i++){
+            for(int j=0;j<k;j++){
+                fillBlock(i,j, k, sortedBlocks.get(ind++), matrix);
+            }
+        }
+        
+    }
+    
+    static void fillBlock(int blocki, int blockj,int size, List<Integer> block, int[][] matrix){
+        int starti = blocki*size;
+        int startj = blockj*size;
+        int ind =0;
+        for(int i=starti;i<starti+size;i++){
+            for(int j=startj;j<startj+size;j++){
+                matrix[i][j] = block.get(ind++);
+            }
+        }    
+    }
+    
+    static TreeMap getTreeMapByMinValueMissing(Map<String, List<Integer>> map){
+        TreeMap<Integer, List<List<Integer>> > treeMap = new TreeMap<>();
+        for(List<Integer> block : map.values()){
+            int missing = getMinValueMissing(block);
+            treeMap.putIfAbsent(missing, new ArrayList<List<Integer>>());
+            treeMap.get(missing).add(block);
+        }
+        return treeMap;
+    }
+    
+    
+    static int getMinValueMissing(List<Integer> block){
+        int missing=1;
+        PriorityQueue<Integer> pq = new PriorityQueue<>();
+        pq.addAll(block);
+        while(!pq.isEmpty()){
+            if(pq.poll()==missing)
+                missing++;
+        }
+        return missing;
+    }
+    
+    
+    static void printMatrix(int [][] matrix){
+        for(int i=0;i<matrix.length;i++){
+            for(int j=0;j<matrix[0].length;j++){
+                System.out.print(matrix[i][j]+" ");
+            }
+            System.out.println();
+        }
+    }
+    
+    public static void main(String[] args) {
+        int [][] matrix = new int[][]{
+            {1 ,  2 ,  3 ,  1 ,  2 ,  3 , 1 ,   2 ,  3 },
+            {4 ,  5 ,  6 ,  4 ,  5 ,  6 , 4 ,  5 ,  6 },
+            {7 ,  8 , 10 ,  7 ,  8 , 10 , 8 ,  9 , 10 },
+            {1 ,  2 ,  3 ,  1 ,  2 ,  3 , 1 ,  2 ,  3 }, 
+            {4 ,  5 ,  7 ,  4 ,  6 ,  7 , 5 ,  6 ,  7 },
+            {8 ,  9 , 10 ,  8 ,  9 , 10 , 8 ,  9 , 10 },
+            {1 ,  2 ,  4 ,  1 ,  3 ,  4 , 2 ,  3 ,  4 }, 
+            {5 ,  6 ,  7 ,  5 ,  6 ,  7 , 5 ,  6 ,  7 },
+            {8 ,  9 , 10 ,  8 ,  9 , 10 , 8 ,  9 , 10 },
+        };
+        
+        beautyOfMatrix(matrix,3);
+        printMatrix(matrix);
+        System.out.println("Hello World!");
+    }
+}
