@@ -564,10 +564,12 @@ Split the matrix into non-overlapping 'size x size' submatrices;
 Arrange all the submatrices in ascending order of their beauty, then put them back into the matrix.
 */
 // "static void main" must be defined in a public class.
+// "static void main" must be defined in a public class.
 public class Main {
    
     public static void beautyOfMatrix(int[][] matrix, int k){
-        
+        if(matrix.length%k!=0 || matrix[0].length%k!=0 )
+            return;
         // Build a map with Block code and insert values 
         Map<String, List<Integer>> map = new HashMap<>();
         for(int i=0;i<matrix.length;i++){
@@ -583,7 +585,7 @@ public class Main {
         // get Sorted blocks by missing minimum value 
         TreeMap<Integer, List<List<Integer>> > treeMap = getTreeMapByMinValueMissing(map);
         
-        System.out.println(treeMap);
+        // System.out.println(treeMap);
         // get all sorted block in order 
         List<List<Integer>> sortedBlocks = new ArrayList<List<Integer>>();
         for(List<List<Integer>> blocks : treeMap.values()){
@@ -591,22 +593,22 @@ public class Main {
                 sortedBlocks.add(block);
             }
         }
-        
+        // System.out.println(sortedBlocks);
         int ind =0;
-        for(int i=0;i<k;i++){
-            for(int j=0;j<k;j++){
+        for(int i=0;i<matrix.length/k;i++){
+            for(int j=0;j<matrix[0].length/k;j++){
                 fillBlock(i,j, k, sortedBlocks.get(ind++), matrix);
             }
         }
         
     }
     
-    static void fillBlock(int blocki, int blockj,int size, List<Integer> block, int[][] matrix){
-        int starti = blocki*size;
-        int startj = blockj*size;
+    static void fillBlock(int blocki, int blockj, int k, List<Integer> block, int[][] matrix){
+        int starti = blocki*k;
+        int startj = blockj*k;
         int ind =0;
-        for(int i=starti;i<starti+size;i++){
-            for(int j=startj;j<startj+size;j++){
+        for(int i=starti;i<starti+k;i++){
+            for(int j=startj;j<startj+k;j++){
                 matrix[i][j] = block.get(ind++);
             }
         }    
@@ -655,6 +657,7 @@ public class Main {
             {1 ,  2 ,  4 ,  1 ,  3 ,  4 , 2 ,  3 ,  4 }, 
             {5 ,  6 ,  7 ,  5 ,  6 ,  7 , 5 ,  6 ,  7 },
             {8 ,  9 , 10 ,  8 ,  9 , 10 , 8 ,  9 , 10 },
+            
         };
         
         beautyOfMatrix(matrix,3);
