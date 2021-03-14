@@ -35,7 +35,7 @@ class Solution {
      
         set.add(cur);
         for (Integer next : map.get(cur)) {
-            map.get(next).remove(cur); // this is very important 
+            map.get(next).remove(cur);        // this is VIMP  very important
             boolean temp = dfs(next, map, set);
             if (!temp) return false;
         }
