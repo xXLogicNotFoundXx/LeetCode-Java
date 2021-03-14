@@ -18,12 +18,14 @@ class Solution {
         */
         if(words==null || words.length==0) return "";
         
+        // make sure we have all character and each character at this point have no parents
         Map<Character,Integer> connectionCountMap = new HashMap<Character,Integer>();
         for(String s: words){
             for(char c: s.toCharArray()){
                 connectionCountMap.put(c,0);
             }
         }
+        
         //This the map gonna record direct links we can establish from given character
         Map<Character,Set<Character>> linksMap = new HashMap<Character,Set<Character>>();
         for(int i=0;i< words.length-1;i++){
@@ -44,7 +46,7 @@ class Solution {
                         connectionCountMap.put(word2[j],connectionCountMap.getOrDefault(word2[j],0)+1);
                     }
                     // for rest of the chars we cant really establish any link so take next two words 
-                    break; // break is not in the if condition.
+                    break; 
                 }
             }
         }
