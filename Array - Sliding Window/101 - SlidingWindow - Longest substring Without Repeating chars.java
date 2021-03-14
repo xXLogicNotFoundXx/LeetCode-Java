@@ -34,3 +34,28 @@ class Solution {
         return max;
     }
 }
+
+
+/*
+Q Given a string str and an integer k, your task is to split str into a minimal possible number of substrings 
+so that there are no more than k different symbols in each of them. Return the minimal possible number of such substrings.
+eg: s = "aabeefegeeccrr" k = 3 Output = 3
+
+*/
+int solve(String string) {
+    int ans = 1;
+    Set<Character> set = new HashSet<>();
+    for(int i = 0; i < string.length(); i++) {
+        
+	    if(set.contains(string.charAt(i))
+	        continue; 
+	   
+        if(set.size() == K) {
+           set = new HashSet<>();
+           ans += 1;
+        }
+	   
+        set.add(string.charAt(i));
+    }
+    return ans;
+}
