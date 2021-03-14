@@ -137,6 +137,7 @@ class Solution {
             for(int i=left;i<=right;i++) 
                 list.add(a[top][i]); 
             top++;
+          
             for(int i=top;i<=bottom;i++) 
                 list.add(a[i][right]);
             right--;
@@ -146,6 +147,7 @@ class Solution {
                     list.add(a[bottom][i]);
                 bottom--;
             }
+          
             if(left<=right){   // IMP 
                 for(int i=bottom;i>=top;i--) 
                     list.add(a[i][left]);
