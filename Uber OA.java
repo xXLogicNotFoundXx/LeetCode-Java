@@ -399,86 +399,72 @@ Peak element defined as it should be greater than it’s neighbors.
 Ans: 6,8,7,5,9,2,4,3,1
 https://www.geeksforgeeks.org/minimum-peak-elements-from-an-array-by-their-repeated-removal-at-every-iteration-of-the-array/
 */
-	   
- void minPeaks(ArrayList<Integer> list){
- 
-        // Length of original list
-        int n = list.size();
- 
-        // Initialize resultant list
-        ArrayList<Integer> result = new ArrayList<>();
- 
-        // Traverse each element of list
-        for (int i = 0; i < n; i++) {
- 
-            int min = Integer.MAX_VALUE;
-            int index = -1;
- 
-            // Length of original list after
-            // removing the peak element
-            int size = list.size();
- 
-            // Traverse new list after removal
-            // of previous min peak element
-            for (int j = 0; j < size; j++) {
- 
-                // Update min and index,
-                // if first element of
-                // list > next element
-                if (j == 0 && j + 1 < size) {
- 
-                    if (list.get(j) > list.get(j + 1)
-                        && min > list.get(j)) {
-                        min = list.get(j);
-                        index = j;
-                    }
-                }
- 
-                else if (j == size - 1 && j - 1 >= 0) {
- 
-                    // Update min and index,
-                    // if last elemnt of
-                    // list > previous one
-                    if (list.get(j) > list.get(j - 1)
-                        && min > list.get(j)) {
-                        min = list.get(j);
-                        index = j;
-                    }
-                }
- 
-                // Update min and index, if
-                // list has single element
-                else if (size == 1) {
- 
-                    min = list.get(j);
-                    index = j;
-                }
- 
-                // Update min and index,
-                // if current element >
-                // adjacent elements
-                else if (list.get(j) > list.get(j - 1)
-                         && list.get(j) > list.get(j + 1)
-                         && min > list.get(j)) {
- 
-                    min = list.get(j);
-                    index = j;
-                }
-            }
- 
-            // Remove current min peak
-            // element from list
-            list.remove(index);
- 
-            // Insert min peak into
-            // resultant list
-            result.add(min);
+static List<Integer> deleteMinPeaks(int[] nums){
+        
+        List<Integer> ans = new ArrayList();
+        
+        if(nums==null || nums.length==0)
+            return ans; 
+        
+        List<Integer> list = new ArrayList<>();
+        for(int i=0;i<nums.length;i++){
+            list.add(nums[i]);
         }
- 
-        // Print resultant list
-        System.out.println(result);
+        
+        while(list.size() > 1){
+            int index = getMinPeakIndex(list);
+            ans.add(list.get(index));
+            list.remove(index);
+        }
+        
+        Collections.sort(list,Collections.reverseOrder());
+        while(list.size()>0){
+            ans.add(list.get(0));
+            list.remove(0);
+        }
+        
+        return ans; 
     }
-
+    
+    static int getMinPeakIndex(List<Integer> nums){
+        int n=nums.size()-1;
+        
+        int index = -1;
+        int minPeak = Integer.MAX_VALUE;
+        
+        for(int i=1;i<n;i++){
+            
+            if(nums.get(i) > nums.get(i-1) && 
+               nums.get(i) > nums.get(i+1) &&
+               nums.get(i) < minPeak  ){
+                
+                index=i;
+                minPeak=nums.get(i);   
+            }
+        }
+        // System.out.println(minPeak + " " + index);
+        // Check boundaries 0 and n'th position .. think if the array was sorted dec,asc
+        if(index==-1){
+            if(nums.get(0) > nums.get(1)){
+                index = 0;
+            }
+            
+            if(index ==-1)
+                return n;
+            
+            if(nums.get(n) > nums.get(n-1) &&  nums.get(n) < nums.get(0)){
+                index = n;
+            }
+        }
+        return index;
+    }
+    
+    public static void main(String[] args) {
+        int[] array= new int[]{2,7,8,5,1,6,3,9,4};
+        // Ans: 6,8,7,5,9,2,4,3,1
+        List<Integer> ans = deleteMinPeaks(array);
+        System.out.println(ans);
+    }
 /*
 You are given two arrays of integers a and b, and two integers lower and upper.
 Your task is to find the number of pairs (i, j) such that lower ≤ a[i] * a[i] + b[j] * b[j] ≤ upper.
