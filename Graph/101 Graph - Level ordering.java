@@ -7,9 +7,11 @@ We should return its level order traversal:
      [3,2,4],
      [5,6]
 ]
-*/
 
 Build a map of <level,nodes> while traversing the tree and then iterate through map.
+*/
+
+
 class Solution {
     public List<List<Integer>> levelOrder(Node root) {
         List<List<Integer>> ans = new ArrayList<List<Integer>>();
