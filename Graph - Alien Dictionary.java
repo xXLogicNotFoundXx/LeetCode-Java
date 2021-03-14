@@ -10,10 +10,11 @@ class Solution {
     public String alienOrder(String[] words) {
         /* A map which will tells how many direct connections coming to a char e.g. a->c b->c d->b : a =0, b =1 ,c=2, d=0
         // That means we have we have those many parents for a given character. 
+        // Char with 0 parents would be the first char. 
         // Another map says what it connect to map<char,set>
         // once we estabaslish the links and connection count, we start with chars that has no parent for processing in a queue
-        // then we traverse there links and add char with one parent for further processing .. 
-        // also this is topological sort too 
+        // then we traverse links and add char with one parent for further processing .. 
+        // also this is called topological sort 
         */
         if(words==null || words.length==0) return "";
         
