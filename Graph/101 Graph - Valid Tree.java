@@ -30,7 +30,9 @@ class Solution {
     }
     
     public boolean dfs(int cur, Map<Integer, Set<Integer>> map, Set<Integer> set) {
-        if (set.contains(cur)) return false;
+        if (set.contains(cur)) 
+         return false;
+     
         set.add(cur);
         for (Integer next : map.get(cur)) {
             map.get(next).remove(cur); // this is very important 
