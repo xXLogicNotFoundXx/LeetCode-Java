@@ -37,6 +37,10 @@ class Solution {
         max depth we are going is V and fan out is V 
         V^2*E^2
         
+        In this we learned in a graph traverse ... where we needed to keep track of neigbouring node.  
+        1. if we can come back to node(cycle) we can't use visited set. 
+        2. We had a condition where if we come back to the node we dont want to prcoess its already visited neighbours. 
+        3. trick we used to remove a neighbour and add neighbour at the same index 
     */
 
     public List<String> findItinerary1(List<List<String>> tickets) {
@@ -83,6 +87,8 @@ class Solution {
     
     /*  This is using my own data structure to have a flag saying if we used the detination
         Same logic as above but no we wont be modifying a list. 
+        
+        This also good that we created a container for keeping track of neighbour visited. 
     */ 
     class Pair {
         String toCity;
@@ -116,8 +122,8 @@ class Solution {
     
     boolean findItinerary(String from, Map<String,List<Pair>> map, List<String> ans, int totalDest){
         
-        
         ans.add(from);
+        
         if(ans.size() == totalDest){
             return true; 
         }
