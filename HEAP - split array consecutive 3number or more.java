@@ -74,72 +74,55 @@ class Solution {
     }
 }
 
-/*
-Kich kat problem ... bc itne corner cases ...
-I think you have to first realize that each number can either be the beginning or the end of the sequence at a given point of iteration. 
+/*  Using deque and Priority Queue. 
 Another subtle insight to this solution is proving that appending to a previous sequence is always better than creating a new sequence. 
-Consider the problem [1,2,3,4,5,5,6,7] and how prioritizing the creation of a subsequence over appending would cause an issue.
-
-class Solution2 {
-    public boolean isPossible(int[] nums) {
-         
-        Map<Integer,Integer> mapCount = new HashMap<>();
-        for( int n : nums ){
-            mapCount.put(n, mapCount.getOrDefault(n,0)+1);
-        }
-        
-        //    we need frequency too we cant use set 
-        //    Bcz let say [4 4 5 5 6 6] by the time you process second 4th 
-        //    we can accomodate two 7 
-        //    so our map entry nextNumSequence entry should be <7,2> -> that is we can take two 7s
-        
-        HashMap<Integer,Integer> nextNumSequence = new HashMap<>();
-        for(int i=0; i<nums.length; i++){
-            
-            int next2 = nums[i]+1;
-            int next3 = nums[i]+2;
-            
-            // This number is already taken by previous subsequence
-            if(mapCount.get(nums[i]) == 0)
-                continue; 
-            
-            // we have to make sure we append to existing sequence before we 
-            // absolutely need to create another sequence 
-            // nextNumSequence tells us if there is a sequence that can take this number 
-            if(nextNumSequence.getOrDefault(nums[i], 0) > 0 ){
-                // put the next expected number that we cant take
-                // so that if we come across nums[i]+1 number, we should put that in this sequence 
-                nextNumSequence.put(nums[i]+1 , nextNumSequence.getOrDefault(nums[i]+1,0) + 1);
-                
-                // reduce current count 
-                nextNumSequence.put(nums[i], nextNumSequence.get(nums[i])-1); 
-                
-                // delete one count of current number  from original map
-                mapCount.put(nums[i], mapCount.get(nums[i]) - 1);
-                continue;
-            }
-            
-            // At this point we need next two elements ..if not there return false
-            if(!mapCount.containsKey(next2)  ||  !mapCount.containsKey(next3))
-                return false;
-            
-            // if there are next two numbers avialable then take those numbers 
-            if(mapCount.get(next2) > 0 && mapCount.get(next3) > 0){
-                // delete one count for this and next 3 numbers 
-                mapCount.put(nums[i], mapCount.get(nums[i]) - 1);
-                mapCount.put(next2, mapCount.get(next2) - 1);
-                mapCount.put(next3, mapCount.get(next3) - 1);
-                // we expect 4th number in the sequence now
-                nextNumSequence.put(next3+1, nextNumSequence.getOrDefault(next3+1, 0) + 1 );  
-            } else {
-                return false;
-            }
-            
-        }
-        
-        // dont have to split 
-        // we just want to make sure all arrays has subsequence with 3 increasing numbers. 
-        return true;
-    }
-}
 */
+     public boolean isPossible(int[] nums) {
+        
+         PriorityQueue<Deque<Integer>> pq = new PriorityQueue<>( new Comparator<Deque<Integer>>(){
+            public int compare(Deque<Integer> a, Deque<Integer> b){
+                if(a.peekLast() == b.peekLast()){
+                   return a.size() - b.size(); 
+                } else {
+                    return a.peekLast() - b.peekLast();
+                }
+            }
+         });
+        
+        
+         for(int i=0; i<nums.length; i++){
+
+            while(!pq.isEmpty() && pq.peek().peekLast() < nums[i]-1){
+                Deque<Integer> deque = pq.poll();
+                if(deque.size()<3)
+                    return false; 
+            }
+            
+            if(pq.isEmpty()){
+                Deque<Integer> deque = new ArrayDeque<Integer>();
+                deque.add(nums[i]);
+                pq.add(deque);
+                continue; 
+            }
+            
+            else if(pq.peek().peekLast() == nums[i]){
+                Deque<Integer> newDeque = new ArrayDeque<Integer>();
+                newDeque.add(nums[i]);
+                pq.add(newDeque);
+            }
+             
+            else if (pq.peek().peekLast() == nums[i]-1){
+                Deque<Integer> deque = pq.poll();
+                deque.add(nums[i]);
+                pq.add(deque);
+            }
+            
+         }
+         
+         while(!pq.isEmpty()){
+            Deque<Integer> deque = pq.poll();
+               if(deque.size()<3)
+                   return false; 
+         }
+         return true;
+     }
