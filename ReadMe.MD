@@ -1,3 +1,4 @@
+```
 Permutations : N!
 
                       n!  
@@ -6,3 +7,4 @@ Combination nCr =  ________
                      
 
 Subset = 2^N      (since each element could be absent or present.)
+```
