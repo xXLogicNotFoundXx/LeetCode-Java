@@ -11,6 +11,7 @@ we dont need the actual distance so we can just say x^2 + y^2 is our distance
 Sort or put in priority queue. 
 
 1 NLogN sort the array and return K 
+*/
 public int[][] kClosest(int[][] points, int K) {
     Arrays.sort(points, new Comparator<int[]>() {
         @Override
@@ -21,7 +22,7 @@ public int[][] kClosest(int[][] points, int K) {
     });
     return Arrays.copyOfRange(points, 0, K);
 }
-
+/*
  2 
  we can use MAX_HEAP and keep K items in the heap at anygiven point
  Theoretically, the time complexity is O(NlogK), 24ms
@@ -92,7 +93,10 @@ class Solution {
         int partitionIndex = start;
         
         for(int i=start;i<end;i++){
-            if(distanceToOrigin(points[i]) <= distanceToOrigin(pivot) ){
+            if(distanceToOrigin(points[i]) <= distanceToOrigin(pivot) && i==partitionIndex){
+                partitionIndex++;
+            }
+            else if(distanceToOrigin(points[i]) <= distanceToOrigin(pivot) ){
                 swap(points,partitionIndex,i);
                 partitionIndex++;
             }
