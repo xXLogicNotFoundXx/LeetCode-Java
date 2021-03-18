@@ -20,7 +20,6 @@ class Solution {
             weight = w;
         }
     }
-    
     public int networkDelayTime(int[][] times, int N, int K) {
         
         Map<Integer,List<NextNode>> map = new HashMap<>();
@@ -29,7 +28,7 @@ class Solution {
             map.get(edge[0]).add(new NextNode(edge[1],edge[2]));
         }
         
-        Map<Integer,Integer> minDis = new HashMap<>();
+        Map<Integer,Integer> minDisToAllNodes = new HashMap<>();
         PriorityQueue<NextNode> pq = new  PriorityQueue<NextNode>(new Comparator<NextNode>(){
             public int compare(NextNode a, NextNode b){
                 return a.weight - b.weight;
@@ -44,20 +43,20 @@ class Solution {
                 continue;
             
             visited.add(n.des);
-            minDis.put(n.des,n.weight);
+            minDisToAllNodes.putIfAbsent(n.des, n.weight);
             
             if(map.containsKey(n.des)){
                 for(NextNode next : map.get(n.des)){
-                    pq.offer(new NextNode(next.des,n.weight+next.weight));
+                    pq.offer(new NextNode(next.des, next.weight + n.weight));
                 }
             }
         }
         
-        if(minDis.size()<N)
+        if(minDisToAllNodes.size()<N)
             return -1;
         
         int max =-1;
-        for(int e: minDis.values())
+        for(int e: minDisToAllNodes.values())
             max = e>max ? e : max;
         
         return max;
