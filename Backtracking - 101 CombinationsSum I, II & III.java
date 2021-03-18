@@ -10,7 +10,12 @@ All numbers (including target) will be positive integers.
 The solution set must not contain duplicate combinations.
 all elements in the candidate array are distinct and the array size is n.
 
-C(n,1) + C(n,2) + ... + C(n,n) = 2^n - C(n,0) = O(2^n)
+// as with each backtracking call fan out is N  ( every backtrack call can call N backtracking)
+// So obviously it will be N^*
+// The maximum depth of the tree could be T/M  ( T is total and M is minimum number)
+// so height of the tree from original functional call would be (T/M+1)
+// so that gives us N^(T/M+1)
+// Space is O(T/M) thats the height of the tree 
 
 */
 class Solution {
@@ -44,9 +49,17 @@ class Solution {
 // then you can have 0 to m*n index 
 // for k index 2d[k/col][k%col] would be your item in 2D
 
+// how about if asked how many ways are there to have target? 
+// check this out 
+// https://leetcode.com/problems/coin-change-2/                 <-  Check this out too. 
+// it becomes classic knapsack problem.
+
 /*
 Combination Sum II with duplucates 
 https://leetcode.com/problems/combination-sum-ii/
+
+Combination ... 
+nCr={n!}/{r! (n-r)!}
 
 Given a collection of candidate numbers (candidates) and a target number (target), 
 find all unique combinations in candidates where the candidate numbers sums to target.
@@ -65,8 +78,8 @@ A solution set is:
   [1, 1, 6]
 ]
 
-time complexity = O(n!)
-space O(m) m is the size of the Ans array 
+Time complexity = O(2^N) we either select a number or we dont ... height of the tree is N/ 
+Space O(m) m is the size of the Ans array 
 */
 class Solution {
     public List<List<Integer>> combinationSum2(int[] candidates, int target) {
@@ -90,7 +103,7 @@ class Solution {
                 if(i>start && candidates[i]==candidates[i-1]) 
                     continue;
                 subAns.add(candidates[i]);
-                combinationSumHelper(candidates,target - candidates[i],Ans,subAns,i+1);
+                combinationSumHelper(candidates,target - candidates[i],Ans,subAns,i+1); // i+1 we are not using same numbers unlike last problem 
                 subAns.remove(subAns.size()-1);
             }
         }
@@ -98,7 +111,8 @@ class Solution {
 }
 
 /*
-Find all possible combinations of k numbers that add up to a number n, given that only numbers from 1 to 9 can be used and each combination should be a unique set of numbers.
+Find all possible combinations of k numbers that add up to a number n, 
+given that only numbers from 1 to 9 can be used and each combination should be a unique set of numbers.
 
 Note:
 All numbers will be positive integers.
