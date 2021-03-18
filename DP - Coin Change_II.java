@@ -63,4 +63,30 @@ class Solution {
         return dp[amount];
     }
     
+    
+    /*  Another Knapsack version 
+        Return the fewest number of coins that you need to make up that amount.
+        Time complexity:  O(N*amount) where N is a length of coins array.
+        Space complexity: O(amount) to keep dp array.
+    */
+    
+    public int coinChange(int[] coins, int amount) {
+        if(coins==null || coins.length==0)
+            return -1;
+        int []dp = new int[amount+1];
+        
+        Arrays.fill(dp,-1);
+        dp[0]=0;
+        for(int coin : coins){
+            for(int i=coin;i<=amount;i++){
+                if(dp[i-coin]!=-1){
+                    
+                    int coinNum = dp[i-coin]+1;
+                    dp[i] = dp[i]==-1 ? coinNum : Math.min(dp[i],coinNum);
+                } 
+            }
+        }
+        return dp[amount];
+    }
+    
 }
