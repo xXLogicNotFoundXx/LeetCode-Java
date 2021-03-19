@@ -13,7 +13,35 @@ Given n non-negative integers representing an elevation compute how much water i
         fill = Math.max(leftMax,height[i]) - height[i]
 */
 class Solution {
+    // Time O(n) & Space O(n) this is nice! 
     public int trap(int[] height) {
+        if(height==null || height.length==0)
+            return 0;
+        
+        int[] leftMax = new int[height.length];
+        int[] rightMax = new int[height.length];
+        
+        int max = height[0];
+        for(int i=0; i<height.length; i++){
+            max = max < height[i] ? height[i] : max;
+            leftMax[i] = max;
+        }
+        
+        max = height[height.length-1];
+        for(int i=height.length-1; i>=0; i--){
+            max = max < height[i] ? height[i] : max;
+            rightMax[i] = max;
+        }
+        
+        int sum=0;
+        for(int i=0; i<height.length; i++){
+            sum += Math.min(leftMax[i],rightMax[i]) - height[i];
+        }
+        
+        return sum;
+    }
+    
+    public int trap1(int[] height) {
         if(height == null || height.length <= 2) 
             return 0;
         int leftMax = height[0], rightMax = height[height.length-1];
