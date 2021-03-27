@@ -40,6 +40,8 @@ Output: [1]
 
 */
 class Solution {
+    // TIME :  N.Log(K)
+    // SPACE : Log(N)... could be N as it is not balance binary tree 
     public List<Integer> closestKValues(TreeNode root, double target, int k) {
         PriorityQueue<Integer> pq = new PriorityQueue<Integer>( new Comparator<Integer>(){
             public int compare(Integer a, Integer b){
@@ -72,5 +74,38 @@ class Solution {
         
         binaryTreeTraversal(root.left, pq, k);
         binaryTreeTraversal(root.right, pq, k);
+    }
+    
+    /*  Best could be if we can maintain the window.. alwasy think where you use priority queue 
+        can you maintain the window 
+        Subtle hint if we traverse inorder that will give us sorted numbers ... 
+        we can have a deque and alwasy compare abs value to firstElement and then we poll first element 
+        that way it will be mainintain diff bothe sides 
+        
+        Also see.. how we are making this early termination. 
+        
+        
+        TIME : O(N)
+        SPACE : O(logN) ... could be N as it is not balance binary tree 
+    */
+    public List<Integer> closestKValues(TreeNode root, double target, int k) {
+        LinkedList<Integer> res = new LinkedList<>();
+        collect(root, target, k, res);
+        return res;
+    }
+
+    public void collect(TreeNode root, double target, int k, LinkedList<Integer> res) {
+        if (root == null) return;
+        collect(root.left, target, k, res);
+
+        if (res.size() == k) {
+            //if size k, add curent and remove head if it's optimal, otherwise return
+            if (Math.abs(target - root.val) < Math.abs(target - res.peekFirst())) 
+                res.removeFirst();
+            else 
+                return; // early termination 
+        }
+        res.add(root.val);
+        collect(root.right, target, k, res);
     }
 }
