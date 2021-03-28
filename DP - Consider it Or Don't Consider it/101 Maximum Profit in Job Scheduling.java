@@ -59,6 +59,7 @@ class Solution {
     without memo 18 / 27 passsed - TLE
     This is I usually always think.
     This is not N^2 as the we tracking the index and currentTime ... 
+    so it becomes N * MAX_TIME
     this would create a lot of calls on same index ..
     Usually if you are tracking index and if you are passing down the some state/count it messes up the runtime. 
 
