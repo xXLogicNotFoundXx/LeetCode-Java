@@ -66,7 +66,10 @@ class Solution {
     Is there anyway we can just track Index in memo?
     we have to getRid of currentTime .. and find the subans, and once we calculate that sub ans we should be done.
     That means we have to pass next index such that we should be able to take that job and not worry about currentTime. 
-
+    
+    Subtle hint at the starting point is we always can take the first job. 
+    So it is kind of take that first job or leave and and when we make next recursive call it should be that way too. 
+    We should be able to take the next index job. 
 */  
     
     public int jobScheduling(int[] startTime, int[] endTime, int[] profit) {
