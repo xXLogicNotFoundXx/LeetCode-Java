@@ -7,12 +7,12 @@ Input: [3,9,8,4,0,1,7,null,null,null,2,5] (0's right child is 2 and 1's left chi
     /\
    /  \
    9   8
-  /\  /\
- /  \/  \
- 4  01   7
-    /\
-   /  \
-   5   2
+  /\   /\
+ /  \ /  \
+ 4  0 1   7
+    / \
+   /   \
+   5    2
 
 Output:
 
@@ -24,6 +24,41 @@ Output:
   [7]
 ]
 
+/**
+ here with normal DFS and maintaing only vertical level will give [2,8] for vetical_level=1  because we visit 2 first instead of 8 
+ but we need 8,2 
+ 
+class Solution {
+    public List<List<Integer>> verticalOrder(TreeNode root) {
+        if(root==null) return new ArrayList();
+        
+        Map<Integer,List<Integer>> map = new HashMap();  
+        verticalOrderHelper(root,0,map);
+        
+        List<List<Integer>> ans = new ArrayList();
+        for(int i=0; map.containsKey(i);i--){
+            ans.add(0,map.get(i));
+        }
+        for(int i=1; map.containsKey(i);i++){
+            ans.add(map.get(i));
+        }
+        return ans;
+    }
+    
+    void verticalOrderHelper(TreeNode root, int level, Map<Integer,List<Integer>> map ){
+        if(root==null) return;
+        
+        List<Integer> list = map.getOrDefault(level,new ArrayList<Integer>());
+        list.add(root.val);
+        map.put(level,list);
+        
+        verticalOrderHelper(root.left,level-1,map);
+        verticalOrderHelper(root.right,level+1,map);
+    }
+}
+*/
+
+/*
 This question also asks the order of the nodes from TOP to BOTTOM. 
 That is why we cant use DFS as it can visit lower nodes first ad will mess up the order .
 So, We have to use BST and maintain vertical level for each node. As we traverse through queue we add nodes in map with vLevel. 
@@ -69,36 +104,3 @@ class Solution {
     }
 }
 
-/**
- here with normal DFS and maintaing only vertical level will give [2,8] for vetical_level=1  because we visit 2 first instead of 8 
- but we need 8,2 
- 
-class Solution {
-    public List<List<Integer>> verticalOrder(TreeNode root) {
-        if(root==null) return new ArrayList();
-        
-        Map<Integer,List<Integer>> map = new HashMap();  
-        verticalOrderHelper(root,0,map);
-        
-        List<List<Integer>> ans = new ArrayList();
-        for(int i=0; map.containsKey(i);i--){
-            ans.add(0,map.get(i));
-        }
-        for(int i=1; map.containsKey(i);i++){
-            ans.add(map.get(i));
-        }
-        return ans;
-    }
-    
-    void verticalOrderHelper(TreeNode root, int level, Map<Integer,List<Integer>> map ){
-        if(root==null) return;
-        
-        List<Integer> list = map.getOrDefault(level,new ArrayList<Integer>());
-        list.add(root.val);
-        map.put(level,list);
-        
-        verticalOrderHelper(root.left,level-1,map);
-        verticalOrderHelper(root.right,level+1,map);
-    }
-}
-*/
