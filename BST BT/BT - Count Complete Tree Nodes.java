@@ -13,7 +13,7 @@ class Solution {
         if (leftDepth == rightDepth)
             return (int)Math.pow(2,leftDepth) - 1;
         else
-            return 1+countNodes(root.left) + countNodes(root.right);
+            return 1 /*root*/ + countNodes(root.left) + countNodes(root.right);
     }
 
     private int rightDepth(TreeNode root) {
