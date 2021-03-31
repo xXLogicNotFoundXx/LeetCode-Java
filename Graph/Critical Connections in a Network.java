@@ -1,6 +1,7 @@
 /*
 https://leetcode.com/problems/critical-connections-in-a-network/
 
+HARD
 */
 class Solution {
     /*  Subtle thing you have to observe is that if there is a cycle then all nodes and edges involved in it 
