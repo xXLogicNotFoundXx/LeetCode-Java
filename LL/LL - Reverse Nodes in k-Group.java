@@ -6,6 +6,7 @@ Given this linked list: 1->2->3->4->5
 For k = 2, you should return: 2->1->4->3->5
 For k = 3, you should return: 3->2->1->4->5
  */
+
 class Solution {
     public ListNode reverseKGroup(ListNode head, int k) {
         
@@ -13,6 +14,7 @@ class Solution {
             return head; 
       
         ListNode dummyHead = new ListNode(-99, head);
+        dummyHead.next = head;
         ListNode START = dummyHead; 
         
         while(dummyHead!=null){
@@ -24,7 +26,7 @@ class Solution {
     
     ListNode reverseKGroupHelper(ListNode dummyHead, int k){
         ListNode runner = dummyHead;
-        ListNode head = dummyHead.next; // After reverse this will be new tail
+        ListNode actualHead = dummyHead.next; // After reverse this will be at last and will be our next dummyHead
         
         while(runner.next!=null && k>0){
             runner =runner.next;
@@ -37,7 +39,7 @@ class Solution {
         ListNode tailNext = runner.next;
         reverse(dummyHead,tailNext);
         
-        return head; // this is our new tail (dummyHead)
+        return actualHead; // this is our new dummyHead 
     }
     
     void reverse(ListNode dummyHead, ListNode tailNext){
@@ -51,11 +53,7 @@ class Solution {
             head = temp;
         }
         
-        ListNode initialFirst = dummyHead.next; 
-        ListNode initialLast = prev;
-        
-        initialFirst.next = tailNext;
-        dummyHead.next = initialLast;
-
+        dummyHead.next.next = tailNext;
+        dummyHead.next = prev;
     }
 }
