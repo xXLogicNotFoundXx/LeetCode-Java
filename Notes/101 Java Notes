@@ -6,30 +6,6 @@ if you want to pass int and track its value in calling function.
 You have to pass int as and array or wtite wrapper calss containing int and pass the object of that class. 
 
 
-MODULO OPERATOR : 
-% operator retians the -ve sign of first number
-    123  % 10 = 3  
-    -123 % 10 = -3    
-    However, 2nd operator sigh doesnt matter so 
-    123 % 10  = 3 and 
-    123 % -10 = 3
-
-
-int[] duplicate = nums.clone(); // nums is int[] it generates deep copy 
-
-
-Random rand = new Random();
-rand.nextInt(aux.size());
-
-
-// Map iterator
-Iterator<Map.Entry<Integer, Integer>> entries = map.entrySet().iterator();
-while (entries.hasNext()) {
-    Map.Entry<Integer, Integer> entry = entries.next();
-.....
-}
-
-
 The Integer, String, Float, Double, Byte, Long, Short, Boolean, and Character classes are all examples of an immutable class.
 By definition, you may not alter the value of an immutable object after its construction.
 
@@ -77,3 +53,28 @@ Static methods can not be overridden:
         
 private class - 
 You cannot use the private keyword with a class unless it is an inner class.
+
+
+MODULO OPERATOR : 
+% operator retians the -ve sign of first number
+    123  % 10 = 3  
+    -123 % 10 = -3    
+    However, 2nd operator sigh doesnt matter so 
+    123 % 10  = 3 and 
+    123 % -10 = 3
+
+
+int[] duplicate = nums.clone(); // nums is int[] it generates deep copy 
+
+
+Random rand = new Random();
+rand.nextInt(aux.size());
+
+
+// Map iterator
+Iterator<Map.Entry<Integer, Integer>> entries = map.entrySet().iterator();
+while (entries.hasNext()) {
+    Map.Entry<Integer, Integer> entry = entries.next();
+.....
+}
+
