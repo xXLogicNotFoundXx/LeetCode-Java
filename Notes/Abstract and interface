@@ -1,22 +1,24 @@
-in Java, a separate keyword abstract is used to make a class abstract. 
-In java class doent have to have abstract method. 
-abstract class Shape { ...}
+Keyword abstract is used to make a class abstract. 
+abstract class doent have to have abstract method. 
+
 An abstract class can contain constructors in Java.
 And a constructor of abstract class is called when an instance of a inherited class is created.
 
-if you dont have anycommon code go for interface. 
 
-Consider using abstract classes if any of these statements apply to your situation:
+### Abstract Vs Interface 
 
+## Consider using abstract classes if any of these statements apply to your situation:
 In java application, there are some related classes that need to share some lines of code 
   then you can put these lines of code within abstract class and this abstract class should be extended
   by all these related classes.
+  
 You can define non-static or non-final field(s) in abstract class, 
   so that via a method you can access and modify the state of Object to which they belong.
+
 You can expect that the classes that extend an abstract class have many common methods or fields,
   or require access modifiers other than public (such as protected and private).
 
-Consider using interfaces if any of these statements apply to your situation:
+## Consider using interfaces if any of these statements apply to your situation:
 if you dont have any common code go for interface. 
 You want to specify the behavior of a particular data type, 
   but not concerned about who implements its behavior.
@@ -50,3 +52,6 @@ In this case, class X must be abstract because it does not fully implement Y, bu
 Class Members
 An abstract class may have static fields and static methods. 
 You can use these static members with a class reference (for example, AbstractClass.staticMethod()) as you would with any other class.
+
+
+
