@@ -1,0 +1,22 @@
+
+Inheritance : 
+
+    What is the difference between 'public, protected, package-private and private' class MEMBERS in Java?
+    
+            │ Class │ Package │ Subclass │ Subclass │ World
+            │       │         │(same pkg)│(diff pkg)│ 
+────────────┼───────┼─────────┼──────────┼──────────┼────────
+public      │   +   │    +    │    +     │     +    │   +     
+────────────┼───────┼─────────┼──────────┼──────────┼────────
+protected   │   +   │    +    │    +     │     +    │         
+────────────┼───────┼─────────┼──────────┼──────────┼────────
+no modifier │   +   │    +    │    +     │          │    
+────────────┼───────┼─────────┼──────────┼──────────┼────────
+private     │   +   │         │          │          │    
+
+
+Why do we do this, we can't access Child's specific methods() that does not exist in Parent. 
+Parent p = new Child();
+p.childSpecificMethod(); // Compiler error 
+https://stackoverflow.com/questions/12159601/why-do-we-assign-a-parent-reference-to-the-child-object-in-java
+
