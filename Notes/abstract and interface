@@ -20,3 +20,33 @@ Consider using interfaces if any of these statements apply to your situation:
 if you dont have any common code go for interface. 
 You want to specify the behavior of a particular data type, 
   but not concerned about who implements its behavior.
+
+
+
+
+Abstract class doesnt have to have abstract method. 
+abstract class className {
+}
+
+If a class includes abstract methods, then the class itself must be declared abstract
+abstract class className {
+    abstract void method();
+}
+
+When an Abstract Class Implements an Interface
+In the section on Interfaces, it was noted that a class that implements an interface must implement all of the interface's methods. 
+It is possible, however, to define a class that does not implement all of the interface's methods, provided that the class is declared to be abstract. 
+For example,
+
+abstract class X implements Y {
+  // implements all but one method of Y
+}
+
+class XX extends X {
+  // implements the remaining method in Y
+}
+In this case, class X must be abstract because it does not fully implement Y, but class XX does, in fact, implement Y.
+
+Class Members
+An abstract class may have static fields and static methods. 
+You can use these static members with a class reference (for example, AbstractClass.staticMethod()) as you would with any other class.
