@@ -20,3 +20,8 @@ Parent p = new Child();
 p.childSpecificMethod(); // Compiler error 
 https://stackoverflow.com/questions/12159601/why-do-we-assign-a-parent-reference-to-the-child-object-in-java
 
+
+extends keyword always comes first and then implements ...
+class xyx extends parent implements interface1, interface2 {
+
+}
