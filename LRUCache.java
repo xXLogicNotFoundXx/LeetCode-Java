@@ -20,7 +20,8 @@ Could you do both operations in O(1) time complexity?
     hash map stores key and DoublyLinkedList node. With prev and next pointer it will be easy to detach that node. 
     
  ** Moreover if you cretae pseudo head and tail in DoublyLinkedList to mark the boundary, then we don't need to check the NULL nodes during operations
- ** also there could be put(1,1) then put (1,4) in that case the value should be updated its value and move node to the start...key is same so we keep that in cash (Hash Table)..
+ ** also there could be put(1,1) then put (1,4) in that case the value should be updated and its value and move node to the start.
+ ** We also store key in the doubly linkedList node bcz when we evict the node we need to know the key to remove it from HashMap.
 */
 class LRUCache {
     class Node {
