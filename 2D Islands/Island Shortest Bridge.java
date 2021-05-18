@@ -7,7 +7,8 @@ Now, we may change 0s to 1s so as to connect the two islands together to form 1 
 Return the smallest number of 0s that must be flipped.  (It is guaranteed that the answer is at least 1.)
 
 1. Find one Island and mark that whole Island as -1 
-2. Find second Island and Add ALL positions of the  island in the queue to process for BFS 
+2. Find second Island and Add ALL positions of the  island in the queue to process for BFS. 
+    These all positions are our level one nodes and visited. 
 3. Level by level mark positions as visited (Very IMP) 
 4. return level 
 
