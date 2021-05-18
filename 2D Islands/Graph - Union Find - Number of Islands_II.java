@@ -25,46 +25,87 @@ Operation #3: addLand(1, 2) turns the water at grid[1][2] into a land.
 1 1 0
 0 0 1   Number of islands = 2
 0 0 0
+
+
 */
 
-int[][] dirs = {{0, 1}, {1, 0}, {-1, 0}, {0, -1}};
+/*
+We can solve using 101 technique. 
+Mark 1 in the grid, create visitot[m][n] array and calculate number of islands for each position. 
+Runtime = O(L*M*N) L are number of positions we have 
+Space O(m*n)
+*/
+class Solution {
+    
+    public List<Integer> numIslands2(int m, int n, int[][] positions) {
+        int[] parent = new int[m*n];
+        List<Integer> ans = new ArrayList<>();
+        Arrays.fill(parent,-1);
 
-public List<Integer> numIslands2(int m, int n, int[][] positions) {
-    List<Integer> result = new ArrayList<>();
-    if(m <= 0 || n <= 0) return result;
-
-    int count = 0;                      // number of islands
-    int[] roots = new int[m * n];       // one island = one tree
-    Arrays.fill(roots, -1);            
-
-    for(int[] p : positions) {
-        int root = n * p[0] + p[1];     // assume new point is isolated island
-        roots[root] = root;             // add new island
-        count++;
-
-        for(int[] dir : dirs) {
-            int x = p[0] + dir[0]; 
-            int y = p[1] + dir[1];
-            int nb = n * x + y;
-            if(x < 0 || x >= m || y < 0 || y >= n || roots[nb] == -1) continue;
-            
-            int rootNb = findIsland(roots, nb);
-            if(root != rootNb) {        // if neighbor is in another island
-                roots[root] = rootNb;   // union two islands 
-                root = rootNb;          // current tree root = joined tree root
-                count--;               
-            }
+        int islands = 0; 
+        for(int i=0; i<positions.length; i++){
+            islands = makeAnIsland(islands, positions[i][0], positions[i][1], parent, m, n);
+            ans.add(islands);
         }
-
-        result.add(count);
+            
+        return ans;
     }
-    return result;
-}
-
-public int findIsland(int[] roots, int id) {
-    while(id != roots[id]) {
-        roots[id] = roots[roots[id]];   // Path compression
-        id = roots[id];
+    
+    int makeAnIsland(int islands, int x ,int y, int[] parent, int rows, int cols){
+        
+        
+        if(parent[x*cols + y] != -1)  // duplicates entries in positions :/
+            return islands; 
+        
+        int[][] directions = new int[][]{{-1,0}, {1,0}, {0,-1}, {0,1}};
+        Set<Integer> neighbouringIslands = new  HashSet<Integer>();
+        
+        int pos = x*cols + y;
+        parent[pos] = pos;
+        
+        for(int [] dir : directions) {
+            int x1 = x + dir[0];
+            int y1 = y + dir[1];
+            
+            if(x1<0 || x1==rows || y1<0 || y1==cols)
+                continue;
+            
+            int newPos = x1*cols + y1;
+            if(parent[newPos] != -1){
+                // HashSet avoids duplicates .. so neighbouring two island that are connected will be counted as one 
+                neighbouringIslands.add( find(parent,newPos) );  
+            }
+            
+        }
+        
+        // Note needed .. below code will handle it anyway 
+        if(neighbouringIslands.size()==0){   // new island
+            return islands+1;
+        }
+        
+        for(int island : neighbouringIslands){ // make all islands point to this one island
+            union(parent, island, pos);
+        }
+        
+        islands = islands - neighbouringIslands.size() + 1;
+        return islands;
     }
-    return id;
+    
+    
+    int find(int[] parent, int pos){
+        
+        if(parent[pos]==pos)
+            return pos; 
+        
+        parent[pos] = find(parent, parent[pos]);  // path compression 
+        return parent[pos];
+    }
+    
+    void union(int[] parent, int pos1, int pos2){
+        if(find(parent, pos1) == find(parent, pos2))
+            return; 
+        
+        parent[pos1] = find(parent, pos2);
+    }
+    
 }
