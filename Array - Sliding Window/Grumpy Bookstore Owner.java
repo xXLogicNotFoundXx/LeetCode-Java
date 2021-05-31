@@ -52,37 +52,6 @@ class Solution {
         return maxUsers;
     }
     
-    // now looking back at it-  i dont think i need a queue 
-    // 2PAss - 1 to calulate total customers satisfied without trick 
-    //         2 to caluclate what is the max tricked user while maintaining window ... 
-    // time - O(N) and space - O(1)
-    public int maxSatisfied2(int[] customers, int[] grumpy, int X) {
-        
-        
-        int totalWithoutTrick =0;
-        for(int i=0; i<customers.length; i++){
-            if(grumpy[i]!=1)
-                totalWithoutTrick += customers[i];
-        }
-        
-        int trickused=0, maxTrcikedUsers=0;
-        for(int i=0; i<customers.length; i++){
-            
-            if(grumpy[i]==1){
-                trickused += customers[i];
-            }
-            
-            if(0 <= i-X){
-                if(grumpy[i-X]==1)
-                    trickused -= customers[i-X];
-            }
-            
-            maxTrcikedUsers = Math.max(maxTrcikedUsers,  trickused);
-        }
-        
-        return totalWithoutTrick + maxTrcikedUsers;
-    }
-    
     // can you do it in one pass ? 
     // Grredy Approach is 
     /*
