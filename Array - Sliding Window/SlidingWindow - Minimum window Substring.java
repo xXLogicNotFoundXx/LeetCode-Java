@@ -7,6 +7,9 @@ Output: "BANAC"
 // Good question would be: Are there duplicate characters in T => the ans is yes T can have duplicate chars
 // order of the characters does not matter 
 // so we need the count of each char, Set is not sufficient so will use hashmap
+
+// Time complexity = S + T  
+// Space - T
 class Solution {
     public String minWindow(String s, String t) {
         if(s ==null || s.isEmpty() || t==null || t.isEmpty())
@@ -17,7 +20,8 @@ class Solution {
         int tLength = t.length();
         int count = 0;
         int left = 0; 
-        String ans = "";
+        int diff= -1 , ansLeft = -1, andRight = -1;
+        
         for(int i=0;i<s.length();i++){
             char ch = s.charAt(i);
             
@@ -36,11 +40,15 @@ class Solution {
                         tCount.put(lch, tCount.get(lch)+1);
                         if(tCount.get(lch)>0){
                             count--; 
+                            
                             // we removed unwanted char from the left 
                             // make a note of the ans
-                            if(ans.isEmpty() ||  ans.length() > i-left+1){ 
-                                ans = s.substring(left,i+1); // includes ith index 
+                            if(diff == -1 || diff > i-left){
+                                diff = i-left;
+                                ansLeft = left;
+                                andRight = i;
                             }
+                            
                             left++; // IMP
                             break;
                         }
@@ -51,7 +59,7 @@ class Solution {
             }
         }
         
-        return ans;
+        return diff == -1 ? "" : s.substring(ansLeft, andRight+1);
     }
     
     
