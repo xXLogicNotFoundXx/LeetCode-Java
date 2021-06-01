@@ -21,17 +21,18 @@ class Solution {
         if(s==null || s.length()==0 || words==null || words.length==0)
             return ans;
         
-        int wordSize = words[0].length();
-        int wordNum = words.length;
-        int subStrLength = wordNum*wordSize;
-        Map<String,Integer> wordCount = new HashMap<>();
+        int wordsTotal= words.length;
+        int wordLen =  words[0].length();
+        int subStrLength = wordsTotal*wordLen;
+        Map<String,Integer> wordCountMap = new HashMap<>();
         
         for(String w : words)
-            wordCount.put(w, wordCount.getOrDefault(w,0)+1);
+            wordCountMap.put(w, wordCountMap.getOrDefault(w,0)+1);
         
         for(int i=0;i<=s.length()-subStrLength;i++){
             String subStr = s.substring(i,i+subStrLength);
-            if(isConcat(subStr, wordSize, wordCount)){
+            if(isConcat(subStr, wordLen, wordCountMap)){
+                
                 ans.add(i);
             }
         }
@@ -39,14 +40,26 @@ class Solution {
         return ans;
     }
     
-    boolean isConcat(String str, int wordSize, Map<String,Integer> wordCount){
-        Map<String,Integer> wordCount2 = new HashMap<>();
+    boolean isConcat(String str, int wordSize, Map<String,Integer> wordCountMap){
+        Map<String,Integer> wordCountMap2 = new HashMap<>();
         for(int i=0; i<=str.length()-wordSize; i=i+wordSize){
             String word = str.substring(i,i+wordSize);
-            if(!wordCount.containsKey(word))
+            if(!wordCountMap.containsKey(word))
                 return false;
-            wordCount2.put(word, wordCount2.getOrDefault(word,0)+1);
+            wordCountMap2.put(word, wordCountMap2.getOrDefault(word,0)+1);
         }
-        return  wordCount.equals(wordCount2);
+        
+        return wordCountMap.equals(wordCountMap2);
+    }
+    
+    boolean isMapEqual(Map<String,Integer> wordCountMap,  Map<String,Integer> wordCountMap2){
+        System.out.println(wordCountMap.get("a") + " "+ wordCountMap2.get("a") );
+        Iterator<String> it = wordCountMap.keySet().iterator();
+        while(it.hasNext()){
+            String key = it.next();
+            if(!wordCountMap2.containsKey(key) || wordCountMap2.get(key) != wordCountMap.get(key))
+                return false;    
+        }
+        return true; 
     }
 }
