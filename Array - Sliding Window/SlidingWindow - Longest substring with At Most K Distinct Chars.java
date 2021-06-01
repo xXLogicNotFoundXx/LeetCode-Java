@@ -1,5 +1,5 @@
 https://leetcode.com/problems/longest-substring-with-at-most-k-distinct-characters/
-Given a string, find the longest substring that contains only two unique characters.
+Given a string, find the longest substring that contains only k unique characters.
 Given "abcadcacacaca" and 3, it returns "cadcacacaca".
 
 class Solution {
