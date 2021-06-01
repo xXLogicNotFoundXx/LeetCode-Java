@@ -5,6 +5,7 @@ Input: S = "AADOBECODEBANAC", T = "ABAC"
 Output: "BANAC"
 */
 // Good question would be: Are there duplicate characters in T => the ans is yes T can have duplicate chars
+// order of the characters does not matter 
 // so we need the count of each char, Set is not sufficient so will use hashmap
 class Solution {
     public String minWindow(String s, String t) {
