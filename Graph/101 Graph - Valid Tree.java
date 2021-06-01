@@ -1,4 +1,8 @@
 /*
+
+https://leetcode.com/problems/graph-valid-tree/
+
+
 Graph Valid Tree (bi-directional):
 valid tree is where you visit all nodes in the graph starting from any node and there is no cycle. 
  valid       invalid 
@@ -7,9 +11,16 @@ valid tree is where you visit all nodes in the graph starting from any node and 
  2    3        2   3
  |\   |         \ /
  4 5  6          4
-https://leetcode.com/problems/graph-valid-tree/
+
 Input: n = 5, and edges = [[0,1], [0,2], [0,3], [1,4]]
 Output: true
+
+Questions:
+  Are there there self loops? 
+  Are there any repeated edges?
+
+There are no self-loops or repeated edges.
+  
 */
 class Solution {
     // assert all num appear in the edges 0 ~ n - 1
