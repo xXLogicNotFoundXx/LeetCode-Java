@@ -11,7 +11,38 @@ We should return its level order traversal:
 Build a map of <level,nodes> while traversing the tree and then iterate through map.
 */
 
+// BFS
+class Solution {
+    public List<List<Integer>> levelOrder(Node root) {
+        List<List<Integer>> ans = new ArrayList<List<Integer>>();
+        
+        if(root==null) return ans;
+        
+        Queue<Node> queue = new LinkedList<>();
+        // ArrayDeque, ConcurrentLinkedDeque, ConcurrentLinkedQueue, LinkedList, PriorityQueue ....
 
+        queue.add(root);
+        
+        while(!queue.isEmpty()){
+            int size = queue.size();
+            List<Integer> oneLevel = new ArrayList<>();
+            for(int i=0; i<size; i++){
+                Node node = queue.poll();
+                oneLevel.add(node.val);
+                
+                for(Node child : node.children){
+                    queue.add(child);
+                }
+                
+            }
+            ans.add(oneLevel);
+        }
+        
+        return ans;
+    }
+}
+
+// DFS 
 class Solution {
     public List<List<Integer>> levelOrder(Node root) {
         List<List<Integer>> ans = new ArrayList<List<Integer>>();
