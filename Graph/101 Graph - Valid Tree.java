@@ -14,15 +14,21 @@ valid tree is where you visit all nodes in the graph starting from any node and 
 Input: n = 5, and edges = [[0,1], [0,2], [0,3], [1,4]]
 Output: true
 
-The edges are in any order, not necessarily follows the graph connection. (see edge [0,2] is not given)
-n = 3
-edges = [[1,0],[2,0]]
-Output: true
+Edge Cases You have to think: 
 
+ The edges are in any order, not necessarily follows the graph connection. (see edge [0,2] is not given)
+ n = 3
+ edges = [[1,0],[2,0]]
+ Output: true
+         This is tricky one, this mean you have to build bi-derectional adjacency graph.  
+ 
+ n=1, edges = []
+ Output: true
 
 Questions:
   Are there there self loops? 
   Are there any repeated edges?
+  Are there nodes out of range?
 
 There are no self-loops or repeated edges.
   
