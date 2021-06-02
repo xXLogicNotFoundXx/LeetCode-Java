@@ -122,3 +122,56 @@ class Solution {
         }
     }
 }
+
+
+class Solution {
+    /*
+    Approach Three : 
+        Graph Theroy - For the graph to be a valid tree, it must have exactly n - 1 edges.
+        Cycle detection - by Union Find 
+        IF graph has n - 1 edges and no cycle then it is a valid tree. (Provides edges does not have duplicate data)
+        
+     Time - O(N)   (E is a varient of N which is n-1 so it becomes 2N -> O(N))
+     Space - O(N)
+    */
+    int[] parent; 
+    
+    public boolean validTree(int n, int[][] edges) {
+        
+        if(edges.length != n-1)
+            return false; 
+        
+        parent = new int[n];
+        for(int i=0; i<n; i++)
+            parent[i] = i;
+        
+        for(int[] edge : edges){
+            if(!union(edge[0], edge[1]))
+                return false;
+        }
+        
+        // we traverse all n-1 edges and there was no cycle it is a valid tree 
+        return true ; 
+    }
+    
+    int find(int node){
+        if(parent[node]==node)
+            return node; 
+        
+        parent[node] = find(parent[node]);
+        return parent[node];
+    }
+    
+    // if cycle found returns true 
+    boolean union(int node1, int node2){
+        int oneParent = find(node1);
+        int twoParent = find(node2);
+        
+        if(oneParent == twoParent)
+            return false; 
+        
+        parent[oneParent] = twoParent;
+        return true;
+    }
+    
+}
