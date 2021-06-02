@@ -56,7 +56,7 @@ class Solution {
          return false;
      
         set.add(cur);
-        for (Integer next : map.get(cur)) {
+        for (Integer next : map.get(cur)) {    // you can iterate over set like this! 
             map.get(next).remove(cur);        // this is VIMP  very important
             boolean temp = dfs(next, map, set);
             if (!temp) return false;
