@@ -36,30 +36,36 @@ There are no self-loops or repeated edges.
 class Solution {
     // assert all num appear in the edges 0 ~ n - 1
     public boolean validTree(int n, int[][] edges) {
-        if (edges == null) return true;
+        if (edges == null) 
+            return true;
+        
         Map<Integer, Set<Integer>> map = new HashMap<>();
         for (int i = 0; i < n; i++) 
             map.put(i, new HashSet<>());
+        
         for (int[] edge : edges) {
             map.get(edge[0]).add(edge[1]);
             map.get(edge[1]).add(edge[0]);
         }
         
         Set<Integer> set = new HashSet<>();
-        boolean temp = dfs(0, map, set);
         
-        return temp ? set.size() == n : false;
+        return dfs(0, map, set)==true ? set.size() == n : false;
     }
     
     public boolean dfs(int cur, Map<Integer, Set<Integer>> map, Set<Integer> set) {
+        
         if (set.contains(cur)) 
-         return false;
+            return false;
      
         set.add(cur);
         for (Integer next : map.get(cur)) {    // you can iterate over set like this! 
-            map.get(next).remove(cur);        // this is VIMP  very important
-            boolean temp = dfs(next, map, set);
-            if (!temp) return false;
+            
+            map.get(next).remove(cur);// remove parent from the child ...  this is VIMP  very important
+            // if we hit parent from some other path then there is a cycle
+         
+            if(!dfs(next, map, set))
+                return false;
         }
         return true;
     }
