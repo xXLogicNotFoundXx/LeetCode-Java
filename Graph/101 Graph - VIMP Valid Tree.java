@@ -34,7 +34,15 @@ There are no self-loops or repeated edges.
   
 */
 class Solution {
-    // assert all num appear in the edges 0 ~ n - 1
+    /*
+        Approach One : 
+           Check if there are any cycles. 
+           Once you visite all edges see if we visited all nodes. 
+           
+        10ms 
+        Time - O(N+E)     N - Creating Adjacency Map.  E - We traverse all edges. 
+        Space - O(N+E)
+    */
     public boolean validTree(int n, int[][] edges) {
         if (edges == null) 
             return true;
@@ -68,5 +76,49 @@ class Solution {
                 return false;
         }
         return true;
+    }
+}
+
+// This is one is really smart i you consider the fact that we need exactly n-1 edges and we should be able visit all nodes. 
+// Kinda trick that you have to know. 
+class Solution {
+    /*
+    Approach two : 
+        Graph Theroy - For the graph to be a valid tree, it must have exactly n - 1 edges and all nodes must be visited when you traverse the graph.
+        
+        Going by this definition, our algorithm needs to do the following:
+            Check whether or not there are n - 1 edges. If there's not, then return false.
+            Check whether or not the graph is fully connected. Return true if it is, false if otherwise.
+     1 ms
+     Time - O(N)   - We always check if there are n-1 edges. So O(N (Map creation) + (N-1) edges) => O(N)
+     Space - O(N)
+    */
+    public boolean validTree(int n, int[][] edges) {
+        
+        if(edges.length != n-1)
+            return false; 
+        
+        Map<Integer, Set<Integer>> map = new HashMap<>();
+        for (int i = 0; i < n; i++) 
+            map.put(i, new HashSet<>());
+        
+        for (int[] edge : edges) {
+            map.get(edge[0]).add(edge[1]);
+            map.get(edge[1]).add(edge[0]);
+        }
+        
+        Set<Integer> set = new HashSet<>();
+        dfs(0, map, set);
+        return set.size() == n;
+    }
+    
+    public void dfs(int cur, Map<Integer, Set<Integer>> map, Set<Integer> set) {
+        
+        set.add(cur);
+        for (Integer next : map.get(cur)) {    // you can iterate over set like this! 
+            if(set.contains(next))
+                continue;
+            dfs(next, map, set);
+        }
     }
 }
