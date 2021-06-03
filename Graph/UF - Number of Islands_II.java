@@ -35,76 +35,78 @@ Operation #3: addLand(1, 2) turns the water at grid[1][2] into a land.
 */
 class Solution {
     
+    int[] parent; 
+    
     public List<Integer> numIslands2(int m, int n, int[][] positions) {
-        int[] parent = new int[m*n];
+        
         List<Integer> ans = new ArrayList<>();
-        Arrays.fill(parent,-1);
+        if(m<=0 && n<= 0)
+            return ans;
         
+        int[][] data = new int[m][n]; 
         
-        int islands = 0; 
+        parent = new int[m*n];
+        for(int i=0; i<m*n; i++)
+            parent[i]=i;
+        
+        int total=0;
+        
         for(int i=0; i<positions.length; i++){
-            islands = makeAnIsland(islands, positions[i][0], positions[i][1], parent, m, n);
-            ans.add(islands);
+            total = createIsland(m, n, positions[i][0],positions[i][1], data, total);
+            ans.add(total);
         }
-            
+        
         return ans;
     }
     
-    int makeAnIsland(int islands, int x ,int y, int[] parent, int rows, int cols){
+    
+    int createIsland(int m, int n, int x, int y, int[][] data, int total){
         
-        if(parent[x*cols + y] != -1)  // duplicates 
-            return islands; 
+        if(x<0 || x>=m || y<0 || y>=n || data[x][y]==1)
+            return total; 
+        
+        
+        data[x][y] = 1;
+        int newIsland =  total + 1; 
         
         int[][] directions = new int[][]{{-1,0}, {1,0}, {0,-1}, {0,1}};
-        Set<Integer> neighbouringIslands = new  HashSet<Integer>();
         
-        for(int [] dir : directions){
+        for(int[] dir : directions){
             int x1 = x + dir[0];
             int y1 = y + dir[1];
             
-            if(x1<0 || x1==rows || y1<0 || y1==cols)
-                continue;
+            if(x1<0 || x1>=m || y1<0 || y1>=n || data[x1][y1]==0)
+                continue; 
             
-            int pos = x1*cols + y1;
+            int pos1 = x*n + y;  
+            int pos2 = x1*n + y1;
             
-            if(parent[pos]!=-1)
-                neighbouringIslands.add( find(parent,pos) );
-            
+            if(isDisjointSet(pos1,pos2)){
+                newIsland--;
+                union(pos1,pos2);
+            }
         }
         
-        if(neighbouringIslands.size()==0){   // new island
-            parent[x*cols + y] = x*cols + y;
-            return islands+1;
-        }
+        return newIsland;
+    }
         
+    int find(int node){
+        if(parent[node]==node)
+            return node;
         
-        int pos = x*cols + y;
-        parent[pos] = pos;
-        
-        islands = islands - neighbouringIslands.size() + 1;
-        
-        for(int island : neighbouringIslands){ // make all islands point to this one island
-            union(parent, island, pos);
-        }
-        
-        return islands;
+        parent[node] = find(parent[node]);
+        return parent[node];
+    }
+
+    boolean isDisjointSet(int node1, int node2){
+        return find(node1) != find(node2);
     }
     
-    
-    int find(int[] parent, int pos){
+    void union(int node1, int node2){
+        int p1 = find(node1);
+        int p2 = find(node2);
         
-        if(parent[pos]==pos)
-            return pos; 
-        
-        parent[pos] = find(parent, parent[pos]);
-        return parent[pos];
-    }
-    
-    void union(int[] parent, int pos1, int pos2){
-        if(find(parent, pos1) == find(parent, pos2))
-            return; 
-        
-        parent[pos1] = find(parent, pos2);
+        parent[p1] = p2; 
     }
     
 }
