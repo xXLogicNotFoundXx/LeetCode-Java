@@ -1,6 +1,6 @@
 **Undirected/Bi-directional Graph**
 
- * To have fully connected graph, graph should have n-1 edges. 
+ * To have fully connected tree, graph should have n-1 edges and no cycle. 
  * Valid Tree ? -> For the graph to be a valid tree, it must have exactly n - 1 edges and when you traverse the graph all nodes must be visited. 
 
 
