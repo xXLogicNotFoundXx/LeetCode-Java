@@ -42,61 +42,53 @@ class Solution {
     
     int[] parent; 
     
-    int find(int x){
-        if(parent[x]==x)
-            return x;
+    public int minimumCost(int n, int[][] connections) {
         
-        parent[x] = find(parent[x]); // path compression 
-        return parent[x];
-    }
-    
-    void union(int x, int y){
-        int pX = find(x);
-        int pY = find(y);
+        if(n<=0)
+            return -1; 
         
-        if( pX != pY){
-            // at this point you can connect whichever parent node 
-            parent[pX] = pY; // parent[pY] = pX; 
-        }
-    }
-    
-    boolean isDisjoint(int x, int y){
-        return find(x)!=find(y);
-    }
-    
-    /*
-    Time : O(M*Log(M)) - N number of nodes , M number edges 
-           M*Log(M) for sort 
-           Union Find Operation, amortized O(1)  bcz of path compression
-    
-    Space: O(N), space required by parents
-    */
-    public int minimumCost(int N, int[][] connections) {
-        parent = new int[N+1];
-        int edges = N-1;  // these many edges we need to form a spanning tree for N nodes; 
+        parent = new int[n+1];
+        for(int i=0;i<=n; i++)
+            parent[i] = i;
         
-        for(int i=0;i<=N;i++){
-            parent[i]=i;
-        }
+        Arrays.sort(connections, (a,b) -> a[2]-b[2]);
         
-        Arrays.sort(connections, (a,b) -> (a[2]-b[2]));
-        int cost = 0;
+        int count=0; // this to count n-1 edges that we gonna add to connect graph 
+        int weight=0;
         
         for(int i=0; i<connections.length; i++){
-            int x = connections[i][0];
-            int y = connections[i][1];
-            int cst = connections[i][2];
+            int[] edge = connections[i];
             
-            if(isDisjoint(x,y)){
-                union(x,y);
-                cost += cst;
-                edges--; // we just added an edge 
+            if(isDisjointSet(edge[0], edge[1])){
+                count++; 
+                weight+= edge[2];
+                union(edge[0],edge[1]);
             }
             
-            if(edges==0) // we found all edges to get minimum spanning tree MST
+            if(count==n-1)
                 break;
         }
-        
-        return edges==0 ? cost: -1; 
+        System.out.println(count+"    "+weight);
+        return count==n-1 ? weight : -1;  // if we didnt add n-1 edges then graph is not fully connected tree 
     }
+    
+    int find(int node){
+        if(parent[node]==node)
+            return node; 
+        
+        parent[node] = find(parent[node]);
+        return parent[node];
+    }
+    
+    boolean isDisjointSet(int node1, int node2){
+        return find(node1) != find(node2);
+    }
+    
+    void union(int node1, int node2){
+        int parent1 = find(node1);
+        int parent2 = find(node2);
+        
+        parent[parent1] = parent2;
+    }
+    
 }
