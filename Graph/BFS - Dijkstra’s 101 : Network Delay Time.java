@@ -12,53 +12,60 @@ Time Complexity: O(E log E) E is number of edges (times.length).  as potentially
 Space Complexity: O(N+E)  the size of the graph (O(E)), plus the size of the other objects used (O(N)).
 */
 class Solution {
-    class NextNode{
+    
+    class Node {
         int des;
-        int weight;
-        NextNode(int d, int w){
-            des =d;
-            weight = w;
+        int wgt; 
+        Node(int d, int w){
+            des = d;
+            wgt = w;
         }
     }
-    public int networkDelayTime(int[][] times, int N, int K) {
+    
+    public int networkDelayTime(int[][] times, int n, int k) {
         
-        Map<Integer,List<NextNode>> map = new HashMap<>();
-        for(int[] edge : times){
-            map.putIfAbsent(edge[0], new ArrayList<NextNode>());
-            map.get(edge[0]).add(new NextNode(edge[1],edge[2]));
-        }
+        if(n<0 || times==null) return -1;
+        if(k<1 || k>n) return -1;
         
-        Map<Integer,Integer> minDisToAllNodes = new HashMap<>();
+        Map<Integer, List<Node>> adjMap = new HashMap<>();
+        for(int i=1; i<=n; i++)
+            adjMap.put(i, new ArrayList<Node>());
+        
+        for(int i=0;i<times.length;i++)
+            adjMap.get(times[i][0]).add( new Node(times[i][1], times[i][2]) );
+        
+        Set<Integer> visited = new HashSet<>();
+        PriorityQueue<Node> pq = new PriorityQueue<Node>((a,b)-> a.wgt - b.wgt);
+        /*
         PriorityQueue<NextNode> pq = new  PriorityQueue<NextNode>(new Comparator<NextNode>(){
             public int compare(NextNode a, NextNode b){
                 return a.weight - b.weight;
             }                                                                          
         });
+        */
+        pq.addAll(adjMap.get(k));
+        visited.add(k);
+        int maxWeight =0;
         
-        pq.add(new NextNode(K,0));
-        Set<Integer> visited = new HashSet<>();
         while(!pq.isEmpty()){
-            NextNode n = pq.poll();
-            if(visited.contains(n.des))
+            Node node = pq.poll();
+            
+            if(visited.contains(node.des))
                 continue;
             
-            visited.add(n.des);
-            minDisToAllNodes.putIfAbsent(n.des, n.weight);
+            visited.add(node.des);
             
-            if(map.containsKey(n.des)){
-                for(NextNode next : map.get(n.des)){
-                    pq.offer(new NextNode(next.des, next.weight + n.weight));
-                }
+            maxWeight = Math.max(maxWeight, node.wgt);
+            for(Node next: adjMap.get(node.des)){
+                next.wgt += node.wgt;
+                pq.add(next);
             }
+            
+            if(visited.size() == n)
+                break;
         }
         
-        if(minDisToAllNodes.size()<N)
-            return -1;
-        
-        int max =-1;
-        for(int e: minDisToAllNodes.values())
-            max = e>max ? e : max;
-        
-        return max;
+        return visited.size() == n ? maxWeight : -1; 
     }
-}
+}        
+ 
