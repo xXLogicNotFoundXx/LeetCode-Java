@@ -1,6 +1,7 @@
 /*
-642. Design Search Autocomplete System
 https://leetcode.com/problems/design-search-autocomplete-system/
+
+642. Design Search Autocomplete System
 return the top 3 historical hot sentences
 '#' - means end of the string/sentence on this character you should update the system with new sentence.
 Input : 
