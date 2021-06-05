@@ -9,91 +9,69 @@ class Solution {
     // during this processing we sould reach cell(m,n) and that would be our min cost.
     // for visited .. we can just take x and y bcz we may add x,y,some cost but later we can reach x,y with zero cost.
     // so for visited we have to consider x,y and cost combinations.
-    public int minCost(int[][] grid) {
-        
-        if(grid==null || grid.length==0)
-            return 0;
-        
-        int m=grid.length-1;
-        int n=grid[0].length-1;
-        
-        // no need to use priority queue we can use Deque ... same cost goes to first and other goes last .. 
-        // even after doing that it is still not a lot of improovement
-        PriorityQueue<Cell> pq = new PriorityQueue<Cell>((a,b)->a.cost-b.cost);
-        Set<Cell> visited = new HashSet<Cell>();
-        
-        pq.add(new Cell(0,0,0));
-        visited.add(new Cell(0,0,0));
-        
-        int[][] dir = new int[][]{{0,1},{0,-1},{1,0},{-1,0}};
-        
-        while(!pq.isEmpty()){
-            Cell cell = pq.poll();
-            
-            if(cell.x == m && cell.y == n)
-                return cell.cost;
-            
-            int freeCell = grid[cell.x][cell.y];
-            
-            for(int i=0; i<dir.length; i++){
-                
-                int[] d = dir[i];
-            
-                int x1 = cell.x+d[0];
-                int y1 = cell.y+d[1];
-                
-                if(x1<0 || x1>m || y1<0 || y1>n)
-                    continue;
-                
-                Cell newCell;
-                if(i == freeCell-1){
-                    newCell = new Cell(x1, y1, cell.cost);
-                } else {
-                    newCell = new Cell(x1, y1, cell.cost+1);
-                }
-                
-                if(!visited.contains(newCell)){
-                    // System.out.println(cell  + "->" + newCell ); lessong lernt always override equals and hashCode
-                    pq.add(newCell);
-                    visited.add(newCell);
-                }
-            }
-        }
     
-        return -1;
+    // 93 ms, faster than 7.17% of Java online submissions 
+    class Cell { 
+        int x, y; 
+        int cost = 0;
+        Cell(int x, int y, int cost) {
+            this.x=x;
+            this.y=y;
+            this.cost = cost; 
+        }
     }
     
-    /*
-        You must override hashCode() in every class that overrides equals(). Failure to do so will result in a violation of the general contract for Object.hashCode(),
-        which will prevent your class from functioning properly in conjunction with all hash-based collections, including HashMap, HashSet, and Hashtable. 
-    */
-    class Cell {
-        int x,y,cost;
-        Cell(int x, int y, int cost ){
-            this.x = x;
-            this.y = y;
-            this.cost = cost;
+    public int minCost(int[][] grid) {
+        
+        PriorityQueue<Cell> pq = new PriorityQueue<Cell>( (a,b) -> a.cost-b.cost );
+        
+        Set<String> visited = new HashSet<String>();
+        pq.add(new Cell(0,0,0));
+        
+        
+        while(!pq.isEmpty()) {
+            Cell cell = pq.poll();
+            
+            if(cell.x == grid.length-1  &&  cell.y == grid[0].length-1){
+                return cell.cost;
+            }
+                
+            if(visited.contains(getHash(cell.x, cell.y)))
+                continue;
+            
+            visited.add(getHash(cell.x, cell.y));
+            
+            addNeighbours(grid, cell, pq, visited);
         }
         
-        @Override 
-        public int hashCode(){
-             return x*91 * y*91 + cost;
-            // Same test case 
-            // return x*31 * y*31 + cost;   // this one is in 77 miliseconds     Submitted 
-            // x*31 + y + cost; // this one resulted into 289 miliseconds    TLE  
-            // x*31 + y*31 + cost*31; resulted into 2656 milisecond          TLE 
-            // why? x*31 + y*31 + cost*31 so many cells would result into same bucket ....
-        }
+        return Integer.MAX_VALUE;
+    }
+    
+    void addNeighbours(int[][] grid, Cell cell, PriorityQueue<Cell> pq, Set<String> visited){
+                                         // R     L       D      U
+        int[][] dir = new int[][]{{0,0}, {0,1}, {0,-1}, {1,0}, {-1,0} };
+    
+        int freeCell = grid[cell.x][cell.y];
         
-        @Override 
-        public boolean equals(Object another){      // <---- to override .. see passing as an Object not Cell ... compiler error 
-            Cell obj = (Cell) another;
-            return x==obj.x && y==obj.y && cost==obj.cost;
+        for(int i=1; i<dir.length; i++){
+            
+            int x = cell.x + dir[i][0];
+            int y = cell.y + dir[i][1];
+            
+            if(x<0 || x>= grid.length || y<0 || y>=grid[0].length)
+                continue; 
+            
+            if(visited.contains(getHash(x,y)))
+                continue; 
+            
+            int cost = i==freeCell ? 0 : 1; 
+            
+            pq.add(new Cell(x,y, cell.cost + cost));
+            
         }
-        
-        @Override 
-        public String toString(){
-            return x + " "+ y +" "+ cost;
-        }
+    }
+    
+    String getHash(int x, int y){
+        return x+"-"+y;
     }
 }
