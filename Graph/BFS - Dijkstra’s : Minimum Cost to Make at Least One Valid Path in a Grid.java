@@ -10,6 +10,7 @@ class Solution {
     // for visited .. we can just take x and y bcz we may add x,y,some cost but later we can reach x,y with zero cost.
     // so for visited we have to consider x,y and cost combinations.
     
+    O(M*N + log(4*m*n)) // log(4*m*n) for PQ .. each cell can have 
     // 93 ms, faster than 7.17% of Java online submissions  with Priority Queue 
     class Cell { 
         int x, y; 
