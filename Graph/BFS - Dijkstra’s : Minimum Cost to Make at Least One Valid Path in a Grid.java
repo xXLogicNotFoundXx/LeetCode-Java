@@ -10,7 +10,7 @@ class Solution {
     // for visited .. we can just take x and y bcz we may add x,y,some cost but later we can reach x,y with zero cost.
     // so for visited we have to consider x,y and cost combinations.
     
-    // 93 ms, faster than 7.17% of Java online submissions 
+    // 93 ms, faster than 7.17% of Java online submissions  with Priority Queue 
     class Cell { 
         int x, y; 
         int cost = 0;
@@ -74,4 +74,9 @@ class Solution {
     String getHash(int x, int y){
         return x+"-"+y;
     }
+    
+// if you think we are always gonna visit cost 0, 1, 2, 3 ... 
+// if we use Deque instead of priority queue 
+// if it is zero cost add it from first or add it from the back 
+// 76 ms, faster than 8.04% of Java online submissions.  with Deque 
 }
