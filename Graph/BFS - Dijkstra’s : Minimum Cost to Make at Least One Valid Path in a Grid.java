@@ -79,4 +79,8 @@ class Solution {
 // if we use Deque instead of priority queue 
 // if it is zero cost add it from first or add it from the back 
 // 76 ms, faster than 8.04% of Java online submissions.  with Deque 
+    
+// if you do visited as int[][] visited = new int[m][n]; that will reduce runtime complexity. 
+// as we wont be creating string out of x,y and calculating hash code for it.
+    
 }
