@@ -81,6 +81,33 @@ class Solution {
 // 76 ms, faster than 8.04% of Java online submissions.  with Deque 
     
 // if you do visited as int[][] visited = new int[m][n]; that will reduce runtime complexity. 
-// as we wont be creating string out of x,y and calculating hash code for it.
+// as we wont be creating string out of x,y and calculating hash code for it. 
+
+    public int minCost(int[][] grid) {
+        
+        Deque<Cell> pq = new ArrayDeque<Cell>();
+        
+        Set<String> visited = new HashSet<String>();
+        pq.offerFirst(new Cell(0,0,0));
+        
+        
+        while(....)
+        
+        return Integer.MAX_VALUE;
+    }
     
+    void addNeighbours(int[][] grid, Cell cell, Deque<Cell> pq, Set<String> visited){
+                                     
+            ...
+            if(cost==0)
+                pq.offerFirst(new Cell(x,y, cell.cost + cost));
+            else 
+                pq.offerLast(new Cell(x,y, cell.cost + cost));
+        }
+    }
+    
+    String getHash(int x, int y){
+        return x+"-"+y;
+    }
+ 
 }
