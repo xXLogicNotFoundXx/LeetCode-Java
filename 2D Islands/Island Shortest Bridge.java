@@ -14,6 +14,10 @@ Return the smallest number of 0s that must be flipped.  (It is guaranteed that t
 
 Time O(M*N) - DFS could traverse all ... BFS could traverse all 
 Space O(M*N) - Queue could get almost all M*N positions 
+
+
+This is another good example that you have to represent the input in a different format to solve the question. 
+
 */
 class Solution {
     public int shortestBridge(int[][] A) {
