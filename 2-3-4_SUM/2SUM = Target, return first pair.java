@@ -17,14 +17,14 @@ class Solution {
         
         for(int i=0;i<nums.length;i++){
             
-            if(sumMap.containsKey(nums[i])){
-                int ans = new int[2];
-                ans[0]=sumMap.get(nums[i]);
+            if(sumMap.containsKey(target-nums[i])){
+                int[] ans = new int[2];
+                ans[0]=sumMap.get(target-nums[i]);
                 ans[1]=i;
                 return ans;
             }
             
-            sumMap.put(target-nums[i],i);
+            sumMap.put(nums[i],i);
         }
         return null;
     }
