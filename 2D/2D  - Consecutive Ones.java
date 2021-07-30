@@ -19,8 +19,8 @@ class Solution {
         
         int []backslash = new int[M.length + M[0].length]; 
         // This one is good one =  j-i+M.length to calculate +ve index for given antiDiagonal elements
-        // -i+M.length(#Rows) this will never cross (0-M.length) and then j is always +ve so that adds up to (M.length + M[0].length -1)
-        // The antidiagonal elements giving same +ve index can be caulcated as [i-j+M[0].length] (i.e. is #column)
+           // -i+M.length(#Rows) this will never cross (0-M.length) and then j is always +ve.
+        // it can be caulcated as [i-j+M[0].length] (i.e. is #column)
         // The concept -j or -i doesnt matter as long as you add the respective #Cols or #Rows to it. 
         // The observation is [j-i+M.length] will result in index 0 to m+n-1 in a way 
         // that at index 0 we will have the left bottom element and at last index (m+n-1) will have right top element
