@@ -1,5 +1,6 @@
 /*
 
+
 https://leetcode.com/problems/non-overlapping-intervals/
 
 Given a collection of intervals, find the minimum number of intervals you need to remove to make the rest of the intervals non-overlapping.
@@ -10,6 +11,8 @@ Explanation: [1,3] can be removed and the rest of intervals are non-overlapping.
 
 1. Sort by end (Why not sort by start?)
 2. Check if current interval is overlaping with previous if so drop current and count++
+
+Lesson : Always think of sorting from start and then end too. 
 */
 class Solution {
     public int eraseOverlapIntervals(int[][] intervals) {
@@ -18,13 +21,13 @@ class Solution {
         
         /* why are we doing it Sorting end ?  after sorting with end we have following 3 cases 
           case 1 :   ---- 
-                          ------   ( 1st and 2nd interval do not over lap )
+                          ------   ( 1st and 2nd(current) interval do not over lap )
                           
           case 2 :   -----          ( 1st and 
-                         ------             2nd interval overlap ) ->  good to drop current inteval 
+                         ------             2nd(current) interval overlap ) ->  good to drop current inteval 
                          
           Case 3:    -----          ( 1st and 
-                   ---------------          2nd interval overlap ) ->  good to drop current inteval 
+                   ---------------          2nd(current) interval overlap ) ->  good to drop current inteval 
                    
                    
         So in any case it always good to drop current intersection. 
