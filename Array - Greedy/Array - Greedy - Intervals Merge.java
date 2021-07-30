@@ -20,7 +20,13 @@ intevals are not sorted.
         if(intervals==null || intervals.length==0)
             return intervals;
         
-        Arrays.sort(intervals, (a,b) -> a[0] - b[0]);
+        Arrays.sort(intervals, new Comparator<int[]>(){
+            public int compare(int[] a, int b[]){
+                return a[0]-b[0];
+            }
+        });
+        // OR 
+        // Arrays.sort(intervals, (a,b) -> a[0] - b[0]);
         
         // see int[] is fine bcz it is an object not primitive type. 
         List<int[]> list = new LinkedList<>();
