@@ -1,4 +1,6 @@
 /*
+You can put all the matrix in an 1D Array and user Arrays.sort()
+OR
 https://stackoverflow.com/questions/1066589/iterate-through-a-hashmap/1066603#1066603
 */
 public static void sortMatrix(final int[][] matrix) {
