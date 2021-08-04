@@ -1,4 +1,6 @@
 /*
+Medium - IMP
+
 https://leetcode.com/problems/longest-consecutive-sequence/
 Input: [100, 4, 200, 1, 3, 2]
 Output: 4
@@ -16,6 +18,35 @@ Store (left + right + 1) as the associated value to key n into the map.
 Use left and right to locate the other end of the sequences to the left and right of n respectively, and replace the value with the new length.
 Everything inside the for loop is O(1) so the total time is O(n).
 */
+// O(n.LogN) Time and O(1) space
+class Solution {
+    public int longestConsecutive(int[] nums) {
+        if (nums.length == 0) {
+            return 0;
+        }
+
+        Arrays.sort(nums);
+
+        int longestStreak = 1;
+        int currentStreak = 1;
+
+        for (int i = 1; i < nums.length; i++) {
+            if (nums[i] != nums[i-1]) {
+                if (nums[i] == nums[i-1]+1) {
+                    currentStreak += 1;
+                }
+                else {
+                    longestStreak = Math.max(longestStreak, currentStreak);
+                    currentStreak = 1;
+                }
+            }
+        }
+
+        return Math.max(longestStreak, currentStreak);
+    }
+}
+
+// O(n) time and O(n) space
 class Solution {
     public int longestConsecutive(int[] nums) {
      
@@ -32,6 +63,7 @@ class Solution {
                 map.put(num,sum);
                 
                 // update the new boundries 
+                // this is where all logic is 
                 map.put(num-left,sum);
                 map.put(num+right,sum);
                 
@@ -41,3 +73,4 @@ class Solution {
         return ans;
     }
 }
+
