@@ -13,12 +13,15 @@ class Solution {
         int i = 0, j = 0;
 
         while (i < A.length && j < B.length) {
-            int lo = Math.max(A[i][0], B[j][0]);
-            int hi = Math.min(A[i][1], B[j][1]);
+            // intersection interval is 
+            int lo = Math.max(A[i][0], B[j][0]);   // max of the start time 
+            int hi = Math.min(A[i][1], B[j][1]);   // min of the end time 
             if(lo<=hi)
                 ans.add(new int[]{lo,hi});
             
-            if(A[i][1]<B[j][1])
+            // which pointer to go forward?
+            // whichever end time is less that should move forward 
+            if(A[i][1] < B[j][1])
                 i++;
             else
                 j++;
