@@ -1,5 +1,8 @@
 
-/* https://leetcode.com/problems/trapping-rain-water/
+/* 
+HARD - VIMP 
+
+https://leetcode.com/problems/trapping-rain-water/
 Given n non-negative integers representing an elevation compute how much water it is able to trap after raining.
  Input: [0, 1,  0, 2,  1,  0,  1, 3, 2,  1, 2, 1]
         [0, 0, +1, 0, +1, +2, +1, 0, 0, +1, 0, 0]    = 6     
@@ -41,6 +44,8 @@ class Solution {
         return sum;
     }
     
+ 
+ // O(N) time and O(1) space 
     public int trap1(int[] height) {
         if(height == null || height.length <= 2) 
             return 0;
