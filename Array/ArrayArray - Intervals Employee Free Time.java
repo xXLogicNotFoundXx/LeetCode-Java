@@ -25,7 +25,12 @@ Output: [[5,6],[7,9]]
 */
 
 /*
+Put all intervals in one list and sort all intervals. 
 
+Idea is -  we keep expanding working interval  until two interval are overlapping 
+         - and when we find two interval are not overlapping at all 
+         ... the gap in beetween them is a free time for all employees.
+        
 1 Sort all events in start time then according to end time. 
 2 Initiate start and end with first interval 
     
@@ -33,7 +38,7 @@ Output: [[5,6],[7,9]]
         end becomes = Math.max(end, nextEnd); 
 
 4 if end is less than nextStart ( we have found the free time )
-        freeTime = [end, nextStart]
+        freeTime = [end, nextStart]]]
 */
 
 class Solution {
@@ -65,14 +70,19 @@ class Solution {
         int start = list.get(0).start;
         int end = list.get(0).end;
         
+        // we keep track of working interval and when we find 
+        // two interval are not overlapping at all ... the gap in beetween them is a free time for all employees 
         for(int i=1; i<list.size(); i++){
             Interval next = list.get(i);
             
-            // if
+            // if end is greter than nextStart 
+            // we have to expand the interval of working employee
             if(next.start <= end) {
-                // start is beetwing prev interval
+                // we have to epand current working interval 
                 end = Math.max(end, next.end);
-            } else {
+            } else { 
+                // if end is less than nextStart 
+                // we have found the free time
                 Interval freeTime = new Interval(end, next.start);
                 ans.add(freeTime);
                 
