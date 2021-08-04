@@ -1,4 +1,7 @@
 /*
+
+bakwas question bc 
+
 https://leetcode.com/problems/minimum-domino-rotations-for-equal-row/
 1007. Minimum Domino Rotations For Equal Row
 Given A and B you can swap(rotate) A[i] & B[i], your goal is to make A OR B having all same values.
