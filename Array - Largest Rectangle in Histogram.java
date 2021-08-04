@@ -1,11 +1,22 @@
 /*
 https://leetcode.com/problems/largest-rectangle-in-histogram/
+Given an array of integers heights representing the histogram's bar height where the width of each bar is 1, 
+return the area of the largest rectangle in the histogram.
 
-Also look : https://leetcode.com/problems/maximal-square/
+Input: heights = [2,1,5,6,2,3]
+Output: 10
+Explanation: The above is a histogram where width of each bar is 1.
+The largest rectangle is shown in the red area, which has an area = 10 units.
+
+Input: heights = [2,4]
+Output: 4
+
+After this problem -> Also look : https://leetcode.com/problems/maximal-square/
 */
 class Solution {
     
     // O(N^2) - 91 / 96 test cases passed.
+    // O(1) space 
     public int largestRectangleArea1(int[] heights) {
         int maxArea = 0;
         int length = heights.length;
@@ -19,7 +30,7 @@ class Solution {
         return maxArea;
     }
     
-    // This can be 
+    // 2 PASS - O(N) Time and O(N) space
     /*
         Scan from left to right to compute left[], which represents the left most boundary of current height.
         Scan from right to left to compute right[], which represents the right most boundary of current height.
@@ -61,17 +72,19 @@ class Solution {
         
         // compare height
         for(int i = 0; i < n; i++) {
-            result = Math.max(result, (right[i]-left[i]+1)*heights[i]);
+            result = Math.max(result, (right[i]-left[i]+1) * heights[i]); 
         }
         
-        // return
         return result;
     }
     
     /*
-    this will help you to understand stack solution:
+    
+    let it be with stack O(N) .. too specific answer ... 
+    
+    This will help you to understand stack solution:
     https://www.youtube.com/watch?v=RVIh0snn4Qc
-
+    
     Conside input : [1,2,3,4,5,3,3,2]
 
     Idea is :
