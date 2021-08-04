@@ -1,5 +1,11 @@
 /*
+Given two sorted arrays nums1 and nums2 of size m and n respectively, return the median of the two sorted arrays.
 https://leetcode.com/problems/median-of-two-sorted-arrays/submissions/
+
+Median is : 
+if odd total numbers - then return middle number 
+if even total numbers - then return avg of two middle numbers.
+
 */
 // O(N)
 class Solution {
@@ -22,15 +28,19 @@ class Solution {
             int curJ = j < nums2.length ? nums2[j] : Integer.MAX_VALUE;
             
             int currNum = curI<curJ ? curI : curJ;
-            i=curI<curJ ? i+1 : i;
-            j=curI>=curJ ? j+1 : j;   // see we have ">="
-            // if we find same number someone has to be incremented 
             
-            if(indexes.contains(i + j -1)) {
+            if(indexes.contains(i + j)) {
                 sum += currNum;
             }
+            
+            i = curI<curJ ? i+1 : i;
+            j = curI>=curJ ? j+1 : j;   // see we have ">=" 
+            // corner case -> if we find same number someone has to be incremented)
+            
         }
         
         return isEvenLen ? sum/2.0 : sum;
     }
 }
+
+// there is a LogN solution but it is too specific and very hard.
