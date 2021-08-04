@@ -1,6 +1,10 @@
 /*
 
+Not too many people asked this question. Kinda like trick question. 
+
+else 
 https://leetcode.com/problems/product-of-the-last-k-numbers/
+
 Implement the class ProductOfNumbers that supports two methods:
 
 1. add(int num)
@@ -21,7 +25,7 @@ class ProductOfNumbers {
     }
     
     public void add(int num) {
-        if(num==0){
+        if(num==0){ // nice trick 
             prefixProd.clear();
             return; 
         }
