@@ -1,4 +1,6 @@
 /*
+faad problem 
+
 https://leetcode.com/problems/house-robber-iii/
 Rober cannot rob two directly-linked houses. Alternate level wise.
 Determine the maximum amount of money the thief can rob tonight without alerting the police.
@@ -11,6 +13,9 @@ Example 1:
 
 Output: 7 
 Explanation: Maximum amount of money the thief can rob = 3 + 3 + 1 = 7.
+
+Medium
+Aamazon Google MSFT 
 */
 // Recursive : Without map will visits every problem number of times bcz rob gets called 6 times 6^N
 // 800+ mili seconds 
