@@ -30,13 +30,17 @@ class Solution {
     
     void  pathSum(TreeNode root, int sum, List<List<Integer>> ans, List<Integer> subAns){
         if(root==null) return;
+        
         subAns.add(root.val);
-        if((root.left==null && root.right==null) && 0==sum-root.val ){
+        sum = sum - root.val;
+        
+        if(root.left==null && root.right==null && 0==sum ){
             ans.add(new ArrayList<Integer>(subAns));
-        } else{
-            pathSum(root.left,sum-root.val,ans,subAns);
-            pathSum(root.right,sum-root.val,ans,subAns);
+        } else {
+            pathSum(root.left, sum, ans, subAns);
+            pathSum(root.right, sum, ans, subAns);
         }
+        
         subAns.remove(subAns.size()-1);
     }
 }
