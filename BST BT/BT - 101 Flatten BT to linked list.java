@@ -7,6 +7,7 @@
 3   4   6
 The flattened tree should look like:
 1-2-3-4-5-6 (right pointers)
+Medium FB, G, MS, 
  */
 class Solution {
     public void flatten(TreeNode root) {
