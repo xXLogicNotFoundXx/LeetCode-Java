@@ -21,7 +21,7 @@ all elements in the candidate array are distinct and the array size is n.
 class Solution {
     public List<List<Integer>> combinationSum(int[] candidates, int target) {
         Map< Integer,List<List<Integer>> > map = new HashMap();
-        Arrays.sort(candidates); // This will avoid duplications 
+        Arrays.sort(candidates);
         List<List<Integer>> Ans  = new ArrayList<List<Integer>>();
         List<Integer> subAns = new ArrayList<Integer>();
         combinationSumHelper(candidates,target,Ans,subAns,0);
@@ -44,26 +44,28 @@ class Solution {
     }
 }
 
+// Problem 2 :
 // Amazon - How would you do combination of sum for 2D array?
 // sorting of 2D array - > https://github.com/xXLogicNotFoundXx/LeetCode-Java/blob/master/2D/101%20-%202D%20Array%20sort.java
 // then you can have 0 to m*n index 
 // for k index 2d[k/col][k%col] would be your item in 2D
 
+// Problem 3 :
 // how about if asked how many ways are there to have target? 
 // check this out 
 // https://leetcode.com/problems/coin-change-2/                 <-  Check this out too. 
 // it becomes classic knapsack problem.
 
-/*
-Combination Sum II with duplucates 
+/*.    Combination Sum II with duplucates 
+
 https://leetcode.com/problems/combination-sum-ii/
 
-Combination ... 
+Combination formula ... 
 nCr={n!}/{r! (n-r)!}
 
 Given a collection of candidate numbers (candidates) and a target number (target), 
 find all unique combinations in candidates where the candidate numbers sums to target.
-Each number in candidates may only be used once in the combination.
+Each number in candidates may only be used ONCE in the combination.
 
 Note:
 All numbers (including target) will be positive integers.
@@ -78,9 +80,10 @@ A solution set is:
   [1, 1, 6]
 ]
 
-Time complexity = O(2^N) we either select a number or we dont ... height of the tree is N/ 
-Space O(m) m is the size of the Ans array 
+Time complexity  = O(2^N) we either select a number or we dont ... Height of the tree is N 
+Space complexity = O(M) + O(N)  - M is the size of the Ans array, N recursion stack 
 */
+
 class Solution {
     public List<List<Integer>> combinationSum2(int[] candidates, int target) {
         Arrays.sort(candidates);
@@ -100,8 +103,10 @@ class Solution {
             for(int i=start;i<candidates.length;i++){
                 if(target - candidates[i] < 0) // this is good because we dont want to process all the array
                     break;
-                if(i>start && candidates[i]==candidates[i-1]) 
+                
+               if(i>start && candidates[i]==candidates[i-1]) 
                     continue;
+              
                 subAns.add(candidates[i]);
                 combinationSumHelper(candidates,target - candidates[i],Ans,subAns,i+1); // i+1 we are not using same numbers unlike last problem 
                 subAns.remove(subAns.size()-1);
@@ -111,6 +116,9 @@ class Solution {
 }
 
 /*
+
+https://leetcode.com/problems/combination-sum-iii/
+
 Find all possible combinations of k numbers that add up to a number n, 
 given that only numbers from 1 to 9 can be used and each combination should be a unique set of numbers.
 
@@ -121,7 +129,6 @@ Example 1:
 
 Input: k = 3, n = 7
 Output: [[1,2,4]]
-Example 2:
 
 Input: k = 3, n = 9
 Output: [[1,2,6], [1,3,5], [2,3,4]]
@@ -129,8 +136,15 @@ Output: [[1,2,6], [1,3,5], [2,3,4]]
 
 The deepest level that the recursion can go is k.
 C(9,k) that is O(9 choose k)
-time complexity = O(9^k)
 
+There are 9 choices at first level. 
+Then 8 choices on second level. 
+Then 7 choices 
+nCr={n!}/{r! (n-r)!}
+
+time complexity = O(9! / k!(9-k) )!
+Depth of the tree will be K 
+Space = O(K)
 */
 
 class Solution {
