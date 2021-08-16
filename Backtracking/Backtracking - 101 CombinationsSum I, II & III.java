@@ -81,7 +81,9 @@ A solution set is:
 ]
 
 Time complexity  = O(2^N) we either select a number or we dont ... Height of the tree is N 
-Space complexity = O(M) + O(N)  - M is the size of the Ans array, N recursion stack 
+Space complexity = O(N)  -  N recursion stack
+We don't consider the space occupied by the answers array since that is a part of the question's requirement and we can't reduce that in any way
+
 */
 
 class Solution {
