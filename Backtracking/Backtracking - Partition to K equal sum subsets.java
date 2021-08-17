@@ -4,7 +4,12 @@ Given an array of integers nums and a positive integer k, find whether it's poss
 k non-empty subsets whose sums are all equal.
 Input: nums = [4, 3, 2, 3, 5, 2, 1], k = 4
 Output: True
-We can figure out what target each subset must sum to. 
+
+How do you decide what total we are looking at?
+Total_Sum / K => Should be the SUM. 
+if(Total_Sum % K !=0) then there is no ans. 
+
+
 Then, let's recursively search, where at each call to our function, we choose which of k subsets the next value will join.
 
 time complexity: O(k*2^n)
@@ -19,11 +24,15 @@ class Solution {
         boolean []used = new boolean[nums.length];
         return backtrack(nums,used,k,total/k,0,0);
     }
+    
     boolean backtrack(int[]nums,boolean[] used, int k, int target, int start, int sum){
-        if(k==1)
+        // End condition 
+        if(k==1) // the last remianing numbers has to satisfy the SUM requirement. 
             return true; 
+        
         if(sum>target)
             return false;
+        
         if(sum==target)
            return backtrack(nums,used,k-1,target,0,0);
         
