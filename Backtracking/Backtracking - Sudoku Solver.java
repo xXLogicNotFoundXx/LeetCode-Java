@@ -1,6 +1,14 @@
 /*
 https://leetcode.com/problems/sudoku-solver/
 Write a program to solve a Sudoku puzzle by filling the empty cells.
+The '.' character indicates empty cells.
+
+9x9 board AND It is guaranteed that the input board has only one solution.
+
+hard
+DoorDash25 msft9 amzn9 google5 uber2
+
+
 */
 class Solution {
     public void solveSudoku(char[][] board) {
@@ -15,9 +23,11 @@ class Solution {
                 for(char value='1';value<='9';value++){
                      if(isValid(board,i,j,value)){
                          board[i][j]=value;
+                         
                          if(solve(board))
                              return true;
-                         board[i][j]='.';
+                         else
+                            board[i][j]='.';
                      }   
                  }
                  return false;
