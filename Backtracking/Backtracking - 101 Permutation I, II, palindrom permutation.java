@@ -1,17 +1,26 @@
-https://leetcode.com/problems/permutations/submissions/
+/*
+https://leetcode.com/problems/permutations
+
+Time = O(N! x N) - extra N bcz we have to copy the subans to the main Ans.
+Space = O(N! x N) - We have to keep all the permutation of size N. 
+*/
 class Solution {
     public List<List<Integer>> permute(int[] nums) {
        List<List<Integer>> list = new ArrayList<>();
        backtrack(list, new ArrayList<>(), nums);
        return list;
     }
-
+    
+    // O(N!)
     private void backtrack(List<List<Integer>> list, List<Integer> tempList, int [] nums){
        if(tempList.size() == nums.length){
-          list.add(new ArrayList<>(tempList));
+          list.add(new ArrayList<>(tempList)); // creates a separate copy. O(N)
        } else{
           for(int i = 0; i < nums.length; i++){ 
-             if(tempList.contains(nums[i])) continue; // element already exists, skip
+             // This is O(M) - m is the size of the list. Should have used boolean array to check if the number is taken. 
+             if(tempList.contains(nums[i])) 
+                 continue; // element already exists, skip. 
+              
              tempList.add(nums[i]);
              backtrack(list, tempList, nums);
              tempList.remove(tempList.size() - 1);
@@ -20,9 +29,14 @@ class Solution {
     } 
 }
 
-//Backtracking - Permutation_II.java
-//Duplicates. 
-    
+/*
+Permutation_II.java with Duplicates. 
+https://leetcode.com/problems/permutations-ii/
+Given a collection of numbers, nums, that might contain duplicates, return all possible unique permutations in any order.
+
+Time = O(N! x N) 
+Space = O(N! x N)
+ */  
 class Solution {
     public List<List<Integer>> permuteUnique(int[] nums) {
         List<List<Integer>>  ans = new ArrayList<List<Integer>>();
