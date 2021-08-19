@@ -11,7 +11,7 @@ class Solution {
        
     // DP APPROACH 
     // it same as edit distance problem.
-    // dp[i][j] = Math.min(Math.min([i-1][j],[i][j-1]), [i-1][j-1]) 
+    // dp[i][j] = Math.min(Math.min( dp[i-1][j], dp[i][j-1]), dp[i-1][j-1]) 
     // think about this and let that sink in.
     
     public int maximalSquare1(char[][] matrix) {
