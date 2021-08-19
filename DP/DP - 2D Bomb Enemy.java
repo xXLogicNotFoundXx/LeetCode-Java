@@ -1,6 +1,8 @@
 /*
 361. Bomb Enemy
 https://leetcode.com/problems/bomb-enemy/
+
+LinkedIn4 Google2 Uber2
 Given a 2D grid, each cell is either a wall 'W', an enemy 'E' or empty '0' (the number zero), 
 return the maximum enemies you can kill using one bomb.
 The bomb kills all the enemies in the same row and column 
