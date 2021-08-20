@@ -1,4 +1,6 @@
 /*
+Hard ... not many people asked this
+
  https://leetcode.com/problems/insert-delete-getrandom-o1-duplicates-allowed/
  Insert Delete GetRandom O(1) - Duplicates allowed
  Design a data structure that supports all following operations in average O(1) time.
@@ -8,11 +10,22 @@
     remove(val): Removes an item val from the collection if present.
     getRandom: Returns a random element from current collection of elements. 
         The probability of each element being returned is linearly related to the number of same value the collection contains.
+        
+How would you extend the logic of non-duplicate problem?
+- I thougt ArrayList<LinkedNode> would solve it .. but then getRandom() wont be lineraly related to the number ... 
+- That mean same element has to be in the ArrayList with different index. 
+- we can just do Map<Integer, Set<Integer>> and ArrayList<Integer>
+  -- we remove from the map when set becomes zero. 
+  -- same logic with swaping the last element with the current element 
+  -- how do you access one element from the SET?
+    -- we can just do setObj.iterator().next(); // access to the first value.. gotta make sure set has at least one value.
+    
 */
 class RandomizedCollection {
     Map<Integer,Set<Integer>> map;
     ArrayList<Integer> list;
     Random rand;
+ 
     /** Initialize your data structure here. */
     public RandomizedCollection() {
         map  = new HashMap();
@@ -36,7 +49,7 @@ class RandomizedCollection {
             int index = map.get(val).iterator().next();  // Important set doesnt have direct access to elements 
             map.get(val).remove(index); // remove that index 
             
-            if(index < list.size()-1){
+            if(index < list.size()-1) {.  //                 <==  Corner case 
                 int lastElement = list.get(list.size()-1);
                 list.set(index,lastElement); // overrite lastElement  to the index 
                 map.get(lastElement).remove(list.size()-1); 
