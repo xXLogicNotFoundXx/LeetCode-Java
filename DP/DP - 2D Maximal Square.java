@@ -54,6 +54,7 @@ class Solution {
             for(int j=0;j<matrix[0].length;j++){
                 
                 if(i==0 || j==0){
+                    // [["0","1"],["1","0"]] we need to return 1. so to update maxLength=1 we need this 
                     maxLength = Math.max(maxLength, intMat[i][j]); // if we have 1 in only top row or first column ans should be 1 
                 }
                 else if(intMat[i][j]==1){
