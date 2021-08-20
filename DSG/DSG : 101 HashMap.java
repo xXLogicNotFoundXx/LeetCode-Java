@@ -13,8 +13,24 @@ As there gonna be max 10000  operations:
     we chose good hash function that will most likely map to every slot of the storage.
     but, collision is inevitable.We handle collition by linked list.
     we can put linked list at every slot that would contain key and value.
-    We create dummy linked node just make it easy to handle. 
+    We create dummy linked node just make it easy to handle.
+    
+    
+    
+HashMap implementation: You need Hash Funciton that will return index for a given key.
+1, You can get the same index for two different keys. 
+    So you need linkedlist nodes in the array to store all the keys generating same key.
+    here collision are resolved by linkedList. 
+2. Once that is clear, we need a function that return the previous node in the bucket list. 
+    So that we can delete the key operation. which will be pointed by 'next'
+3. You should initialize your array with dummy nodes right away so that you avoid null checks later. 
+     Array .. bucket should have dummy nodes. 
+    [dummyNode(0,0)]-> key,value -> key,value -> null
+    [dummyNode(0,0)]-> key,value -> key,value -> null 
+       ...
+
 */
+
 class MyHashMap {
     
     class LinkedNode {
@@ -29,33 +45,24 @@ class MyHashMap {
     
     int size = 10000;
     LinkedNode [] map = new LinkedNode[size];
-    int getIndex(int key){
-          return Integer.hashCode(key) % size;      // => Important 
-    }
     
     /** Initialize your data structure here. */
     public MyHashMap() {
-        // create dummy nodes for every slot
+        // create dummy nodes for every slot.
+        // makes it easy for not checking null in future.
+        // creating dummy head in linked list structure helps a lot to avoid null checks 
         for(int i=0;i<size;i++)
             map[i] = new LinkedNode(-1,-1);
     }
     
-    /** value will always be non-negative. */
-    public void put(int key, int value) {
-        int index = getIndex(key);
-        LinkedNode prev = findNode(index,key);
-        if(prev==null){
-            LinkedNode newNode = new LinkedNode(key,value);
-            LinkedNode bucket = map[index];
-            newNode.next = bucket.next;
-            bucket.next = newNode;
-        }else {
-            prev.next.value = value;
-        }
+    // hash function 
+    private int getIndex(int key){
+          return Integer.hashCode(key) % size;      // => Important 
     }
     
     // returns previous node                     // => Important 
-    LinkedNode findNode(int index,int key){        
+    // this will be good during the delete operation 
+    private LinkedNode findNode(int index,int key){        
         LinkedNode node = map[index];
         while(node.next!=null){
             if(node.next.key==key){
@@ -73,6 +80,21 @@ class MyHashMap {
         if(prev==null)
             return -1;
         return prev.next.value;
+    }
+    
+    /** value will always be non-negative. */
+    public void put(int key, int value) {
+        int index = getIndex(key);
+        LinkedNode prev = findNode(index,key);
+        // add node to the start of the bucket
+        if(prev==null){
+            LinkedNode newNode = new LinkedNode(key,value);
+            LinkedNode bucket = map[index];
+            newNode.next = bucket.next;
+            bucket.next = newNode;
+        }else { // update the value for the same key 
+            prev.next.value = value;
+        }
     }
     
     /** Removes the mapping of the specified value key if this map contains a mapping for the key */
