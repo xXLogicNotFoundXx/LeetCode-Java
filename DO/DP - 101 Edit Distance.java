@@ -20,7 +20,9 @@ If you see diagonal where both strings are same then matrix gonna look like
 2 n 0 n n
 3 n n 0 n
 4 n n n 0
-
+        ^
+        This is what the ans is. 
+        
 https://www.youtube.com/watch?v=MiqoA-yF-0M
 */
 
