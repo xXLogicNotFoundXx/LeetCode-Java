@@ -6,8 +6,22 @@ insert(val): Inserts an item val to the set if not already present.
 remove(val): Removes an item val from the set if present.
 getRandom: Returns a random element from current set of elements. Each element must have the same probability of being returned.
 
-Map<val,index> and ArrayList during remove we swap last element in the list and remove last element.  
+1 Now Set<Integer> can easily satisfy inser and remove. 
+  rand.nextInt(size) -> also will give random index with equal probability.
+    Accessing that ith value in a set is not possible. You would need to iterate over it. 
+
+2 Now we could think about putting it in the set and array but then remove in o(1) not possible 
+    but we would need index attached to the value 
+
+3 Map<val,index> and ArrayList<Integer> could work 
+  checkign value is easy. and removing value from map is easy 
+  for ArrayList index we can 
+    SWAP the value with last value in the arrayList O(1)
+    update the map index for the last value         O(1)
+    resize the array                O(1)
+    remove entry from the map   O(1)
 */
+
 class RandomizedSet {
     Map<Integer,Integer> map = new HashMap();
     ArrayList<Integer> list = new ArrayList();
