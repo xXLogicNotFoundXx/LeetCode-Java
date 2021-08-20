@@ -1,5 +1,8 @@
-// https://leetcode.com/problems/shortest-distance-to-a-character/
 /*
+Easy .. not many companies 
+
+https://leetcode.com/problems/shortest-distance-to-a-character/
+
 Given a string S and a character C, 
 return an array of integers representing the shortest distance from the character C in the string.
 
