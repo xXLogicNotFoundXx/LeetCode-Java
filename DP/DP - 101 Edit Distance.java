@@ -37,16 +37,16 @@ public class Solution {
         for(int i = 1; i <= n; i++)
             cost[0][i] = i;
         
-        for(int i = 0; i < m; i++) {
-            for(int j = 0; j < n; j++) {
-                if(word1.charAt(i) == word2.charAt(j))
-                    cost[i + 1][j + 1] = cost[i][j];
-                else {
-                    int a = cost[i][j];
-                    int b = cost[i][j + 1];
-                    int c = cost[i + 1][j];
-                    cost[i + 1][j + 1] = Math.min(Math.min(a,b),c);
-                    cost[i + 1][j + 1]++;
+        for(int i = 1; i <= m; i++) {
+            for(int j = 1; j <= n; j++) {
+                if(word1.charAt(i-1) == word2.charAt(j-1)){
+                    cost[i][j] = cost[i-1][j-1];
+                } else {
+                    int a = cost[i-1][j-1]; // top_left 
+                    int b = cost[i-1][j];   // top
+                    int c = cost[i][j-1];   // left 
+                    cost[i][j] = Math.min(Math.min(a,b),c);
+                    cost[i][j]++;
                 }
             }
         }
