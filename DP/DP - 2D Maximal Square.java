@@ -24,7 +24,7 @@ class Solution {
             for(int j=1;j<dp[0].length;j++){
                 if(matrix[i-1][j-1]=='1'){
                     
-                    int min = Math.min(dp[i-1][j], dp[i][j-1]); // left and up 
+                    int min = Math.min(dp[i-1][j], dp[i][j-1]); //min( up , left )
                     min = Math.min(min, dp[i-1][j-1]);  // top left 
                                                 
                     dp[i][j] = min+1;
