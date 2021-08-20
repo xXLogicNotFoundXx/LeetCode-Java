@@ -1,3 +1,8 @@
+/*
+
+Medium 
+FB36 amzn 26 apl8 etc .. IMP
+
 https://leetcode.com/problems/product-of-array-except-self/
 
 Given an array nums of n integers where n > 1,  return an array output such that output[i] is equal to the 
@@ -10,6 +15,9 @@ you can only use * operation
 // first pass make sure you get all 0 to i-1 multiplication at ans[i]
 // second pass from back you make sure  i+1 to n multiplication at ans[i]
 
+you know the general approach ... 
+try some input [ 2,3,4,5] it will easy to code 
+*/
 class Solution {
     
     public int[] productExceptSelf(int[] nums) {
