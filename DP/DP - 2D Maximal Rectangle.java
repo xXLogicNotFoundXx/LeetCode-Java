@@ -1,11 +1,17 @@
-// https://leetcode.com/problems/maximal-rectangle/
+/*
+Hard 
+All Companies 2-3 times 
+
+https://leetcode.com/problems/maximal-rectangle/
+*/
 class Solution {
     /*
         If we had a histogram for each row it would become a probme of "Largest Rectangle in Histogram" for each row. 
-        So we build a histogram for each from previous rows and find maximum rectangle for each row and notedown the global max. 
+        https://leetcode.com/problems/largest-rectangle-in-histogram/
         
+        So we build a histogram for each from previous rows and find maximum rectangle for each row and notedown the global max.
         O(N* ( M[buld histogram] + M[histogram max rectangle])) -> (N*M)
-        Space O(M)
+        Space: O(M)
     */
     public int maximalRectangle(char[][] matrix) {
         if (matrix.length == 0) return 0;
@@ -29,30 +35,6 @@ class Solution {
     }
     
     public int largestRectangleArea3(int[] heights) {
-        int max = 0;
-        int i = 0;
-        Stack<Integer> stack = new Stack<>();
-
-        while (i < heights.length) {
-
-            if (stack.isEmpty() || heights[stack.peek()] <= heights[i]) {
-                stack.push(i);
-                i++;
-            } else {
-                int p = stack.pop();
-                int h = heights[p];
-                int w = stack.isEmpty() ? i /*Area 0-i'th index */ : i - stack.peek() - 1;
-                max = Math.max(h * w, max);
-            }
-        }
-
-        while (!stack.isEmpty()) {
-            int p = stack.pop();
-            int h = heights[p];
-            int w = stack.isEmpty() ? i : i - stack.peek() - 1;
-            max = Math.max(h * w, max);
-        }
-
-        return max;
+        // https://github.com/xXLogicNotFoundXx/LeetCode-Java/blob/master/DP/DP%20-%202D%20Maximal%20Histogram%20Rectangle.java
     }
 }
