@@ -18,8 +18,11 @@ class Solution {
         
         int maxarea = 0;
         int[] dp = new int[matrix[0].length];
-
+        
+        // for each ROW 
         for(int i = 0; i < matrix.length; i++) {
+            
+            // Build out DP histogram and calulcate the the MAX rectangle 
             for(int j = 0; j < matrix[0].length; j++) {
 
                 // update the state of this row's histogram using the last row's histogram
