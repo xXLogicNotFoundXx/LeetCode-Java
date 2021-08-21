@@ -64,7 +64,8 @@ Output: 2 (two paths around obstacle)
 
 /* 
 	We do need first loops. Incorporating logic in one i,j loop is not possible (lots of ifs and buts) 
-	Lesson learn : If you think extra for loops can make your life easy, do it. 
+	******** Lesson learnt ********* 
+	If you think extra for loops can make your life easy, do it. 
 	Dont try to get that logic in the main logic.
 	Or else just write some extra function init()
 */
