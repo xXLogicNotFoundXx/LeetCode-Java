@@ -35,6 +35,6 @@ class Solution {
     }
     
     public int largestRectangleArea3(int[] heights) {
-        // https://github.com/xXLogicNotFoundXx/LeetCode-Java/blob/master/DP/DP%20-%202D%20Maximal%20Histogram%20Rectangle.java
+        // check the solution of largest rectanglee in histogram
     }
 }
