@@ -8,3 +8,4 @@ Combination nCr =  ________
 
 Subset = 2^N      (since each element could be absent or present.)
 ```
+**Amortized Complexity** is the total expense per operation, evaluated over a sequence of operations.
