@@ -1,4 +1,8 @@
 /*
+
+Medium 
+All companies 5-6 times. 
+
 https://leetcode.com/problems/unique-paths/
 Problem 1: 
 A robot is located at the top-left corner of a m x n grid.
@@ -16,6 +20,8 @@ Output: 3
 1 3 6  10 15
 1 4 10 20 35
 
+Time : O(MxN)
+Space : O(MxN)
 */
 class Solution {
     public int uniquePaths(int m, int n) {
@@ -23,14 +29,15 @@ class Solution {
             return 1;
         
         int[][] dp = new int[n][m];
-        for(int i=0; i<m; i++)
-            dp[0][i]=1;
         
-        for(int i=0; i<n; i++)
-            dp[i][0]=1;
-        
-        for(int i=1; i<n; i++){
-            for(int j=1; j<m; j++){
+        for(int i=0; i<n; i++){
+            for(int j=0; j<m; j++){
+                
+                if(i==0 || j==0){
+                    dp[i][j] = 1;
+                    continue;
+                }
+                
                 dp[i][j]= dp[i-1][j] + dp[i][j-1];
             }
         }
@@ -39,42 +46,22 @@ class Solution {
 }
 
 /*
+Medium 
+All big ones at least 2-3 times 
+
 https://leetcode.com/problems/unique-paths-ii/
-Problem 2: 
-if some obstacles are added to the grids. How many unique paths would there be?
+
+If some obstacles are added to the grids. How many unique paths would there be?
 Input:
 [
   [0,0,0],
   [0,1,0],
   [0,0,0]
 ]
-Output: 2
-1. Right -> Right -> Down -> Down
-2. Down -> Down -> Right -> Right
+Output: 2 (two paths around obstacle)
 */
- public class Solution {
-    public int uniquePathsWithObstacles(int[][] obstacleGrid) {
-        int m = obstacleGrid.length;
-        int n = obstacleGrid[0].length;
 
-        obstacleGrid[0][0] = (obstacleGrid[0][0]==1)? 0 : 1;
-
-        for(int i = 1;i<m;i++)
-            obstacleGrid[i][0] = (obstacleGrid[i][0]==1)? 0 : obstacleGrid[i-1][0];
-
-        for(int j = 1;j<n;j++)
-            obstacleGrid[0][j] = (obstacleGrid[0][j]==1)? 0 : obstacleGrid[0][j-1];
-
-        for(int i = 1;i<m;i++){
-            for(int j =1;j<n;j++){
-                obstacleGrid[i][j] = (obstacleGrid[i][j]==1)? 0 : obstacleGrid[i-1][j]+obstacleGrid[i][j-1];
-            }
-        }
-        return obstacleGrid[m-1][n-1];
-    }
-}
-
-//OR 
+/* We do need first loops. Incorporating logic in one i,j loop is not possible (lots of ifs and buts) */
 
 public int uniquePathsWithObstacles(int[][] obstacleGrid) {
 	int m = obstacleGrid.length, n = obstacleGrid[0].length;
