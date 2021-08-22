@@ -75,7 +75,16 @@ Input:
   [0,0,0]
 ]
 Output: 2 (two paths around obstacle)
-		
+
+
+This is also tricky question. You have to realise : 
+1 How are you gonna proceed knowing this one is obstacle.
+	This i thought may be i can make that obstacle -ve. and then depending on that do calculation
+	but that one will be very messy logic. 
+	😎 Better way to put 0 in the cell and move on.☺
+2 You also need to realise
+	1 if there is an obstactle in the first row .. all subsequent positions are gonna be obstacle.
+	2 if there is an obstactle in the first column .. all subsequent column positions are gonna be obstacle.
 */
 
 /* 
