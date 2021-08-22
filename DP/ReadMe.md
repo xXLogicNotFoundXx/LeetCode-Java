@@ -10,3 +10,11 @@
 			- yes then try some corner cases
 		- try one that may help in division/multiplication 
 			- yes then try some corner cases
+			
+	******** Lesson learnt ********* 
+	If you think extra "for" loops can make your life easy, do it. (extra pass OR extra simple loop to avoid if elses in the 'main loop')
+	just do it ... later you can improve it 
+	**Dont try to get that logic in the main logic the code becomes messy**
+		- Then you end up being stuck around how to manupulate it with different indexes
+		  and make sure that we put in values correctly. Resulting endup working 
+	You could also just write some extra function 'init()' to do that lame work. 
