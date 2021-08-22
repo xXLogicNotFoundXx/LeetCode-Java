@@ -15,10 +15,26 @@ Output: 3
 2. Right -> Down -> Right
 3. Down -> Right -> Right
 
+1 1
+1 2
+					<= draw this then you will be able to figure it out. 
+1 1 1
+1 2 3
+
+1 1 1 1
+1 2 3 4
+1 3 6 10
+
+
+If you do that, you have to be able to see the pattern -> dp[i][j] = dp[i-1][j] + dp[i][j-1] (top,left)
+and 1st row is all 1 and 1st column is all 1.
+and that is the algorithm. 
+
 1 1 1  1  1
 1 2 3  4  5
 1 3 6  10 15
 1 4 10 20 35
+
 
 Time : O(MxN)
 Space : O(MxN)
