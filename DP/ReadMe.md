@@ -6,7 +6,7 @@
 		
 		^ Avoid it .... 
 	come up with the algorithm .... and 
-		- try zero value would that work with genral algorithm? ( wors if you adding or subtracting 
+		- try zero value would that work with genral algorithm? ( works if you are adding/subtracting 
 			- yes then try some corner cases
 		- try one that may help in division/multiplication 
 			- yes then try some corner cases
