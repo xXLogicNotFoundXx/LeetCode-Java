@@ -31,7 +31,7 @@ class Solution {
         
         for(int i=1; i < s.length(); i++){
             
-            int p = i+1; // index of dp[] ... this is good idea initialize dp extra starters and have dp separate index 
+            int p = i+1; // index for dp[]
             char cur = s.charAt(i);
             
             // it is just good to calculate everything before
