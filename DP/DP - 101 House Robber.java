@@ -1,3 +1,4 @@
+/*
 https://leetcode.com/problems/house-robber/
 You are a professional robber planning to rob houses along a street. 
 Each house has a certain amount of money stashed, the only constraint stopping you from robbing each of them is that adjacent houses have security 
@@ -9,17 +10,24 @@ determine the maximum amount of money you can rob tonight without alerting the p
 Example 1:
 Input: [1,2,3,1]
 Output: 4
+// key point is you can take ith and i-2+ curNumber OR take i-1
+*/
 
-// start from last and build max path at 0th position and return oth result 
-// kind of like climbing stairs ... key point is you can take ith and ith+2 OR skip ith and take i+1
 class Solution {
     public int rob(int[] nums) {
-        int n = nums.length;
-        int []buildMax = new int[n+3];  // +3 is very important to understand here 
-        Arrays.fill(buildMax,0);
-        for(int i=n-1;i>=0;i--){
-            buildMax[i] = Math.max(nums[i]+buildMax[i+2],buildMax[i+1]);
+        
+        if(nums==null)
+            return 0;
+        
+        int dp[] = new int[nums.length+2];
+        // all dp[] is zero 
+        for(int i=0;i<nums.length;i++){
+            int dpIndex = i+2;
+            int num = nums[i];
+            
+            dp[dpIndex] = Math.max(num + dp[dpIndex-2], dp[dpIndex-1]);
         }
-        return buildMax[0];
+        
+        return dp[dp.length-1];
     }
 }
