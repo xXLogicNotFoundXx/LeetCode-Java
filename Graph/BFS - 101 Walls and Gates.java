@@ -1,4 +1,7 @@
 /*
+Medium 
+All 3-4 times. 
+
 https://leetcode.com/problems/walls-and-gates/
 
 You are given a m x n 2D grid initialized with these three possible values.
@@ -21,6 +24,16 @@ After running your function, the 2D grid should be:
   2   2   1  -1
   1  -1   2  -1
   0  -1   3   4
+  
+  
+ The idea is put all indices of '0' value in a queue. 
+ Start from there and then add neighbouring indices while updating thier distance. (dont process blocks) 
+ Eventually queue will be empty and we have the ans. 
+ Simple.
+ 
+ First i though i would need Priority Queue but it is not needed.
+ Code could be better here.
+ 
 */
 public class Solution {
     public void wallsAndGates(int[][] rooms) {
@@ -32,20 +45,25 @@ public class Solution {
             }
         }
         while (!queue.isEmpty()) {
+          
             int[] top = queue.remove();
             int row = top[0], col = top[1];
+          
             if (row > 0 && rooms[row - 1][col] == Integer.MAX_VALUE) {
                 rooms[row - 1][col] = rooms[row][col] + 1;
                 queue.add(new int[]{row - 1, col});
             }
+          
             if (row < rooms.length - 1 && rooms[row + 1][col] == Integer.MAX_VALUE) {
                 rooms[row + 1][col] = rooms[row][col] + 1;
                 queue.add(new int[]{row + 1, col});
             }
+          
             if (col > 0 && rooms[row][col - 1] == Integer.MAX_VALUE) {
                 rooms[row][col - 1] = rooms[row][col] + 1;
                 queue.add(new int[]{row, col - 1});
             }
+          
             if (col < rooms[0].length - 1 && rooms[row][col + 1] == Integer.MAX_VALUE) {
                 rooms[row][col + 1] = rooms[row][col] + 1;
                 queue.add(new int[]{row, col + 1});
