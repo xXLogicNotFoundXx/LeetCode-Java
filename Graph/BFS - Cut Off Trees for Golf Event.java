@@ -1,13 +1,21 @@
 /*
+Hard
+Amz 3 appl2 
+
 https://leetcode.com/problems/cut-off-trees-for-golf-event/
+
 675. Cut Off Trees for Golf Event
+
 Given matrix : 
 0 represents the obstacle can't be reached.
 1 represents the ground can be walked through.
 The place with number bigger than 1 represents a tree can be walked through, and this positive number represents the tree's height.
 
 We have to cut all trees and we always cut off the trees in sorted order of the tree height.
-You will start from the point (0, 0) and you should output the minimum steps you need to walk to cut off all the trees. If you can't cut off all the trees, output -1 in that situation.
+You will start from the point (0, 0) and you should output the minimum steps you need to walk to cut off all the trees. 
+If you can't cut off all the trees, output -1 in that situation.
+You are guaranteed that no two trees have the same height, and there is at least one tree needs to be cut off.
+( ^ if this is not gauranteed then this problem is a mess. Because how would you decide which one to take first if two trees have same height) 
 
 Since we have to cut trees in order of their height, we first put trees{row, col, height} into a priority queue by height.
 Poll each tree from the queue and use BFS to find out steps needed.
