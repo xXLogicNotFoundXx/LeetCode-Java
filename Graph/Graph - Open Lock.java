@@ -1,20 +1,31 @@
 /*
+Medium 
+All big ones 5-6 times 
+
 https://leetcode.com/problems/open-the-lock/
 Input: deadends = ["0201","0101","0102","1212","2002"], target = "0202"
 Output: 6
 Explanation:
+
 A sequence of valid moves would be "0000" -> "1000" -> "1100" -> "1200" -> "1201" -> "1202" -> "0202".
 Note that a sequence like "0000" -> "0001" -> "0002" -> "0102" -> "0202" would be invalid,
 because the wheels of the lock become stuck after the display becomes the dead end "0102".
 
 // The equals method of StringBuffer is not overridden from Object, so it is just reference equality, i.e., the same as using ==. 
-// So you cannot have Set as StringBuffer and sb.eqals(sb1) is checking refrence only 
+// So you cannot have Set as StringBuffer and sb.eqals(sb1) is checking refrence only . 
+// That is why Set<String>
 
 Yeah, where N is the length of lock (4 in our case):
 O(N) for enumerating neighbors,
 O(digits^N) (10^4 in this case neighbors for each node)
 O(D) for initializing deadends set
 So time complexity is O(N*digits^N + D)
+
+This is also good probel. Google asked this as you have 2D 4x4 array and you want the end state 
+1,2,3,4
+5,6,7,8 
+Now you need to realise that this problem is also like open locks. and you have to make String out of 2d array. 
+
 */
 class Solution {
     public int openLock(String[] deadends, String target) {
