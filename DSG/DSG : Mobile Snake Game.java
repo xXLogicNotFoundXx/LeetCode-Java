@@ -1,4 +1,8 @@
 /*
+Medium 
+Not many companies 2-3 times 
+BUt it is a good problem to solve. 
+
 https://leetcode.com/problems/design-snake-game/
 Design a Snake game that is played on a device with screen size = width x height. 
 Play the game online if you are not familiar with the game.
@@ -24,6 +28,16 @@ snake.move("L"); -> Returns 2 (Snake eats the second food)
 | |S|S|
 | | |S|
 snake.move("U"); -> Returns -1 (Game over because snake collides with border)
+
+Here you should realize Head and Tail position is must..
+Whener there is food that becomes your head. 
+The real question is
+   - how you move the whole snake and direction changes withing the snakes?
+   - May be Linked list. 
+   - May be deque can contain all the position object ... first is head and end is tail.
+Another one is Snake eating itelf.
+   may be have Set<position> and compare if exist.
+
 */
 class SnakeGame {
 
