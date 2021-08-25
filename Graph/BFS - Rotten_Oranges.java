@@ -1,3 +1,7 @@
+/* 
+Medium 
+All companies 3-4 times. Amzn-26 
+
 https://leetcode.com/problems/rotting-oranges/
 
 In a given grid, each cell can have one of three values:
@@ -11,7 +15,8 @@ If this is impossible, return -1 instead.
 
  //Put the coordinates of all rotten oranges in queue and count the number of fresh oranges
  // while queue isempty keep rotting the oranges and keep track of minutes from queue.size()
- 
+ */
+
 class Solution {
     public int orangesRotting(int[][] grid) {
         Queue<int[]> queue = new LinkedList<>();
@@ -35,6 +40,11 @@ class Solution {
         List<int []> dir = new ArrayList<>();
         dir.add(new int[]{0,1});dir.add(new int[]{0,-1});
         dir.add(new int[]{1,0});dir.add(new int[]{-1,0});
+		
+		/*  Cleaner To write 
+		 	int[][] directions = new int[][]{{-1,0}, {1,0}, {0,-1}, {0,1}};
+		 	for(int [] dir : directions)			
+		*/
         int size =queue.size();
         int minutes = 0;
         
