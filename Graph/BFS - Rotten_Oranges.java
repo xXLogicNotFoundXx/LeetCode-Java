@@ -19,10 +19,12 @@ If this is impossible, return -1 instead.
 
 class Solution {
     public int orangesRotting(int[][] grid) {
+        
         Queue<int[]> queue = new LinkedList<>();
         int freshCount = 0;
         int rows = grid.length;
         int cols = grid[0].length;
+        
         //Put the coordinates of all rotten oranges in queue
         //count the number of fresh oranges
         for(int i=0;i<rows;i++) {
@@ -37,36 +39,33 @@ class Solution {
         if(freshCount == 0) 
             return 0;
         
-        List<int []> dir = new ArrayList<>();
-        dir.add(new int[]{0,1});dir.add(new int[]{0,-1});
-        dir.add(new int[]{1,0});dir.add(new int[]{-1,0});
-		
-		/*  Cleaner To write 
-		 	int[][] directions = new int[][]{{-1,0}, {1,0}, {0,-1}, {0,1}};
-		 	for(int [] dir : directions)			
-		*/
-        int size =queue.size();
+        int[][] directions = new int[][]{{-1,0}, {1,0}, {0,-1}, {0,1}};
+        
+        
         int minutes = 0;
         
         while(!queue.isEmpty()){
-            int [] rotOrg = queue.poll();
-            for(int [] point : dir){
-                int x = point[0] + rotOrg[0];
-                int y = point[1] + rotOrg[1];
+            
+            int size = queue.size();
+            
+            for(int i=0; i<size; i++){
+                int []rotOrg = queue.poll();
+                
+                for(int[] dir : directions){
+                    int x = dir[0] + rotOrg[0];
+                    int y = dir[1] + rotOrg[1];
 
-                if(x<0 || y<0 || x>=rows || y>=cols || grid[x][y] !=1) continue;
+                    if(x<0 || y<0 || x>=rows || y>=cols || grid[x][y] !=1) 
+                        continue;
 
-                grid[x][y] = 2;
-                freshCount--;
-                queue.add(new int[]{x, y});
+                    grid[x][y] = 2;
+                    freshCount--;
+                    queue.add(new int[]{x, y});
+                }
             }
-            size--;
-            if(size==0){
-                minutes++;
-                size = queue.size();
-            }
-
-        } 
+            minutes++;
+        }
+        
         return freshCount ==0 ? minutes-1 : -1;
     }
 }
