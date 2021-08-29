@@ -15,7 +15,9 @@ The longest arithmetic subsequence is [20,15,10,5].   ... diff is 5
     
     Almost like Longest Increasing subsequence ... but we dont know the diff .. so 
     we save HashMap object in each dp[]
-    
+
+Time O(N^2)
+Space O(N^2)   
 */
 class Solution {
     public int longestArithSeqLength(int[] nums) {
