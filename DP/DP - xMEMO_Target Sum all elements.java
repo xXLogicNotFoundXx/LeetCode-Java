@@ -1,4 +1,8 @@
+/*
 https://leetcode.com/problems/target-sum/
+
+FB6 AMXN5 
+*/
 // Below is the recursive which is 2^N as each number is considered as +ve and considered -ve
 
     public int findTargetSumWays1(int[] nums, int S) {
@@ -33,11 +37,12 @@ class Solution {
         if(map.containsKey(i+"->"+sum))
             return map.get(i+"->"+sum);
         
-        int positive = findTargetSumWays(nums,sum-nums[i], map, i+1);
-        int negative = findTargetSumWays(nums,sum+nums[i], map, i+1);
+        int result1 = findTargetSumWays(nums,sum-nums[i], map, i+1);
+        int result2 = findTargetSumWays(nums,sum+nums[i], map, i+1);
         
-        map.put(i+"->"+sum,positive+negative);
-        return positive+negative;
+        map.put(i+"->"+sum, result1 + result2);
+        
+        return map.get(i+"->"+sum);
     }
 }
 
@@ -88,11 +93,11 @@ class Solution {
         Arrays.fill(dp,0);
         dp[0] = 1;
         for(int number : nums){
-            for(int i=sumToFind;i>=number;i--){
+            for(int i=sumToFind; i>=number; i--){     // from the end bcz we want to use number once (not unlimited coin)
                 dp[i] += dp[i-number];
             }
         }
-        // eventually we would frind path from sumToFind to 0
+        // eventually we would find path from sumToFind to 0
         return dp[sumToFind];
     }
 
