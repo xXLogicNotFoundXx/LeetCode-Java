@@ -34,7 +34,7 @@ class Solution {
                  dp[i][j] = 0;
                  continue;   
               }
-                
+              
               if(A.charAt(i-1) == B.charAt(j-1)){
                   dp[i][j] = 1 + dp[i-1][j-1];
                   max = Math.max(max,dp[i][j]);
