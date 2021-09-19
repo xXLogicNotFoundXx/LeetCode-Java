@@ -21,7 +21,7 @@ class Solution {
     }
     
     Boolean isMatchHelper(String s, String p,Boolean[][] dp,int i,int j){
-        
+        // j to be p.length is the end consdition. Not i=s.length() let that sink.
         if(j==p.length())
             return i==s.length() ? new Boolean("true") : new Boolean("false");
         
