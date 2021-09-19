@@ -1,4 +1,5 @@
 /*
+FB MSFT 5-6
 https://leetcode.com/problems/maximum-frequency-stack/
 Implement FreqStack, a class which simulates the operation of a stack-like data structure.
 
@@ -11,10 +12,40 @@ Input:
 ["FreqStack","push","push","push","push","push","push","pop","pop","pop","pop"],
 [[],[5],[7],[5],[7],[4],[5],[],[],[],[]]
 Output: [null,null,null,null,null,null,null,5,7,5,4]
+
+
+We need 3 data points while popping ... 
+should be order by frequecy ... 
+if frequecy is same then you have to see when it was added .. 
+
+so if we can just make a node out of three infow -> value, frequcy and Push count 
+value and freqency can be maintianed separatly in a map. 
+and from the map infor we can generate each node and priority queue will give which node to pop.
+
 */
 
 // Sultuion 1 : O(logN)
 class FreqStack {
+ 
+  class Node{
+        public int value;
+        int freq;
+        int pushIndex;
+        public Node(int v, int f, int p){
+            this.value = v;
+            this.freq = f;
+            this.pushIndex = p;
+        }
+    }
+    
+    class NodeComparator implements Comparator<Node>{
+        public int compare(Node a, Node b){
+            if (a.freq != b.freq) return b.freq -a.freq;
+                    return b.pushIndex - a.pushIndex;
+
+        }
+    }
+ 
     int pushCount;
     PriorityQueue<Node> pq;
     Map<Integer, Integer> map;
@@ -36,26 +67,7 @@ class FreqStack {
     public int pop() {
         return pq.poll().value;
     }
-    
-    
-    class Node{
-        public int value;
-        int freq;
-        int pushIndex;
-        public Node(int v, int f, int p){
-            this.value = v;
-            this.freq = f;
-            this.pushIndex = p;
-        }
-    }
-    
-    class NodeComparator implements Comparator<Node>{
-        public int compare(Node a, Node b){
-            if (a.freq != b.freq) return b.freq -a.freq;
-                    return b.pushIndex - a.pushIndex;
 
-        }
-    }
 }
 
 // O(1)
