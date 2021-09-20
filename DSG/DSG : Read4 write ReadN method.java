@@ -1,5 +1,8 @@
 /*
+Hard
+FB6 LYFT6 MSFT6
 https://leetcode.com/problems/read-n-characters-given-read4-ii-call-multiple-times/
+
 int read4(char[] buf) - reads 4 consecutive characters from the file and returns the number of actual characters read.
 given method read4, implement a method read(char[] buf, int n) to read n characters. Your method read may be called multiple times.
  * The read4 API is defined in the parent class Reader4.
