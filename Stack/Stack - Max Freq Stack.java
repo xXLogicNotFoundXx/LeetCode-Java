@@ -16,11 +16,11 @@ Output: [null,null,null,null,null,null,null,5,7,5,4]
 
 We need 3 data points while popping ... 
 should be order by frequecy ... 
-if frequecy is same then you have to see when it was added .. 
+if frequecy is same then you have to see when it was added .. so may be index some sort.
 
-so if we can just make a node out of three infow -> value, frequcy and Push count 
-value and freqency can be maintianed separatly in a map. 
-and from the map infor we can generate each node and priority queue will give which node to pop.
+so if we can just make a node out of three infow -> value, frequency and PushIndex/Count 
+- value and freqency can be maintianed separatly in a map. 
+- and from the map info we can generate each node (v, f, index) and priority queue will give which node to pop.
 
 */
 
