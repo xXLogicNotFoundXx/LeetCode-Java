@@ -2,9 +2,9 @@
 https://leetcode.com/problems/design-phone-directory/
 Design a Phone Directory which supports the following operations.
 Phone Directory is initialized with maxNumbers it can contain.
-get: Provide a number which is not assigned to anyone.
-check: Check if a number is available or not.
-release: Recycle or release a number.
+1 get: Provide a number which is not assigned to anyone.
+2 check: Check if a number is available or not.
+3 release: Recycle or release a number.
 */
 class PhoneDirectory {
 
