@@ -1,10 +1,16 @@
 /*
+DropBox 5 
+
 https://leetcode.com/problems/design-phone-directory/
 Design a Phone Directory which supports the following operations.
 Phone Directory is initialized with maxNumbers it can contain.
 1 get: Provide a number which is not assigned to anyone.
 2 check: Check if a number is available or not.
 3 release: Recycle or release a number.
+
+Well when you give the available number it doesn have to be the one released. 
+You can keep goving the available slots/numbers in increasing order and then come back at 1.
+
 */
 class PhoneDirectory {
 
