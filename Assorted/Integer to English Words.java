@@ -1,3 +1,7 @@
+/*
+Hard
+Lots of companies. You gotta do it. 
+
 https://leetcode.com/problems/integer-to-english-words/submissions/
 Input: 123
 Output: "One Hundred Twenty Three"
@@ -7,6 +11,7 @@ Input: 1234567
 Output: "One Million Two Hundred Thirty Four Thousand Five Hundred Sixty Seven"
 Input: 1234567891
 Output: "One Billion Two Hundred Thirty Four Million Five Hundred Sixty Seven Thousand Eight Hundred Ninety One"
+*/
 
 class Solution { 
     private final String[] belowTen = new String[] {"", "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine"};
