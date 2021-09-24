@@ -13,7 +13,11 @@ For example,
 
 class MedianFinder {
     PriorityQueue<Integer> leftMaxHeap = new PriorityQueue<Integer>(Collections.reverseOrder()); 
+    // public static <T> Comparator<T> reverseOrder()
+    // Returns a comparator that imposes the reverse of the natural ordering on a collection of objects that implement the Comparable interface.
+    
     PriorityQueue<Integer> rightMinHeap =  new PriorityQueue<Integer>(); 
+    
     /** initialize your data structure here. */
     public MedianFinder() {
     }
