@@ -1,7 +1,7 @@
-
+/*
 https://leetcode.com/explore/featured/card/top-interview-questions-easy/127/strings/884/
 There is something wrong with test case in leetcode but this should work
-
+*/
 public static int myAtoi(String str) {
     if(str==null) return 0;
     StringBuffer s = new StringBuffer(str.trim());
