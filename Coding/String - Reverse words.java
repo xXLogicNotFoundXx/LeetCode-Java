@@ -40,6 +40,54 @@ class Solution {
         
         return sb.toString();
     }
+  
+  
+   // In case if we are given the string in the char array. 
+    public String reverseWords(String s) {
+
+        s = s.trim();
+        char []ch = s.toCharArray();
+        
+        int i=0;
+        // reverse the words 
+        for(int j=0;j<ch.length;j++){
+            if(ch[j]==' '){
+                reverse(ch,i,j-1);
+                i=j+1;
+            }
+        }
+        
+        if(i<ch.length) // dont forget the last word.
+            reverse(ch,i,ch.length-1);
+        
+        // reverse the whole string 
+        reverse(ch,0,ch.length-1);
+        
+        // clean the spaces
+        return cleanSpacesBetweenWords(ch);
+    }
+
+    void reverse(char []ch,int i, int j){
+        for(;i<j;i++,j--){
+            char c = ch[i];
+            ch[i] = ch[j];
+            ch[j] = c;
+        }        
+    }
+
+    String cleanSpacesBetweenWords(char []ch){
+        int i=0;    
+        for(int j=0;j<ch.length;j++){
+            ch[i++]=ch[j];
+            if(ch[j]==' '){
+                while(j<ch.length && ch[j] == ' ')
+                    j++;
+                j--;
+            }
+        }
+        return new String(ch,0,i);
+    }
+
 }
 
 
