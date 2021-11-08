@@ -39,37 +39,37 @@ Some examples:
 Note: It is intended for the problem statement to be ambiguous. 
 All we need is to have a couple of flags so we can process the string in linear time:
 */
-public boolean isNumber(String s) {
-    
-    s = s.trim(); // nice get rid of the spaces. 
-    
-    boolean pointSeen = false;
-    boolean eSeen = false;
-    boolean numberSeen = false;
-    boolean numberAfterE = true;
-    for(int i=0; i<s.length(); i++) {
-        if('0' <= s.charAt(i) && s.charAt(i) <= '9') {
-            numberSeen = true;
-            numberAfterE = true;
-        } else if(s.charAt(i) == '.') {
-            if(eSeen || pointSeen) {
+class Solution {
+   public boolean isNumber(String s) {
+       
+        boolean pointSeen = false;
+        boolean eSeen = false;
+        boolean numberSeen = false;
+       
+        s = s.trim(); // Nice! Returns a copy of the string, with leading and trailing whitespace omitted.
+       
+        for(int i=0; i<s.length(); i++) {
+            if('0' <= s.charAt(i) && s.charAt(i) <= '9') {
+                numberSeen = true;
+            } else if(s.charAt(i) == '.') {
+                if(eSeen || pointSeen){
+                    return false;
+                }
+                pointSeen = true;
+            } else if(s.charAt(i) == 'e' || s.charAt(i) == 'E') {
+                if(eSeen || !numberSeen){
+                    return false;
+                }
+                numberSeen = false;
+                eSeen = true;
+            } else if(s.charAt(i) == '-' || s.charAt(i) == '+') {
+                if(i != 0 && (s.charAt(i-1) != 'e' || s.charAt(i) == 'E')){
+                    return false;
+                }
+            } else
                 return false;
-            }
-            pointSeen = true;
-        } else if(s.charAt(i) == 'e') {
-            if(eSeen || !numberSeen) {
-                return false;
-            }
-            numberAfterE = false;
-            eSeen = true;
-        } else if(s.charAt(i) == '-' || s.charAt(i) == '+') {
-            if(i != 0 && s.charAt(i-1) != 'e') {
-                return false;
-            }
-        } else {
-            return false;
         }
+       
+        return numberSeen;
     }
-    
-    return numberSeen && numberAfterE;
 }
