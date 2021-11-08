@@ -40,7 +40,8 @@ Note: It is intended for the problem statement to be ambiguous.
 All we need is to have a couple of flags so we can process the string in linear time:
 */
 public boolean isNumber(String s) {
-    s = s.trim();
+    
+    s = s.trim(); // nice get rid of the spaces. 
     
     boolean pointSeen = false;
     boolean eSeen = false;
