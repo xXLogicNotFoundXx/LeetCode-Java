@@ -18,44 +18,28 @@ Return a string of the words in reverse order concatenated by a single space.
 "Alice Loves Bob"
 */
 
-public class Solution {
+class Solution {
+    
     public String reverseWords(String s) {
-        if(s == null)
-            return s;
-        s = s.trim();
-        char []ch = s.toCharArray();
-        int i=0;
-        for(int j=0;j<ch.length;j++){
-            if(ch[j]==' '){
-                reverse(ch,i,j-1); // dont reverse the space
-                i=j+1;
-            }
-        }
-        if(i<ch.length)
-            reverse(ch,i,ch.length-1);
+      
+        String sArray[] = s.split(" ");     // this creates empty strings if there are consecutive spaces. 
+      //String sArray[] = s.split(" ");     // this creates empty strings if there are consecutive spaces. 
+      
+        StringBuilder sb = new StringBuilder(); 
         
-        reverse(ch,0,ch.length-1);
-        return cleanSpacesBetweenWords(ch);
-    }
-    
-    void reverse(char []ch,int i, int j){
-        for(;i<j;i++,j--){
-            char c = ch[i];
-            ch[i] = ch[j];
-            ch[j] = c;
-        }        
-    }
-    
-    String cleanSpacesBetweenWords(char []ch){
-        int i=0;    
-        for(int j=0;j<ch.length;j++){
-            ch[i++]=ch[j];
-            if(ch[j]==' '){
-                while(j<ch.length && ch[j] == ' ')
-                    j++;
-                j--;
+        for(int i=sArray.length-1; i>=0; i--){
+            String s1= sArray[i];
+            
+            if(s1!=null && !s1.isEmpty()){
+                if(sb.length()!=0){
+                    sb.append(" ");
+                }
+                sb.append(s1);
             }
         }
-        return new String(ch,0,i);
+        
+        return sb.toString();
     }
 }
+
+
