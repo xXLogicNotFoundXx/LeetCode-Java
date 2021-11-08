@@ -1,7 +1,28 @@
 /*
 https://leetcode.com/problems/valid-number/
+
+Hard 
+FB25, LinkedIn7 
+
+A valid number can be split up into these components (in order):
+
+A decimal number or an integer.
+    (Optional) An 'e' or 'E', followed by an integer.
+
+A decimal number can be split up into these components (in order):
+    (Optional) A sign character (either '+' or '-').
+    One or more digits, followed by a dot '.'.
+    One or more digits, followed by a dot '.', followed by one or more digits.
+    A dot '.', followed by one or more digits.
+
+An integer can be split up into these components (in order):
+    (Optional) A sign character (either '+' or '-').
+    One or more digits.
+
+
 Some examples:
 "0" => true
+"4." => true
 " 0.1 " => true
 "abc" => false
 "1 a" => false
