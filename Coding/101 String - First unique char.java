@@ -1,9 +1,16 @@
+/*
 https://leetcode.com/problems/first-unique-character-in-a-string/submissions/
 return index of First unique char
 Note: You may assume the string contain only lowercase letters.
 
+LinkedHashMap :
+   Internally has doubly linked list so it maintains the order for values. 
+   insert is O(1), remove is also O(1) [probably direct pointer in hash map like in LRU Cache]
+   It provides constant-time performance for the basic operations (add, contains and remove
+*/
+
 class Solution {
-// 1 PASS  This is faster by 10+ms
+// 1 PASS  - O(N)
    public int firstUniqChar(String s) {
         Map<Character, Integer> map = new LinkedHashMap<>(); // preserves the order of insertion
         Set<Character> set = new HashSet<>();
@@ -19,7 +26,7 @@ class Solution {
         return map.size() == 0 ? -1 : map.entrySet().iterator().next().getValue();
     }
     
-// 2 pass
+// 2 Pass - O(N)
     public int firstUniqChar(String s) {
         Map<Character,Integer> map = new HashMap<>(); 
         
