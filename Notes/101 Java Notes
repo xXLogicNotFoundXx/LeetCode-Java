@@ -1,9 +1,9 @@
-Integer String Long are immutable objects. 
-So they cant be passed as to track the value changed in funtion. 
-Int is premitive value so it is pass by value. 
+Integer String Long are immutable objects.
+So they can not be passed as to track the value changed in function.
+Int is primitive value so it is a pass by value.
 
-if you want to pass int and track its value in calling function. 
-You have to pass int as and array or wtite wrapper calss containing int and pass the object of that class. 
+If you want to pass int and track its value in calling function.
+You have to pass int as and array or write wrapper class containing int and pass the object of that class.
 
 
 The Integer, String, Float, Double, Byte, Long, Short, Boolean, and Character classes are all examples of an immutable class.
@@ -11,64 +11,64 @@ By definition, you may not alter the value of an immutable object after its cons
 
 
 Difference between 'public class' and 'class'?
-The first one makes it public, that is, visible to any other class. String, HashMap etc are all public classes. 
-The second one will result in your class being assigned the default visibility, 
+The first one makes it public, that is, visible to any other class. String, HashMap etc are all public classes.
+The second one will result in your class being assigned the "default visibility",
 that is package-private (ie: accessible within the same package).
 
-Controlling Access to Members of a Class : 
+Controlling Access to Members of a Class :
     What is the difference between 'public, protected, package-private and private' class MEMBERS in Java?
-    
+
             │ Class │ Package │ Subclass │ Subclass │ World
-            │       │         │(same pkg)│(diff pkg)│ 
+            │       │         │(same pkg)│(diff pkg)│
 ────────────┼───────┼─────────┼──────────┼──────────┼────────
-public      │   +   │    +    │    +     │     +    │   +     
+public      │   +   │    +    │    +     │     +    │   +
 ────────────┼───────┼─────────┼──────────┼──────────┼────────
-protected   │   +   │    +    │    +     │     +    │         
+protected   │   +   │    +    │    +     │     +    │
 ────────────┼───────┼─────────┼──────────┼──────────┼────────
-no modifier │   +   │    +    │    +     │          │    
+no modifier │   +   │    +    │    +     │          │           default visibility
 ────────────┼───────┼─────────┼──────────┼──────────┼────────
-private     │   +   │         │          │          │    
+private     │   +   │         │          │          │
 
 
 
-final - 
-    1 final class can't be inherited, 
-    2 final method can't be overridden in any of the inheriting classes. 
-        Methods are made final due to design reasons. 
-        Since private methods are inaccessible, they are implicitly final in Java. 
+final -
+    1 final class can't be inherited,
+    2 final method can't be overridden in any of the inheriting classes.
+        Methods are made final due to design reasons.
+        Since private methods are inaccessible, they are implicitly final in Java.
         So adding final specifier to a private method doesn’t add any value.
     3 final variable value can't be changed.
 
-static class - 
+static class -
 You cannot use the static keyword with a class unless it is an inner class.
-Static methods can not be overridden: 
-    When you defines a static method with same signature as a static method in base class, 
+Static methods can not be overridden:
+    When you defines a static method with same signature as a static method in base class,
     it is known as method hiding.
-        Parent obj1 = new Child(); 
-        // As per overriding rules this should call to class Child's staticMethod()  
-        // overridden method. Since static method can not be overridden, it  
-        // calls Parent's staticMethod()  
-        obj1.staticMethod();  
-        child's staticMethod() is hidden. 
-        
-private class - 
+        Parent obj1 = new Child();
+        // As per overriding rules this should call to class Child's staticMethod()
+        // overridden method. Since static method can not be overridden, it
+        // calls Parent's staticMethod()
+        obj1.staticMethod();
+        child's staticMethod() is hidden.
+
+private class -
 You cannot use the private keyword with a class unless it is an inner class.
 
 
-MODULO OPERATOR : 
-% operator retians the -ve sign of first number
-    123  % 10 = 3  
-    -123 % 10 = -3    
-    However, 2nd operator sigh doesnt matter so 
-    123 % 10  = 3 and 
+MODULO OPERATOR :
+% operator retains the -ve sign of first number :
+    123  % 10 = 3
+    -123 % 10 = -3
+    However, 2nd operator sigh does not matter :
+    123 % 10  = 3 and
     123 % -10 = 3
 
 
-int[] duplicate = nums.clone(); // nums is int[] it generates deep copy 
+int[] duplicate = nums.clone(); // nums is int[] it generates deep copy
 
 
 Random rand = new Random();
-rand.nextInt(aux.size());
+rand.nextInt(something.size()); // size is upper bound 
 
 
 // Map iterator
@@ -77,4 +77,3 @@ while (entries.hasNext()) {
     Map.Entry<Integer, Integer> entry = entries.next();
 .....
 }
-
