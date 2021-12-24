@@ -1,7 +1,9 @@
-/* Premium: 
+/* Premium:
 Longest Line of Consecutive One in Matrix
+The line could be horizontal, vertical, diagonal or anti-diagonal.
+
 https://leetcode.com/problems/longest-line-of-consecutive-one-in-matrix/
-Given a 01 matrix M, find the longest line of consecutive one in the matrix. The line could be horizontal, vertical, diagonal or anti-diagonal.
+Given a 01 matrix M, find the longest line of consecutive one in the matrix.
 Example:
  [0,1,1,0]
  [0,1,1,0]
@@ -14,18 +16,18 @@ class Solution {
             return 0;
         int []row = new int[M.length];
         int []col = new int[M[0].length];
-        int []slash = new int[M.length + M[0].length]; // calculation of index will be i+j let that sink in 
+        int []slash = new int[M.length + M[0].length]; // calculation of index will be i+j let that sink in
         // i+j will be 0-M.length + M[0].length
-        
-        int []backslash = new int[M.length + M[0].length]; 
+
+        int []backslash = new int[M.length + M[0].length];
         // This one is good one =  j-i+M.length to calculate +ve index for given antiDiagonal elements
            // -i+M.length(#Rows) this will never cross (0-M.length) and then j is always +ve.
         // it can be caulcated as [i-j+M[0].length] (i.e. is #column)
-        // The concept -j or -i doesnt matter as long as you add the respective #Cols or #Rows to it. 
-        // The observation is [j-i+M.length] will result in index 0 to m+n-1 in a way 
+        // The concept -j or -i doesnt matter as long as you add the respective #Cols or #Rows to it.
+        // The observation is [j-i+M.length] will result in index 0 to m+n-1 in a way
         // that at index 0 we will have the left bottom element and at last index (m+n-1) will have right top element
         // you may need to preserve the order for some other problems.
-        
+
         int max=0;
         for(int i=0;i<M.length;i++){
             for(int j=0;j<M[0].length;j++){
@@ -52,7 +54,7 @@ class Solution {
 
 
 /*
-Similar problem where you have to calculate unique numbers for antiDiagonal elements 
+Similar problem where you have to calculate unique numbers for antiDiagonal elements
 1329. Sort the Matrix Diagonally
 https://leetcode.com/problems/sort-the-matrix-diagonally/
     [3,3,1,1]       [1,1,1,1]
@@ -61,8 +63,8 @@ https://leetcode.com/problems/sort-the-matrix-diagonally/
 */
 class Solution {
 
-    // Time O(MNlogD), where D is the length of diagonal with D = min(M,N).
-    // Space O(MN)
+    // Time O(M.N.logD), where D is the length of diagonal with D = min(M,N).
+    // Space O(M.N)
     public int[][] diagonalSort(int[][] mat) {
         int m = mat.length, n= mat[0].length;
         PriorityQueue<Integer>[] pArray = new PriorityQueue[m+n];
@@ -80,10 +82,10 @@ class Solution {
         }
         return mat;
     }
-    
-    // Solution 2 
-    // Here if we are not storing in an array we dont have to worry about index being -ve 
-    // so j-i+mat.length is not required 
+
+    // Solution 2
+    // Here if we are not storing in an array we dont have to worry about index being -ve
+    // so j-i+mat.length is not required
     // i-j would give same number for given antidiagonal elements with index i,j
      public int[][] diagonalSort2(int[][] A) {
         int m = A.length, n = A[0].length;
