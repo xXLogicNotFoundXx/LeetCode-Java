@@ -34,11 +34,12 @@ class Solution {
 
                          if(solve(board))
                             return true;
-                         else
-                            board[i][j]='.'; // this is because we may end up not solving sudoku 1-9 and then
-                            // we have to backtrack and change the value. So,  this current block value should be reset.
+
                      }
                  }
+
+                 board[i][j]='.'; // this is because we may end up not solving sudoku 1-9 and then
+                 // we have to backtrack and change the value. So,  this current block value should be reset.
 
                  return false;
              }
