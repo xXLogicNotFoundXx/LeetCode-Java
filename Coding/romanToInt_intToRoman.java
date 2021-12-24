@@ -53,7 +53,8 @@ class Solution {
         for(int i=0; i<s.length(); i++){
             total += nums[i];
 
-            if(i!=0 && nums[i]>nums[i-1])   // consider input IV we added 1 and then 5 which is 6 ... so we have to do minus (2*1)
+            // consider input IV we added 1 and then 5 which is 6 ... so we have to do minus (2*1)
+            if(i!=0 && nums[i]>nums[i-1])
                 total = total - (2 * nums[i-1]);
         }
         return total;
