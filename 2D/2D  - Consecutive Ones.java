@@ -55,7 +55,7 @@ class Solution {
 
 /*
 Similar problem where you have to calculate unique numbers for antiDiagonal elements
-1329. Sort the Matrix Diagonally
+1329. Sort the Matrix Diagonally ( Diagonally they mean antidiagonal i.e. backslash)
 https://leetcode.com/problems/sort-the-matrix-diagonally/
     [3,3,1,1]       [1,1,1,1]
     [2,2,1,2]   =>  [1,2,2,2]
@@ -68,6 +68,7 @@ class Solution {
     public int[][] diagonalSort(int[][] mat) {
         int m = mat.length, n= mat[0].length;
         PriorityQueue<Integer>[] pArray = new PriorityQueue[m+n];
+
         for(int i=0;i<m;i++){
             for(int j=0;j<n;j++){
                 if(pArray[j-i+m]==null) // -i+m will never be negative ( i can go to max m)
@@ -85,8 +86,9 @@ class Solution {
 
     // Solution 2
     // Here if we are not storing in an array we dont have to worry about index being -ve
-    // so j-i+mat.length is not required
+    // so (j-i+mat.length OR i-j+mat[0].length ) is not required to caclculate +ve index
     // i-j would give same number for given antidiagonal elements with index i,j
+
      public int[][] diagonalSort2(int[][] A) {
         int m = A.length, n = A[0].length;
         HashMap<Integer, PriorityQueue<Integer>> d = new HashMap<>();

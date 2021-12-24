@@ -11,17 +11,17 @@ public static void sortMatrix(final int[][] matrix) {
     List<Integer> list = new AbstractList<Integer>() {
         @Override
         public Integer set(int index, Integer element) {
-            return matrix[index/m][index%m] = element;   // se we only used m here 
+            return matrix[index/m][index%m] = element;   // we only used m here (max column number to calculate indices)
         }
 
         @Override
         public Integer get(int index) {
-            return matrix[index/m][index%m];
+            return matrix[index/m][index%m]; // we only used m here (max column number to calculate indices)
         }
 
         @Override
         public int size() {
-            return n*m;         // nice! 
+            return n*m;         // nice!
         }
     };
     Collections.sort(list);

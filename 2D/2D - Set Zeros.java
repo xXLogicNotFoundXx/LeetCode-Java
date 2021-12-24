@@ -10,12 +10,14 @@ class Solution {
         for(int i = 0; i < matrix.length; i++) {
             for(int j = 0; j < matrix[0].length; j++) {
                 if(matrix[i][j] == 0) {
+
+                    if(i == 0)
+                        setFirstRowToZeroes = true;
+                    if(j == 0)
+                        setFirstColumnToZeroes = true;
+                        
                     matrix[0][j] = 0;
                     matrix[i][0] = 0;
-                    if(i == 0) 
-                        setFirstRowToZeroes = true;
-                    if(j == 0) 
-                        setFirstColumnToZeroes = true;
                 }
             }
         }
