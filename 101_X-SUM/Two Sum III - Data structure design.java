@@ -27,14 +27,15 @@ class TwoSum {
 
   // Find if there exists any pair of numbers which sum is equal to the value.
 	public boolean find(int value) {
-	    
+
         for(Map.Entry<Integer, Integer> e : map.entrySet()){
             int num1 = e.getKey();
             int num2 = value - num1;
-            
+
+            // Corner case .. where you need same number twice! 
             if(num1==num2 && map.get(num1)>=2)
                 return true;
-            
+
             if(num1!=num2 && map.containsKey(num2))
                 return true;
         }
