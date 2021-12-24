@@ -4,23 +4,23 @@ Queue is abstaract you can Inititate with LinkedList or ArrayList
 Queue<String> queue = new LinkedList<>();
 
 ***   PriorityQueue   ****
-We use PriorityQueue class to implement Heaps in Java. By default Min Heap is implemented by this class. 
+We use PriorityQueue class to implement Heaps in Java. By default Min Heap is implemented by this class.
 To implement Max Heap, we use Collections.reverseOrder()
- MAX HEAP 
- PriorityQueue<Integer> pQueue = new PriorityQueue<Integer>(Collections.reverseOrder()); 
+ MAX HEAP
+ PriorityQueue<Integer> pQueue = new PriorityQueue<Integer>(Collections.reverseOrder());
  // same as queue operation
  pQueue.add(m)   // log n
- pQueue.poll()  // log n 
+ pQueue.poll()  // log n
  pQueue.peek()
- pQueue.remove(m);  // Removing Java using remove() 
- A Max Heap is a Complete Binary Tree. A Max heap is typically represented as an array. The root element will be at Arr[0]. 
+ pQueue.remove(m);  // Removing Java using remove()  o(n)
+ A Max Heap is a Complete Binary Tree. A Max heap is typically represented as an array. The root element will be at Arr[0].
  Below table shows indexes of other nodes for the ith node, i.e., Arr[i]:
  Arr[(i-1)/2] Returns the parent node.
  Arr[(2*i)+1] Returns the left child node.
  Arr[(2*i)+2] Returns the right child node.
 
 
-// sort by height[a,b] if height is same then return biggest index 
+// sort by height[a,b] if height is same then return biggest index
 PriorityQueue<Integer>  leftPQ  = new  PriorityQueue<Integer>(new Comparator<Integer>(){    // new Comparator<T>(){ public int compare(T,T){} }
     public int compare(Integer a,Integer b){
         if(heights[a] == heights[b])
@@ -28,7 +28,7 @@ PriorityQueue<Integer>  leftPQ  = new  PriorityQueue<Integer>(new Comparator<Int
         return heights[a] - heights[b];
     }
 });
-// sort by height[a,b] if height is same then return smallest index 
+// sort by height[a,b] if height is same then return smallest index
 PriorityQueue<Integer>  rightPQ = new  PriorityQueue<Integer>(new Comparator<Integer>(){   // // new Comparator<T>(){ public int compare(T,T){} }
     public int compare(Integer a,Integer b){
         if(heights[a] == heights[b])

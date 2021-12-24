@@ -1,32 +1,32 @@
-Keyword abstract is used to make a class abstract. 
-abstract class doent have to have abstract method. 
+Keyword abstract is used to make a class abstract.
+abstract class does not have to have abstract method.
 
 An abstract class can contain constructors in Java.
 And a constructor of abstract class is called when an instance of a inherited class is created.
 
 
-### Abstract Vs Interface 
+### Abstract Vs Interface
 
 ## Consider using abstract classes if any of these statements apply to your situation:
-In java application, there are some related classes that need to share some lines of code 
+In java application, there are some related classes that need to share some lines of code
   then you can put these lines of code within abstract class and this abstract class should be extended
   by all these related classes.
-  
-You can define non-static or non-final field(s) in abstract class, 
+
+You can define non-static or non-final field(s) in abstract class,
   so that via a method you can access and modify the state of Object to which they belong.
 
 You can expect that the classes that extend an abstract class have many common methods or fields,
   or require access modifiers other than public (such as protected and private).
 
 ## Consider using interfaces if any of these statements apply to your situation:
-if you dont have any common code go for interface. 
-You want to specify the behavior of a particular data type, 
+if you don't have any common code go for interface.
+You want to specify the behavior of a particular data type,
   but not concerned about who implements its behavior.
 
 
 
 
-Abstract class doesnt have to have abstract method. 
+Abstract class doesn't have to have abstract method.
 abstract class className {
 }
 
@@ -35,9 +35,9 @@ abstract class className {
     abstract void method();
 }
 
-When an Abstract Class Implements an Interface
-In the section on Interfaces, it was noted that a class that implements an interface must implement all of the interface's methods. 
-It is possible, however, to define a class that does not implement all of the interface's methods, provided that the class is declared to be abstract. 
+When an abstract class implements an interface
+In the section on Interfaces, it was noted that a class that implements an interface must implement all of the interface's methods.
+It is possible, however, to define a class that does not implement all of the interface's methods, provided that the class is declared to be abstract.
 For example,
 
 abstract class X implements Y {
@@ -50,8 +50,5 @@ class XX extends X {
 In this case, class X must be abstract because it does not fully implement Y, but class XX does, in fact, implement Y.
 
 Class Members
-An abstract class may have static fields and static methods. 
+An abstract class may have static fields and static methods.
 You can use these static members with a class reference (for example, AbstractClass.staticMethod()) as you would with any other class.
-
-
-

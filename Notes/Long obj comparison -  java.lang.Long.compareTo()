@@ -2,7 +2,9 @@
 public int compareTo(Long anotherLong)
 
 Return Value
-This method returns the value 0 if this Long is equal to the argument Long, value less than 0 if this Long is numerically less than the argument Long and a value greater than 0 if this Long is numerically greater than the argument Long (signed comparison).
+This method returns the value 0 if this Long is equal to the argument Long,
+value less than 0 if this.Long is numerically less than the argument Long and
+value greater than 0 if this.Long is numerically greater than the argument Long (signed comparison).
 
 Exception
 NA
@@ -23,7 +25,7 @@ public class LongDemo {
       Long obj1 = new Long(63255);
       Long obj2 = new Long(71678);
       int retval =  obj1.compareTo(obj2);
-    
+
       if(retval > 0) {
          System.out.println("obj1 is greater than obj2");
       } else if(retval < 0) {
