@@ -1,4 +1,4 @@
-https://leetcode.com/problems/add-to-array-form-of-integer/submissions/
+https://leetcode.com/problems/add-to-array-form-of-integer/
 [1,2,0,0] + 34 => [1,2,3,4]
 [1,1,1] + 9 => [1,0,0,0]
 
@@ -15,11 +15,11 @@ class Solution {
             B.add(0,K%10);
             K = K/10;
         }
-       
-        // reslut is still in A we have to add that in a list 
-        for(int i : A) 
+
+        // reslut is still in A we have to add that in a list
+        for(int i : A)
             B.add(i);
-        
+
         return B;
     }
 }

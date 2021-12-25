@@ -24,13 +24,13 @@ class Solution {
     public int[] sortedSquares(int[] A) {
         if(A==null || A.length ==0)
             return A;
-        
+
         int[] result = new int[A.length];
         int i = 0, j = A.length - 1;
         for (int p = A.length - 1; p >= 0; p--) {
-            if (A[i]*A[i] > A[j]*A[j]) 
+            if (A[i]*A[i] > A[j]*A[j])
                 result[p] = A[i] * A[i++];
-            else 
+            else
                 result[p] = A[j] * A[j--];
         }
         return result;
@@ -50,15 +50,18 @@ class Solution {
     public void reverse(int[] nums, int l, int r) {
         while (l < r) {
             int tmp = nums[l];
-            nums[l++] = nums[r];
-            nums[r--] = tmp;
+            nums[l] = nums[r];
+            nums[r] = tmp;
+            l++;
+            r--;
         }
     }
-}*/
+}
+*/
 
-// Recursively keep one element to next and next postion it its right position 
-// ... This is what I though but couldnt build the end condition. 
-// See the end condition doesnt revovle around K at all 
+// Recursively keep one element to next and next postion it its right position
+// ... This is what I though but couldnt build the end condition.
+// See the end condition doesnt revovle around K at all
 // its untill you process all N element everytime you move element count++ till N
 public class Solution {
     public void rotate(int[] nums, int k) {
@@ -78,10 +81,11 @@ public class Solution {
         }
     }
 }
+
 /*
 https://leetcode.com/problems/intersection-of-two-arrays-ii/
-// This question is asking mutual numbers in two array .. 
-// if number is two times in both array then output should contains that number two times 
+// This question is asking mutual numbers in two array ..
+// if number is two times in both array then output should contains that number two times
 Input: nums1 = [1,2,1,2], nums2 = [2,2]
 Output: [2,2]
 Example 2:
@@ -89,7 +93,7 @@ Input: nums1 = [4,5,9,3,9], nums2 = [9,4,9,8,9,4]
 Output: [4,9,9]
 */
 class Solution {
-    
+
     // for num1 use map of number and count ....
     // then for num2 add number to list till count in map becomes 0 .. then convert list to an array.
     public int[] intersect(int[] nums1, int[] nums2) {
@@ -109,33 +113,6 @@ class Solution {
             result[i] = list.get(i);
         }
         return result;
-    }
-}
-
-/*
-https://leetcode.com/problems/summary-ranges/
-Input:  [0,2,3,4,6,8,9]
-Output: ["0","2->4","6","8->9"]
-Explanation: 2,3,4 form a continuous range; 8,9 form a continuous range.
-*/
-
-public class Solution {
-    public List<String> summaryRanges(int[] nums) {
-        List<String> summary = new ArrayList<>();
-        for (int i, j = 0; j < nums.length; ++j){
-            i = j;
-            
-            // try to extend the range [nums[i], nums[j]]
-            while (j + 1 < nums.length && nums[j + 1] == nums[j] + 1)
-                ++j;
-            
-            // put the range into the list
-            if (i == j)
-                summary.add(nums[i] + "");
-            else
-                summary.add(nums[i] + "->" + nums[j]);
-        }
-        return summary;
     }
 }
 

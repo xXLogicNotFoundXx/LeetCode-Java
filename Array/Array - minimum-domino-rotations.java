@@ -1,10 +1,11 @@
 /*
 
-bakwas question bc 
+bakwas question bc
 
 https://leetcode.com/problems/minimum-domino-rotations-for-equal-row/
 1007. Minimum Domino Rotations For Equal Row
 Given A and B you can swap(rotate) A[i] & B[i], your goal is to make A OR B having all same values.
+Return the minimum number of rotations so that all the values in tops are the same OR all the values in bottoms are the same.
 How many minimum swaps are needed?
 Input: A = [2,1,2,4,2,2], B = [5,2,6,2,3,2]
 Output: 2
@@ -20,14 +21,18 @@ class Solution {
         }
         return ans;
     }
-    
+
     int minDominoRotations(int val, int[] A, int[] B){
         int rot_A=0, rot_B=0;
+        
         for(int i=0;i<A.length;i++){
+
             if(A[i]!=val && B[i]!=val)
                 return -1;
+
             if(A[i]==val && B[i]!=val)
                 rot_A++;
+
             if(A[i]!=val && B[i]==val)
                 rot_B++;
         }

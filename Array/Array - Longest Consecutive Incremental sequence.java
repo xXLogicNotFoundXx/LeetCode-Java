@@ -7,13 +7,13 @@ Output: 4
 Explanation: The longest consecutive elements sequence is [1, 2, 3, 4].
 Therefore its length is 4.
 
-We will use HashMap. The key thing is the boundary points of the sequence should maintain the right length. 
+We will use HashMap. The key thing is the boundary points of the sequence should maintain the right length.
 For example, as a result, for sequence {1, 2, 3, 4, 5}, map.get(1) and map.get(5) should both return 5.
 
-How do we build this? 
+How do we build this?
 Whenever a new element n is inserted into the map, do two things:
-See if n - 1 and n + 1 exist in the map, and if so, it means there is an existing sequence next to n. 
-Variables left and right will be the length of those two sequences, while 0 means there is no sequence and n will be the boundary point later. 
+See if n - 1 and n + 1 exist in the map, and if so, it means there is an existing sequence next to n.
+Variables left and right will be the length of those two sequences, while 0 means there is no sequence and n will be the boundary point later.
 Store (left + right + 1) as the associated value to key n into the map.
 Use left and right to locate the other end of the sequences to the left and right of n respectively, and replace the value with the new length.
 Everything inside the for loop is O(1) so the total time is O(n).
@@ -31,11 +31,13 @@ class Solution {
         int currentStreak = 1;
 
         for (int i = 1; i < nums.length; i++) {
+
             if (nums[i] != nums[i-1]) {
+                // ^ condition for [0,1,1,2] ans should be 3. To handle duplicates.
+
                 if (nums[i] == nums[i-1]+1) {
                     currentStreak += 1;
-                }
-                else {
+                } else {
                     longestStreak = Math.max(longestStreak, currentStreak);
                     currentStreak = 1;
                 }
@@ -49,7 +51,7 @@ class Solution {
 // O(n) time and O(n) space
 class Solution {
     public int longestConsecutive(int[] nums) {
-     
+
         Map<Integer,Integer> map = new HashMap();
         int ans = 0;
         if(nums==null)
@@ -58,19 +60,18 @@ class Solution {
             if(!map.containsKey(num)){
                 int left = map.getOrDefault(num-1,0);
                 int right = map.getOrDefault(num+1,0);
-                
+
                 int sum = left + right +1;
                 map.put(num,sum);
-                
-                // update the new boundries 
-                // this is where all logic is 
+
+                // update the new boundries
+                // this is where all logic is
                 map.put(num-left,sum);
                 map.put(num+right,sum);
-                
+
                 ans = Math.max(ans,sum);
             }
         }
         return ans;
     }
 }
-
