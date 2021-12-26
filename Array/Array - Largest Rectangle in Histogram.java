@@ -97,6 +97,8 @@ class Solution {
     Once you find the currentHeight less than height[peek]
     then work on the stack one by one untill we find the same height or less height on the stack than currentHeight
         work on stack is calculating area for these indices on stack.
+
+    (N)-Time and O(N)-Space
     */
     public int largestRectangleArea3(int[] heights) {
         int max = 0;

@@ -1,4 +1,6 @@
 /**
+
+Medium lotd of lots of companies VIMP -amz 50 fb30 ..
 https://leetcode.com/problems/meeting-rooms-ii/
 
 Given an array of meeting time intervals intervals where intervals[i] = [starti, endi], return the minimum number of conference rooms required.
@@ -11,9 +13,9 @@ Input: [[4,10],[4,20],[10,12]]
 Output: 2
 
 
-Sort by start time 
-add meetings in priority queue ... minHeap for ending time 
-We keep concurrent meeting in priority queue 
+Sort by start time
+add meetings in priority queue ... minHeap for ending time
+We keep concurrent meeting in priority queue
     Sort -> N*logN and Heap - > N*logN)
 Time -> O(N*logN))
 Space -> O(N)
@@ -24,26 +26,26 @@ class Solution {
     public int minMeetingRooms(int[][] intervals) {
         if(intervals==null || intervals.length==0)
             return 0;
-        
-        // sort by start time 
+
+        // sort by start time
         Arrays.sort(intervals, (a,b) -> a[0]-b[0]);
-        
-        PriorityQueue<int[]> pq = new PriorityQueue<>((a,b) -> a[1]-b[1]); // minHeap for ending time 
+
+        PriorityQueue<int[]> pq = new PriorityQueue<>((a,b) -> a[1]-b[1]); // minHeap for ending time
         // minimum end time should be at the top of HEAP
-        
+
         pq.add(intervals[0]);
         for(int i=1; i<intervals.length; i++){
-            
-            // if start time is greater than or eqal to peeks ending time 
-            // the meeting is over poll that meeting 
+
+            // if start time is greater than or eqal to peeks ending time
+            // the meeting is over poll that meeting
             if(intervals[i][0] >= pq.peek()[1]){
                 pq.poll();
-            } 
-            
-            pq.add(intervals[i]);    
+            }
+
+            pq.add(intervals[i]);
         }
-        
-        
+
+
         return pq.size();
     }
 }

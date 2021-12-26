@@ -1,5 +1,6 @@
 /*
-https://leetcode.com/problems/minimum-increment-to-make-array-unique/submissions/
+Medium - Not a lot of companies
+https://leetcode.com/problems/minimum-increment-to-make-array-unique/
 
 Given an array of integers A, a move consists of choosing any A[i], and incrementing it by 1.
 Return the least number of moves to make every value in A unique.
@@ -15,16 +16,16 @@ It can be shown with 5 or less moves that it is impossible for the array to have
 
 */
 class Solution {
-    
+
     public int minIncrementForUnique(int[] A) {
         Arrays.sort(A);
-        
+
         int count = 0;
         for(int i=1;i<A.length;i++){
-            
+
             if(A[i-1]<A[i])
-                continue; 
-            
+                continue;
+
             if(A[i-1]==A[i]){
                 count++;
                 A[i] = A[i] + 1;
@@ -33,37 +34,40 @@ class Solution {
                 count+= inc;
                 A[i] = A[i] + inc;
             }
-            
+
         }
         return count;
     }
-    
-    /*   
+
+    /*
+    This works but all you need a last number. 
+
     public int minIncrementForUnique(int[] A) {
         Arrays.sort(A);
-        
+
         Deque<Integer> deque = new ArrayDeque<>();
-        
+
         int count =0;
         for(int num : A){
-            if(deque.isEmpty() || !deque.isEmpty() && deque.peekLast() < num){
-                deque.clear(); 
+            if(deque.isEmpty() || deque.peekLast() < num){
+                deque.clear();
                 deque.add(num);
             }
-            else  if(!deque.isEmpty() && deque.peekLast() == num){
+            else  if(deque.peekLast() == num){
                 count++;
-                deque.pollFirst();
+                deque.clear();
                 deque.add(num+1);
-            } 
-            else if(!deque.isEmpty() && deque.peekLast() > num){
+            }
+            else if( deque.peekLast() > num){
                 int increment =  deque.peekLast() - num + 1;
                 count += increment;
-                deque.pollFirst();
+                deque.clear();
                 deque.add(num+increment);
-            } 
-                
+            }
+
         }
-        
+
         return count;
-    }*/
+    }
+    */
 }
