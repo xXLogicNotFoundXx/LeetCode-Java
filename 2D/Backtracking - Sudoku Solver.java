@@ -1,4 +1,7 @@
 /*
+HArd - IMP
+DoorDash25 msft9 amzn9 google5 uber3 appl5
+
 https://leetcode.com/problems/sudoku-solver/
 Write a program to solve a Sudoku puzzle by filling the empty cells.
 The '.' character indicates empty cells.
@@ -78,16 +81,15 @@ class Solution {
 // If we could somehow note that what elements are not allowed in  paricular row, column and block
 // that would reduce some complexity as we go on building these row, column, block structure.
 // what could be this structure ?
-// 1 we can have  HashMap<Integer,Set<Integer>> for row
-// 2 similarly HashMap<Integer,Set<Integer>> for column
-// 3 For block 3x3, we can have  HashMap<String,Set<Integer>>, string identifies the unique block 3x3.
+// we can have  HashMap<Integer,Set<Integer>> for row , similarly for column
+// For block we can have  HashMap<String,Set<Integer>>, string identifies the unique block 3x3.
 /*
 Let's consider one row, i.e. not more than 9 cells to fill. There are not more than 9 possibilities for the first number to put,
 not more than 9×8 for the second one, not more than 9×8×7 for the third one etc.
 In total that results in not more than 9! possibilities for a just one row, that means not more than (9!)^9 operations in total.
 the number of operations is reduced in 10^27.
 9^81  = 196627050475552913618075908526912116283103450944214766927315415537966391196809
-(9!)^9 = 109110688415571316480344899355894085582848000000000
+9!)^9 = 109110688415571316480344899355894085582848000000000
 Time : O( (9!)^9 )
 Space : O(81)
 */
@@ -100,19 +102,14 @@ class Solution {
         HashMap<Integer,Set<Character>> column = new HashMap<>();
         HashMap<String,Set<Character>> block = new HashMap<>();
 
-        for(int i=0; i<9; i++){
-            row.put(i, new HashSet<Character>());
-            column.put(i, new HashSet<Character>());
-        }
-
-        for(int i=0; i<3; i++){
-            for(int j=0; j<3; j++){
-              block.put(i+"-"+j, new HashSet<Character>());
-            }
-        }
 
         for(int i=0; i<9; i++){
+            row.putIfAbsent(i, new HashSet<Character>());
+
             for(int j=0; j<9; j++){
+                column.putIfAbsent(j, new HashSet<Character>());
+                block.putIfAbsent(i/3+"-"+j/3, new HashSet<Character>());
+
                 // the '.' doesnt matter being in the set.
                 row.get(i).add(board[i][j]);
                 column.get(j).add(board[i][j]);

@@ -1,16 +1,23 @@
-/* 
-Continuous - How many Subarray Sum Equals K 
-https://leetcode.com/problems/subarray-sum-equals-k/
-Given an array of integers and an integer k, you need to find the total number of continuous subarrays whose sum equals to k.
+/*
 
-Prefix Sum strategy  
+Medium - VIMP
+FB 120+ Amz 10+ Google 10+ ... lot of companies asked this one.
+
+How many Subarrays Sum Equals K?
+
+https://leetcode.com/problems/subarray-sum-equals-k/
+
+Given an array of integers and an integer k, you need to find
+the total number of continuous subarrays whose sum equals to k.
+
+Prefix Sum strategy
 Example 1:
 Input:nums = [1,1,1], k = 2
 Output: 2
 */
 class Solution {
-    
-    // Time & space = O(n) & O(n) 
+
+    // Time & space = O(n) & O(n)
     public int subarraySum(int[] nums, int k) {
         Map<Integer,Integer> map = new HashMap();
         int total=0;
@@ -23,9 +30,9 @@ class Solution {
             }
             map.put(total,map.getOrDefault(total,0)+1);
         }
-        return count; 
+        return count;
     }
-    
+
     // Time & space = O(N^2) O(1)
     public int subarraySum1(int[] nums, int k) {
         int count = 0;

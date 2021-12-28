@@ -36,7 +36,7 @@ class Solution {
         pq.add(intervals[0]);
         for(int i=1; i<intervals.length; i++){
 
-            // if start time is greater than or eqal to peeks ending time
+            // if start time is greater than or equal to peeks ending time
             // the meeting is over poll that meeting
             if(intervals[i][0] >= pq.peek()[1]){
                 pq.poll();
@@ -59,7 +59,8 @@ so meeting 1,5,6 start before first meeting ends at 8 so we need 3 rooms.
 For 9 and 8 we just move i++ and j++ ( think of as it took the spot of the meeting ended at 8.)
 then for 10 and 11.. all previous rooms are occupied and one of them ends after 10... so we need a room for a meeting starting at 10
 so total 4 rooms
-N*LogN
+O(N*LogN) Time
+O(N) space
 */
 public class Solution {
     public int minMeetingRooms(Interval[] intervals) {
