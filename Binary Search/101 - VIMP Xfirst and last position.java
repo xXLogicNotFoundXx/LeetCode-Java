@@ -1,4 +1,7 @@
 /*
+Medium VIMP
+Facebook31 Google12 LinkedIn8 Microsoft7 Apple5 and so many
+
 https://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array/
 Input: nums = [5,7,7,8,8,10], target = 8
 Output: [3,4]
@@ -6,24 +9,24 @@ Output: [3,4]
 class Solution {
     public int[] searchRange(int[] nums, int target) {
         int []ans = new int[2];
-            
+
         if(nums.length==0){
             return new int[]{-1,-1};
         }
-        
+
         ans[0] = findLeftIndex(nums,target);
         ans[1] = findRightIndex(nums,target);
-        
+
         return ans;
     }
-    
+
     int findLeftIndex(int[] nums, int target){
         int left = 0, right = nums.length-1;
         int res = -1;
         while(left<=right)
         {
             int mid = left + (right-left)/2;
-            
+
             if(nums[mid]==target){
                 res = mid;
                 right = mid-1;
@@ -31,20 +34,20 @@ class Solution {
             else if(nums[mid]>target){
                 right = mid-1;
             }
-            else{
+            else {
                 left = mid+1;
             }
         }
         return res;
     }
-    
+
     int findRightIndex(int[] nums, int target){
         int left = 0, right = nums.length-1;
         int res = -1;
         while(left<=right)
         {
             int mid = left + (right-left)/2;
-            
+
             if(nums[mid]==target){
                 res = mid;
                 left = left+1;
