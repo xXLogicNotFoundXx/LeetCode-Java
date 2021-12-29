@@ -1,5 +1,5 @@
 /*
-Medium - important
+Medium - Very important there are other problems like that snapshot array
 Google12 Lyft6 Microsoft4 Apple3 Amazon3 Netflix2
 
 
@@ -35,7 +35,7 @@ class TimeMap {
     class TimeMap1 {
 
         /** Initialize your data structure here. */
-        // public is a -> class TreeMap<K,V> extends AbstractMap<K,V> implements NavigableMap<K,V>,
+        // TreeMap is a -> class TreeMap<K,V> extends AbstractMap<K,V> implements NavigableMap<K,V>,
         // A Red-Black tree based NavigableMap implementation. The map is sorted according to the natural ordering of its keys,
         // or by a Comparator provided at map creation time,
         HashMap<String, TreeMap<Integer,String>> mapTree;
@@ -122,7 +122,7 @@ class TimeMap {
             else
                 l=mid;
         }
-        // here l and r are same but our answer will be in L
+        // here l and r are same
         return list.get(l);
     }
 }
