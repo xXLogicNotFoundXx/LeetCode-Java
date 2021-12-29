@@ -5,6 +5,7 @@ Subarray problems can be solved by :
 
 Prefix_sum/Prefix_product startegy.
 2 PASS works great too.
+binary search for some.
 
 
 
