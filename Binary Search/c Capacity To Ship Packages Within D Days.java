@@ -1,6 +1,7 @@
 /*
 medium IMP
 Facebook23 Amazon8 Flipkart3 google2 tiktok2
+
 https://leetcode.com/problems/capacity-to-ship-packages-within-d-days/
 Capacity To Ship Packages Within D Days ( Order remains same in array)
 Return the least weight capacity of the ship that will result in all the packages on the conveyor belt being shipped within D days.
@@ -13,6 +14,7 @@ A ship capacity of 15 is the minimum to ship all the packages in 5 days like thi
 3rd day: 8
 4th day: 9
 5th day: 10
+
     we have to start with maxWieght on belt because that one has to go between 1-D days
     if avg weight is greater thant maxWeight we have to start with avgWeight
     Start filling the items if all items are filled in D date we have answer
