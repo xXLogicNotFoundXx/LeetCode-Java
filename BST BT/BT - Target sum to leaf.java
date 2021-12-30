@@ -1,4 +1,7 @@
 /*
+Medium
+Amazon10 Facebook4 Microsoft3
+
 https://leetcode.com/problems/path-sum-ii/
 Given a binary tree and a sum, find all root-to-leaf paths where each path's sum equals the given sum.
 Note: A leaf is a node with no children.
@@ -27,21 +30,21 @@ class Solution {
         pathSum(root,sum,ans,subAns);
         return ans;
     }
-    
+
     void  pathSum(TreeNode root, int sum, List<List<Integer>> ans, List<Integer> subAns){
         if(root==null) return;
-        
+
         subAns.add(root.val);
-        sum = sum - root.val;
         
+        sum = sum - root.val;
+
         if(root.left==null && root.right==null && 0==sum ){
             ans.add(new ArrayList<Integer>(subAns));
         } else {
             pathSum(root.left, sum, ans, subAns);
             pathSum(root.right, sum, ans, subAns);
         }
-        
+
         subAns.remove(subAns.size()-1);
     }
 }
-
