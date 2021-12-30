@@ -1,3 +1,5 @@
+/*
+Easy - 
 https://leetcode.com/problems/binary-tree-paths/
 Given a binary tree, return all root-to-leaf paths
    1
@@ -5,7 +7,7 @@ Given a binary tree, return all root-to-leaf paths
 2     3        Output: ["1->2->5", "1->3"]
  \
   5
-
+*/
 class Solution {
     public List<String> binaryTreePaths(TreeNode root) {
         List<String> res = new ArrayList<>();
