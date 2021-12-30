@@ -1,9 +1,9 @@
 /**
 222. Count Complete Tree Nodes
 https://leetcode.com/problems/count-complete-tree-nodes/
-as every recursion is log(n) overall is O(log(n)^2) 
-Also , n + n-1 + n-2 + ... 1 = (n*(n-1)/2) => O(n^2) 
-here in this n is log(n) so O(log(n)^2) 
+as every recursion is log(n) overall is O(log(n)^2)
+Also , n + n-1 + n-2 + ... 1 = (n*(n-1)/2) => O(n^2)
+here in this n is log(n) so O(log(n)^2)
  */
 class Solution {
     public int countNodes(TreeNode root) {
