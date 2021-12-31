@@ -17,8 +17,9 @@ class Solution {
         }
     }
 
-    // BETTER way below.
-    // does not passes the all test cases ... better way to come up with N^2
+    // Correct way is below. Here wee tried to make key by Index-EndTime
+
+    // does not pass all the test cases ... better way to come up with N^2
     /* public int jobScheduling1(int[] startTime, int[] endTime, int[] profit) {
         Job[] jobs = new Job[startTime.length];
         for(int i=0;i<startTime.length;i++){
@@ -33,6 +34,16 @@ class Solution {
         Map<String, Integer> memo = new HashMap<>();
         return calculateProfit1(jobs, 0, 0, memo);
     }
+
+    with memo test cases 22 / 27 - TLE
+    without memo 18 / 27 passsed - TLE
+        This is I usually always think.
+        This is not N^2 as the we tracking the index and currentTime ...
+        this would create a lot of calls on same index and we have different values of currentTime at the same index ..
+        Usually if you are tracking index and if you are passing down the some state/count it messes up the runtime.
+
+        We create a key by index and endTime ... this will create so many keys in the memo fro same index.
+        This wont be true DP and the runtime analysis changes dependin on the data.
 
     int calculateProfit1(Job[] jobs, int startIndex, int currentTime, Map<String, Integer> memo){
         if(startIndex==jobs.length)
@@ -54,21 +65,13 @@ class Solution {
         return subAns;
     }*/
 
-/* ^
-    with memo test cases 22 / 27 - TLE
-    without memo 18 / 27 passsed - TLE
-    This is I usually always think.
-    This is not N^2 as the we tracking the index and currentTime ...
-    so it becomes N * MAX_TIME
-    this would create a lot of calls on same index ..
-    Usually if you are tracking index and if you are passing down the some state/count it messes up the runtime.
-
+/*
     Is there anyway we can just track Index in memo?
     we have to getRid of currentTime .. and find the subans, and once we calculate that sub ans we should be done.
     That means we have to pass next index such that we should be able to take that job and not worry about currentTime.
 
     Subtle hint at the starting point is we always can take the first job.
-    So it is kind of take that first job or leave and and when we make next recursive call it should be that way too.
+    So it is kind of take that first job or leave and and when we make next recursive call it should be that way too.       <-This
     We should be able to take the next index job.
 
     O(N^2) - with memoization
@@ -84,7 +87,7 @@ class Solution {
         Arrays.sort(jobs, (a,b) -> a.start==b.start ? a.end-b.end : a.start-b.start);
 
         // adding memo
-        // what am i tracking ->  index and current time , so depends on the data so can create an array for that
+        // what am i tracking ->  only index and max profit from down below, so depends on the data so can create an array for that
         Map<Integer, Integer> memo = new HashMap<>();
         return calculateProfit(jobs, 0, memo);
     }
@@ -118,5 +121,5 @@ class Solution {
         return -1;
     }
 
-  // there is another solution with binary search ... will look at it later
+    // there is another solution with binary search ... will look at it later
 }
