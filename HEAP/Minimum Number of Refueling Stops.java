@@ -75,7 +75,6 @@ class Solution {
     */
 
     /*
-    It ended up being priority queue. 
     I guess it's more like greedy...
     Check all the stations we can reach, and then pick the station with most gas, and so on.
     O(nLogn)

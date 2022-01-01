@@ -1,4 +1,8 @@
 /*
+Hard
+DoorDash66 Amazon10 LinkedIn4 ... some more
+
+
 https://leetcode.com/problems/maximum-profit-in-job-scheduling/
 We have n jobs, where every job is scheduled to be done from startTime[i] to endTime[i], obtaining a profit of profit[i].
 
@@ -17,7 +21,7 @@ class Solution {
         }
     }
 
-    // Correct way is below. Here wee tried to make key by Index-EndTime
+    // Correct way is below. Here we tried to make key by Index-EndTime
 
     // does not pass all the test cases ... better way to come up with N^2
     /* public int jobScheduling1(int[] startTime, int[] endTime, int[] profit) {
@@ -74,7 +78,7 @@ class Solution {
     So it is kind of take that first job or leave and and when we make next recursive call it should be that way too.       <-This
     We should be able to take the next index job.
 
-    O(N^2) - with memoization
+    O(N*logN) - with memoization - logn is for binary search
 */
 
     public int jobScheduling(int[] startTime, int[] endTime, int[] profit) {
@@ -100,7 +104,7 @@ class Solution {
             return memo.get(startIndex);
 
         // take the current job and find the next index of the job that we can take
-        int nextJobIndex = findNextJobThatICanTake(jobs, startIndex);
+        int nextJobIndex = findNextJobThatICanTakeBinarySearch(jobs, startIndex);
         int subAns = jobs[startIndex].profit;
 
         if(nextJobIndex!=-1)
@@ -113,6 +117,7 @@ class Solution {
         return subAns;
     }
 
+    // this is O(n) and if you call this function then it is TLE
     int findNextJobThatICanTake(Job[] jobs, int startIndex){
         for(int i=startIndex+1; i<jobs.length; i++){
             if(jobs[startIndex].end <= jobs[i].start)
@@ -121,5 +126,23 @@ class Solution {
         return -1;
     }
 
-    // there is another solution with binary search ... will look at it later
+    // O(logn) binary search this passes all test cases
+    int findNextJobThatICanTakeBinarySearch(Job[] jobs, int startIndex){
+        int left = startIndex+1;
+        int right = jobs.length-1;
+
+        while(left<right){
+            int mid = left + (right-left)/2;
+
+            if(jobs[startIndex].end <= jobs[mid].start)
+                right = mid;
+            else
+                left = mid+1;
+        }
+
+        if(jobs[startIndex].end > jobs[right].start)
+            return -1;
+
+        return right;
+    }
 }

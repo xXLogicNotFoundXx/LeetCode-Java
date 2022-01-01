@@ -28,17 +28,31 @@ class Solution {
 }
 
 // Problem 2 -
-// Medium -
+// Medium - Amazon20 Adobe8 Microsoft3
+
 // https://leetcode.com/problems/jump-game-ii/
 // Your goal is to reach the last index in the minimum number of jumps.
+// it is more like minimum number of fueling stops. However in this problem it is almost like ...
+// The sall difference between this and gas stops problem is ... here you discard the fuel left in the tank. that is why youdo i+a[i]
+// this small difference .. changes the whole approach and that is why we could come up with O(n) solution here and we didnt need PQ.
+
 class Solution {
     public int jump(int[] A) {
-        int jumps = 0, curEnd = 0, curFarthest = 0;
+
+        int jumps = 0;
+        int weCanGoTill = 0;
+        int farthestJumpSoFar = 0;
+
         for (int i = 0; i < A.length - 1; i++) {
-            curFarthest = Math.max(curFarthest, i + A[i]);
-            if (i == curEnd) {
-                jumps++;
-                curEnd = curFarthest;
+
+            // calculate best jump so far.
+            farthestJumpSoFar = Math.max(farthestJumpSoFar, i + A[i]);
+
+            // if our current jump/end reached...
+            // we have to select best jump from the previous jumps we discovered
+            if (i == weCanGoTill) {
+                jumps++; // we took one stop that will give best jump so far
+                weCanGoTill = farthestJumpSoFar; // we adeed the best jump so far.
             }
         }
         return jumps;

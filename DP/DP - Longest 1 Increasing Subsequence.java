@@ -1,13 +1,13 @@
 /*
 Medium - VIMP
 lot of companies
+
 https://leetcode.com/problems/longest-increasing-subsequence/
 Input: [10,9,2,5,3,7,101,18]
 Output: 4
 
 The longest increasing subsequence is [2,3,7,101], OR [2,5,7,101] therefore the length is 4.
 // O(N^2)
-
 */
 
 class Solution {
