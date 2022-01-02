@@ -1,7 +1,7 @@
 /*
 https://leetcode.com/problems/target-sum/
 
-FB6 AMXN5 
+FB6 AMXN5
 */
 // Below is the recursive which is 2^N as each number is considered as +ve and considered -ve
 
@@ -16,13 +16,14 @@ FB6 AMXN5
     }
 
 
-// Below is the recursive with memoization 
+// Below is the recursive with memoization
+/*
 Using memoization improves the time complexity actually, think it like this:
 Without memoization, the time complexity is actually O(2^n), where n is the length of the array,
 since we are trying all the possible combinations.
 By using memoization, we calculate every sum at each index at most once,
 that makes the time complexity O(n*sum), which is the same as those DP solutions
-
+*/
 class Solution {
     public int findTargetSumWays(int[] nums, int S) {
         if(nums==null) return 0;
@@ -33,39 +34,40 @@ class Solution {
         if(i==nums.length){
             return sum==0 ?  1 : 0;
         }
-        
+
         if(map.containsKey(i+"->"+sum))
             return map.get(i+"->"+sum);
-        
+
         int result1 = findTargetSumWays(nums,sum-nums[i], map, i+1);
         int result2 = findTargetSumWays(nums,sum+nums[i], map, i+1);
-        
+
         map.put(i+"->"+sum, result1 + result2);
-        
+
         return map.get(i+"->"+sum);
     }
 }
 
-
-You are given a list of non-negative integers, a1, a2, ..., an, and a target, S. 
+/*
+You are given a list of non-negative integers, a1, a2, ..., an, and a target, S.
 Now you have 2 symbols + and -. For each integer, you should choose one from + and - as its new symbol.
 
 Find out how many ways to assign symbols to make sum of integers equal to target S.
 Example 1:
-Input: nums is [1, 1, 1, 1, 1], S is 3. 
+Input: nums is [1, 1, 1, 1, 1], S is 3.
 Output: 5
-Explanation: 
+Explanation:
 -1+1+1+1+1 = 3
 +1-1+1+1+1 = 3
 +1+1-1+1+1 = 3
 +1+1+1-1+1 = 3
 +1+1+1+1-1 = 3
 There are 5 ways to assign symbols to make the sum of nums be target 3.
-
+*/
 class Solution {
     // This problem is simlar like subset sum problem - 0/1 knapsack problem..
-    // but as we know subset sum/knapsack wont work with negative numbers ... So how do we solve this problem
-    // all the numbers are positive in an array so ...
+    // but as we know subset sum/knapsack wont work with negative numbers ...
+    // So how do we solve this problem
+    // All the numbers are positive in an array so ...
     /*
     Let P be the positive subset and N be the negative subset
     For example:
@@ -80,9 +82,9 @@ class Solution {
     So the original problem has been converted to a subset sum problem as follows:
     Find a subset P of nums such that sum(P) = (target + sum(nums)) / 2
     */
-    
+
    public int findTargetSumWays(int[] nums, int S) {
-        int totalSum =0; 
+        int totalSum =0;
         for(int num : nums){
             totalSum+=num;
         }
@@ -94,13 +96,9 @@ class Solution {
         dp[0] = 1;
         for(int number : nums){
             for(int i=sumToFind; i>=number; i--){     // from the end bcz we want to use number once (not unlimited coin)
-                dp[i] += dp[i-number];
+                dp[i] = dp[i] + dp[i-number];
             }
         }
-        // eventually we would find path from sumToFind to 0
+        // eventually we would find number of paths to sumToFind 
         return dp[sumToFind];
     }
-
-
-
-

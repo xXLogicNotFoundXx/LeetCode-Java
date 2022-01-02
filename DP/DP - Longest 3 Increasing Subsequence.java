@@ -39,17 +39,8 @@ class Solution {
 Solution 2 - Binary Search
 We can put the increasing sequence in a TreeSet.
 
-For normal Binary search logic is :
-    for each num in nums
-         if(list.size()==0)
-              add num to list
-         else if(num > last element in list)
-              add num to list
-         else
-              replace the element in the list which is the smallest but bigger than num
-
 For TreeSet logic is:
-    If set.ceiling() -> doesnt return null then replace that number with the current number
+    If set.ceiling(curNum) -> doesnt return null then replace that number with the current number
     else just add the number
 
 */
