@@ -49,9 +49,9 @@ class Solution {
     void generatePalindromesHelper(Map<Character,Integer>  map, String mid, StringBuffer sb, int resLength, List<String> list){
         if(sb.length()==resLength){
             String ans = sb.toString()+ mid + sb.reverse().toString();
-            sb.reverse(); // VERY IMPORTANT   ^ we reversed it here
             list.add(ans);
 
+            sb.reverse(); // undo the reverse   ^^ we reversed it here
             return;
         }
 
