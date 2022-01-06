@@ -3,25 +3,25 @@
 // Output: 1->2->5
 class Solution {
     public ListNode deleteDuplicates(ListNode head) {
-        
+
         ListNode fakeStart = new ListNode(-1);
-        fakeStart.next = head; 
-        
+        fakeStart.next = head;
+
         ListNode start = fakeStart;
         while(start.next!=null){
-            ListNode current = start.next; 
-            
+            ListNode current = start.next;
+
             while(current.next!=null && current.val == current.next.val){
-                current = current.next; 
+                current = current.next;
             }
-            
-            if(current==start.next){
+
+            if(start.next == current){ // there were no duplicates
                 start = start.next;
-            }else{
+            } else { // if there were duplicates update the start.next 
                 start.next = current.next;
             }
         }
-        
+
         return fakeStart.next;
     }
 }

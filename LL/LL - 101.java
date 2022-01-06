@@ -1,11 +1,11 @@
-Note : 
-Alwasy use dummy node before the start it makes easy for corner cases.
+// Note :
+// Alwasy use dummy node before the start it makes easy for corner cases.
 
 
-// Reverse a Linked list 
+// Reverse a Linked list
 // https://leetcode.com/problems/reverse-linked-list/
 class Solution {
-    // iterative 
+    // iterative
     public ListNode reverseList1(ListNode head) {
         ListNode dummy = null;
         while(head!=null){
@@ -16,11 +16,12 @@ class Solution {
         }
         return dummy;
     }
-    
-    // Recursive 
+
+    // Recursive
     public ListNode reverseList(ListNode head) {
         return reverseList12(head,null);
     }
+
     ListNode reverseList12(ListNode current,ListNode prev) {
         if(current==null) return prev;
         ListNode temp = current.next;
@@ -33,7 +34,7 @@ class Solution {
 
 //Input: 1->2->4, 1->3->4
 //Output: 1->1->2->3->4->4
-// Trick here create a dummy START and return START.next 
+// Trick here create a dummy START and return START.next
 class Solution {
     public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
         ListNode START = new ListNode(0);
@@ -58,48 +59,48 @@ class Solution {
 public class Solution {
     public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
         if(headA==null || headB == null) return null;
-          
+
         int countA = length(headA);
         int countB = length(headB);
-        
+
         while(countA>countB) { headA = headA.next; countA--;}
         while(countB>countA) { headB = headB.next; countB--;}
-        
+
         while(headA!=null){
-            if(headA==headB) 
+            if(headA==headB)
                 return headA;
             headA = headA.next;
             headB = headB.next;
         }
-        
-        return null; 
+
+        return null;
     }
-    
+
     int length(ListNode dummy){
         int count=0;
-        while(dummy!=null) { 
-            dummy = dummy.next; 
-            count++; 
+        while(dummy!=null) {
+            dummy = dummy.next;
+            count++;
         }
         return count;
     }
 }
 
 // https://leetcode.com/problems/delete-node-in-a-linked-list/
-// Delete node, direct access to delete the node. 
+// Delete node, direct access to delete the node.
 // It wont be a last node.
 class Solution {
-    
+
     public void deleteNode(ListNode node) {
-        ListNode  dummy = node; 
+        ListNode  dummy = node;
         while(dummy.next.next!=null){
-            dummy.val = dummy.next.val; 
+            dummy.val = dummy.next.val;
             dummy = dummy.next;
         }
         dummy.val = dummy.next.val;
         dummy.next=null;
     }
-    
+
     public void deleteNode(ListNode node) {
         ListNode dummy = node;
         node=node.next;
@@ -115,6 +116,7 @@ class Solution {
 
 
 /*
+Medium - good one 
 Swap Nodes in Pairs
 https://leetcode.com/problems/swap-nodes-in-pairs/submissions/
 Given 1->2->3->4, you should return the list as 2->1->4->3.
@@ -138,4 +140,4 @@ class Solution {
         second.next = first;
         dummy.next = second;
     }
-} 
+}

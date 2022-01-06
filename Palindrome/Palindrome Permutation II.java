@@ -9,6 +9,10 @@ How would you know if the palindrom is possible?
 
 We only need to generate the first part of palindrome string,
 and the remaining part will be a middle character with the reverse of first part.
+
+
+Time - O( (n/2)! )
+Space - O(n) - depth of recursion is n/2.
 */
 class Solution {
     public List<String> generatePalindromes(String s) {
@@ -45,7 +49,7 @@ class Solution {
     void generatePalindromesHelper(Map<Character,Integer>  map, String mid, StringBuffer sb, int resLength, List<String> list){
         if(sb.length()==resLength){
             String ans = sb.toString()+ mid + sb.reverse().toString();
-            sb.reverse(); // VERY IMPORTANT   ^ we reversed it here 
+            sb.reverse(); // VERY IMPORTANT   ^ we reversed it here
             list.add(ans);
 
             return;

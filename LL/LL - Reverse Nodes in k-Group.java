@@ -8,52 +8,86 @@ For k = 3, you should return: 3->2->1->4->5
  */
 
 class Solution {
+
+    // Solution1 : O(n) and O(k) space
     public ListNode reverseKGroup(ListNode head, int k) {
-        
-        if(head==null || k<=1) 
-            return head; 
-      
+        ListNode dummy = new ListNode();
+        ListNode HEAD = dummy;
+        dummy.next = head;
+
+        Deque<ListNode> stack = new ArrayDeque<>();
+
+        while(head!=null){
+            int count=k;
+
+            while(count>0 && head!=null ){
+                stack.push(head);
+                head = head.next;
+                count--;
+            }
+
+            if(stack.size()!=k)
+                break;
+
+            while(!stack.isEmpty() && dummy!=null){
+                dummy.next = stack.pop();
+                dummy = dummy.next;
+            }
+
+            dummy.next=head;
+        }
+        return HEAD.next;
+    }
+
+    // Solution12 : O(n) and O(1) space
+    public ListNode reverseKGroup(ListNode head, int k) {
+
+        if(head==null || k<=1)
+            return head;
+
         ListNode dummyHead = new ListNode(-99, head);
         dummyHead.next = head;
-        ListNode START = dummyHead; 
-        
+        ListNode START = dummyHead;
+
         while(dummyHead!=null){
             dummyHead = reverseKGroupHelper(dummyHead,k);
         }
-        
+
         return START.next;
     }
-    
+
     ListNode reverseKGroupHelper(ListNode dummyHead, int k){
         ListNode runner = dummyHead;
         ListNode actualHead = dummyHead.next; // After reverse this will be at last and will be our next dummyHead
-        
+
         while(runner.next!=null && k>0){
             runner =runner.next;
             k--;
         }
-        
-        if(k>0) 
+
+        if(k>0)
             return null;
-        
+
         ListNode tailNext = runner.next;
         reverse(dummyHead,tailNext);
-        
-        return actualHead; // this is our new dummyHead 
+
+        return actualHead; // this is our new dummyHead
     }
-    
+
     void reverse(ListNode dummyHead, ListNode tailNext){
-        ListNode prev = dummyHead;  
+        ListNode prev = dummyHead;
         ListNode head = dummyHead.next;
-    
+
         while(head!=tailNext){
             ListNode temp = head.next;
             head.next = prev;
             prev = head;
             head = temp;
         }
-        
+
         dummyHead.next.next = tailNext;
         dummyHead.next = prev;
     }
+
+
 }

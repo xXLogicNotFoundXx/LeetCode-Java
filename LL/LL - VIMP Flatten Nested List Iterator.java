@@ -1,4 +1,7 @@
 /**
+Medium - VIMP
+Facebook6 LinkedIn5 Apple4 Salesforce4 Twitter3
+
 https://leetcode.com/problems/flatten-nested-list-iterator/
 
  * // This is the interface that allows for creating nested lists.
@@ -18,11 +21,11 @@ https://leetcode.com/problems/flatten-nested-list-iterator/
  * }
  */
 // list could be empty so we have to have Integer at the top so all the operations i did in next() has to be in hasNext()
-// OR you can just fallten all list at once in the ArrayList and just manipulate the index on next and hasNext();
+// OR you can just flatten all list at once in the ArrayList and just manipulate the index on next and hasNext();
 public class NestedIterator implements Iterator<Integer> {
 
     Stack<NestedInteger> stack = new Stack<>();
-    
+
     public NestedIterator(List<NestedInteger> nestedList) {
         for(int i=nestedList.size()-1;i>=0;i--)
             stack.push(nestedList.get(i));
@@ -36,32 +39,32 @@ public class NestedIterator implements Iterator<Integer> {
     @Override
     public boolean hasNext1() {
         if(stack.isEmpty())
-            return false; 
-        
+            return false;
+
         NestedInteger peek = stack.peek();
         if(!peek.isInteger()){
             NestedInteger top = stack.pop();
-            for(int i= top.getList().size()-1;i>=0;i--)
+            for(int i= top.getList().size()-1; i>=0; i--)
                 stack.push(top.getList().get(i));
 
-            return hasNext(); // nice 
+            return hasNext(); // nice
         }
-        
+
         return true;
     }
-    
-    @Override  // No Recursion 
+
+    @Override  // No Recursion
     public boolean hasNext() {
-        
+
         while (!stack.isEmpty() && !stack.peek().isInteger()){
             NestedInteger top = stack.pop();
-            for(int i= top.getList().size()-1;i>=0;i--)
-                stack.push(top.getList().get(i));  
+            for(int i= top.getList().size()-1; i>=0; i--)
+                stack.push(top.getList().get(i));
         }
-        
+
         if(stack.isEmpty())
             return false;
-        
+
         return true;
     }
 }

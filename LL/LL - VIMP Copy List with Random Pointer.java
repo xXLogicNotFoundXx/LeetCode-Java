@@ -1,7 +1,12 @@
-https://leetcode.com/problems/copy-list-with-random-pointer/
-A linked list is given such that each node contains an additional random pointer which could point to any node in the list or null.
-Return a deep copy of the list.
 /*
+ Medium- VIM
+ Facebook44 Amazon18 Microsoft10 and many more 
+
+
+ https://leetcode.com/problems/copy-list-with-random-pointer/
+ A linked list is given such that each node contains an additional random pointer which could point to any node in the list or null.
+ Return a deep copy of the list.
+
 // Definition for a Node.
 class Node {
     public int val;
@@ -9,7 +14,7 @@ class Node {
     public Node random;
 };
 */
-// just put map of original node and new node so that you know which one is random node 
+// just put map of original node and new node so that you know which one is random node
 class Solution {
     public Node copyRandomList(Node head) {
         Map<Node,Node> map = new HashMap();
@@ -20,7 +25,7 @@ class Solution {
             map.put(dummy,n);
             dummy = dummy.next;
         }
-        // assign next and random 
+        // assign next and random
         Node Start = new Node(-1,null,null);
         dummy = Start;
         while(head!=null){

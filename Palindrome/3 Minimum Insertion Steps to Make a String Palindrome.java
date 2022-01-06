@@ -1,5 +1,6 @@
 /*
 HARD
+Amazon5 Microsoft3 Apple2
 https://leetcode.com/problems/minimum-insertion-steps-to-make-a-string-palindrome/
 
 Given a string s. In one step you can insert any character at any index of the string.
