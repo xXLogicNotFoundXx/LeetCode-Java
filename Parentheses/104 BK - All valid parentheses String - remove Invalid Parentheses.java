@@ -16,7 +16,7 @@ Time Complexity : O(2^N)
  since in the worst case we will have only left parentheses in the expression and for every bracket
  we will have two options i.e. whether to remove it or consider it.
  Considering that the expression has N parentheses, the time complexity will be O(2^N).
- 
+
 Space Complexity : O(N)
  depth of the tree is gonna be N.
 */
@@ -40,9 +40,10 @@ class Solution {
     }
 
     public void dfs(String s, int i, Set<String> res, StringBuilder sb, int rmL, int rmR, int open) {
-        if (rmL < 0 || rmR < 0 || open < 0) {
+        if (open < 0) {
             return;
         }
+
         if (i == s.length()) {
             // open is very important  for example for ip )() we dont want )( as the ans open=1 will avoid that.
             if (rmL == 0 && rmR == 0 && open == 0)
@@ -54,11 +55,15 @@ class Solution {
         int len = sb.length();
 
         if (c == '(') {
-            dfs(s, i + 1, res, sb, rmL - 1, rmR, open);		    // not use (
+            if(rmL>0)
+              dfs(s, i + 1, res, sb, rmL - 1, rmR, open);		    // not use (
+
             dfs(s, i + 1, res, sb.append(c), rmL, rmR, open + 1);       // use (
 
         } else if (c == ')') {
-            dfs(s, i + 1, res, sb, rmL, rmR - 1, open);	            // not use  )
+            if(rmR>0)
+              dfs(s, i + 1, res, sb, rmL, rmR - 1, open);	            // not use  )
+
             dfs(s, i + 1, res, sb.append(c), rmL, rmR, open - 1);  	    // use )
 
         } else {

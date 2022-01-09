@@ -1,4 +1,7 @@
 /*
+Hard -
+Google6 Amazon3 Uber3 Flipkart3 Bloomberg2 Morgan Stanley2 Hotstar2
+
 https://leetcode.com/problems/minimum-number-of-refueling-stops/
 A car travels from a starting position to a destination which is target miles east of the starting position.
 Along the way, there are gas stations.  Each station[i] represents a gas station that is station[i][0] miles east of the starting position,
@@ -76,6 +79,13 @@ class Solution {
 
     /*
     I guess it's more like greedy...
+    Why does greedy works ?
+    The 'greedy' solution never kick out any entry from the priority queue. Besides, the 'greedy' solution won't choose the station in order.
+    Instead, it might pick station-4 and then pick station-2 later. After knowing this, the correctness should be obvious by now.
+    The car always move until it cannot move any further. Then it must re-fuel once.
+    Which station to pick? Of course the one that has the largest amount of fuel.
+    The magic is: the car needs to re-fuel at station-5, but the fuel comes from station-2.
+
     Check all the stations we can reach, and then pick the station with most gas, and so on.
     O(nLogn)
     */

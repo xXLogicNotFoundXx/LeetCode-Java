@@ -1,8 +1,15 @@
 /*
+Medium - IMP
+Facebook7 Google5 Amazon4 Uber3 Microsoft3 Salesforce3...
+
+
 https://leetcode.com/problems/task-scheduler/
-Given a char array representing tasks CPU need to do. It contains capital letters A to Z where different letters represent different tasks. Tasks could be done without original order. Each task could be done in one interval. 
+Given a char array representing tasks CPU need to do. It contains capital letters A to Z where different letters represent different tasks.
+Tasks could be done without original order. Each task could be done in one interval.
 For each interval, CPU could finish one task or just be idle.
-However, there is a non-negative cooling interval n that means between two same tasks, there must be at least n intervals that CPU are doing different tasks or just be idle.
+However, there is a non-negative cooling interval n that means between 2 same tasks, there must be at least n intervals that CPU are doing different tasks or just be idle.
+
+B task should have n(number) of tasks distance before we take another B task
 
 You need to return the least number of intervals the CPU will take to finish all the given tasks.
 tasks = ["A","A","A","B","B","B"], n = 2
@@ -21,11 +28,11 @@ class Solution {
         for (char ch:tasks){
             map.put(ch,map.getOrDefault(ch,0)+1);
         }
-        
+
         // build queue, sort from descending
         PriorityQueue<Map.Entry<Character,Integer>> queue = new PriorityQueue<>((a,b)->(b.getValue()-a.getValue()));
         queue.addAll(map.entrySet());
-        
+
 
         int cnt = 0;
         // when queue is not empty, there are remaining tasks
@@ -35,31 +42,35 @@ class Solution {
             //plus the two in the interval. Therefore, it is n+1
             // list used to update queue
             List<Map.Entry<Character, Integer>> list = new ArrayList<>();
-    
+
             // fill the intervals with the next high freq task
             while (interval > 0 && !queue.isEmpty()){
-                Map.Entry<Character,Integer> entry = queue.poll();
-                entry.setValue(entry.getValue()-1);
-                list.add(entry);
+                Map.Entry<Character,Integer> entry = queue.poll(); // take the most frequent task;
+                entry.setValue(entry.getValue()-1); // decrese the frequecny that means we executed the task
+
+                list.add(entry); // temoprarily add this map entry to the list ... so we get another task for next pop()eibccckrihhvigblgglidgrhgndffrrgjjhbefubfvcn
+
                 // interval shrinks
                 interval --;
-                // one slot is taken
+                // one slot is taken executing the job
                 cnt ++;
             }
-            
-            // update the value in the map
+
+            // Now add the tasks that we executed back to the priority queue
             for (Map.Entry<Character,Integer> entry:list){
                 // when there is left task
                 if (entry.getValue() > 0)
                     queue.offer(entry);
             }
+
             // job done
             if (queue.isEmpty())
                 break;
+                
             // if interval is > 0, then the machine can only be idle
             cnt += interval;
         }
-        
+
         return cnt;
     }
 }
