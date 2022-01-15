@@ -55,6 +55,12 @@ class Solution {
             parent[i] = i;
 
         Arrays.sort(connections, (a,b) -> a[2]-b[2]);
+        /*
+        Arrays.sort(connections, new Comparator<int[]> (){
+           public int compare(int[] a, int b[]){
+               return a[2]-b[2];
+           }
+        }); */
 
         int count=0; // this to count n-1 edges that we gonna add to connect graph
         int weight=0;

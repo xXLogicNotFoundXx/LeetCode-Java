@@ -18,7 +18,10 @@ class Solution {
 
         int[] parent = new int[n];
 
-        if(connections.length < n-1)         // very smart
+        // if you dont realize this then .. it gets messy
+        // i ended up coding to record degree for each node and see if we have extra edge available.
+        // that added more complexity
+        if(connections.length < n-1)         // very smart .. it tells enough edges alerady to pull and move around.
             return -1;
 
         for(int i=0;i<n; i++)
