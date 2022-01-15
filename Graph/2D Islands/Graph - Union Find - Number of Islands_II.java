@@ -79,7 +79,7 @@ class Solution {
             }
 
         }
-        
+
         // Note needed .. below code will handle it anyway
         if(neighbouringIslands.size()==0){   // new island
             return islands+1;
@@ -89,7 +89,7 @@ class Solution {
             union(parent, island, pos);
         }
 
-        islands = islands - neighbouringIslands.size() + 1;
+        islands = ( islands - neighbouringIslands.size() ) + 1;
         return islands;
     }
 

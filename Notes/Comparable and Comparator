@@ -1,0 +1,34 @@
+Comparable and comparator both are an interface that can be used to sort the elements of the collection.
+
+--------------------------------------------------------------------------------------------------------
+The comparable interface has a method compareTo(Object a )
+
+  Collection.sort(List) method can be used to sort the collection of Comparable type objects.
+  https://docs.oracle.com/javase/6/docs/api/java/lang/Comparable.html
+  Objects that implement this interface can be used as keys in a sorted map or as elements in a sorted set, without the need to specify a comparator.
+  It is strongly recommended (though not required) that natural orderings be consistent with equals.
+  This is so because sorted sets (and sorted maps) without explicit comparators behave "strangely" when they are used with elements (or keys)
+    whose natural ordering is inconsistent with equals.
+
+  class Abc implements Comparable<Abc>{
+    ...
+    @Override
+    public int compareTo(Abc o) {
+
+    }
+
+  }
+--------------------------------------------------------------------------------------------------------
+The comparator has a method compare(Object o1, Object O2)
+
+
+  Collection.sort(List, Comparator) method can be used to sort the collection of Comparator type objects.
+
+  https://docs.oracle.com/javase/6/docs/api/java/util/Comparator.html
+  class Abc implements Comparator<Abc>{
+    ...
+    @Override
+    public int compare(Abc one, Abc two) {
+
+    }
+  }

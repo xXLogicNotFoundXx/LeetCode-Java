@@ -47,43 +47,46 @@ class Solution {
         Time - O(N+E)     N - Creating Adjacency Map.  E - We traverse all edges.
         Space - O(N+E)
     */
+
     public boolean validTree(int n, int[][] edges) {
         if (edges == null)
             return true;
 
-        Map<Integer, Set<Integer>> map = new HashMap<>();
-        for (int i = 0; i < n; i++)
-            map.put(i, new HashSet<>());
-
-        for (int[] edge : edges) {
+        HashMap<Integer,Set<Integer>> map = new HashMap<>();
+        for(int []edge : edges){
+            map.putIfAbsent(edge[0],new HashSet<>());
+            map.putIfAbsent(edge[1],new HashSet<>());
             map.get(edge[0]).add(edge[1]);
             map.get(edge[1]).add(edge[0]);
         }
 
-        Set<Integer> set = new HashSet<>();
+        Set<Integer> visited = new HashSet<>();
 
-        return dfs(0, map, set)==true ? set.size() == n : false;
+        return isCycle(0, map, visited)==false ? visited.size()==n : false;
     }
 
-    public boolean dfs(int cur, Map<Integer, Set<Integer>> map, Set<Integer> set) {
+    private boolean isCycle(int cur, HashMap<Integer,Set<Integer>> map, Set<Integer> visited){
 
-        if (set.contains(cur))
-            return false;
+        if(visited.contains(cur))
+            return true;
 
-        set.add(cur);
-        for (Integer next : map.get(cur)) {    // you can iterate over set like this!
+        visited.add(cur);
 
-            map.get(next).remove(cur);// remove parent from the child ...  this is VIMP  very important
+        for(int child : map.getOrDefault(cur, new HashSet<>())){
+            // this is very important
+            // remove parent from the child's connection ...
             // if we hit parent from some other path then there is a cycle
+            map.getOrDefault(child, new HashSet<>()).remove(cur);
 
-            if(!dfs(next, map, set))
-                return false;
+            if (isCycle(child, map, visited))
+                return true;
         }
-        return true;
+        return false;
     }
 }
 
-// This is one is really smart. Consider the fact that we need exactly n-1 edges and we should be able visit all nodes.
+// This is one is really smart.
+// Consider the fact that we need exactly n-1 edges and we should be able visit all nodes.
 // Theroy that you have to know.
 class Solution {
     /*

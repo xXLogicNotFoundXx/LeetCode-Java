@@ -62,10 +62,14 @@ class Solution {
     }
 
     int minSteps(List<Integer> start, List<Integer> nextTree, List<List<Integer>> forest){
-        int [][] visited = new int[forest.size()][forest.get(0).size()];
-        int steps =0;
+
         Queue<List<Integer>> q = new LinkedList<List<Integer>>();
         q.add(start);
+
+        // we could have used Set<String> to see visited ... but used an array to increase the performance
+        int [][] visited = new int[forest.size()][forest.get(0).size()];
+        int steps =0;
+
         while(!q.isEmpty()){
             int size = q.size();
             for(int i=0;i<size;i++){

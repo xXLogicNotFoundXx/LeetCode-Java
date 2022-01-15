@@ -8,46 +8,44 @@ We should return its level order traversal:
      [5,6]
 ]
 
-Build a map of <level,nodes> while traversing the tree and then iterate through map.
+BFS
 */
-
-// BFS
 class Solution {
     public List<List<Integer>> levelOrder(Node root) {
         List<List<Integer>> ans = new ArrayList<List<Integer>>();
-        
+
         if(root==null) return ans;
-        
+
         Queue<Node> queue = new LinkedList<>();
         // ArrayDeque, ConcurrentLinkedDeque, ConcurrentLinkedQueue, LinkedList, PriorityQueue ....
 
         queue.add(root);
-        
+
         while(!queue.isEmpty()){
             int size = queue.size();
             List<Integer> oneLevel = new ArrayList<>();
             for(int i=0; i<size; i++){
                 Node node = queue.poll();
                 oneLevel.add(node.val);
-                
+
                 for(Node child : node.children){
                     queue.add(child);
                 }
-                
+
             }
             ans.add(oneLevel);
         }
-        
+
         return ans;
     }
 }
 
-// DFS 
+// DFS
 class Solution {
     public List<List<Integer>> levelOrder(Node root) {
         List<List<Integer>> ans = new ArrayList<List<Integer>>();
         Map<Integer,List<Integer>> map = new HashMap<Integer,List<Integer>>();
-        
+
         traverse(root,0,map);
         for(int i=0;map.containsKey(i);i++)
             ans.add(map.get(i));
@@ -56,11 +54,11 @@ class Solution {
     // creates a map of <level, nodes>
     public void traverse(Node root, int level, Map<Integer,List<Integer>> map){
         if(root==null) return;
-        
-        List<Integer> subAns = map.getOrDefault(level,new ArrayList<Integer>());     // getOrDefault method sweet 
+
+        List<Integer> subAns = map.getOrDefault(level,new ArrayList<Integer>());     // getOrDefault method sweet
         subAns.add(root.val);
         map.put(level,subAns);
-        
+
         for(Node n : root.children){
             traverse(n,level+1,map);
         }
