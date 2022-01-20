@@ -21,7 +21,9 @@ all elements in the candidate array are distinct and the array size is n.
 // The maximum depth of the tree could be T/M  ( T is total and M is minimum number)
 // so height of the tree from original functional call would be (T/M+1)
 // so that gives us N^(T/M+1)
-// Space is O(T/M) thats the height of the tree
+// Space is O(T/M) thats the height of the tree. Result space should not be counted. 
+// Number of leaf nodes in a complete bnary tree is (n+1)/2.
+// N^(T/M+1) + (N^(T/M+1) +1)/2 * N) <-- for copy of the subresult
 
 Set of size n elements can form 2^n subsets.
 But here in this problem we are considering a number multiple times.
