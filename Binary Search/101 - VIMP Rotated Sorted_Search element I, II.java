@@ -21,24 +21,28 @@ class Solution {
 
         while(left<=right){
 
-            mid = (right+left)/2;
+            mid = left + (right-left)/2;
 
             if(nums[mid]==target)
                 return mid;
 
-            if(nums[left] <= nums[mid] ){ // first half sorted  ([left] and mid could be the same value hence <=)
+            // left and mid could be same so avoid comparing them .. comparing them wont tell us anything
+            // if second half is sorted
+            if(nums[mid]<nums[right] ){
 
-                if(nums[left] <= target && target < nums[mid]) // if target is beetween this range &  [left] could be the same as target hence <=
-                    right = mid-1;
-                else
-                    left = mid+1;
-
-            } else { // other half is sorted
-
-                if(nums[mid] < target && target <= nums[right]) // if target is beetween this range & [right] could be the same as target target hence <=
+                 // if target is beetween this range & for right we never checked equality for target hence <=
+                if(nums[mid]<target && target<=nums[right])
                     left=mid+1;
                 else
                     right=mid-1;
+
+            }else{ // other half is sorted
+
+               // if target is beetween this range & for left we never checked equality for target hence <=
+                if(nums[left]<=target && target<nums[mid])
+                    right = mid-1;
+                else
+                    left = mid+1;
             }
         }
         return -1;
@@ -65,34 +69,38 @@ So we get Time - O(n) worst case.
 class Solution {
     public boolean search(int[] nums, int target) {
 
-        int low =0, high = nums.length-1;
-        while(low<=high){
+        int left=0,right=nums.length-1;
+        int mid=0;
 
-            int mid = (low+high)/2;
+        while(left<=right){
+
+            mid = left + (right-left)/2;
 
             if(nums[mid]==target)
-                return true;
+                return true; // return index of the target.
 
-            if( nums[low] == nums[mid] && nums[mid] == nums[high] ) {
-                low++; high--;
+            if( nums[left] == nums[mid] && nums[mid] == nums[right] ) {
+                left++; right--;
                 continue;
             }
 
-            if(nums[low]<=nums[mid]){ // low and mid could be same hence <=
+            // left and mid could be same so avoid comparing them .. comparing them wont tell us anything
+            // if second half is sorted
+            if(nums[mid]<=nums[right] ){    // '<=' because of duplicates 
 
-                // for low we never checked equality for target hence <=
-                if( nums[low]<=target && target<nums[mid] )
-                    high=mid-1;
+                 // if target is beetween this range & for right we never checked equality for target hence <=
+                if(nums[mid]<target && target<=nums[right])
+                    left=mid+1;
                 else
-                    low=mid+1;
+                    right=mid-1;
 
-            }else{
+            }else{ // other half is sorted
 
-                // for high we never checked equality for target hence <=
-                if(nums[mid]<target && target<=nums[high])
-                    low=mid+1;
+               // if target is beetween this range & for left we never checked equality for target hence <=
+                if(nums[left]<=target && target<nums[mid])
+                    right = mid-1;
                 else
-                    high=mid-1;
+                    left = mid+1;
             }
         }
         return false;

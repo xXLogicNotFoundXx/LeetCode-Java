@@ -11,24 +11,31 @@ https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/
 */
 class Solution {
     public int findMin(int[] nums) {
-        if(nums==null || nums.length==0)
-            return 0;
 
-        int left=0, right = nums.length-1;
+        int left = 0,  right = nums.length - 1;
 
-        while(left<right){
-            int mid = left + (right-left)/2; // rule of thumb -> l +(r-l)/2 when left is moving 
+        // if array is not rotated at all
+        if(nums[left] < nums[right])
+            return nums[left];
 
-            if(nums[left] <= nums[mid] && nums[mid] <= nums[right])
-                return nums[left];
+        while(left < right) {
 
-            if(nums[left] > nums[mid]) // this part is not sorted.
-                right = mid;           // So mid could be the lowest or it is beetween left-mid
+            // rule of thumb -> l +(r-l)/2 when left is moving else r - (r-l)/2
+            int mid = left + (right-left)/2;
+
+            if(nums[mid] < nums[right]) // this is sorted ...
+                right = mid;            // right will alwasy be pointing to lowesr number
             else
-                left = mid+1;
+                left = mid + 1;
+
+           // ***** if you do ****
+           // nums[left] > nums[mid] and change right=mid .. it doesnt work why ?
+           // bcz left could be same as calculated mid and we should not compare these two
+           // because comparing same value doesnt tell us anything.
+           // hence the conndition should always be if(nums[mid] < nums[right])
         }
 
-        return nums[left];
+        return nums[right]; // right or left both works [1], [3,1], [1,2]
     }
 }
 
@@ -38,29 +45,36 @@ class Solution {
 // Array has duplicates too
 class Solution {
     public int findMin(int[] nums) {
-        if(nums==null || nums.length==0)
-            return 0;
 
-        int left=0, right = nums.length-1;
+        int left = 0,  right = nums.length - 1;
 
-        while(left<right){
-            int mid = left + (right-left)/2; // rule of thumb -> l +(r-l)/2 when left is moving
+        // if array is not rotated at all
+        if(nums[left] < nums[right])
+            return nums[left];
+
+        while(left < right) {
+
+            // rule of thumb -> l +(r-l)/2 when left is moving else r - (r-l)/2
+            int mid = left + (right-left)/2;
 
             if(nums[left] == nums[mid] && nums[mid]==nums[right]){
                 left++;right--;
                 continue;
             }
 
-            if(nums[left] <= nums[mid] && nums[mid] <= nums[right])
-                return nums[left];
 
-            if(nums[left] > nums[mid]) // this part is not sorted.
-                right = mid;           // So mid could be the lowest or it is beetween left-mid
+            if(nums[mid] <= nums[right]) // this is sorted ... '<=' necause of duplicates
+                right = mid;            // right will alwasy be pointing to lowest number
             else
-                left = mid+1;
+                left = mid + 1;
+
+           // ***** if you do ****
+           // nums[left] >= nums[mid] and change right=mid .. it doesnt work why ?
+           // bcz left could be same as calculated mid and we should not compare these two
+           // because comparing same value doesnt tell us anything.
+           // hence the conndition should always be if(nums[mid] < nums[right])
         }
 
-        return nums[left];
+        return nums[right]; // right or left both works [1], [3,1], [1,2]
     }
-
 }

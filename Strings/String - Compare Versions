@@ -4,8 +4,8 @@ class Solution {
         String [] v1 = version1.split("[.]"); // the . is special char in regex to match any char so you have to put in []
         String [] v2 = version2.split("[.]"); // otherwise you get empty String array
         // This works too version1.split("\\.");
-        // String str = "word1, word2 word3@word4?word5.word6"; 
-        // String[] arrOfStr = str.split("[, ?.@]+"); all words gets separated 
+        // String str = "word1, word2 word3@word4?word5.word6";
+        // String[] arrOfStr = str.split("[, ?.@]+"); all words gets separated
         int len = Math.max(v1.length,v2.length);
         int i=0;
         while(i<len){

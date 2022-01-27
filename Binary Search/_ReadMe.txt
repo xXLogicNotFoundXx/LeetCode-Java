@@ -26,7 +26,7 @@ Searching Right: left = mid+1
 /* ------------ VIMP ----------------
   As a rule of thumb, use : (avoid infinite loop)
   This can prevent m from getting stuck at r (or l) after the updating step.
-
+      r is moving                           left is moving
       m = r - (r-l)/2                     m = l + (r-l)/2
       with                                with
       l = m                               l = m+1
@@ -34,3 +34,12 @@ Searching Right: left = mid+1
 
   (Finding Floor Value or equal)      (Finding Ceiling Value or equal)
 */
+
+with   m = r - (r-l)/2
+mid and right could be same so avoid comparing these
+instead compare left and mid
+
+with m = l + (r-l)/2
+mid and left could be same so avoid comparing these
+instead compare mid and right
+Eg. rotated sorted problems 
